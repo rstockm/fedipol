@@ -560,11 +560,11 @@ footer {
 }
 
 footer a {
-    color: #6c757d;
+    color: #0d6efd;
     text-decoration: none;
 }
 
 footer a:hover {
-    color: #0d6efd;
+    color: #0a58ca;
     text-decoration: underline;
 } 
