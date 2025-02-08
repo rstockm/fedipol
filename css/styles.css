@@ -451,16 +451,54 @@ tr.is-bot:hover {
         max-width: none !important;
     }
 
-    /* Mobile table optimizations */
+    /* Optimize container and table layout for mobile */
+    .container {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        max-width: 100% !important;
+    }
+
+    .card {
+        border-left: none !important;
+        border-right: none !important;
+        border-radius: 0 !important;
+    }
+
+    .table-responsive {
+        margin: 0 -0.5rem !important;
+    }
+
+    /* Optimize table cell spacing */
     .table td {
         padding: 0.5rem 0.25rem !important;
         font-size: 0.85rem !important;
     }
 
-    /* Optimize post bars for mobile */
+    /* Hide icon column on mobile */
+    .table th:first-child,
+    .table td:first-child {
+        display: none !important;
+    }
+
+    /* Adjust account column */
+    .table td:nth-child(2) {
+        padding-left: 0.5rem !important;
+        max-width: 180px !important;
+    }
+
+    /* Make party column more compact */
+    #accountsTableBody td:nth-child(3) {
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
+        font-size: 0.8rem !important;
+        white-space: nowrap !important;
+    }
+
+    /* Optimize posts bar container */
     .posts-bar-container {
         min-width: 60px !important;
         gap: 4px !important;
+        padding-right: 0.5rem !important;
     }
 
     .posts-bar {
@@ -472,67 +510,38 @@ tr.is-bot:hover {
         min-width: 35px !important;
     }
 
-    /* Hide icon column on mobile */
-    .table th:first-child,
-    .table td:first-child {
-        display: none !important;
-    }
-
-    /* Adjust other columns now that first column is hidden */
-    .table td:nth-child(2) {
-        padding-left: 0.5rem !important;
-        max-width: 180px !important;
-    }
-
-    .table td:nth-child(2) a {
-        display: block !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-    }
-
-    .table td:nth-child(2) .text-muted {
-        font-size: 0.75rem !important;
-    }
-
-    /* Make party column smaller on mobile */
-    #accountsTableBody td:nth-child(3) {
-        padding-left: 0.25rem !important;
-        padding-right: 0.25rem !important;
-        font-size: 0.8rem !important;
-        white-space: nowrap !important;
-    }
-
-    /* Remove the now unnecessary first-child width adjustment */
-    .table td:first-child {
-        width: auto !important;
-        padding-right: auto !important;
-    }
-
-    /* Ensure buttons are square and properly spaced */
-    .btn-group {
-        gap: 0.25rem !important;
-    }
-
     /* Ensure the button group doesn't wrap */
     .sticky-header .d-flex {
         flex-wrap: nowrap !important;
+    }
+
+    footer {
+        font-size: 0.7rem !important;
+        padding: 0.75rem;
+        white-space: nowrap;
     }
 }
 
 /* Additional breakpoint for very small devices */
 @media screen and (max-width: 390px) {
-    .sticky-header h1 {
-        font-size: 1.1rem !important;
+    .container {
+        padding-left: 0.25rem !important;
+        padding-right: 0.25rem !important;
     }
-    
-    .btn-group .nav-btn {
-        padding: 0.4rem !important;
-        width: 35px !important;
+
+    .table td {
+        padding: 0.4rem 0.2rem !important;
+        font-size: 0.8rem !important;
     }
-    
-    .btn-group .nav-btn i {
-        font-size: 1.1rem !important;
+
+    .posts-bar-container {
+        min-width: 50px !important;
+        padding-right: 0.25rem !important;
+    }
+
+    footer {
+        font-size: 0.65rem !important;
+        padding: 0.5rem;
     }
 }
 
@@ -541,4 +550,21 @@ tr.is-bot:hover {
     .tooltip {
         display: none !important;
     }
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+footer a {
+    color: #6c757d;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #0d6efd;
+    text-decoration: underline;
 } 
