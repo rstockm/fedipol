@@ -6,6 +6,9 @@ Ein interaktives Dashboard zur Analyse der Fediverse-Aktivitäten deutscher Poli
 
 Der Fediverse Activity Tracker bietet einen Überblick über die Präsenz und Aktivität deutscher Politiker:innen und politischer Institutionen im Fediverse. Das Tool ermöglicht es, Trends und Entwicklungen in der politischen Kommunikation auf dezentralen sozialen Plattformen zu beobachten und zu analysieren.
 
+![image](https://github.com/user-attachments/assets/204d71c9-82ff-4039-b9fe-52623d893aae)
+
+
 ## Datengrundlage
 
 - Basiert auf den Daten des [fedipolitik](https://codeberg.org/open/fedipolitik) Projekts
