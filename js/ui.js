@@ -838,7 +838,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl, {
-            trigger: 'hover focus'
+            trigger: 'hover focus',
+            enabled: window.innerWidth < 768  // Only enable tooltips on mobile
         });
     });
     
