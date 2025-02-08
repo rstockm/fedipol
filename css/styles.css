@@ -556,7 +556,7 @@ tr.is-bot:hover {
 }
 
 /* Tooltip enhancements for touch devices */
-@media (hover: none) {
+@media (min-width: 768px) {
     .tooltip {
         display: none !important;
     }

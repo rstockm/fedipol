@@ -836,10 +836,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Initialize tooltips
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
+    const tooltips = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl, {
             trigger: 'hover focus',
             enabled: window.innerWidth < 768  // Only enable tooltips on mobile
+        });
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        tooltips.forEach(tooltip => {
+            tooltip.setOptions({ enabled: window.innerWidth < 768 });
         });
     });
     
