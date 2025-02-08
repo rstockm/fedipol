@@ -1,0 +1,400 @@
+/* Global variables */
+:root {
+    --party-opacity: 0.15;  /* Basis-Transparenz, leicht zu ändern */
+}
+
+.stats-bar {
+    background-color: #0d6efd;
+    height: 25px;
+    transition: width 0.5s ease-in-out;
+    border-radius: 4px;
+}
+
+.stats-label {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stats-count {
+    min-width: 50px;
+    text-align: right;
+}
+
+/* Sticky header styles */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+/* Add padding to main content to prevent it from appearing under the sticky header */
+.main-content {
+    padding-top: 1rem;
+}
+
+/* Active button state */
+.nav-btn.active {
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+/* Posts count bar styles */
+.posts-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 200px;
+}
+
+.posts-bar {
+    flex-grow: 1;
+    background-color: #f8f9fa;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.posts-bar.recent-posts .posts-bar-fill {
+    background-color: #198754;  /* Bootstrap success color */
+}
+
+.posts-bar.total-posts .posts-bar-fill {
+    background-color: #0d6efd;  /* Bootstrap primary color */
+}
+
+.posts-bar-fill {
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+}
+
+.recent-posts-count, .total-posts-count {
+    font-size: 0.9em;
+    color: #6c757d;
+    white-space: nowrap;
+    min-width: 80px;
+}
+
+.loading {
+    opacity: 0.6;
+    position: relative;
+}
+
+.loading::after {
+    content: "Lade...";
+    font-size: 0.8em;
+    color: #6c757d;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Party background colors */
+tr.party-spd > td { background-color: rgba(255, 0, 0, calc(var(--party-opacity) * 0.7)) !important; } /* Helleres Rot für SPD */
+tr.party-cdu > td { background-color: rgba(0, 0, 0, calc(var(--party-opacity) * 0.75)) !important; }
+tr.party-csu > td { background-color: rgba(0, 0, 0, calc(var(--party-opacity) * 0.75)) !important; }
+tr.party-gruene > td { background-color: rgba(67, 176, 42, var(--party-opacity)) !important; }
+tr.party-fdp > td { background-color: rgba(255, 237, 0, calc(var(--party-opacity) * 1.25)) !important; }
+tr.party-linke > td { background-color: rgba(255, 0, 0, calc(var(--party-opacity) * 1.3)) !important; } /* Dunkleres Rot für Linke */
+tr.party-piraten > td { background-color: rgba(255, 165, 0, var(--party-opacity)) !important; }
+tr.party-afd > td { background-color: rgba(0, 158, 224, var(--party-opacity)) !important; }
+tr.party-freie-waehler > td { background-color: rgba(0, 0, 139, var(--party-opacity)) !important; }
+tr.party-volt > td { background-color: rgba(128, 0, 128, var(--party-opacity)) !important; }
+tr.party-die-partei > td { background-color: rgba(0, 255, 255, var(--party-opacity)) !important; }
+tr.party-none > td { background-color: rgba(0, 0, 0, calc(var(--party-opacity) * 0.25)) !important; }
+
+/* Override Bootstrap hover effects */
+.table > tbody > tr:hover > td {
+    background-color: inherit !important;
+}
+
+/* Bot styles */
+tr.is-bot {
+    opacity: 0.5;
+}
+
+tr.is-bot:hover {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Party distribution styles */
+.party-distribution-bar {
+    height: 30px;
+    width: 100%;
+    background: #f8f9fa;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+}
+
+.party-distribution-bar .party-segment {
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    flex-grow: 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.party-segment:hover {
+    opacity: 0.8;
+}
+
+.party-segment.active {
+    outline: 2px solid #0d6efd;
+    outline-offset: -2px;
+    z-index: 1;
+}
+
+.party-segment .regular-accounts {
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.party-segment .bot-accounts {
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    background-color: inherit;
+    position: relative;
+}
+
+.party-segment .bot-accounts::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.party-distribution-legend {
+    font-size: 0.85em;
+    color: #666;
+}
+
+.party-distribution-legend .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    white-space: nowrap;
+}
+
+.party-distribution-legend .color-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.party-distribution-legend .color-box .bot-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: inherit;
+}
+
+.party-distribution-legend .color-box .bot-indicator::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Reset Filter Button */
+#resetFilter {
+    font-size: 0.85em;
+    color: #666;
+    text-decoration: none;
+    display: none;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+#resetFilter:hover {
+    color: #0d6efd;
+}
+
+#resetFilter.visible {
+    display: inline-flex;
+}
+
+/* Timeline styles */
+.timeline-container {
+    margin-top: 1rem;
+    margin-bottom: 35px;  /* Space for year scale only */
+}
+
+.timeline-bar {
+    position: relative;
+    width: 100%;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+}
+
+.timeline-party-row {
+    position: relative;
+    height: 20px;  /* Height for multi-party view */
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 2px;
+    margin: 1px 0;
+}
+
+/* When only one party is shown, adjust the row height */
+.timeline-bar.filtered .timeline-party-row {
+    height: 100%;  /* Full height when filtered */
+    margin: 0;
+}
+
+.timeline-marker {
+    position: absolute;
+    width: 6px;  /* Default width for squares */
+    height: 6px;  /* Default height for squares */
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+    transition: all 0.2s ease-in-out;
+    pointer-events: all;
+    cursor: help;
+    border-radius: 0;  /* Perfect squares */
+    z-index: 2;
+}
+
+/* Adjust markers when filtered */
+.timeline-bar.filtered .timeline-marker {
+    width: 3px;  /* Thinner width for lines */
+    height: 100%;  /* Full height */
+    top: 0;
+    transform: translateX(-50%);  /* Only center horizontally */
+}
+
+.timeline-marker:hover {
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+    z-index: 10;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Adjust hover state when filtered */
+.timeline-bar.filtered .timeline-marker:hover {
+    width: 5px;  /* Slightly wider on hover */
+    height: 100%;  /* Maintain full height */
+}
+
+.timeline-marker.is-bot {
+    opacity: 0.4;
+    width: 4px;
+    height: 4px;
+}
+
+/* Adjust bot markers when filtered */
+.timeline-bar.filtered .timeline-marker.is-bot {
+    width: 2px;  /* Thinner width for bot lines */
+    height: 100%;  /* Full height */
+    opacity: 0.3;
+}
+
+.timeline-marker.is-bot:hover {
+    opacity: 0.6;
+    width: 8px;
+    height: 8px;
+}
+
+/* Adjust bot marker hover state when filtered */
+.timeline-bar.filtered .timeline-marker.is-bot:hover {
+    width: 4px;  /* Slightly wider on hover */
+    height: 100%;  /* Maintain full height */
+}
+
+/* Grid lines */
+.timeline-party-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent calc(8.33% - 1px),
+        rgba(0, 0, 0, 0.05) 8.33%,
+        transparent calc(8.33% + 1px)
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Year scale */
+.timeline-scale {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    right: 0;
+    height: 20px;
+}
+
+.timeline-year {
+    position: absolute;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    color: #666;
+}
+
+.timeline-year::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    height: 5px;
+    width: 1px;
+    background-color: #666;
+}
+
+/* Month markers */
+.timeline-months {
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    height: 10px;
+}
+
+.timeline-month {
+    position: absolute;
+    width: 1px;
+    height: 3px;
+    background-color: #ccc;
+    transform: translateX(-50%);
+}
+
+/* Search styles */
+.input-group .form-control.rounded-pill {
+    padding-right: 2.5rem !important;
+}
+
+.input-group .btn-link {
+    color: #adb5bd;
+}
+
+.input-group .btn-link:hover {
+    color: #6c757d;
+} 
