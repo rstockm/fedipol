@@ -834,6 +834,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     mastodonApi = new MastodonApi();
     console.log('MastodonApi initialized:', mastodonApi);
     
+    // Initialize tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl, {
+            trigger: 'hover focus'
+        });
+    });
+    
     // Create and append footer
     const mainContainer = document.querySelector('.container.main-content');
     const footer = document.createElement('footer');

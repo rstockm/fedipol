@@ -397,4 +397,120 @@ tr.is-bot:hover {
 
 .input-group .btn-link:hover {
     color: #6c757d;
+}
+
+/* Mobile navigation styles */
+@media (max-width: 768px) {
+    .sticky-header {
+        padding: 0.5rem 0;
+    }
+    
+    .sticky-header h1 {
+        font-size: 1.25rem;
+    }
+    
+    .nav-btn {
+        padding: 0.5rem;
+        aspect-ratio: 1;
+    }
+    
+    .nav-btn i {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    .nav-btn .loading-text {
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        font-size: 0.75rem;
+    }
+
+    /* Hide export button on mobile */
+    #exportButton {
+        display: none;
+    }
+
+    /* Mobile account header adjustments */
+    #accountsContainer .card-header {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.5rem;
+    }
+
+    #accountsContainer .card-header h2 {
+        font-size: 0.9rem;
+        margin-bottom: 0;
+    }
+
+    #accountsContainer .card-header .input-group {
+        width: 100% !important;
+    }
+
+    /* Mobile table optimizations */
+    .table td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.85rem;
+    }
+
+    /* Optimize post bars for mobile */
+    .posts-bar-container {
+        min-width: 60px;
+        gap: 4px;
+    }
+
+    .posts-bar {
+        height: 6px;
+    }
+
+    .recent-posts-count, .total-posts-count {
+        font-size: 0.75rem;
+        min-width: 35px;
+    }
+
+    /* Hide icon column on mobile */
+    .table th:first-child,
+    .table td:first-child {
+        display: none;
+    }
+
+    /* Adjust other columns now that first column is hidden */
+    .table td:nth-child(2) {
+        padding-left: 0.5rem;
+        max-width: 180px;
+    }
+
+    .table td:nth-child(2) a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .table td:nth-child(2) .text-muted {
+        font-size: 0.75rem;
+    }
+
+    /* Make party column smaller on mobile */
+    #accountsTableBody td:nth-child(3) {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    /* Remove the now unnecessary first-child width adjustment */
+    .table td:first-child {
+        width: auto;
+        padding-right: auto;
+    }
+}
+
+/* Tooltip enhancements for touch devices */
+@media (hover: none) {
+    .tooltip {
+        display: none !important;
+    }
 } 

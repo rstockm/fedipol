@@ -136,19 +136,27 @@
     <div class="sticky-header">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-                <h1 class="h3 mb-0">Fediverse Activity Tracker</h1>
+                <h1 class="h3 mb-0">
+                    <span class="d-none d-md-inline">Fediverse Activity Tracker</span>
+                    <span class="d-inline d-md-none">Fedipol</span>
+                </h1>
                 <div class="btn-group">
-                    <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('accountsContainer')">
-                        <i class="bi bi-person-circle"></i> Parteien
+                    <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('accountsContainer')" data-bs-toggle="tooltip" title="Parteien">
+                        <i class="bi bi-building-fill"></i>
+                        <span class="btn-text d-none d-md-inline">Parteien</span>
                     </button>
-                    <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('institutionsContainer')">
-                        <i class="bi bi-building"></i> Institutionen
+                    <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('institutionsContainer')" data-bs-toggle="tooltip" title="Institutionen">
+                        <i class="bi bi-building"></i>
+                        <span class="btn-text d-none d-md-inline">Institutionen</span>
                     </button>
-                    <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('instancesContainer')">
-                        <i class="bi bi-hdd-network"></i> Instanzen
+                    <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('instancesContainer')" data-bs-toggle="tooltip" title="Instanzen">
+                        <i class="bi bi-hdd-network-fill"></i>
+                        <span class="btn-text d-none d-md-inline">Instanzen</span>
                     </button>
-                    <button class="btn btn-outline-primary nav-btn" id="exportButton" disabled="disabled">
-                        <i class="bi bi-download"></i> Export <span class="loading-text">(lädt...)</span>
+                    <button class="btn btn-outline-primary nav-btn" id="exportButton" disabled="disabled" data-bs-toggle="tooltip" title="Daten exportieren">
+                        <i class="bi bi-download"></i>
+                        <span class="btn-text d-none d-md-inline">Export</span>
+                        <span class="loading-text">(lädt...)</span>
                     </button>
                 </div>
             </div>
