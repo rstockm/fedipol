@@ -1,7 +1,7 @@
 // Initialize settings and parser
 const settings = new Settings();
 const parser = new AccountParser();
-const mastodonApi = new MastodonApi();
+let mastodonApi = null; // Will be initialized in DOMContentLoaded
 
 // Konfigurationskonstanten
 const ACCOUNTS_STATS_LIMIT = 300; // Auf 300 erhöht, vorher 200
@@ -457,6 +457,27 @@ async function loadPostCounts(accounts) {
         }
     }
 
+    // Enable export button after ALL data is loaded
+    const exportButton = document.getElementById('exportButton');
+    if (exportButton) {
+        exportButton.disabled = false;
+        exportButton.onclick = () => {
+            const cacheData = Object.fromEntries(loadedAccounts);
+            const dataStr = JSON.stringify({
+                data: cacheData,
+                timestamp: Date.now()
+            }, null, 2);
+            
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'fedipol_data.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        };
+    }
+
     // Update account count after all data is loaded
     updateAccountCount();
 }
@@ -809,6 +830,10 @@ window.addEventListener('scroll', updateActiveButtonOnScroll);
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', async () => {
+    // Initialize API
+    mastodonApi = new MastodonApi();
+    console.log('MastodonApi initialized:', mastodonApi);
+    
     // Create and append footer
     const mainContainer = document.querySelector('.container.main-content');
     const footer = document.createElement('footer');

@@ -120,6 +120,15 @@
             pointer-events: none;
             z-index: 1;
         }
+
+        #exportButton:disabled .loading-text {
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+        
+        #exportButton:not(:disabled) .loading-text {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -138,8 +147,8 @@
                     <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('instancesContainer')">
                         <i class="bi bi-hdd-network"></i> Instanzen
                     </button>
-                    <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('statsContainer')">
-                        <i class="bi bi-bar-chart"></i> Statistik
+                    <button class="btn btn-outline-primary nav-btn" id="exportButton" disabled="disabled">
+                        <i class="bi bi-download"></i> Export <span class="loading-text">(lädt...)</span>
                     </button>
                 </div>
             </div>
