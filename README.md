@@ -2,6 +2,8 @@
 
 Ein interaktives Dashboard zur Analyse der Fediverse-Aktivitäten deutscher Politiker:innen und politischer Institutionen.
 
+Zur Datenvisualisierung: https://rstockm.github.io/fedipol/
+
 ## Ziel des Projektes
 
 Der Fediverse Activity Tracker bietet einen Überblick über die Präsenz und Aktivität deutscher Politiker:innen und politischer Institutionen im Fediverse. Das Tool ermöglicht es, Trends und Entwicklungen in der politischen Kommunikation auf dezentralen sozialen Plattformen zu beobachten und zu analysieren.
