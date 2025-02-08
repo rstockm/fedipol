@@ -400,7 +400,7 @@ tr.is-bot:hover {
 }
 
 /* Mobile navigation styles */
-@media (max-width: 768px) {
+@media (max-width: 896px) {
     .sticky-header {
         padding: 0.5rem 0;
     }
@@ -430,7 +430,7 @@ tr.is-bot:hover {
 
     /* Hide export button on mobile */
     #exportButton {
-        display: none;
+        display: none !important;
     }
 
     /* Mobile account header adjustments */
@@ -505,6 +505,21 @@ tr.is-bot:hover {
     .table td:first-child {
         width: auto;
         padding-right: auto;
+    }
+}
+
+/* Additional breakpoint for very small devices */
+@media (max-width: 390px) {
+    .sticky-header h1 {
+        font-size: 1.1rem;
+    }
+    
+    .nav-btn {
+        padding: 0.4rem;
+    }
+    
+    .nav-btn i {
+        font-size: 1.1rem;
     }
 }
 
