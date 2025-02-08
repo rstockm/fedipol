@@ -13,6 +13,7 @@ Der Fediverse Activity Tracker bietet einen Überblick über die Präsenz und Ak
 ## Datengrundlage
 
 - Basiert auf den Daten des [fedipolitik](https://codeberg.org/open/fedipolitik) Projekts
+- **Mit Sicherheit fehlen dort noch Accounts: bitte einfach dort ergänzen!**
 - Lizenziert unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
 - Erfasst werden Accounts von:
   - Politiker:innen aller Parteien
