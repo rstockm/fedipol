@@ -842,22 +842,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
     
-    // Create and append footer
+    // Remove footer creation code
     const mainContainer = document.querySelector('.container.main-content');
-    const footer = document.createElement('footer');
-    footer.className = 'text-muted small py-2 border-top fixed-bottom bg-white';
-    footer.style.boxShadow = '0 -2px 4px rgba(0,0,0,0.1)';
-    footer.innerHTML = `
-        <div class="container text-center">
-            Daten von <a href="https://codeberg.org/open/fedipolitik" target="_blank">fedipolitik</a>, 
-            lizenziert unter <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank">CC BY-SA 4.0</a>
-            | Entwickelt von <a href="https://github.com/rstockm" target="_blank">Ralf Stockmann</a>
-            | <a href="https://github.com/rstockm/fedipol" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-        </div>
-    `;
-    document.body.appendChild(footer);
-
-    // Add padding to main container to prevent content from being hidden behind footer
     mainContainer.style.paddingBottom = '3rem';
 
     try {

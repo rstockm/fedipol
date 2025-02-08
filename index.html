@@ -66,19 +66,21 @@
 
         .timeline-marker {
             position: absolute;
-            width: 3px;
-            height: 100%;
-            top: 0;
-            transform: translateX(-50%);
+            width: 6px;  /* Default width for squares */
+            height: 6px;  /* Default height for squares */
+            top: 50%;
+            transform: translate(-50%, -50%);
             opacity: 0.8;
             transition: all 0.2s ease-in-out;
             pointer-events: all;
             cursor: help;
+            border-radius: 0;  /* Perfect squares */
         }
 
         .timeline-marker:hover {
             opacity: 1;
-            width: 5px;
+            width: 10px;
+            height: 10px;
             z-index: 10;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
@@ -94,6 +96,32 @@
             width: 4px;
         }
 
+        /* Add styles for filtered state */
+        .timeline-bar.filtered .timeline-marker {
+            width: 3px;
+            height: 100%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .timeline-bar.filtered .timeline-marker:hover {
+            width: 5px;
+            height: 100%;
+        }
+
+        .timeline-bar.filtered .timeline-marker.is-bot {
+            width: 2px;
+            height: 100%;
+            top: 0;
+            opacity: 0.3;
+        }
+
+        .timeline-bar.filtered .timeline-marker.is-bot:hover {
+            width: 4px;
+            height: 100%;
+            opacity: 0.6;
+        }
+
         .timeline-labels {
             margin-top: 0.5rem;
             padding: 0 2px;
@@ -101,24 +129,6 @@
             color: #666;
             display: flex;
             justify-content: space-between;
-        }
-
-        .timeline-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent calc(20% - 1px),
-                rgba(0, 0, 0, 0.1) 20%,
-                transparent calc(20% + 1px)
-            );
-            pointer-events: none;
-            z-index: 1;
         }
 
         #exportButton:disabled .loading-text {
@@ -299,7 +309,7 @@
     <script src="js/accountParser.js"></script>
     <script src="js/mastodonApi.js"></script>
     <script src="js/ui.js"></script>
-    <footer>
+    <footer class="text-muted small py-2 border-top fixed-bottom bg-white">
         Daten von <a href="https://codeberg.org/open/fedipolitik" target="_blank">fedipolitik</a> 
         (<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank">CC BY-SA 4.0</a>)
         | von <a href="https://github.com/rstockm" target="_blank">Ralf Stockmann</a>

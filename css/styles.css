@@ -324,8 +324,8 @@ tr.is-bot:hover {
     height: 100%;  /* Maintain full height */
 }
 
-/* Grid lines */
-.timeline-party-row::before {
+/* Grid lines - REMOVED */
+/* .timeline-party-row::before {
     content: '';
     position: absolute;
     top: 0;
@@ -335,13 +335,13 @@ tr.is-bot:hover {
     background: repeating-linear-gradient(
         90deg,
         transparent,
-        transparent calc(8.33% - 1px),
-        rgba(0, 0, 0, 0.05) 8.33%,
-        transparent calc(8.33% + 1px)
+        transparent calc(20% - 1px),
+        rgba(0, 0, 0, 0.1) 20%,
+        transparent calc(20% + 1px)
     );
     pointer-events: none;
     z-index: 1;
-}
+} */
 
 /* Year scale */
 .timeline-scale {
@@ -365,8 +365,8 @@ tr.is-bot:hover {
     top: -5px;
     left: 50%;
     height: 5px;
-    width: 1px;
-    background-color: #666;
+    width: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* Month markers */
@@ -382,7 +382,7 @@ tr.is-bot:hover {
     position: absolute;
     width: 1px;
     height: 3px;
-    background-color: #ccc;
+    background-color: rgba(0, 0, 0, 0.15);
     transform: translateX(-50%);
 }
 
@@ -520,6 +520,11 @@ tr.is-bot:hover {
         padding: 0.75rem;
         white-space: nowrap;
     }
+
+    /* Reduce size of party distribution heading */
+    .card-header h2 {
+        font-size: 1rem !important;
+    }
 }
 
 /* Additional breakpoint for very small devices */
@@ -542,6 +547,11 @@ tr.is-bot:hover {
     footer {
         font-size: 0.65rem !important;
         padding: 0.5rem;
+    }
+
+    /* Make party distribution heading even smaller on very small devices */
+    .card-header h2 {
+        font-size: 0.9rem !important;
     }
 }
 
@@ -567,4 +577,35 @@ footer a {
 footer a:hover {
     color: #0a58ca;
     text-decoration: underline;
+}
+
+footer.fixed-bottom {
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    z-index: 1030;
+    text-align: center;
+    padding: 0.75rem;
+}
+
+footer.fixed-bottom a {
+    color: #0d6efd !important;
+    text-decoration: none;
+}
+
+footer.fixed-bottom a:hover {
+    color: #0a58ca !important;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 896px) {
+    footer.fixed-bottom {
+        font-size: 0.7rem;
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    footer.fixed-bottom {
+        font-size: 0.65rem;
+        padding: 0.4rem;
+    }
 } 
