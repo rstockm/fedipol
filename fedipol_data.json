@@ -31,7 +31,7 @@
       "posts_count": 1292,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://mastodon.social/@peter_simone": {
       "account": {
@@ -1483,7 +1483,7 @@
       "posts_count": 1249,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://social.linksfraktion.de/@bernd_riexinger": {
       "account": {
@@ -2528,7 +2528,7 @@
       "posts_count": 55,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@anjaweisgerber": {
       "account": {
@@ -2539,7 +2539,7 @@
       "posts_count": 202,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://social.linksfraktion.de/@matthias_w_birkwald": {
       "account": {
@@ -2781,7 +2781,7 @@
       "posts_count": 3862,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@GuidoReil": {
       "account": {
@@ -2792,7 +2792,7 @@
       "posts_count": 121,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@joachim_kuhs": {
       "account": {
@@ -2803,7 +2803,7 @@
       "posts_count": 630,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@BuchheitMarkus": {
       "account": {
@@ -2814,7 +2814,7 @@
       "posts_count": 610,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@krahmax": {
       "account": {
@@ -2825,7 +2825,7 @@
       "posts_count": 4229,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@Nicolaus_Fest": {
       "account": {
@@ -2836,7 +2836,7 @@
       "posts_count": 2,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://bonn.social/@alexandrageese": {
       "account": {
@@ -3177,7 +3177,7 @@
       "posts_count": 371,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@ManfredWeber": {
       "account": {
@@ -3188,7 +3188,7 @@
       "posts_count": 802,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@MarkusFerber": {
       "account": {
@@ -3199,7 +3199,7 @@
       "posts_count": 698,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@marlenemortler": {
       "account": {
@@ -3210,7 +3210,7 @@
       "posts_count": 0,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@MHohlmeier": {
       "account": {
@@ -3221,7 +3221,7 @@
       "posts_count": 579,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@ErnstCornelia": {
       "account": {
@@ -3287,7 +3287,7 @@
       "posts_count": 829,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@svenja_hahn": {
       "account": {
@@ -3298,7 +3298,7 @@
       "posts_count": 696,
       "recent_posts_count": 0,
       "created_at": "2022-04-04T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@ulimuellermdep": {
       "account": {
@@ -3562,7 +3562,7 @@
       "posts_count": 854,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://hessen.social/@andrea": {
       "account": {
