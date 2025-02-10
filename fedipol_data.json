@@ -1342,17 +1342,6 @@
       "created_at": "2022-11-15T00:00:00.000Z",
       "is_bot": false
     },
-    "https://mastodon.social/@Maristya": {
-      "account": {
-        "name": "Anja Schillhaneck",
-        "url": "https://mastodon.social/@Maristya",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Grüne)"
-      },
-      "posts_count": 4981,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-16T00:00:00.000Z",
-      "is_bot": false
-    },
     "https://gruene.social/@stefanziller": {
       "account": {
         "name": "Stefan Ziller",
@@ -3662,17 +3651,6 @@
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
       "is_bot": true
-    },
-    "https://mastodon.social/@_rya_": {
-      "account": {
-        "name": "Birgit Rydlewski",
-        "url": "https://mastodon.social/@_rya_",
-        "category": "Mitglied des Landtag Nordrhein-Westfalen (Piraten)"
-      },
-      "posts_count": 70,
-      "recent_posts_count": 0,
-      "created_at": "2017-04-14T00:00:00.000Z",
-      "is_bot": false
     },
     "https://ruhr.social/@WGB": {
       "account": {
