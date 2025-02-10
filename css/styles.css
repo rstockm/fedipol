@@ -99,7 +99,7 @@ tr.party-cdu > td { background-color: rgba(0, 0, 0, calc(var(--party-opacity) * 
 tr.party-csu > td { background-color: rgba(0, 0, 0, calc(var(--party-opacity) * 0.75)) !important; }
 tr.party-gruene > td { background-color: rgba(67, 176, 42, var(--party-opacity)) !important; }
 tr.party-fdp > td { background-color: rgba(255, 237, 0, calc(var(--party-opacity) * 1.25)) !important; }
-tr.party-linke > td { background-color: rgba(255, 0, 0, calc(var(--party-opacity) * 1.3)) !important; } /* Dunkleres Rot für Linke */
+tr.party-linke > td { background-color: rgba(178, 0, 178, calc(var(--party-opacity) * 1.3)) !important; } /* Lila für Linke */
 tr.party-piraten > td { background-color: rgba(255, 165, 0, var(--party-opacity)) !important; }
 tr.party-afd > td { background-color: rgba(0, 158, 224, var(--party-opacity)) !important; }
 tr.party-freie-waehler > td { background-color: rgba(0, 0, 139, var(--party-opacity)) !important; }
