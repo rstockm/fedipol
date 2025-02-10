@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fedipol - Informationen zur Datenabfrage</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    
+    <style>
+        pre {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            overflow-x: auto;
+        }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        .main-content {
+            padding-top: 1rem;
+        }
+        .query-section {
+            margin-top: 2rem;
+        }
+        .query-explanation {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">Fedipol - Informationen zur Datenabfrage</h1>
+                <a href="index.html" class="btn btn-outline-primary">
+                    <i class="bi bi-arrow-left"></i>
+                    Zurück zur Übersicht
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <!-- Wikidata-Abfragen -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Wikidata-Abfragen</h2>
+            </div>
+            <div class="card-body">
+                <h3 class="h6">Abfrage von Politiker:innen</h3>
+                <p>Die Suche nach Politiker:innen erfolgt über drei verschiedene Wege:</p>
+                <ol>
+                    <li>
+                        <strong>Deutsche Politiker:innen mit aktiven Positionen:</strong>
+                        <ul>
+                            <li>Muss einer politischen Partei angehören (P102)</li>
+                            <li>Muss eine Mastodon-Adresse haben (P4033)</li>
+                            <li>Muss eine aktuelle politische Position innehaben (P39 ohne Enddatum)</li>
+                            <li>Position muss entweder in Deutschland (Q183) oder in der EU sein</li>
+                            <li>Muss deutsche Staatsbürgerschaft haben (P27)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Accounts auf linke.social:</strong>
+                        <ul>
+                            <li>Alle Accounts auf dieser Instanz werden erfasst</li>
+                            <li>Optional: Parteizugehörigkeit und Position werden hinzugefügt, falls vorhanden</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Accounts auf gruene.social:</strong>
+                        <ul>
+                            <li>Alle Accounts auf dieser Instanz werden erfasst</li>
+                            <li>Optional: Parteizugehörigkeit und Position werden hinzugefügt, falls vorhanden</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="query-section">
+                    <h4 class="h6">SPARQL-Abfrage für Politiker:innen</h4>
+                    <div class="query-explanation">
+                        Diese SPARQL-Abfrage kombiniert drei Hauptteile:
+                        <ol>
+                            <li>Aktuelle Parlamentsmitglieder mit spezifischen Q-IDs für Bundestag, EU-Parlament und Landtage</li>
+                            <li>Andere politische Positionen in Deutschland oder der EU</li>
+                            <li>Spezielle Instanzen (linke.social und gruene.social)</li>
+                        </ol>
+                    </div>
+                    <pre><code>SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?partyLabel WHERE {
+  {
+    # German politicians with positions and Fediverse accounts
+    ?item wdt:P102 ?party ;    # Political party
+          p:P4033 ?statement . # Mastodon address
+    ?statement ps:P4033 ?account .
+    
+    {
+      # Current members of parliament (Bundestag, EU, Landtage)
+      VALUES ?membership { 
+        wd:Q131745197  # Member of 20th Bundestag
+        wd:Q91459453   # Member of 19th Bundestag
+        wd:Q18744396   # Member of 9th European Parliament
+        wd:Q86189847   # Member of 8th European Parliament
+        wd:Q2023214    # Member of Landtag
+      }
+      ?item wdt:P31 ?membership .
+      ?item wdt:P102 ?party .
+      BIND(?membership AS ?position)
+    }
+    UNION
+    {
+      # Other political positions
+      ?item p:P39 ?positionStatement .
+      ?positionStatement ps:P39 ?position .
+      
+      # Filter for current positions (no end date)
+      FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
+      
+      # Position must be either in Germany OR an EU position
+      {
+        # German positions
+        ?position wdt:P17 wd:Q183 .
+      } 
+      UNION 
+      {
+        # EU Parliament
+        VALUES ?position { wd:Q27169 wd:Q1755693 }
+      }
+    }
+    
+    # German citizenship
+    ?item wdt:P27 wd:Q183 .
+  }
+  UNION
+  {
+    # All accounts on linke.social
+    ?item p:P4033 ?statement .
+    ?statement ps:P4033 ?account .
+    FILTER(CONTAINS(STR(?account), "linke.social"))
+    
+    # Get party affiliation if available
+    OPTIONAL {
+      ?item wdt:P102 ?party .
+    }
+    
+    # Get position if available
+    OPTIONAL {
+      ?item p:P39 ?positionStatement .
+      ?positionStatement ps:P39 ?position .
+      FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
+    }
+  }
+  UNION
+  {
+    # All accounts on gruene.social
+    ?item p:P4033 ?statement .
+    ?statement ps:P4033 ?account .
+    FILTER(CONTAINS(STR(?account), "gruene.social"))
+    
+    # Get party affiliation if available
+    OPTIONAL {
+      ?item wdt:P102 ?party .
+    }
+    
+    # Get position if available
+    OPTIONAL {
+      ?item p:P39 ?positionStatement .
+      ?positionStatement ps:P39 ?position .
+      FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
+    }
+  }
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de,en". }
+}
+ORDER BY ?partyLabel ?itemLabel</code></pre>
+                </div>
+
+                <h3 class="h6 mt-4">Abfrage von Institutionen</h3>
+                <p>Die Suche nach Institutionen erfolgt über drei Wege:</p>
+                <ol>
+                    <li>
+                        <strong>Deutsche Institutionen:</strong>
+                        <ul>
+                            <li>Muss eine Mastodon-Adresse haben (P4033)</li>
+                            <li>Muss in Deutschland sein (P17)</li>
+                            <li>Muss einer der folgenden Typen sein:</li>
+                            <ul>
+                                <li>Politische Partei (Q7278)</li>
+                                <li>Ministerium (Q327333)</li>
+                                <li>Regionalverband (Q2478897)</li>
+                                <li>Legislative (Q31075)</li>
+                                <li>Behörde (Q2659904)</li>
+                                <li>Regionalparlament (Q4471)</li>
+                                <li>Jugendorganisation (Q2166081)</li>
+                                <li>Politische Stiftung (Q1663594)</li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Accounts auf social.bund.de:</strong>
+                        <ul>
+                            <li>Alle Accounts auf dieser Instanz werden erfasst</li>
+                            <li>Optional: Typ der Institution wird hinzugefügt, falls vorhanden</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Accounts auf social.hessen.de:</strong>
+                        <ul>
+                            <li>Alle Accounts auf dieser Instanz werden erfasst</li>
+                            <li>Optional: Typ der Institution wird hinzugefügt, falls vorhanden</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="query-section">
+                    <h4 class="h6">SPARQL-Abfrage für Institutionen</h4>
+                    <div class="query-explanation">
+                        Diese SPARQL-Abfrage kombiniert drei Teile:
+                        <ol>
+                            <li>Deutsche Institutionen mit spezifischen Typen</li>
+                            <li>Accounts auf social.bund.de</li>
+                            <li>Accounts auf social.hessen.de</li>
+                        </ol>
+                    </div>
+                    <pre><code>SELECT DISTINCT ?item ?itemLabel ?type ?typeLabel ?account WHERE {
+  {
+    # Regular institutions query
+    ?item p:P4033 ?statement .  # Has Mastodon address
+    ?statement ps:P4033 ?account .
+    
+    # Must be in Germany
+    ?item wdt:P17 wd:Q183 .
+    
+    # Type of institution
+    ?item wdt:P31 ?type .
+    
+    # Filter for relevant types
+    VALUES ?type {
+      wd:Q7278     # political party
+      wd:Q327333   # government ministry
+      wd:Q2478897  # regional association
+      wd:Q31075    # legislature
+      wd:Q2659904  # government agency
+      wd:Q4471     # regional parliament
+      wd:Q2166081  # youth organization
+      wd:Q1663594  # political foundation
+    }
+  }
+  UNION
+  {
+    # All accounts on social.bund.de
+    ?item p:P4033 ?statement .
+    ?statement ps:P4033 ?account .
+    FILTER(CONTAINS(STR(?account), "social.bund.de"))
+    
+    # Get the type if available
+    OPTIONAL {
+      ?item wdt:P31 ?type .
+    }
+  }
+  UNION
+  {
+    # All accounts on social.hessen.de
+    ?item p:P4033 ?statement .
+    ?statement ps:P4033 ?account .
+    FILTER(CONTAINS(STR(?account), "social.hessen.de"))
+    
+    # Get the type if available
+    OPTIONAL {
+      ?item wdt:P31 ?type .
+    }
+  }
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de,en". }
+}
+ORDER BY ?typeLabel ?itemLabel</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mastodon-API -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Mastodon-API-Abfragen</h2>
+            </div>
+            <div class="card-body">
+                <p>Für jeden gefundenen Account werden folgende Daten über die Mastodon-API abgefragt:</p>
+                <ul>
+                    <li>Account-Informationen (Erstellungsdatum, Bot-Status)</li>
+                    <li>Gesamtzahl der Posts</li>
+                    <li>Anzahl der Posts in den letzten 60 Tagen</li>
+                </ul>
+
+                <h3 class="h6 mt-4">API-Endpunkte</h3>
+                <ol>
+                    <li>
+                        <strong>Account-Lookup:</strong>
+                        <pre><code>GET https://&lt;instance&gt;/api/v1/accounts/lookup?acct=&lt;username&gt;</code></pre>
+                        <p>Liefert grundlegende Account-Informationen wie Erstellungsdatum und Bot-Status.</p>
+                    </li>
+                    <li>
+                        <strong>Account-Posts:</strong>
+                        <pre><code>GET https://&lt;instance&gt;/api/v1/accounts/&lt;id&gt;/statuses?limit=40</code></pre>
+                        <p>Liefert die letzten Posts des Accounts. Die Abfrage wird wiederholt, bis Posts gefunden werden, die älter als 60 Tage sind.</p>
+                    </li>
+                </ol>
+
+                <div class="alert alert-info mt-4">
+                    <i class="bi bi-info-circle"></i> Die API-Abfragen werden in Batches von 10 Accounts mit einer Verzögerung von 1 Sekunde zwischen den Batches durchgeführt, um die Server nicht zu überlasten.
+                </div>
+            </div>
+        </div>
+
+        <!-- Datenverarbeitung -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Datenverarbeitung</h2>
+            </div>
+            <div class="card-body">
+                <p>Die gesammelten Daten werden wie folgt verarbeitet:</p>
+                <ul>
+                    <li>Alle Ergebnisse werden nach Partei/Institution und Name sortiert</li>
+                    <li>Doppelte Einträge werden automatisch entfernt</li>
+                    <li>Parteinamen werden in gängige Abkürzungen umgewandelt (z.B. "Bündnis 90/Die Grünen" → "Grüne")</li>
+                    <li>Fediverse-URLs werden in ein einheitliches Format gebracht</li>
+                    <li>Die Ergebnisse werden in einer Markdown-Datei gespeichert, die als Grundlage für weitere Verarbeitungen dient</li>
+                </ul>
+
+                <div class="alert alert-info mt-4">
+                    <i class="bi bi-info-circle"></i> Die SPARQL-Abfragen werden über den Wikidata-Endpunkt ausgeführt und die Ergebnisse werden in deutscher Sprache angefordert. Falls keine deutsche Bezeichnung verfügbar ist, wird auf die englische Version zurückgegriffen.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-muted small py-2 border-top fixed-bottom bg-white">
+        <div class="container">
+            Daten von <a href="https://codeberg.org/open/fedipolitik" target="_blank">fedipolitik</a> 
+            (<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank">CC BY-SA 4.0</a>)
+            | von <a href="https://chaos.social/@rstockm" target="_blank">Ralf Stockmann</a>
+            | <a href="https://github.com/rstockm/fedipol" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
