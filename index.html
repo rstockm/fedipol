@@ -54,6 +54,75 @@
             margin-top: 1rem;
         }
 
+        /* Party filter styles */
+        .party-segment {
+            height: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 1;
+        }
+        .party-segment:hover {
+            opacity: 0.8;
+            transform: scaleY(1.1);
+        }
+        .party-segment.active {
+            opacity: 1;
+            transform: scaleY(1.2);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            z-index: 1;
+            position: relative;
+        }
+        .party-legend-item {
+            transition: all 0.3s ease;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.9em;
+            margin: 1px;
+        }
+        .party-legend-item:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        .party-legend-item.active {
+            background-color: rgba(0,0,0,0.1);
+            font-weight: bold;
+        }
+        .party-color {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .party-name {
+            margin-right: 4px;
+        }
+        .party-count {
+            margin-right: 2px;
+        }
+        #resetFilter {
+            display: none;
+            font-size: 0.9em;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        #resetFilter:hover {
+            color: #0d6efd;
+        }
+
+        /* Inactive account styles */
+        tr.is-inactive {
+            opacity: 0.6;
+        }
+        tr.is-inactive:hover {
+            opacity: 0.8;
+        }
+        tr.is-inactive .posts-bar-fill {
+            opacity: 0.5;
+        }
+
         .timeline-bar {
             position: relative;
             width: 100%;
@@ -97,28 +166,34 @@
         }
 
         /* Add styles for filtered state */
-        .timeline-bar.filtered .timeline-marker {
-            width: 3px;
+        .timeline-bar.filtered {
+            height: 40px;
+        }
+        
+        .timeline-bar.filtered .timeline-party-row {
             height: 100%;
+        }
+
+        .timeline-bar.filtered .timeline-marker {
+            height: 100%;
+            width: 2px;
             top: 0;
             transform: translateX(-50%);
+            border-radius: 0;
         }
 
         .timeline-bar.filtered .timeline-marker:hover {
-            width: 5px;
+            width: 4px;
             height: 100%;
         }
 
         .timeline-bar.filtered .timeline-marker.is-bot {
-            width: 2px;
-            height: 100%;
-            top: 0;
-            opacity: 0.3;
+            height: 60%;
+            top: 40%;
+            opacity: 0.4;
         }
 
         .timeline-bar.filtered .timeline-marker.is-bot:hover {
-            width: 4px;
-            height: 100%;
             opacity: 0.6;
         }
 
@@ -129,15 +204,6 @@
             color: #666;
             display: flex;
             justify-content: space-between;
-        }
-
-        #exportButton:disabled .loading-text {
-            opacity: 0.7;
-            font-size: 0.9em;
-        }
-        
-        #exportButton:not(:disabled) .loading-text {
-            display: none;
         }
     </style>
     <!-- Matomo -->
@@ -179,11 +245,6 @@
                         <i class="bi bi-hdd-network-fill"></i>
                         <span class="btn-text d-none d-md-inline">Instanzen</span>
                     </button>
-                    <button class="btn btn-outline-primary nav-btn" id="exportButton" disabled="disabled" data-bs-toggle="tooltip" title="Daten exportieren">
-                        <i class="bi bi-download"></i>
-                        <span class="btn-text d-none d-md-inline">Export</span>
-                        <span class="loading-text">(lädt...)</span>
-                    </button>
                 </div>
             </div>
         </div>
@@ -205,7 +266,7 @@
             </div>
             <div class="card-body">
                 <div class="party-distribution-bar"></div>
-                <div class="party-distribution-legend mt-2 d-flex flex-wrap gap-3"></div>
+                <div class="party-distribution-legend mt-2 d-flex flex-wrap gap-1"></div>
                 <hr class="my-4">
                 <div class="timeline-container">
                     <div class="timeline-bar"></div>
@@ -305,9 +366,6 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
-    <script src="js/settings.js"></script>
-    <script src="js/accountParser.js"></script>
-    <script src="js/mastodonApi.js"></script>
     <script src="js/ui.js"></script>
     <footer class="text-muted small py-2 border-top fixed-bottom bg-white">
         Daten von <a href="https://codeberg.org/open/fedipolitik" target="_blank">fedipolitik</a> 

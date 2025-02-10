@@ -1,28 +1,28 @@
-// Initialize settings and parser
-const settings = new Settings();
-const parser = new AccountParser();
-let mastodonApi = null; // Will be initialized in DOMContentLoaded
-
-// Konfigurationskonstanten
-const ACCOUNTS_STATS_LIMIT = 300; // Auf 300 erhöht, vorher 200
-const loadedAccounts = new Map(); // Global state for loaded accounts
-let maxPosts = 0; // Global state for max posts
-let maxRecentPosts = 0;
-let tableSortable = null; // Sortable instance
+// Initialize UI state
+const loadedAccounts = new Map();
 let activePartyFilter = null;
 let activeSearchFilter = '';
+let currentSortField = 'recent_posts_count';
 
-// Check if we're in refresh mode
-const isRefreshing = new URLSearchParams(window.location.search).has('refresh');
-if (isRefreshing) {
-    // Clear all cached data
-    loadedAccounts.clear();
-    maxPosts = 0;
-    maxRecentPosts = 0;
-}
-
-// Add sorting state
-let currentSortField = 'recent_posts_count'; // Default sort by recent posts
+// Color mapping for parties
+const partyColorMap = {
+    'SPD': 'rgba(255, 0, 0, 1.0)',
+    'CDU': 'rgba(0, 0, 0, 1.0)',
+    'CSU': 'rgba(0, 0, 0, 1.0)',
+    'Grüne': 'rgba(67, 176, 42, 1.0)',
+    'FDP': 'rgba(255, 237, 0, 1.0)',
+    'Linke': 'rgba(178, 0, 178, 1.0)',
+    'AfD': 'rgba(0, 158, 224, 1.0)',
+    'Piraten': 'rgba(255, 165, 0, 1.0)',
+    'Volt': 'rgba(128, 0, 128, 1.0)',
+    'Die PARTEI': 'rgba(0, 255, 255, 1.0)',
+    'Freie Wähler': 'rgba(0, 0, 139, 1.0)',
+    'DKP': 'rgba(180, 0, 0, 1.0)',
+    'BSW': 'rgba(140, 0, 0, 1.0)',
+    'ÖDP': 'rgba(255, 140, 0, 1.0)',
+    'Violetten': 'rgba(147, 112, 219, 1.0)',
+    'Fraktionslos': 'rgba(128, 128, 128, 1.0)'
+};
 
 // Function to scroll to section
 function scrollToSection(sectionId) {
@@ -74,18 +74,33 @@ function renderStats(accounts) {
     
     const statsHtml = sortedStats.map(([category, count]) => {
         const percentage = (count / maxCount * 100).toFixed(1);
+        const baseColor = partyColorMap[category] || 'rgba(200, 200, 200, 0.5)';
+        const color = baseColor.replace('0.5', '0.8').replace('0.4', '0.8');
+        const barId = `stats-bar-${category.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+        
         return `
             <div class="row mb-2 align-items-center">
                 <div class="col-4 stats-label">${category}</div>
                 <div class="col-7">
-                    <div class="stats-bar" style="width: ${percentage}%"></div>
+                    <div id="${barId}" class="stats-bar" style="width: ${percentage}%; background-color: ${color} !important"></div>
                 </div>
                 <div class="col-1 stats-count">${count}</div>
             </div>
         `;
     }).join('');
     
-    document.getElementById('statsContent').innerHTML = statsHtml;
+    document.getElementById('statsContent').innerHTML = `<div class="mb-3">${statsHtml}</div>`;
+    
+    // Apply colors again after DOM is updated
+    sortedStats.forEach(([category]) => {
+        const barId = `stats-bar-${category.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+        const barElement = document.getElementById(barId);
+        if (barElement) {
+            const baseColor = partyColorMap[category] || 'rgba(200, 200, 200, 0.5)';
+            const color = baseColor.replace('0.5', '0.8').replace('0.4', '0.8');
+            barElement.style.setProperty('background-color', color, 'important');
+        }
+    });
 }
 
 // Function to determine platform type from URL
@@ -102,159 +117,129 @@ function getPlatformIcon(url) {
     } else if (urlLower.includes('misskey')) {
         return '<i class="fa-solid fa-comment-alt" title="Misskey"></i>';
     } else {
-        // Default to Mastodon
         return '<i class="fa-brands fa-mastodon" title="Mastodon"></i>';
     }
 }
 
-// Function to check for "Linke" party variations
-function isLinkeParty(text) {
-    return text.includes('linke') || 
-           text.includes('pds') || 
-           text.includes('linksfraktion') || 
-           text.includes('linksjugend') || 
-           (text.includes('links') && 
-            (text.includes('partei') || 
-             text.includes('fraktion') || 
-             text.includes('jugend') || 
-             text.includes('solid')));
-}
-
-// Function to determine political party color
-function getPartyColor(name, category, url) {
-    const text = (name + ' ' + url).toLowerCase();
-    
-    // Kräftigere Varianten der Parteifarben
-    if (text.includes('spd') || text.includes('sozialdemokrat')) {
-        return 'rgba(255, 0, 0, 0.3)'; // Rot
-    } else if (text.includes('cdu') || text.includes('csu') || text.includes('christlich')) {
-        return 'rgba(0, 0, 0, 0.2)'; // Schwarz
-    } else if (text.includes('grüne') || text.includes('gruene') || text.includes('bündnis 90')) {
-        return 'rgba(67, 176, 42, 0.3)'; // Grün
-    } else if (text.includes('fdp') || text.includes('liberal')) {
-        return 'rgba(255, 237, 0, 0.35)'; // Gelb
-    } else if (isLinkeParty(text)) {
-        return 'rgba(223, 0, 0, 0.35)'; // Dunkleres Rot
-    } else if (text.includes('piraten')) {
-        return 'rgba(255, 165, 0, 0.3)'; // Orange
-    } else if (text.includes('afd')) {
-        return 'rgba(0, 158, 224, 0.3)'; // Blau
-    } else if (text.includes('freie wähler') || text.includes('freie waehler')) {
-        return 'rgba(0, 0, 139, 0.3)'; // Dunkelblau
-    } else if (text.includes('volt')) {
-        return 'rgba(128, 0, 128, 0.3)'; // Lila
-    } else if (text.includes('die partei') || text.includes('partei partei')) {
-        return 'rgba(0, 255, 255, 0.3)'; // Cyan
-    }
-    
-    return 'rgba(0, 0, 0, 0.1)'; // Hellgrau als Fallback
-}
-
 // Function to determine party affiliation
 function getPartyAffiliation(name, category, url) {
-    const text = (name + ' ' + url).toLowerCase();
+    const allParentheses = Array.from(category.matchAll(/\((.*?)\)/g));
+    if (!allParentheses.length) return '-';
     
-    if (text.includes('spd') || text.includes('sozialdemokrat')) {
-        return 'SPD';
-    } else if (text.includes('cdu') || text.includes('csu') || text.includes('christlich')) {
-        return text.includes('csu') ? 'CSU' : 'CDU';
-    } else if (text.includes('grüne') || text.includes('gruene') || text.includes('bündnis 90')) {
-        return 'Grüne';
-    } else if (text.includes('fdp') || text.includes('liberal')) {
-        return 'FDP';
-    } else if (isLinkeParty(text)) {
-        return 'Linke';
-    } else if (text.includes('piraten')) {
-        return 'Piraten';
-    } else if (text.includes('afd')) {
-        return 'AfD';
-    } else if (text.includes('freie wähler') || text.includes('freie waehler')) {
-        return 'Freie Wähler';
-    } else if (text.includes('volt')) {
-        return 'Volt';
-    } else if (text.includes('die partei') || text.includes('partei partei')) {
-        return 'Die PARTEI';
-    }
+    const partyInBrackets = allParentheses[allParentheses.length - 1][1].trim();
     
-    return '-';
+    const partyMap = {
+        'SPD': 'SPD',
+        'CDU': 'CDU',
+        'CSU': 'CSU',
+        'Grüne': 'Grüne',
+        'GRÜNE': 'Grüne',
+        'FDP': 'FDP',
+        'LINKE': 'Linke',
+        'Linke': 'Linke',
+        'AfD': 'AfD',
+        'Piraten': 'Piraten',
+        'Volt': 'Volt',
+        'Die PARTEI': 'Die PARTEI',
+        'Freie Wähler': 'Freie Wähler',
+        'DKP': 'DKP',
+        'BSW': 'BSW',
+        'ÖDP': 'ÖDP',
+        'Die Violetten': 'Violetten'
+    };
+
+    return partyMap[partyInBrackets] || partyInBrackets;
+}
+
+// Function to check if account has party affiliation
+function hasPartyAffiliation(name, category, url) {
+    const allParentheses = Array.from(category.matchAll(/\((.*?)\)/g));
+    return allParentheses.length > 0;
 }
 
 // Function to get party class name
 function getPartyClass(name, category, url) {
-    const text = (name + ' ' + url).toLowerCase();
+    const party = getPartyAffiliation(name, category, url);
+    if (party === '-') return 'party-none';
     
-    if (text.includes('spd') || text.includes('sozialdemokrat')) {
-        return 'party-spd';
-    } else if (text.includes('csu')) {
-        return 'party-csu';
-    } else if (text.includes('cdu') || text.includes('christlich')) {
-        return 'party-cdu';
-    } else if (text.includes('grüne') || text.includes('gruene') || text.includes('bündnis 90')) {
-        return 'party-gruene';
-    } else if (text.includes('fdp') || text.includes('liberal')) {
-        return 'party-fdp';
-    } else if (isLinkeParty(text)) {
-        return 'party-linke';
-    } else if (text.includes('piraten')) {
-        return 'party-piraten';
-    } else if (text.includes('afd')) {
-        return 'party-afd';
-    } else if (text.includes('freie wähler') || text.includes('freie waehler') || text.includes('fw')) {
-        return 'party-freie-waehler';
-    } else if (text.includes('volt')) {
-        return 'party-volt';
-    } else if (text.includes('die partei') || text.includes('partei partei')) {
-        return 'party-die-partei';
-    }
+    // Special handling for Grüne to ensure consistency
+    if (party === 'Grüne') return 'party-gruene';
     
-    return 'party-none';
+    return 'party-' + party.toLowerCase()
+        .replace('ä', 'ae')
+        .replace('ö', 'oe')
+        .replace('ü', 'ue')
+        .replace('ß', 'ss')
+        .replace(/\s+/g, '-');
+}
+
+// Function to determine political party color
+function getPartyColor(name, category, url) {
+    const party = getPartyAffiliation(name, category, url);
+    return partyColorMap[party] || 'rgba(0, 0, 0, 0.1)';
 }
 
 // Function to check if account is a bot
-function isBot(name, apiData = null) {
-    // Check API data first if available
-    if (apiData && apiData.is_bot) {
-        return true;
-    }
-    
-    // Fallback to name-based detection
+function isBot(name) {
     return name.toLowerCase().includes('(bot)') || 
            name.toLowerCase().includes('[bot]') ||
            name.toLowerCase().endsWith('bot') ||
            name.toLowerCase().includes('🤖');
 }
 
-// Function to check if account has party affiliation
-function hasPartyAffiliation(name, category, url) {
-    const affiliation = getPartyAffiliation(name, category, url);
-    return affiliation !== '-';
-}
-
 // Function to render a single account row
-function renderAccountRow(account, isLoading = false) {
+function renderAccountRow(account) {
     const partyClass = getPartyClass(account.name, account.category, account.url);
-    const isAccountBot = isBot(account.name);
+    const accountData = loadedAccounts.get(account.url);
+    const isAccountBot = accountData?.is_bot || false;
+    const isInactive = Number(account.recent_posts_count) === 0;
+    
+    // Get post counts
+    const posts_count = Number(account.posts_count) || 0;
+    const recent_posts_count = Number(account.recent_posts_count) || 0;
+    
+    // Calculate bar widths
+    const maxPosts = 5000; // Fixed maximum for total posts
+    const maxRecentPosts = Math.max(...Array.from(loadedAccounts.values()).map(a => a.recent_posts_count || 0));
+    
+    const recentPostsPercentage = maxRecentPosts > 0 ? (recent_posts_count / maxRecentPosts * 100) : 0;
+    const totalPostsPercentage = Math.min(posts_count / maxPosts * 100, 100); // Cap at 100%
+    
     return `
-        <tr class="${partyClass}${isAccountBot ? ' is-bot' : ''}" data-party="${partyClass}" data-account-url="${account.url}">
-            <td class="text-center">${getPlatformIcon(account.url)}${isAccountBot ? ' <i class="fa-solid fa-robot text-muted" title="Bot"></i>' : ''}</td>
+        <tr class="${partyClass}${isAccountBot ? ' is-bot' : ''}${isInactive ? ' is-inactive' : ''}" 
+            data-party="${partyClass}" 
+            data-account-url="${account.url}"
+            title="${isInactive ? 'Inaktiv (keine Posts in den letzten 200 Tagen)' : ''}">
+            <td class="text-center">
+                <div class="d-flex flex-column align-items-center gap-1">
+                    <div>
+                        ${isInactive ? 
+                            '<i class="fa-solid fa-moon text-muted" title="Inaktiv"></i>' : 
+                            '<i class="fa-brands fa-mastodon" title="Mastodon"></i>'}
+                    </div>
+                    ${isAccountBot ? 
+                        '<div><i class="fa-solid fa-robot text-muted" title="Bot"></i></div>' : 
+                        ''}
+                </div>
+            </td>
             <td>
                 <div><a href="${account.url}" target="_blank" title="${account.url}">${account.name}</a></div>
                 <div class="text-muted small">${account.category}</div>
             </td>
             ${hasPartyAffiliation(account.name, account.category, account.url) ? `<td>${getPartyAffiliation(account.name, account.category, account.url)}</td>` : ''}
             <td>
-                <div class="posts-bar-container${isLoading ? ' loading' : ''}" data-account-url="${account.url}">
+                <div class="posts-bar-container" data-account-url="${account.url}">
                     <div class="d-flex flex-column flex-grow-1 gap-1">
                         <div class="posts-bar recent-posts">
-                            <div class="posts-bar-fill"></div>
+                            <div class="posts-bar-fill" style="width: ${recentPostsPercentage}%; background-color: #198754;"></div>
                         </div>
                         <div class="posts-bar total-posts">
-                            <div class="posts-bar-fill"></div>
+                            <div class="posts-bar-fill" style="width: ${totalPostsPercentage}%; background-color: #0d6efd;"></div>
                         </div>
                     </div>
                     <div class="d-flex flex-column">
-                        <span class="recent-posts-count small">-</span>
-                        <span class="total-posts-count small">-</span>
+                        <span class="recent-posts-count small">${recent_posts_count}</span>
+                        <span class="total-posts-count small">${posts_count}</span>
                     </div>
                 </div>
             </td>
@@ -264,15 +249,55 @@ function renderAccountRow(account, isLoading = false) {
 
 // Function to render accounts in the tables
 function renderAccounts(accounts) {
+    // Store accounts in loadedAccounts with initial data first
+    accounts.forEach(account => {
+        loadedAccounts.set(account.url, {
+            account,
+            posts_count: Number(account.posts_count) || 0,
+            recent_posts_count: Number(account.recent_posts_count) || 0,
+            created_at: account.created_at || null,
+            is_bot: account.is_bot || false  // Use the is_bot property from the account data
+        });
+    });
+
     // Split accounts into parties and institutions
     const partyAccounts = accounts.filter(account => hasPartyAffiliation(account.name, account.category, account.url));
     const institutionAccounts = accounts.filter(account => !hasPartyAffiliation(account.name, account.category, account.url));
     
+    // Sort accounts by recent_posts_count initially
+    partyAccounts.sort((a, b) => {
+        const aData = loadedAccounts.get(a.url);
+        const bData = loadedAccounts.get(b.url);
+        return (bData?.recent_posts_count || 0) - (aData?.recent_posts_count || 0);
+    });
+    
+    institutionAccounts.sort((a, b) => {
+        const aData = loadedAccounts.get(a.url);
+        const bData = loadedAccounts.get(b.url);
+        return (bData?.recent_posts_count || 0) - (aData?.recent_posts_count || 0);
+    });
+    
+    // Count inactive accounts
+    const activePartyAccounts = partyAccounts.filter(account => {
+        const data = loadedAccounts.get(account.url);
+        return Number(data?.recent_posts_count) > 0;
+    });
+    const activeInstitutionAccounts = institutionAccounts.filter(account => {
+        const data = loadedAccounts.get(account.url);
+        return Number(data?.recent_posts_count) > 0;
+    });
+    
     // Render party accounts
     const partyTbody = document.getElementById('accountsTableBody');
     const partyTable = partyTbody.closest('table');
-    const partyHeader = partyTable.querySelector('thead tr');
-    partyHeader.innerHTML = `
+    const partyHeader = partyTable.closest('.card').querySelector('.card-header h2');
+    if (partyHeader) {
+        const activePercentage = ((activePartyAccounts.length / partyAccounts.length) * 100).toFixed(1);
+        partyHeader.innerHTML = `Gefundene Accounts: ${partyAccounts.length}, davon ${activePartyAccounts.length} aktiv (${activePercentage}%)`;
+    }
+    
+    const partyTableHeader = partyTable.querySelector('thead tr');
+    partyTableHeader.innerHTML = `
         <th style="width: 40px">Art</th>
         <th>Account</th>
         <th>Partei</th>
@@ -286,13 +311,19 @@ function renderAccounts(accounts) {
             </div>
         </th>
     `;
-    partyTbody.innerHTML = partyAccounts.map(account => renderAccountRow(account, true)).join('');
+    partyTbody.innerHTML = partyAccounts.map(account => renderAccountRow(account)).join('');
     
     // Render institution accounts
     const institutionsTbody = document.getElementById('institutionsTableBody');
     const institutionsTable = institutionsTbody.closest('table');
-    const institutionsHeader = institutionsTable.querySelector('thead tr');
-    institutionsHeader.innerHTML = `
+    const institutionsHeader = institutionsTable.closest('.card').querySelector('.card-header h2');
+    if (institutionsHeader) {
+        const activePercentage = ((activeInstitutionAccounts.length / institutionAccounts.length) * 100).toFixed(1);
+        institutionsHeader.innerHTML = `Institutionen (${institutionAccounts.length}, davon ${activeInstitutionAccounts.length} aktiv (${activePercentage}%))`;
+    }
+    
+    const institutionsTableHeader = institutionsTable.querySelector('thead tr');
+    institutionsTableHeader.innerHTML = `
         <th style="width: 40px">Art</th>
         <th>Account</th>
         <th>
@@ -305,13 +336,10 @@ function renderAccounts(accounts) {
             </div>
         </th>
     `;
-    institutionsTbody.innerHTML = institutionAccounts.map(account => renderAccountRow(account, true)).join('');
+    institutionsTbody.innerHTML = institutionAccounts.map(account => renderAccountRow(account)).join('');
 
     // Update initial account count
     updateAccountCount();
-
-    // Start loading post counts for all accounts
-    loadPostCounts(accounts);
 }
 
 // Function to toggle sort
@@ -345,67 +373,75 @@ function toggleSort(field) {
     reorderTable('institutionsTableBody');
 }
 
-// Function to update a single row
-function updateRow(account, stats, error = false) {
+// Function to update a single row with account data
+function updateRow(account, data) {
     const row = document.querySelector(`tr[data-account-url="${account.url}"]`);
     if (!row) return;
 
-    // Update bot status if needed
-    const isAccountBot = isBot(account.name, stats);
+    // Update bot and inactive status
+    const isAccountBot = data.is_bot || false;
+    const isInactive = Number(data.recent_posts_count) === 0;
+    
     if (isAccountBot) {
         row.classList.add('is-bot');
-        const iconCell = row.querySelector('td:first-child');
-        if (!iconCell.innerHTML.includes('fa-robot')) {
-            iconCell.innerHTML += ' <i class="fa-solid fa-robot text-muted" title="Bot"></i>';
-        }
     }
-
-    // Update posts count and bars
-    const barContainer = row.querySelector('.posts-bar-container');
-    const recentBarFill = row.querySelector('.recent-posts .posts-bar-fill');
-    const totalBarFill = row.querySelector('.total-posts .posts-bar-fill');
-    const recentCountSpan = row.querySelector('.recent-posts-count');
-    const totalCountSpan = row.querySelector('.total-posts-count');
-    
-    barContainer.classList.remove('loading');
-    if (error) {
-        recentCountSpan.textContent = '?';
-        totalCountSpan.textContent = '?';
-        recentBarFill.style.width = '0%';
-        totalBarFill.style.width = '0%';
+    if (isInactive) {
+        row.classList.add('is-inactive');
+        row.title = 'Inaktiv (keine Posts in den letzten 200 Tagen)';
     } else {
-        const recentPosts = stats.recent_posts_count || 0;
-        const totalPosts = stats.posts_count || 0;
-        
-        // Cap recent posts at 200 for the bar
-        const recentPostsCapped = Math.min(recentPosts, 200);
-        // Cap total posts at 4000 for the bar
-        const totalPostsCapped = Math.min(totalPosts, 4000);
-        
-        // Show '>' symbol if exceeding limits
-        recentCountSpan.textContent = recentPosts >= 200 ? 
-            `>${recentPostsCapped.toLocaleString()}` : 
-            recentPosts.toLocaleString();
-        
-        totalCountSpan.textContent = totalPosts >= 4000 ? 
-            `>${totalPostsCapped.toLocaleString()}` : 
-            totalPosts.toLocaleString();
-        
-        // Calculate percentages based on fixed maximums
-        const recentPercentage = (recentPostsCapped / 200 * 100).toFixed(1);
-        const totalPercentage = (totalPostsCapped / 4000 * 100).toFixed(1);
-        
-        recentBarFill.style.width = `${recentPercentage}%`;
-        totalBarFill.style.width = `${totalPercentage}%`;
+        row.classList.remove('is-inactive');
+        row.title = '';
     }
 
-    // Store in loaded accounts
+    const iconCell = row.querySelector('td:first-child');
+    iconCell.innerHTML = `
+        <div class="d-flex flex-column align-items-center gap-1">
+            <div>
+                ${isInactive ? 
+                    '<i class="fa-solid fa-moon text-muted" title="Inaktiv"></i>' : 
+                    '<i class="fa-brands fa-mastodon" title="Mastodon"></i>'}
+            </div>
+            ${isAccountBot ? 
+                '<div><i class="fa-solid fa-robot text-muted" title="Bot"></i></div>' : 
+                ''}
+        </div>
+    `;
+
+    // Get the posts container
+    const postsContainer = row.querySelector('.posts-bar-container');
+    if (postsContainer) {
+        const recentPostsBar = postsContainer.querySelector('.recent-posts .posts-bar-fill');
+        const totalPostsBar = postsContainer.querySelector('.total-posts .posts-bar-fill');
+        const recentPostsCount = postsContainer.querySelector('.recent-posts-count');
+        const totalPostsCount = postsContainer.querySelector('.total-posts-count');
+
+        // Update post counts
+        const posts_count = Number(data.posts_count) || 0;
+        const recent_posts_count = Number(data.recent_posts_count) || 0;
+
+        // Calculate percentages
+        const maxPosts = 5000; // Fixed maximum for total posts
+        const maxRecentPosts = Math.max(...Array.from(loadedAccounts.values()).map(a => a.recent_posts_count));
+
+        const recentPostsPercentage = maxRecentPosts > 0 ? (recent_posts_count / maxRecentPosts * 100) : 0;
+        const totalPostsPercentage = Math.min(posts_count / maxPosts * 100, 100); // Cap at 100%
+
+        // Update bars
+        recentPostsBar.style.width = `${recentPostsPercentage}%`;
+        totalPostsBar.style.width = `${totalPostsPercentage}%`;
+
+        // Update counts
+        recentPostsCount.textContent = recent_posts_count;
+        totalPostsCount.textContent = posts_count;
+    }
+
+    // Store updated data
     loadedAccounts.set(account.url, {
         account,
-        posts_count: error ? -1 : stats.posts_count,
-        recent_posts_count: error ? -1 : stats.recent_posts_count,
-        is_bot: isAccountBot,
-        created_at: stats.created_at  // Add created_at to stored data
+        posts_count: Number(data.posts_count) || 0,
+        recent_posts_count: Number(data.recent_posts_count) || 0,
+        created_at: data.created_at || null,
+        is_bot: isAccountBot
     });
 
     // Reorder appropriate table
@@ -413,73 +449,31 @@ function updateRow(account, stats, error = false) {
         'accountsTableBody' : 'institutionsTableBody';
     reorderTable(tableId);
 
-    // Update party distribution with current data
+    // Update party distribution
     renderPartyDistribution();
 }
 
-// Function to load post counts
-async function loadPostCounts(accounts) {
-    console.log(`Versuche Statistiken für maximal ${ACCOUNTS_STATS_LIMIT} Accounts zu laden...`);
-    
-    // Split accounts into parties and institutions
-    const partyAccounts = accounts.filter(account => hasPartyAffiliation(account.name, account.category, account.url));
-    const institutionAccounts = accounts.filter(account => !hasPartyAffiliation(account.name, account.category, account.url));
-    
-    // Get all accounts up to the limit, regardless of category
-    const allAccounts = [...partyAccounts, ...institutionAccounts];
-    const limitedAccounts = allAccounts.slice(0, ACCOUNTS_STATS_LIMIT);
-    
-    console.log(`Lade ${limitedAccounts.length} Accounts (${partyAccounts.length} Parteien, ${institutionAccounts.length} Institutionen)`);
+// Function to reorder table based on current sort field
+function reorderTable(tableId) {
+    const tbody = document.getElementById(tableId);
+    if (!tbody) return;
 
-    // Process limited accounts in batches
-    for (let i = 0; i < limitedAccounts.length; i += mastodonApi.BATCH_SIZE) {
-        const batch = limitedAccounts.slice(i, i + mastodonApi.BATCH_SIZE);
-        const batchPromises = batch.map(async account => {
-            try {
-                const stats = await mastodonApi.getAccountStats(account.url);
-                if (!stats.error && stats.posts_count !== null) {
-                    maxPosts = Math.max(maxPosts, stats.posts_count);
-                    maxRecentPosts = Math.max(maxRecentPosts, stats.recent_posts_count || 0);
-                    updateRow(account, stats);
-                } else {
-                    updateRow(account, stats, true);
-                }
-            } catch (error) {
-                console.error(`Fehler beim Laden von ${account.url}:`, error);
-                updateRow(account, { posts_count: 0, recent_posts_count: 0 }, true);
-            }
-        });
-
-        await Promise.all(batchPromises);
+    const rows = Array.from(tbody.getElementsByTagName('tr'));
+    
+    rows.sort((a, b) => {
+        const aUrl = a.getAttribute('data-account-url');
+        const bUrl = b.getAttribute('data-account-url');
+        const aData = loadedAccounts.get(aUrl);
+        const bData = loadedAccounts.get(bUrl);
         
-        if (i + mastodonApi.BATCH_SIZE < limitedAccounts.length) {
-            await new Promise(resolve => setTimeout(resolve, mastodonApi.DELAY_MS));
-        }
-    }
-
-    // Enable export button after ALL data is loaded
-    const exportButton = document.getElementById('exportButton');
-    if (exportButton) {
-        exportButton.disabled = false;
-        exportButton.onclick = () => {
-            const cacheData = Object.fromEntries(loadedAccounts);
-            const dataStr = JSON.stringify({
-                data: cacheData,
-                timestamp: Date.now()
-            }, null, 2);
-            
-            const blob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'fedipol_data.json';
-            a.click();
-            URL.revokeObjectURL(url);
-        };
-    }
-
-    // Update account count after all data is loaded
-    updateAccountCount();
+        if (!aData || !bData) return 0;
+        
+        return bData[currentSortField] - aData[currentSortField];
+    });
+    
+    // Clear and re-append rows
+    tbody.innerHTML = '';
+    rows.forEach(row => tbody.appendChild(row));
 }
 
 // Function to render instances in the table
@@ -496,15 +490,12 @@ function renderInstances(instances) {
 
 // Function to render timeline
 function renderTimeline() {
-    console.log('Rendering timeline...');
-    
     const timelineBar = document.querySelector('.timeline-bar');
     if (!timelineBar) {
-        console.error('Timeline bar element not found!');
         return;
     }
 
-    // Filter accounts based on party affiliation and active filter
+    // Filter accounts based on party affiliation
     let partyAccounts = Array.from(loadedAccounts.values())
         .filter(({account}) => hasPartyAffiliation(account.name, account.category, account.url))
         .filter(({created_at}) => created_at); // Only accounts with creation date
@@ -515,6 +506,9 @@ function renderTimeline() {
             const party = getPartyAffiliation(account.name, account.category, account.url);
             return party === activePartyFilter;
         });
+        timelineBar.classList.add('filtered');
+    } else {
+        timelineBar.classList.remove('filtered');
     }
 
     if (partyAccounts.length === 0) {
@@ -537,45 +531,65 @@ function renderTimeline() {
     // Calculate total time span
     const timeSpan = now - earliestDate;
 
-    // Group accounts by party
-    const partyGroups = new Map();
-    partyAccounts.forEach((accountData) => {
-        const party = getPartyAffiliation(accountData.account.name, accountData.account.category, accountData.account.url);
-        if (!partyGroups.has(party)) {
-            partyGroups.set(party, []);
-        }
-        partyGroups.get(party).push(accountData);
-    });
-
-    // Sort parties by number of accounts (descending)
-    const sortedParties = Array.from(partyGroups.entries())
-        .sort((a, b) => b[1].length - a[1].length);
-
-    // Generate timeline rows for each party
-    const timelineHtml = sortedParties.map(([party, accounts]) => {
-        const markers = accounts.map(({account, created_at, is_bot}) => {
+    // If we have a party filter, we don't need to group by party
+    let timelineHtml = '';
+    if (activePartyFilter) {
+        // For filtered view, show all accounts in a single row
+        const color = partyColorMap[activePartyFilter] || 'rgba(200, 200, 200, 1.0)';
+        const markers = partyAccounts.map(({account, created_at, is_bot}) => {
             if (!created_at) return '';
             
             const date = new Date(created_at);
             if (isNaN(date.getTime())) return '';
             
             const position = ((date - earliestDate) / timeSpan * 100).toFixed(2);
-            const color = getPartyColor(party, '', '').replace('0.3', '0.8');
             
             return `
                 <div class="timeline-marker${is_bot ? ' is-bot' : ''}" 
                      style="left: ${position}%; background-color: ${color};"
-                     title="${account.name} (${party})${is_bot ? ' [Bot]' : ''}\nBeigetreten: ${date.toLocaleDateString()}">
+                     title="${account.name} (${activePartyFilter})${is_bot ? ' [Bot]' : ''}\nBeigetreten: ${date.toLocaleDateString()}">
                 </div>
             `;
         }).filter(html => html).join('');
 
-        return `
-            <div class="timeline-party-row">
-                ${markers}
-            </div>
-        `;
-    }).join('');
+        timelineHtml = `<div class="timeline-party-row">${markers}</div>`;
+    } else {
+        // For unfiltered view, group by party as before
+        const partyGroups = new Map();
+        partyAccounts.forEach((accountData) => {
+            const party = getPartyAffiliation(accountData.account.name, accountData.account.category, accountData.account.url);
+            if (!partyGroups.has(party)) {
+                partyGroups.set(party, []);
+            }
+            partyGroups.get(party).push(accountData);
+        });
+
+        // Sort parties by number of accounts (descending)
+        const sortedParties = Array.from(partyGroups.entries())
+            .sort((a, b) => b[1].length - a[1].length);
+
+        // Generate timeline rows for each party
+        timelineHtml = sortedParties.map(([party, accounts]) => {
+            const markers = accounts.map(({account, created_at, is_bot}) => {
+                if (!created_at) return '';
+                
+                const date = new Date(created_at);
+                if (isNaN(date.getTime())) return '';
+                
+                const position = ((date - earliestDate) / timeSpan * 100).toFixed(2);
+                const color = partyColorMap[party] || 'rgba(200, 200, 200, 1.0)';
+                
+                return `
+                    <div class="timeline-marker${is_bot ? ' is-bot' : ''}" 
+                         style="left: ${position}%; background-color: ${color};"
+                         title="${account.name} (${party})${is_bot ? ' [Bot]' : ''}\nBeigetreten: ${date.toLocaleDateString()}">
+                    </div>
+                `;
+            }).filter(html => html).join('');
+
+            return `<div class="timeline-party-row">${markers}</div>`;
+        }).join('');
+    }
 
     // Generate year scale
     const startYear = earliestDate.getFullYear();
@@ -586,11 +600,15 @@ function renderTimeline() {
     for (let year = startYear; year <= endYear; year++) {
         const yearDate = new Date(year, 0, 1);
         const position = ((yearDate - earliestDate) / timeSpan * 100).toFixed(2);
-        yearScale.push(`
-            <div class="timeline-year" style="left: ${position}%">
-                ${year}
-            </div>
-        `);
+        
+        // Skip the first year label to prevent overflow
+        if (year > startYear) {
+            yearScale.push(`
+                <div class="timeline-year" style="left: ${position}%">
+                    ${year}
+                </div>
+            `);
+        }
 
         // Add month markers for each year
         for (let month = 1; month <= 12; month++) {
@@ -641,349 +659,240 @@ function renderPartyDistribution() {
     const legend = document.querySelector('.party-distribution-legend');
     
     // Update or create segments
-    sortedParties.forEach(([party, count]) => {
+    const segments = sortedParties.map(([party, count]) => {
         const percentage = (count / total * 100).toFixed(1);
         const botCount = partyBotStats.get(party) || 0;
         const botPercentage = (botCount / count * 100).toFixed(1);
-        const color = getPartyColor(party, '', '').replace('0.3', '0.8');
+        const color = partyColorMap[party] || 'rgba(200, 200, 200, 1.0)';
+        const partyClass = `party-${party.toLowerCase().replace(/\s+/g, '-')}`;
         
-        // Calculate heights for regular and bot accounts
-        const regularHeight = 100 - botPercentage;
-        const botHeight = botPercentage;
+        // Calculate active non-bot accounts
+        const activeNonBotAccounts = partyAccounts
+            .filter(({account, is_bot, recent_posts_count}) => {
+                const accountParty = getPartyAffiliation(account.name, account.category, account.url);
+                return accountParty === party && !is_bot && Number(recent_posts_count) > 0;
+            }).length;
         
-        // Try to find existing segment
-        let segment = bar.querySelector(`[data-party="${party}"]`);
-        if (!segment) {
-            // Create new segment if it doesn't exist
-            segment = document.createElement('div');
-            segment.className = 'party-segment';
-            segment.dataset.party = party;
-            segment.onclick = () => applyPartyFilter(party);
-            bar.appendChild(segment);
-        }
-        
-        // Update segment
-        segment.className = `party-segment${party === activePartyFilter ? ' active' : ''}`;
-        segment.style.width = `${percentage}%`;
-        segment.title = `${party}: ${count} Accounts (${percentage}%), davon ${botCount} Bots (${botPercentage}%)`;
-        
-        // Update or create inner elements
-        segment.innerHTML = `
-            <div class="regular-accounts" style="background-color: ${color}; height: ${regularHeight}%"></div>
-            ${botCount > 0 ? `<div class="bot-accounts" style="background-color: ${color}; height: ${botHeight}%"></div>` : ''}
-        `;
-    });
-    
-    // Remove obsolete segments
-    Array.from(bar.children).forEach(segment => {
-        const party = segment.dataset.party;
-        if (!partyStats.has(party)) {
-            segment.remove();
-        }
-    });
-    
-    // Update legend
-    legend.innerHTML = sortedParties.map(([party, count]) => {
-        const botCount = partyBotStats.get(party) || 0;
-        const botPercentage = (botCount / count * 100).toFixed(1);
-        const color = getPartyColor(party, '', '').replace('0.3', '0.8');
+        const activePercentage = (activeNonBotAccounts / count * 100).toFixed(1);
         
         return `
-            <div class="legend-item">
-                <div class="color-box${botCount > 0 ? ' with-bots' : ''}" style="background-color: ${color}">
-                    ${botCount > 0 ? `<div class="bot-indicator" style="height: ${botPercentage}%"></div>` : ''}
-                </div>
-                <span>${party} (${count}${botCount > 0 ? `, ${botCount} Bots` : ''})</span>
+            <div class="party-segment${activePartyFilter === party ? ' active' : ''}" 
+                 style="width: ${percentage}%; position: relative;" 
+                 data-party="${party}"
+                 onclick="applyPartyFilter('${party}')"
+                 title="${party}: ${count} Accounts (${percentage}%), davon ${botCount} Bots (${botPercentage}%), ${activeNonBotAccounts} aktive Accounts ohne Bots (${activePercentage}%)">
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: ${activePercentage}%; background-color: ${color.replace('1.0', '0.65')}"></div>
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: ${activePercentage}%; background-color: ${color}"></div>
             </div>
         `;
     }).join('');
     
-    // Update total count
-    document.getElementById('partyDistributionTotal').textContent = 
-        `${total} Accounts insgesamt`;
+    bar.innerHTML = segments;
     
-    // Reapply active filter if exists
-    if (activePartyFilter) {
-        applyPartyFilter(activePartyFilter);
-    }
+    // Update legend with click handlers
+    legend.innerHTML = sortedParties.map(([party, count]) => {
+        const color = partyColorMap[party] || 'rgba(200, 200, 200, 1.0)';
+        const botCount = partyBotStats.get(party) || 0;
+        const percentage = (count / total * 100).toFixed(1);
+        const botPercentage = (botCount / count * 100).toFixed(1);
+        
+        return `
+            <div class="party-legend-item${activePartyFilter === party ? ' active' : ''}" 
+                 data-party="${party}"
+                 onclick="applyPartyFilter('${party}')"
+                 style="cursor: pointer;">
+                <span class="party-color" style="background-color: ${color};"></span>
+                <span class="party-name">${party}</span>
+                <span class="party-count">${count}</span>
+                <span class="party-percentage">(${percentage}%)</span>
+            </div>
+        `;
+    }).join('');
+}
 
-    // Render timeline
-    renderTimeline();
+// Function to update account count in the party distribution header
+function updateAccountCount() {
+    const partyAccounts = Array.from(loadedAccounts.values())
+        .filter(({account}) => hasPartyAffiliation(account.name, account.category, account.url));
+    const total = partyAccounts.length;
+    const bots = partyAccounts.filter(({is_bot}) => is_bot).length;
+    
+    const element = document.getElementById('partyDistributionTotal');
+    if (element) {
+        element.textContent = `${total} Accounts${bots > 0 ? ` (davon ${bots} Bots)` : ''}`;
+    }
 }
 
 // Function to apply party filter
-function applyPartyFilter(party = null) {
+function applyPartyFilter(party) {
     activePartyFilter = party;
     
-    // Update active state of segments
+    // Update visual state of party segments and legend items
     document.querySelectorAll('.party-segment').forEach(segment => {
-        segment.classList.toggle('active', segment.dataset.party === party);
+        segment.classList.toggle('active', segment.getAttribute('data-party') === party);
+    });
+    document.querySelectorAll('.party-legend-item').forEach(item => {
+        item.classList.toggle('active', item.getAttribute('data-party') === party);
     });
     
     // Show/hide reset filter button
-    const resetFilter = document.getElementById('resetFilter');
-    resetFilter.classList.toggle('visible', party !== null);
-    
-    // Add/remove filtered class on timeline
-    const timelineBar = document.querySelector('.timeline-bar');
-    timelineBar.classList.toggle('filtered', party !== null);
-    
-    // Filter table rows
-    const tbody = document.getElementById('accountsTableBody');
-    const rows = tbody.getElementsByTagName('tr');
-    
-    for (let row of rows) {
-        if (!party) {
-            row.style.display = '';
-            continue;
-        }
-
-        // Normalize party name for comparison
-        const normalizedParty = party.toLowerCase()
-            .replace('ä', 'ae')
-            .replace('ö', 'oe')
-            .replace('ü', 'ue')
-            .replace('ß', 'ss')
-            .replace(/\s+/g, '-');  // Replace spaces with hyphens
-        
-        const expectedClass = `party-${normalizedParty}`;
-        
-        if (row.dataset.party === expectedClass) {
-            // If there's an active search filter, check if the row matches it
-            if (activeSearchFilter) {
-                const accountUrl = row.dataset.accountUrl;
-                const accountData = loadedAccounts.get(accountUrl);
-                if (accountData) {
-                    const { account } = accountData;
-                    const searchText = `${account.name} ${account.url} ${account.category}`.toLowerCase();
-                    row.style.display = searchText.includes(activeSearchFilter) ? '' : 'none';
-                }
-            } else {
-                row.style.display = '';
-            }
-        } else {
-            row.style.display = 'none';
-        }
+    const resetButton = document.getElementById('resetFilter');
+    if (resetButton) {
+        resetButton.style.display = party ? 'inline-block' : 'none';
     }
-
-    updateAccountCount();
+    
+    // Filter tables
+    filterTables();
     
     // Re-render timeline with new filter
     renderTimeline();
 }
 
-// Function to reorder a specific table
-function reorderTable(tableId) {
-    const tbody = document.getElementById(tableId);
-    if (!tbody) return;
+// Function to filter tables based on active filters
+function filterTables() {
+    const searchTerm = document.getElementById('accountSearch').value.toLowerCase();
+    const partyRows = document.querySelectorAll('#accountsTableBody tr');
+    const institutionRows = document.querySelectorAll('#institutionsTableBody tr');
     
-    // Sort loaded accounts that belong to this table
-    const sortedAccounts = Array.from(loadedAccounts.values())
-        .filter(({account}) => {
-            const isPartyAccount = hasPartyAffiliation(account.name, account.category, account.url);
-            return (tableId === 'accountsTableBody' && isPartyAccount) ||
-                   (tableId === 'institutionsTableBody' && !isPartyAccount);
-        })
-        .sort((a, b) => {
-            // Sort by selected field
-            const aValue = a[currentSortField] || 0;
-            const bValue = b[currentSortField] || 0;
-            return bValue - aValue;
-        });
-    
-    // Get current order
-    const currentRows = Array.from(tbody.children);
-    
-    // Create new order array with actual DOM elements
-    const newOrder = [];
-    const seen = new Set();
-    
-    // First add sorted accounts
-    sortedAccounts.forEach(({account}) => {
-        const row = currentRows.find(r => r.dataset.accountUrl === account.url);
-        if (row && !seen.has(account.url)) {
-            newOrder.push(row);
-            seen.add(account.url);
-        }
+    // Filter party accounts
+    partyRows.forEach(row => {
+        const partyClass = row.getAttribute('data-party');
+        const text = row.textContent.toLowerCase();
+        // Special handling for Grüne
+        const expectedClass = activePartyFilter === 'Grüne' ? 
+            'party-gruene' : 
+            `party-${activePartyFilter?.toLowerCase().replace(/\s+/g, '-')}`;
+        const matchesParty = !activePartyFilter || partyClass === expectedClass;
+        const matchesSearch = !searchTerm || text.includes(searchTerm);
+        row.style.display = (matchesParty && matchesSearch) ? '' : 'none';
     });
     
-    // Then add remaining rows in their current order
-    currentRows.forEach(row => {
-        if (!seen.has(row.dataset.accountUrl)) {
-            newOrder.push(row);
-            seen.add(row.dataset.accountUrl);
-        }
+    // Filter institution accounts if search is active
+    institutionRows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        const matchesSearch = !searchTerm || text.includes(searchTerm);
+        row.style.display = matchesSearch ? '' : 'none';
     });
-
-    // Apply the new order manually
-    newOrder.forEach((row, index) => {
-        const currentIndex = Array.from(tbody.children).indexOf(row);
-        if (currentIndex !== index) {
-            const referenceNode = tbody.children[index];
-            tbody.insertBefore(row, referenceNode);
-        }
-    });
+    
+    // Update counts in headers
+    updateFilteredCounts();
+    
+    // Show/hide clear button
+    const clearButton = document.getElementById('clearSearch');
+    if (clearButton) {
+        clearButton.style.display = searchTerm ? 'block' : 'none';
+    }
 }
 
-// Add scroll event listener
-window.addEventListener('scroll', updateActiveButtonOnScroll);
+// Function to update counts when filtered
+function updateFilteredCounts() {
+    // Update party accounts count
+    const partyTbody = document.getElementById('accountsTableBody');
+    const visiblePartyRows = Array.from(partyTbody.getElementsByTagName('tr')).filter(row => row.style.display !== 'none');
+    const activePartyRows = visiblePartyRows.filter(row => !row.classList.contains('is-inactive'));
+    
+    const partyHeader = partyTbody.closest('.card').querySelector('.card-header h2');
+    if (partyHeader) {
+        const activePercentage = ((activePartyRows.length / visiblePartyRows.length) * 100).toFixed(1);
+        partyHeader.innerHTML = `Gefundene Accounts: ${visiblePartyRows.length}, davon ${activePartyRows.length} aktiv (${activePercentage}%)`;
+    }
+    
+    // Update institutions count if needed
+    const institutionsTbody = document.getElementById('institutionsTableBody');
+    const visibleInstitutionRows = Array.from(institutionsTbody.getElementsByTagName('tr')).filter(row => row.style.display !== 'none');
+    const activeInstitutionRows = visibleInstitutionRows.filter(row => !row.classList.contains('is-inactive'));
+    
+    const institutionsHeader = institutionsTbody.closest('.card').querySelector('.card-header h2');
+    if (institutionsHeader) {
+        const activePercentage = ((activeInstitutionRows.length / visibleInstitutionRows.length) * 100).toFixed(1);
+        institutionsHeader.innerHTML = `Institutionen: ${visibleInstitutionRows.length}, davon ${activeInstitutionRows.length} aktiv (${activePercentage}%)`;
+    }
+}
 
-// Initialize the application
+// Initialize when document is ready
 document.addEventListener('DOMContentLoaded', async () => {
-    // Initialize API
-    mastodonApi = new MastodonApi();
-    console.log('MastodonApi initialized:', mastodonApi);
-    
-    // Initialize tooltips
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    const tooltips = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl, {
-            trigger: 'hover focus',
-            enabled: window.innerWidth < 768  // Only enable tooltips on mobile
-        });
-    });
-
-    // Handle window resize
-    window.addEventListener('resize', () => {
-        tooltips.forEach(tooltip => {
-            tooltip.setOptions({ enabled: window.innerWidth < 768 });
-        });
-    });
-    
-    // Remove footer creation code
-    const mainContainer = document.querySelector('.container.main-content');
-    mainContainer.style.paddingBottom = '3rem';
-
     try {
-        await settings.load();
-        const settingsStatus = document.getElementById('settingsStatus');
-        
-        // Show cache status
-        const isRefreshing = new URLSearchParams(window.location.search).has('refresh');
-        settingsStatus.innerHTML = `
-            <div class="alert alert-info">
-                ${isRefreshing ? 
-                    'Daten werden neu geladen... <a href="?" class="alert-link">Zum Cache zurückkehren</a>' : 
-                    'Daten werden aus dem Cache geladen... <a href="?refresh" class="alert-link">Neu laden</a>'}
-            </div>
-        `;
-        
-        const {accounts, instances} = await parser.fetchAndParse(settings.getAccountListUrl());
-        renderStats(accounts);
+        // Load fedipol data with cache buster
+        const response = await fetch('fedipol_data.json?' + new Date().getTime());
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        const fedipolData = jsonData.data || jsonData;
+
+        // Validate data structure
+        if (!fedipolData || typeof fedipolData !== 'object') {
+            throw new Error('Invalid data structure in fedipol_data.json');
+        }
+
+        // Convert fedipol data to account list with validation
+        const accounts = Object.entries(fedipolData)
+            .filter(([url, data]) => {
+                return data && data.account && 
+                       typeof data.account === 'object' &&
+                       data.account.url && 
+                       data.account.name;
+            })
+            .map(([url, data]) => ({
+                ...data.account,
+                posts_count: Number(data.posts_count) || 0,
+                recent_posts_count: Number(data.recent_posts_count) || 0,
+                created_at: data.created_at || null,
+                is_bot: data.is_bot === true  // Explicitly check for true to avoid falsy values
+            }));
+
+        if (accounts.length === 0) {
+            throw new Error('No valid accounts found in fedipol_data.json');
+        }
+
+        // Extract instances from account URLs with validation
+        const instances = new Map();
+        accounts.forEach(account => {
+            try {
+                const url = new URL(account.url);
+                const instanceUrl = `${url.protocol}//${url.hostname}`;
+                if (!instances.has(instanceUrl)) {
+                    instances.set(instanceUrl, {
+                        name: url.hostname,
+                        url: instanceUrl,
+                        category: 'Instance'
+                    });
+                }
+            } catch (e) {
+                console.warn('Invalid URL:', account.url);
+            }
+        });
+
+        // Render all components
         renderAccounts(accounts);
-        renderInstances(instances);
-        // Initial party distribution
+        renderInstances(Array.from(instances.values()));
+        renderStats(accounts);
+        renderTimeline();
         renderPartyDistribution();
-
-        // Hide status after loading
-        setTimeout(() => {
-            settingsStatus.innerHTML = '';
-        }, isRefreshing ? 10000 : 3000);  // Show status longer when refreshing
-
-        // Add search functionality
-        const searchInput = document.getElementById('accountSearch');
-        const clearSearchButton = document.getElementById('clearSearch');
         
-        let searchTimeout;
-        searchInput.addEventListener('input', (e) => {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                applySearchFilter(e.target.value);
-                clearSearchButton.style.display = e.target.value.length > 0 ? 'block' : 'none';
-            }, 300); // Debounce search for better performance
-        });
-
-        clearSearchButton.addEventListener('click', () => {
-            searchInput.value = '';
-            applySearchFilter('');
-            clearSearchButton.style.display = 'none';
-        });
-
+        // Add scroll event listener
+        window.addEventListener('scroll', updateActiveButtonOnScroll);
+        
+        // Add search event listeners
+        const searchInput = document.getElementById('accountSearch');
+        const clearButton = document.getElementById('clearSearch');
+        
+        if (searchInput) {
+            searchInput.addEventListener('input', () => {
+                filterTables();
+            });
+        }
+        
+        if (clearButton) {
+            clearButton.addEventListener('click', () => {
+                searchInput.value = '';
+                filterTables();
+            });
+        }
+        
     } catch (error) {
-        // Nur bei Fehlern eine Statusmeldung anzeigen
-        document.getElementById('settingsStatus').innerHTML = 
-            `<div class="alert alert-danger">Error: ${error.message}</div>`;
+        console.error('Error loading data:', error);
+        document.getElementById('error').classList.remove('d-none');
+        document.getElementById('error').textContent = `Fehler beim Laden der Daten: ${error.message}`;
     }
 });
-
-// Add after the applyPartyFilter function
-function applySearchFilter(searchTerm) {
-    activeSearchFilter = searchTerm.toLowerCase();
-    
-    // Get all account rows
-    const tbody = document.getElementById('accountsTableBody');
-    const rows = tbody.getElementsByTagName('tr');
-    
-    for (let row of rows) {
-        // If there's an active party filter, first check if the row matches the party
-        if (activePartyFilter) {
-            const normalizedParty = activePartyFilter.toLowerCase()
-                .replace('ä', 'ae')
-                .replace('ö', 'oe')
-                .replace('ü', 'ue')
-                .replace('ß', 'ss')
-                .replace(/\s+/g, '-');
-            
-            const expectedClass = `party-${normalizedParty}`;
-            
-            // If row doesn't match party filter, keep it hidden
-            if (row.dataset.party !== expectedClass) {
-                row.style.display = 'none';
-                continue;
-            }
-        }
-
-        // If we get here, either there's no party filter or the row matches the party filter
-        const accountUrl = row.dataset.accountUrl;
-        const accountData = loadedAccounts.get(accountUrl);
-        
-        if (!accountData) {
-            row.style.display = 'none';
-            continue;
-        }
-
-        const { account } = accountData;
-        const searchText = `${account.name} ${account.url} ${account.category}`.toLowerCase();
-        
-        if (!activeSearchFilter || searchText.includes(activeSearchFilter)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    }
-    
-    updateAccountCount();
-}
-
-// Add after the existing global variables
-function updateAccountCount() {
-    const tbody = document.getElementById('accountsTableBody');
-    const visibleRows = Array.from(tbody.getElementsByTagName('tr')).filter(row => row.style.display !== 'none');
-    const totalRows = tbody.getElementsByTagName('tr').length;
-    const title = document.querySelector('#accountsContainer .card-header h2');
-    
-    // Count active accounts (those with at least 1 post in last 60 days)
-    const activeAccounts = visibleRows.filter(row => {
-        const accountUrl = row.dataset.accountUrl;
-        const accountData = loadedAccounts.get(accountUrl);
-        return accountData && accountData.recent_posts_count > 0;
-    }).length;
-    
-    // Calculate percentage of active accounts
-    const activePercentage = ((activeAccounts / visibleRows.length) * 100).toFixed(1);
-    
-    if (visibleRows.length === totalRows) {
-        title.textContent = `Gefundene Accounts (${totalRows}, davon ${activeAccounts} aktiv, ${activePercentage}%)`;
-    } else {
-        title.textContent = `Gefundene Accounts (${visibleRows.length} von ${totalRows}, davon ${activeAccounts} aktiv, ${activePercentage}%)`;
-    }
-}
-
-function showError(message, type = 'error') {
-  const statusElement = document.getElementById('settingsStatus');
-  statusElement.innerHTML = `
-    <div class="alert alert-${type}">
-      ${message}
-    </div>
-  `;
-} 
