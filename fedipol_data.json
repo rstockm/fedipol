@@ -1529,14 +1529,14 @@
       "created_at": "2022-05-04T00:00:00.000Z",
       "is_bot": true
     },
-    "https://social.linksfraktion.de/@ankedb": {
+    "https://linke.social/@ankedb": {
       "account": {
         "name": "Anke Domscheit-Berg",
-        "url": "https://social.linksfraktion.de/@ankedb",
+        "url": "https://linke.social/@ankedb",
         "category": "Mitglied des Deutschen Bundestages (Linke)"
       },
-      "posts_count": 1619,
-      "recent_posts_count": 0,
+      "posts_count": 299,
+      "recent_posts_count": 66,
       "created_at": "2022-05-04T00:00:00.000Z",
       "is_bot": false
     },
