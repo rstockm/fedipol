@@ -31,7 +31,7 @@
       "posts_count": 1292,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://mastodon.social/@peter_simone": {
       "account": {
@@ -1342,17 +1342,6 @@
       "created_at": "2022-11-15T00:00:00.000Z",
       "is_bot": false
     },
-    "https://mastodon.social/@Maristya": {
-      "account": {
-        "name": "Anja Schillhaneck",
-        "url": "https://mastodon.social/@Maristya",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Grüne)"
-      },
-      "posts_count": 4981,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-16T00:00:00.000Z",
-      "is_bot": false
-    },
     "https://gruene.social/@stefanziller": {
       "account": {
         "name": "Stefan Ziller",
@@ -1483,7 +1472,7 @@
       "posts_count": 1249,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://social.linksfraktion.de/@bernd_riexinger": {
       "account": {
@@ -1529,14 +1518,14 @@
       "created_at": "2022-05-04T00:00:00.000Z",
       "is_bot": true
     },
-    "https://social.linksfraktion.de/@ankedb": {
+    "https://linke.social/@ankedb": {
       "account": {
         "name": "Anke Domscheit-Berg",
-        "url": "https://social.linksfraktion.de/@ankedb",
+        "url": "https://linke.social/@ankedb",
         "category": "Mitglied des Deutschen Bundestages (Linke)"
       },
-      "posts_count": 1619,
-      "recent_posts_count": 0,
+      "posts_count": 299,
+      "recent_posts_count": 66,
       "created_at": "2022-05-04T00:00:00.000Z",
       "is_bot": false
     },
@@ -1901,7 +1890,7 @@
       "posts_count": 3100,
       "recent_posts_count": 82,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://freiburg.social/@ChantalKopf": {
       "account": {
@@ -2017,7 +2006,7 @@
       "account": {
         "name": "Jan Korte",
         "url": "https://linke.social/@jankorte",
-        "category": "Mitglied des Deutschen Bundestages (Grüne)"
+        "category": "Bundestagsabgeordneter für Die Linke (Linke)"
       },
       "posts_count": 158,
       "recent_posts_count": 24,
@@ -2495,7 +2484,7 @@
       "posts_count": 556,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@_FriedrichMerz": {
       "account": {
@@ -2506,7 +2495,7 @@
       "posts_count": 1047,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@inge_graessle": {
       "account": {
@@ -2517,7 +2506,7 @@
       "posts_count": 333,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@AlexanderRadwan": {
       "account": {
@@ -2528,7 +2517,7 @@
       "posts_count": 55,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@anjaweisgerber": {
       "account": {
@@ -2539,7 +2528,7 @@
       "posts_count": 202,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://social.linksfraktion.de/@matthias_w_birkwald": {
       "account": {
@@ -2781,7 +2770,7 @@
       "posts_count": 3862,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@GuidoReil": {
       "account": {
@@ -2792,7 +2781,7 @@
       "posts_count": 121,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@joachim_kuhs": {
       "account": {
@@ -2803,7 +2792,7 @@
       "posts_count": 630,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@BuchheitMarkus": {
       "account": {
@@ -2814,7 +2803,7 @@
       "posts_count": 610,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@krahmax": {
       "account": {
@@ -2825,7 +2814,7 @@
       "posts_count": 4229,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@Nicolaus_Fest": {
       "account": {
@@ -2836,7 +2825,7 @@
       "posts_count": 2,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://bonn.social/@alexandrageese": {
       "account": {
@@ -3034,7 +3023,7 @@
       "posts_count": 488,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@Andreas_Schwab": {
       "account": {
@@ -3045,7 +3034,7 @@
       "posts_count": 2087,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@AxelVossMdEP": {
       "account": {
@@ -3056,7 +3045,7 @@
       "posts_count": 540,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@caspary": {
       "account": {
@@ -3067,7 +3056,7 @@
       "posts_count": 231,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@RadtkeMdEP": {
       "account": {
@@ -3078,7 +3067,7 @@
       "posts_count": 3958,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@hildebentele": {
       "account": {
@@ -3089,7 +3078,7 @@
       "posts_count": 1946,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@marionwalsmann": {
       "account": {
@@ -3100,7 +3089,7 @@
       "posts_count": 195,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@markuspiepermep": {
       "account": {
@@ -3111,7 +3100,7 @@
       "posts_count": 512,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@gahler_michael": {
       "account": {
@@ -3122,7 +3111,7 @@
       "posts_count": 846,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@peter_jahr": {
       "account": {
@@ -3133,7 +3122,7 @@
       "posts_count": 0,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@peterliese": {
       "account": {
@@ -3144,7 +3133,7 @@
       "posts_count": 1335,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@sabineverheyen": {
       "account": {
@@ -3155,7 +3144,7 @@
       "posts_count": 57,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@ThomasMannEP": {
       "account": {
@@ -3166,7 +3155,7 @@
       "posts_count": 0,
       "recent_posts_count": 0,
       "created_at": "2022-04-04T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@ANiebler": {
       "account": {
@@ -3177,7 +3166,7 @@
       "posts_count": 371,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@ManfredWeber": {
       "account": {
@@ -3188,7 +3177,7 @@
       "posts_count": 802,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@MarkusFerber": {
       "account": {
@@ -3199,7 +3188,7 @@
       "posts_count": 698,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@marlenemortler": {
       "account": {
@@ -3210,7 +3199,7 @@
       "posts_count": 0,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@MHohlmeier": {
       "account": {
@@ -3221,7 +3210,7 @@
       "posts_count": 579,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@ErnstCornelia": {
       "account": {
@@ -3287,7 +3276,7 @@
       "posts_count": 829,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@svenja_hahn": {
       "account": {
@@ -3298,7 +3287,7 @@
       "posts_count": 696,
       "recent_posts_count": 0,
       "created_at": "2022-04-04T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://respublicae.eu/@ulimuellermdep": {
       "account": {
@@ -3562,7 +3551,7 @@
       "posts_count": 854,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://hessen.social/@andrea": {
       "account": {
@@ -3661,18 +3650,7 @@
       "posts_count": 0,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://mastodon.social/@_rya_": {
-      "account": {
-        "name": "Birgit Rydlewski",
-        "url": "https://mastodon.social/@_rya_",
-        "category": "Mitglied des Landtag Nordrhein-Westfalen (Piraten)"
-      },
-      "posts_count": 70,
-      "recent_posts_count": 0,
-      "created_at": "2017-04-14T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://ruhr.social/@WGB": {
       "account": {
@@ -3859,7 +3837,7 @@
       "posts_count": 249,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://gruene.social/@GoeringEckardt": {
       "account": {
