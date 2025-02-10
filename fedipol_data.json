@@ -1901,7 +1901,7 @@
       "posts_count": 3100,
       "recent_posts_count": 82,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": false
+      "is_bot": true
     },
     "https://freiburg.social/@ChantalKopf": {
       "account": {
