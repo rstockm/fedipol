@@ -238,7 +238,7 @@ function renderAccountRow(account) {
                         </div>
                     </div>
                     <div class="d-flex flex-column">
-                        <span class="recent-posts-count small">${recent_posts_count}</span>
+                        <span class="recent-posts-count small">${Number(recent_posts_count) === 120 ? '>120' : recent_posts_count}</span>
                         <span class="total-posts-count small">${posts_count}</span>
                     </div>
                 </div>
