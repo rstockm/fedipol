@@ -386,7 +386,7 @@ function renderAccounts(accounts) {
                 ${account.loading ? 
                     '<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>' :
                     account.recent_posts_count !== null ? 
-                        `<span class="text-success">${formatNumber(account.recent_posts_count)}</span>` : 
+                        `<span class="text-success">${account.recent_posts_count === 120 ? '>120' : formatNumber(account.recent_posts_count)}</span>` : 
                         '-'}
             </td>
             <td class="bot-col text-center">

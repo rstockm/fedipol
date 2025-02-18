@@ -496,7 +496,7 @@ tr.is-bot:hover {
 
     /* Optimize posts bar container */
     .posts-bar-container {
-        min-width: 60px !important;
+        min-width: 70px !important;
         gap: 4px !important;
         padding-right: 0.5rem !important;
     }
@@ -540,7 +540,7 @@ tr.is-bot:hover {
     }
 
     .posts-bar-container {
-        min-width: 50px !important;
+        min-width: 60px !important;
         padding-right: 0.25rem !important;
     }
 
@@ -608,4 +608,9 @@ footer.fixed-bottom a:hover {
         font-size: 0.65rem;
         padding: 0.4rem;
     }
+}
+
+.posts-col {
+    width: 100px;  /* Increased from 90px */
+    white-space: nowrap;
 } 
