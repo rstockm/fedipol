@@ -2,8 +2,10 @@ class MastodonApi {
     constructor() {
         this.cache = new Map();
         this.CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
-        this.BATCH_SIZE = 10; // Anzahl paralleler Requests
-        this.DELAY_MS = 100; // Delay zwischen Requests
+        this.BATCH_SIZE = 5; // Reduced from 10 to 5
+        this.DELAY_MS = 500; // Increased from 100 to 500ms
+        this.RETRY_DELAY = 2000; // 2 seconds delay for retries
+        this.MAX_RETRIES = 3; // Maximum number of retries per request
         
         // Check if refresh parameter is present
         this.shouldRefresh = new URLSearchParams(window.location.search).has('refresh');
@@ -12,6 +14,9 @@ class MastodonApi {
         const pathParts = window.location.pathname.split('/');
         pathParts.pop(); // Remove the HTML file name
         this.projectPath = pathParts.join('/');
+        
+        // Initialize rate limit tracking
+        this.rateLimits = new Map();
         
         this.loadCache();
     }
@@ -24,7 +29,7 @@ class MastodonApi {
 
         // Load from fedipol_data.json
         try {
-            const response = await fetch('fedipol_data.json');
+            const response = await fetch(`${this.projectPath}/fedipol_data.json`);
             if (response.ok) {
                 const jsonData = await response.json();
                 
@@ -101,89 +106,162 @@ class MastodonApi {
     }
 
     async fetchFromAPI(normalizedUrl) {
-        try {
-            // Extract instance and username from URL
-            const url = new URL(normalizedUrl);
-            const pathParts = url.pathname.split('/').filter(Boolean);
-            const username = pathParts[pathParts.length - 1].replace('@', '');
-            const instance = url.hostname;
+        let retries = 0;
+        
+        while (retries <= this.MAX_RETRIES) {
+            try {
+                // Extract instance and username from URL
+                const url = new URL(normalizedUrl);
+                const pathParts = url.pathname.split('/').filter(Boolean);
+                const username = pathParts[pathParts.length - 1].replace('@', '');
+                const instance = url.hostname;
 
-            // First get the account ID
-            const lookupUrl = `https://${instance}/api/v1/accounts/lookup?acct=${username}`;
-
-            const lookupResponse = await fetch(lookupUrl);
-            if (!lookupResponse.ok) {
-                throw new Error(`HTTP error! status: ${lookupResponse.status}`);
-            }
-            
-            const accountData = await lookupResponse.json();
-            
-            // Now get recent posts
-            const sixtyDaysAgo = new Date();
-            sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
-            
-            let recentPosts = [];
-            let maxAttempts = 5; // Limit the number of pages to fetch
-            let nextLink = `https://${instance}/api/v1/accounts/${accountData.id}/statuses?limit=40`;
-            
-            // Fetch posts until we either have all posts from the last 60 days or hit the limit
-            while (maxAttempts > 0 && nextLink) {
-                const statusesResponse = await fetch(nextLink);
-                if (!statusesResponse.ok) {
-                    throw new Error(`HTTP error! status: ${statusesResponse.status}`);
-                }
-                
-                const posts = await statusesResponse.json();
-                if (!posts || posts.length === 0) break;
-                
-                // Check each post's date
-                let allPostsTooOld = true;
-                for (const post of posts) {
-                    const postDate = new Date(post.created_at);
-                    if (postDate >= sixtyDaysAgo) {
-                        recentPosts.push(post);
-                        allPostsTooOld = false;
-                    } else {
-                        // If we find an old post, all subsequent posts will be older
-                        allPostsTooOld = true;
-                        break;
+                // Check rate limits for this instance
+                if (this.rateLimits.has(instance)) {
+                    const waitUntil = this.rateLimits.get(instance);
+                    const now = Date.now();
+                    if (now < waitUntil) {
+                        await new Promise(resolve => setTimeout(resolve, waitUntil - now));
                     }
                 }
+
+                // First get the account ID
+                const lookupUrl = `https://${instance}/api/v1/accounts/lookup?acct=${username}`;
+                const lookupResponse = await fetch(lookupUrl);
                 
-                // Stop if we found posts older than 60 days
-                if (allPostsTooOld) break;
+                // Handle rate limiting headers
+                this.updateRateLimits(instance, lookupResponse.headers);
                 
-                // Get link to next page from headers
-                const linkHeader = statusesResponse.headers.get('Link');
-                nextLink = null;
-                if (linkHeader) {
-                    const nextMatch = linkHeader.match(/<([^>]+)>;\s*rel="next"/);
-                    if (nextMatch) nextLink = nextMatch[1];
+                if (lookupResponse.status === 429) {
+                    const retryAfter = lookupResponse.headers.get('Retry-After');
+                    const delay = (retryAfter ? parseInt(retryAfter) * 1000 : this.RETRY_DELAY);
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    retries++;
+                    continue;
+                }
+
+                if (!lookupResponse.ok) {
+                    throw new Error(`HTTP error! status: ${lookupResponse.status}`);
+                }
+
+                const accountData = await lookupResponse.json();
+
+                // Add delay between API calls
+                await new Promise(resolve => setTimeout(resolve, this.DELAY_MS));
+
+                // Now get recent posts
+                const sixtyDaysAgo = new Date();
+                sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
+
+                let recentPosts = [];
+                let maxAttempts = 3;
+                let nextLink = `https://${instance}/api/v1/accounts/${accountData.id}/statuses?limit=40`;
+
+                while (maxAttempts > 0 && nextLink) {
+                    const statusesResponse = await fetch(nextLink);
+                    this.updateRateLimits(instance, statusesResponse.headers);
+
+                    if (statusesResponse.status === 429) {
+                        const retryAfter = statusesResponse.headers.get('Retry-After');
+                        const delay = (retryAfter ? parseInt(retryAfter) * 1000 : this.RETRY_DELAY);
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        continue;
+                    }
+
+                    if (!statusesResponse.ok) break;
+
+                    const posts = await statusesResponse.json();
+                    if (!posts || posts.length === 0) break;
+
+                    let allPostsTooOld = true;
+                    for (const post of posts) {
+                        const postDate = new Date(post.created_at);
+                        if (postDate >= sixtyDaysAgo) {
+                            recentPosts.push(post);
+                            allPostsTooOld = false;
+                        }
+                    }
+
+                    if (allPostsTooOld) break;
+
+                    const linkHeader = statusesResponse.headers.get('Link');
+                    nextLink = null;
+                    if (linkHeader) {
+                        const nextMatch = linkHeader.match(/<([^>]+)>;\s*rel="next"/);
+                        if (nextMatch) nextLink = nextMatch[1];
+                    }
+
+                    maxAttempts--;
+                    // Add delay between pagination requests
+                    await new Promise(resolve => setTimeout(resolve, this.DELAY_MS));
+                }
+
+                const stats = {
+                    posts_count: accountData.statuses_count,
+                    recent_posts_count: recentPosts.length,
+                    is_bot: Boolean(accountData.bot) || this.checkForAutomationKeywords(accountData.note),
+                    created_at: accountData.created_at,
+                    timestamp: Date.now()
+                };
+
+                this.cache.set(normalizedUrl, stats);
+                return stats;
+
+            } catch (error) {
+                console.warn(`Error fetching data for ${normalizedUrl} (attempt ${retries + 1}/${this.MAX_RETRIES + 1}):`, error);
+                
+                if (retries === this.MAX_RETRIES) {
+                    return {
+                        posts_count: null,
+                        recent_posts_count: null,
+                        is_bot: false,
+                        error: error.message
+                    };
                 }
                 
-                maxAttempts--;
+                retries++;
+                await new Promise(resolve => setTimeout(resolve, this.RETRY_DELAY));
             }
-            
-            const stats = {
-                posts_count: accountData.statuses_count,
-                recent_posts_count: recentPosts.length,
-                is_bot: Boolean(accountData.bot),
-                created_at: accountData.created_at,
-                timestamp: Date.now()
-            };
-
-            // Only update in-memory cache, don't save to file
-            this.cache.set(normalizedUrl, stats);
-
-            return stats;
-        } catch (error) {
-            return { 
-                posts_count: null, 
-                recent_posts_count: null,
-                is_bot: false,
-                error: error.message 
-            };
         }
+    }
+
+    updateRateLimits(instance, headers) {
+        // Parse rate limit headers
+        const remaining = headers.get('X-RateLimit-Remaining');
+        const reset = headers.get('X-RateLimit-Reset');
+        
+        if (remaining && reset) {
+            const remainingRequests = parseInt(remaining);
+            const resetTime = new Date(reset).getTime();
+            
+            if (remainingRequests <= 1) {
+                this.rateLimits.set(instance, resetTime);
+            }
+        }
+    }
+
+    // Check if the account description contains automation keywords
+    checkForAutomationKeywords(note) {
+        if (!note) return false;
+        
+        // Remove HTML tags for clean text search
+        const cleanNote = note.replace(/<[^>]*>/g, ' ');
+        
+        // Keywords that indicate automation
+        const automationKeywords = [
+            'unofficial',
+            'automated',
+            'mirror',
+            'bot',
+            'automatisiert',
+            'automatisch'
+        ];
+        
+        // Convert to lowercase for case-insensitive search
+        const lowercaseNote = cleanNote.toLowerCase();
+        
+        // Check if any of the keywords are present
+        return automationKeywords.some(keyword => lowercaseNote.includes(keyword));
     }
 
     // Process accounts in batches

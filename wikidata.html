@@ -6,10 +6,37 @@
     <title>Politiker im Fediverse - Wikidata</title>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">Politiker im Fediverse</h1>
+                <div class="btn-group">
+                    <button id="deduplicateBtn" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Doppelte Einträge entfernen">
+                        <i class="bi bi-people"></i>
+                        <span class="d-none d-md-inline">Deduplizieren</span>
+                    </button>
+                    <button id="activityFilterBtn" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Nur aktivste Accounts behalten">
+                        <i class="bi bi-activity"></i>
+                        <span class="d-none d-md-inline">Nach Aktivität filtern</span>
+                    </button>
+                    <button id="downloadBtn" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Als Markdown herunterladen">
+                        <i class="bi bi-download"></i>
+                        <span class="d-none d-md-inline">Download</span>
+                    </button>
+                    <a href="index.html" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Zurück">
+                        <i class="bi bi-arrow-left"></i>
+                        <span class="d-none d-md-inline">Zurück</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container mt-4">
-        <h1>Politiker im Fediverse</h1>
         <p class="lead">Eine Übersicht über Politiker und politische Institutionen mit Fediverse-Präsenz</p>
         
         <div id="loading" class="text-center d-none">

@@ -2,150 +2,216 @@
 const WIKIDATA_ENDPOINT = 'https://query.wikidata.org/sparql';
 
 // SPARQL query to find German politicians with Fediverse accounts
-const POLITICIANS_QUERY = `
-SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?partyLabel WHERE {
+const PARLIAMENT_QUERY = `
+SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?partyLabel ?qid WHERE {
+  # German politicians with positions and Fediverse accounts
   {
-    # German politicians with positions and Fediverse accounts
-    ?item wdt:P102 ?party ;    # Political party
-          p:P4033 ?statement . # Mastodon address
-    ?statement ps:P4033 ?account .
+    ?item wdt:P102 ?party     # Political party membership
+  } UNION {
+    ?item wdt:P1416 ?party    # Affiliations (broader than just membership)
+  }
+  
+  # Party must be a major German party or a political party in Germany
+  {
+    VALUES ?party {
+      wd:Q49768     # SPD
+      wd:Q49762     # CDU
+      wd:Q49763     # CSU
+      wd:Q13124     # FDP
+      wd:Q49764     # Die Linke
+      wd:Q49766     # Bündnis 90/Die Grünen
+      wd:Q6721203   # Alternative für Deutschland
+      wd:Q13129     # Piratenpartei Deutschland
+      wd:Q22748     # Die PARTEI
+      wd:Q327389    # Freie Wähler
+      wd:Q106205950 # Volt Deutschland
+      wd:Q123121346 # Bündnis Sahra Wagenknecht
+    }
+  } UNION {
+    ?party wdt:P31 wd:Q2023214   # Instance of political party in Germany
+  }
+  
+  ?item p:P4033 ?statement .  # Mastodon address
+  ?statement ps:P4033 ?account .
+  
+  {
+    # Current members of parliament and other positions
+    VALUES ?membership { 
+      wd:Q1939555   # Member of Bundestag
+      wd:Q27169     # Member of the European Parliament
+      wd:Q1939559   # Member of Landtag
+      wd:Q708492    # Ratsherr/Ratsmitglied
+      wd:Q30185     # Bürgermeister
+      wd:Q3154693   # Stadtrat
+      wd:Q113885691 # Bezirksverordneter
+      wd:Q113134496 # Kreisrat
+    }
+    ?item p:P39 ?membershipStatement .
+    ?membershipStatement ps:P39 ?membership .
+    # Filter for current positions (no end date)
+    FILTER NOT EXISTS { ?membershipStatement pq:P582 ?endtime }
+    BIND(?membership AS ?position)
+  }
+  UNION
+  {
+    # Political parties in Germany
+    ?item wdt:P31 wd:Q2023214 .  # Instance of political party in Germany
+    BIND(wd:Q2023214 AS ?position)
+  }
+  UNION
+  {
+    # Local and regional party organizations
+    VALUES ?organization_type {
+      wd:Q131745197  # SPD local associations
+      wd:Q91459453   # District associations
+      wd:Q18744396   # State associations
+      wd:Q86189847   # Local associations
+    }
+    ?item wdt:P31 ?organization_type .
+    BIND(?organization_type AS ?position)
+  }
+  UNION
+  {
+    # Other political positions
+    ?item p:P39 ?positionStatement .
+    ?positionStatement ps:P39 ?position .
     
+    # Filter for current positions (no end date)
+    FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
+    
+    # Position must be either in Germany OR an EU position
     {
-      # Current members of parliament (Bundestag, EU, Landtage)
-      VALUES ?membership { 
-        wd:Q131745197  # Member of 20th Bundestag
-        wd:Q91459453   # Member of 19th Bundestag
-        wd:Q18744396   # Member of 9th European Parliament
-        wd:Q86189847   # Member of 8th European Parliament
-        wd:Q2023214    # Member of Landtag
-      }
-      ?item wdt:P31 ?membership .
-      ?item wdt:P102 ?party .
-      BIND(?membership AS ?position)
+      # German positions
+      ?position wdt:P17 wd:Q183 .
+    } 
+    UNION 
+    {
+      # EU Parliament and Landtag positions
+      VALUES ?position { wd:Q27169 wd:Q1939559 }
     }
     UNION
     {
-      # Other political positions
-      ?item p:P39 ?positionStatement .
-      ?positionStatement ps:P39 ?position .
-      
-      # Filter for current positions (no end date)
-      FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
-      
-      # Position must be either in Germany OR an EU position
-      {
-        # German positions
-        ?position wdt:P17 wd:Q183 .
-      } 
-      UNION 
-      {
-        # EU Parliament
-        VALUES ?position { wd:Q27169 wd:Q1755693 }  # Include both Landtag and MEP positions
+      # Specific positions that don't need country filtering
+      VALUES ?position { 
+        wd:Q1939555   # Member of Bundestag
+        wd:Q708492    # Ratsherr/Ratsmitglied
+        wd:Q30185     # Bürgermeister
+        wd:Q3154693   # Stadtrat
+        wd:Q113885691 # Bezirksverordneter
+        wd:Q113134496 # Kreisrat
       }
-    }
-    
-    # German citizenship
-    ?item wdt:P27 wd:Q183 .
-  }
-  UNION
-  {
-    # All accounts on linke.social
-    ?item p:P4033 ?statement .
-    ?statement ps:P4033 ?account .
-    FILTER(CONTAINS(STR(?account), "linke.social"))
-    
-    # Get party affiliation if available
-    OPTIONAL {
-      ?item wdt:P102 ?party .
-    }
-    
-    # Get position if available
-    OPTIONAL {
-      ?item p:P39 ?positionStatement .
-      ?positionStatement ps:P39 ?position .
-      FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
-    }
-  }
-  UNION
-  {
-    # All accounts on gruene.social
-    ?item p:P4033 ?statement .
-    ?statement ps:P4033 ?account .
-    FILTER(CONTAINS(STR(?account), "gruene.social"))
-    
-    # Get party affiliation if available
-    OPTIONAL {
-      ?item wdt:P102 ?party .
-    }
-    
-    # Get position if available
-    OPTIONAL {
-      ?item p:P39 ?positionStatement .
-      ?positionStatement ps:P39 ?position .
-      FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
     }
   }
   
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "de,en". }
+  # Extract QID
+  BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
+  
+  # Labels in German only
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de" }
 }
-ORDER BY ?partyLabel ?itemLabel
+`;
+
+const PARTY_INSTANCES_QUERY = `
+SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?partyLabel ?qid WHERE {
+  # All accounts on party-specific instances
+  ?item p:P4033 ?statement .
+  ?statement ps:P4033 ?account .
+  
+  # Filter for specific instances
+  VALUES ?instance { "linke.social" "gruene.social" "die-partei.social" "piraten-partei.social" }
+  FILTER(CONTAINS(STR(?account), ?instance))
+  
+  # Get party affiliation (both membership and broader affiliations)
+  OPTIONAL {
+    { ?item wdt:P102 ?party }    # Party membership
+    UNION
+    { ?item wdt:P1416 ?party }   # Affiliations
+  }
+  
+  # Get position if available
+  OPTIONAL {
+    ?item p:P39 ?positionStatement .
+    ?positionStatement ps:P39 ?position .
+    FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
+  }
+  
+  # Extract QID
+  BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
+  
+  # Labels in German only
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de" }
+}
 `;
 
 // SPARQL query to find German political institutions with Fediverse accounts
 const INSTITUTIONS_QUERY = `
-SELECT DISTINCT ?item ?itemLabel ?type ?typeLabel ?account WHERE {
+SELECT DISTINCT ?item ?itemLabel ?type ?typeLabel ?account ?qid WHERE {
   {
-    # Regular institutions query
-    ?item p:P4033 ?statement .  # Has Mastodon address
-    ?statement ps:P4033 ?account .
-    
-    # Must be in Germany
-    ?item wdt:P17 wd:Q183 .
-    
-    # Type of institution
-    ?item wdt:P31 ?type .
-    
-    # Filter for relevant types
-    VALUES ?type {
-      wd:Q7278     # political party
-      wd:Q327333   # government ministry
-      wd:Q2478897  # regional association
-      wd:Q31075    # legislature
-      wd:Q2659904  # government agency
-      wd:Q4471     # regional parliament
-      wd:Q2166081  # youth organization
-      wd:Q1663594  # political foundation
-    }
-  }
-  UNION
-  {
-    # All accounts on social.bund.de
-    ?item p:P4033 ?statement .
-    ?statement ps:P4033 ?account .
-    FILTER(CONTAINS(STR(?account), "social.bund.de"))
-    
-    # Get the type if available
-    OPTIONAL {
-      ?item wdt:P31 ?type .
-    }
-  }
-  UNION
-  {
-    # All accounts on social.hessen.de
-    ?item p:P4033 ?statement .
-    ?statement ps:P4033 ?account .
-    FILTER(CONTAINS(STR(?account), "social.hessen.de"))
-    
-    # Get the type if available
-    OPTIONAL {
-      ?item wdt:P31 ?type .
+    SELECT DISTINCT ?item ?type ?account WHERE {
+      {
+        # Regular institutions query
+        ?item p:P4033 ?statement .  # Has Mastodon address
+        ?statement ps:P4033 ?account .
+        
+        # Must be in Germany
+        ?item wdt:P17 wd:Q183 .
+        
+        # Type of institution
+        ?item wdt:P31 ?type .
+        
+        # Filter for relevant types
+        VALUES ?type {
+          wd:Q7278     # political party
+          wd:Q327333   # government ministry
+          wd:Q31075    # legislature
+          wd:Q2659904  # government agency
+          wd:Q4471     # regional parliament
+          wd:Q2166081  # youth organization
+          wd:Q1663594  # political foundation
+          wd:Q2023214  # political party in Germany
+          wd:Q1672092  # Regionalverband (regional association)
+          wd:Q2324813  # parliamentary group
+        }
+      }
+      UNION
+      {
+        # All accounts on social.bund.de
+        ?item p:P4033 ?statement .
+        ?statement ps:P4033 ?account .
+        FILTER(CONTAINS(STR(?account), "social.bund.de"))
+        
+        # Get the type if available
+        OPTIONAL {
+          ?item wdt:P31 ?type .
+        }
+      }
+      UNION
+      {
+        # All accounts on social.hessen.de
+        ?item p:P4033 ?statement .
+        ?statement ps:P4033 ?account .
+        FILTER(CONTAINS(STR(?account), "social.hessen.de"))
+        
+        # Get the type if available
+        OPTIONAL {
+          ?item wdt:P31 ?type .
+        }
+      }
     }
   }
   
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "de,en". }
-}
-ORDER BY ?typeLabel ?itemLabel
+  # Extract QID
+  BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
+  
+  # Labels in German only
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de" }
+} LIMIT 10000
 `;
+
+let currentPoliticians = [];
+let currentInstitutions = [];
+let isDeduplicateEnabled = false;
+let isActivityFilterEnabled = false;
 
 async function fetchWikidataResults() {
     const loadingElement = document.getElementById('loading');
@@ -154,40 +220,58 @@ async function fetchWikidataResults() {
     try {
         loadingElement.classList.remove('d-none');
         
-        // Fetch politicians
-        const politiciansUrl = WIKIDATA_ENDPOINT + '?' + new URLSearchParams({
-            query: POLITICIANS_QUERY,
-            format: 'json'
-        });
+        // Fetch all queries in parallel
+        const [parliamentResponse, partyInstancesResponse, institutionsResponse] = await Promise.all([
+            fetch(WIKIDATA_ENDPOINT + '?' + new URLSearchParams({
+                query: PARLIAMENT_QUERY,
+                format: 'json'
+            }), {
+                headers: {
+                    'Accept': 'application/sparql-results+json',
+                    'User-Agent': 'FediPol/1.0 (https://github.com/rstockm/fedipol)'
+                }
+            }),
+            fetch(WIKIDATA_ENDPOINT + '?' + new URLSearchParams({
+                query: PARTY_INSTANCES_QUERY,
+                format: 'json'
+            }), {
+                headers: {
+                    'Accept': 'application/sparql-results+json',
+                    'User-Agent': 'FediPol/1.0 (https://github.com/rstockm/fedipol)'
+                }
+            }),
+            fetch(WIKIDATA_ENDPOINT + '?' + new URLSearchParams({
+                query: INSTITUTIONS_QUERY,
+                format: 'json'
+            }), {
+                headers: {
+                    'Accept': 'application/sparql-results+json',
+                    'User-Agent': 'FediPol/1.0 (https://github.com/rstockm/fedipol)'
+                }
+            })
+        ]);
 
-        const politiciansResponse = await fetch(politiciansUrl, {
-            headers: {
-                'Accept': 'application/sparql-results+json',
-                'User-Agent': 'FediPol/1.0 (https://github.com/rstockm/fedipol)'
-            }
-        });
-
-        // Fetch institutions
-        const institutionsUrl = WIKIDATA_ENDPOINT + '?' + new URLSearchParams({
-            query: INSTITUTIONS_QUERY,
-            format: 'json'
-        });
-
-        const institutionsResponse = await fetch(institutionsUrl, {
-            headers: {
-                'Accept': 'application/sparql-results+json',
-                'User-Agent': 'FediPol/1.0 (https://github.com/rstockm/fedipol)'
-            }
-        });
-
-        if (!politiciansResponse.ok || !institutionsResponse.ok) {
+        if (!parliamentResponse.ok || !partyInstancesResponse.ok || !institutionsResponse.ok) {
             throw new Error('Network response was not ok');
         }
 
-        const politiciansData = await politiciansResponse.json();
-        const institutionsData = await institutionsResponse.json();
+        const [parliamentData, partyInstancesData, institutionsData] = await Promise.all([
+            parliamentResponse.json(),
+            partyInstancesResponse.json(),
+            institutionsResponse.json()
+        ]);
         
-        displayResults(politiciansData.results.bindings, institutionsData.results.bindings);
+        // Combine all politician results
+        currentPoliticians = [
+            ...parliamentData.results.bindings,
+            ...partyInstancesData.results.bindings
+        ];
+        
+        currentInstitutions = institutionsData.results.bindings;
+        
+        // Display results with current filter settings
+        await updateDisplayedResults();
+        
     } catch (error) {
         resultsElement.innerHTML = `
             <div class="alert alert-danger">
@@ -198,6 +282,167 @@ async function fetchWikidataResults() {
         loadingElement.classList.add('d-none');
     }
 }
+
+async function updateDisplayedResults() {
+    let politicians = [...currentPoliticians];
+    let institutions = [...currentInstitutions];
+    
+    // Filter out bsky entries
+    politicians = politicians.filter(result => {
+        const account = result.account?.value || '';
+        return !account.toLowerCase().includes('bsky');
+    });
+    
+    institutions = institutions.filter(result => {
+        const account = result.account?.value || '';
+        return !account.toLowerCase().includes('bsky');
+    });
+    
+    // Only perform deduplication if the button is active
+    if (isDeduplicateEnabled) {
+        politicians = await removeDuplicates(politicians);
+        institutions = await removeDuplicates(institutions);
+    }
+    
+    // Apply activity filter if enabled
+    if (isActivityFilterEnabled) {
+        politicians = await filterMostRecentAccounts(politicians);
+    }
+    
+    // Count duplicates for button text
+    const originalCount = currentPoliticians.length + currentInstitutions.length;
+    const currentCount = politicians.length + institutions.length;
+    const duplicatesCount = originalCount - currentCount;
+    
+    // Update button text with duplicate count
+    const deduplicateBtn = document.getElementById('deduplicateBtn');
+    const btnText = duplicatesCount > 0 ? 
+        `<i class="bi bi-people"></i><span class="d-none d-md-inline">Deduplizieren (${duplicatesCount})</span>` :
+        `<i class="bi bi-people"></i><span class="d-none d-md-inline">Deduplizieren</span>`;
+    deduplicateBtn.innerHTML = btnText;
+    
+    // Assign parties based on instance
+    politicians = politicians.map(politician => {
+        const account = politician.account?.value || '';
+        if (account.includes('gruene.social') && (!politician.partyLabel || !politician.partyLabel.value)) {
+            return {
+                ...politician,
+                partyLabel: { value: 'Bündnis 90/Die Grünen' }
+            };
+        }
+        if (account.includes('linke.social') && (!politician.partyLabel || !politician.partyLabel.value)) {
+            return {
+                ...politician,
+                partyLabel: { value: 'Die Linke' }
+            };
+        }
+        if (account.includes('die-partei.social') && (!politician.partyLabel || !politician.partyLabel.value)) {
+            return {
+                ...politician,
+                partyLabel: { value: 'Die PARTEI' }
+            };
+        }
+        if (account.includes('piraten-partei.social') && (!politician.partyLabel || !politician.partyLabel.value)) {
+            return {
+                ...politician,
+                partyLabel: { value: 'Piratenpartei Deutschland' }
+            };
+        }
+        return politician;
+    });
+    
+    // Add party as position if position is empty
+    politicians = politicians.map(politician => {
+        if (!politician.positionLabel?.value && politician.partyLabel?.value) {
+            return {
+                ...politician,
+                positionLabel: { value: politician.partyLabel.value }
+            };
+        }
+        return politician;
+    });
+    
+    // Sort politicians by position
+    politicians.sort((a, b) => {
+        const posA = a.positionLabel?.value || '';
+        const posB = b.positionLabel?.value || '';
+        return posA.localeCompare(posB, 'de');
+    });
+    
+    // Sort institutions by type
+    institutions.sort((a, b) => {
+        const typeA = a.typeLabel?.value || '';
+        const typeB = b.typeLabel?.value || '';
+        return typeA.localeCompare(typeB, 'de');
+    });
+    
+    displayResults(politicians, institutions);
+}
+
+// Event listeners for buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const deduplicateBtn = document.getElementById('deduplicateBtn');
+    const activityFilterBtn = document.getElementById('activityFilterBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    
+    // Initialize tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+    
+    deduplicateBtn.addEventListener('click', async () => {
+        isDeduplicateEnabled = !isDeduplicateEnabled;
+        deduplicateBtn.classList.toggle('active');
+        await updateDisplayedResults();
+    });
+    
+    activityFilterBtn.addEventListener('click', async () => {
+        const loadingElement = document.getElementById('loading');
+        try {
+            loadingElement.classList.remove('d-none');
+            isActivityFilterEnabled = !isActivityFilterEnabled;
+            activityFilterBtn.classList.toggle('active');
+            await updateDisplayedResults();
+        } finally {
+            loadingElement.classList.add('d-none');
+        }
+    });
+    
+    downloadBtn.addEventListener('click', async () => {
+        // Get the current filtered results
+        let politicians = [...currentPoliticians];
+        let institutions = [...currentInstitutions];
+        
+        // Apply bsky filter
+        politicians = politicians.filter(result => {
+            const account = result.account?.value || '';
+            return !account.toLowerCase().includes('bsky');
+        });
+        
+        institutions = institutions.filter(result => {
+            const account = result.account?.value || '';
+            return !account.toLowerCase().includes('bsky');
+        });
+        
+        // Apply deduplication if enabled
+        if (isDeduplicateEnabled) {
+            politicians = await removeDuplicates(politicians);
+            institutions = await removeDuplicates(institutions);
+        }
+        
+        // Apply activity filter if enabled
+        if (isActivityFilterEnabled) {
+            politicians = await filterMostRecentAccounts(politicians);
+        }
+        
+        const markdown = generateMarkdown(politicians, institutions);
+        downloadMarkdown(markdown, 'politiker-und-institutionen-im-fediverse.md');
+    });
+    
+    // Initial load
+    fetchWikidataResults();
+});
 
 function formatFediverseUrl(account) {
     // Remove any leading/trailing whitespace
@@ -241,6 +486,7 @@ function getPartyAbbreviation(partyName) {
         'Sozialdemokratische Partei Deutschlands': 'SPD',
         'Christlich Demokratische Union Deutschlands': 'CDU',
         'Christlich Demokratische Union': 'CDU',
+        'CDU/CSU-Bundestagsfraktion': 'CDU',
         'Junge Union': 'CDU',
         'Junge Union Deutschlands': 'CDU',
         'Demokratischer Aufbruch': 'CDU',
@@ -249,10 +495,15 @@ function getPartyAbbreviation(partyName) {
         'Bündnis 90': 'Grüne',
         'Grüne Jugend': 'Grüne',
         'GRÜNE JUGEND': 'Grüne',
+        'Federation of Young European Greens': 'Grüne',
+        'Grüne-Fraktion der 15. Wahlperiode des Landtags Saarland': 'Grüne',
         'Alternative für Deutschland': 'AfD',
         'Freie Demokratische Partei': 'FDP',
+        'FDP-Bundestagsfraktion': 'FDP',
         'Die Linke': 'Linke',
+        'Fraktion Die Linke': 'Linke',
         'Partei des Demokratischen Sozialismus': 'Linke',
+        'Sozialistische Einheitspartei Deutschlands': 'Linke',
         'PDS': 'Linke',
         'Arbeit & soziale Gerechtigkeit – Die Wahlalternative': 'Linke',
         'WASG': 'Linke',
@@ -274,19 +525,91 @@ function getPartyAbbreviation(partyName) {
     return partyMap[partyName] || partyName;
 }
 
-function removeDuplicates(results) {
-    const seen = new Set();
-    return results.filter(result => {
+function getPositionPriority(position) {
+    if (!position) return 0;
+    const pos = position.toLowerCase();
+    
+    // Höchste Priorität: Aktuelle Mandate
+    if (pos.includes('bundestag')) return 100;
+    if (pos.includes('europäisches parlament')) return 90;
+    if (pos.includes('landtag')) return 80;
+    if (pos.includes('minister')) return 70;
+    if (pos.includes('staatssekretär')) return 60;
+    
+    // Mittlere Priorität: Andere politische Ämter
+    if (pos.includes('vorsitzende')) return 50;
+    if (pos.includes('sprecher')) return 40;
+    
+    // Basis-Priorität für alle anderen
+    return 10;
+}
+
+function getInstancePriority(account) {
+    if (!account) return 0;
+    const acc = account.toLowerCase();
+    
+    // Höchste Priorität: Offizielle Regierungsinstanzen
+    if (acc.includes('social.bund.de')) return 30;
+    if (acc.includes('social.hessen.de')) return 25;
+    
+    // Hohe Priorität: Partei-spezifische Instanzen
+    if (acc.includes('gruene.social')) return 20;
+    if (acc.includes('linke.social')) return 20;
+    if (acc.includes('die-partei.social')) return 20;
+    if (acc.includes('piraten-partei.social')) return 20;
+    
+    // Standard-Priorität für alle anderen
+    return 10;
+}
+
+async function removeDuplicates(results) {
+    const accountsByPerson = new Map();
+    
+    // Gruppiere alle Accounts nach Person
+    results.forEach(result => {
         const name = result.itemLabel?.value || 'Unbekannt';
         const account = result.account?.value || '';
-        const key = `${name}-${account}`;
+        const key = name;
         
-        if (seen.has(key)) {
-            return false;
+        if (!accountsByPerson.has(key)) {
+            accountsByPerson.set(key, []);
         }
-        seen.add(key);
-        return true;
+        accountsByPerson.get(key).push(result);
     });
+    
+    // Für jede Person, wähle den wichtigsten Account
+    const filteredResults = [];
+    
+    // Verarbeite jede Person
+    for (const [name, accounts] of accountsByPerson.entries()) {
+        // Wenn nur ein Account vorhanden ist, füge ihn direkt hinzu
+        if (accounts.length === 1) {
+            filteredResults.push(accounts[0]);
+            continue;
+        }
+        
+        // Bei mehreren Accounts, verwende die Priorisierung
+        const sortedAccounts = accounts.sort((a, b) => {
+            // Vergleiche Position-Priorität
+            const posA = getPositionPriority(a.positionLabel?.value);
+            const posB = getPositionPriority(b.positionLabel?.value);
+            if (posA !== posB) return posB - posA;
+            
+            // Bei gleicher Position-Priorität, vergleiche Instanz-Priorität
+            const instA = getInstancePriority(a.account?.value);
+            const instB = getInstancePriority(b.account?.value);
+            if (instA !== instB) return instB - instA;
+            
+            // Bei gleicher Instanz-Priorität, bevorzuge den Account mit mehr Informationen
+            const infoA = (a.partyLabel?.value ? 1 : 0) + (a.positionLabel?.value ? 1 : 0);
+            const infoB = (b.partyLabel?.value ? 1 : 0) + (b.positionLabel?.value ? 1 : 0);
+            return infoB - infoA;
+        });
+        
+        filteredResults.push(sortedAccounts[0]);
+    }
+    
+    return filteredResults;
 }
 
 function generatePartyStatistics(results) {
@@ -345,6 +668,8 @@ async function getMastodonAccountInfo(account) {
 
 async function filterMostRecentAccounts(results) {
     const accountsByPerson = {};
+    let processedAccounts = 0;
+    let totalAccountsToProcess = 0;
     
     // Group accounts by person
     results.forEach(result => {
@@ -353,7 +678,22 @@ async function filterMostRecentAccounts(results) {
             accountsByPerson[name] = [];
         }
         accountsByPerson[name].push(result);
+        totalAccountsToProcess += 1; // Zähle jeden Account
     });
+    
+    // Zeige Fortschrittsanzeige
+    const loadingElement = document.getElementById('loading');
+    loadingElement.innerHTML = `
+        <div class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Laden...</span>
+            </div>
+            <div class="mt-2">
+                Prüfe Aktivität: <span id="processedAccounts">0</span>/${totalAccountsToProcess}
+            </div>
+        </div>
+    `;
+    loadingElement.classList.remove('d-none');
     
     const filteredResults = [];
     
@@ -363,6 +703,12 @@ async function filterMostRecentAccounts(results) {
             // If name is a Q-number, try to get real name from Mastodon
             if (name.match(/^Q\d+$/)) {
                 const info = await getMastodonAccountInfo(accounts[0].account.value);
+                processedAccounts++;
+                // Update Fortschrittsanzeige
+                const counterElement = document.getElementById('processedAccounts');
+                if (counterElement) {
+                    counterElement.textContent = processedAccounts;
+                }
                 if (info?.name) {
                     accounts[0].itemLabel.value = info.name;
                 }
@@ -375,6 +721,12 @@ async function filterMostRecentAccounts(results) {
         const accountDates = await Promise.all(
             accounts.map(async (result) => {
                 const info = await getMastodonAccountInfo(result.account.value);
+                processedAccounts++;
+                // Update Fortschrittsanzeige
+                const counterElement = document.getElementById('processedAccounts');
+                if (counterElement) {
+                    counterElement.textContent = processedAccounts;
+                }
                 // If name is a Q-number and we got a name from Mastodon, update it
                 if (name.match(/^Q\d+$/) && info?.name) {
                     result.itemLabel.value = info.name;
@@ -395,6 +747,9 @@ async function filterMostRecentAccounts(results) {
             filteredResults.push(accounts[0]);
         }
     }
+    
+    // Verstecke Fortschrittsanzeige nach Abschluss
+    loadingElement.classList.add('d-none');
     
     return filteredResults;
 }
@@ -536,6 +891,17 @@ function downloadCodebergFormat(content, filename) {
 }
 
 async function displayResults(politicians, institutions) {
+    // Filter out bsky.brid.gy entries
+    politicians = politicians.filter(result => {
+        const account = result.account?.value || '';
+        return !account.includes('bsky.brid.gy');
+    });
+    
+    institutions = institutions.filter(result => {
+        const account = result.account?.value || '';
+        return !account.includes('bsky.brid.gy');
+    });
+
     const resultsElement = document.getElementById('results');
     
     if (!politicians.length && !institutions.length) {
@@ -543,65 +909,12 @@ async function displayResults(politicians, institutions) {
         return;
     }
 
-    // Process politicians
-    let uniquePoliticians = removeDuplicates(politicians);
-    uniquePoliticians = await filterMostRecentAccounts(uniquePoliticians);
-    
-    // Assign parties based on instance
-    uniquePoliticians = uniquePoliticians.map(politician => {
-        const account = politician.account?.value || '';
-        if (account.includes('gruene.social') && (!politician.partyLabel || !politician.partyLabel.value)) {
-            return {
-                ...politician,
-                partyLabel: { value: 'Bündnis 90/Die Grünen' }
-            };
-        }
-        if (account.includes('linke.social') && (!politician.partyLabel || !politician.partyLabel.value)) {
-            return {
-                ...politician,
-                partyLabel: { value: 'Die Linke' }
-            };
-        }
-        return politician;
-    });
-    
-    // Add party as position if position is empty
-    uniquePoliticians = uniquePoliticians.map(politician => {
-        if (!politician.positionLabel?.value && politician.partyLabel?.value) {
-            return {
-                ...politician,
-                positionLabel: { value: politician.partyLabel.value }
-            };
-        }
-        return politician;
-    });
-    
-    // Sort politicians by position after all transformations
-    uniquePoliticians.sort((a, b) => {
-        const posA = a.positionLabel?.value || '';
-        const posB = b.positionLabel?.value || '';
-        return posA.localeCompare(posB, 'de');
-    });
-
-    // Process institutions and sort by type
-    const uniqueInstitutions = removeDuplicates(institutions);
-    uniqueInstitutions.sort((a, b) => {
-        const typeA = a.typeLabel?.value || '';
-        const typeB = b.typeLabel?.value || '';
-        return typeA.localeCompare(typeB, 'de');
-    });
-
     const html = `
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            ${generatePartyStatistics(uniquePoliticians)}
-            <button id="downloadBtn" class="btn btn-primary">
-                Als Markdown herunterladen
-            </button>
-        </div>
+        ${generatePartyStatistics(politicians)}
         
         <h2 class="mt-4">Politiker im Fediverse</h2>
         <div class="table-responsive">
-            <table class="table table-striped table-hover">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -612,11 +925,10 @@ async function displayResults(politicians, institutions) {
                     </tr>
                 </thead>
                 <tbody>
-                    ${uniquePoliticians.map((result, index) => {
+                    ${politicians.map((result, index) => {
                         const name = result.itemLabel?.value || 'Unbekannt';
                         const party = result.partyLabel?.value || '-';
                         const partyAbbr = getPartyAbbreviation(party);
-                        // Use party value if position is empty
                         const position = result.positionLabel?.value || party;
                         const positionWithParty = `${position} (${partyAbbr})`;
                         const account = result.account?.value || '';
@@ -654,7 +966,7 @@ async function displayResults(politicians, institutions) {
                     </tr>
                 </thead>
                 <tbody>
-                    ${uniqueInstitutions.map((result, index) => {
+                    ${institutions.map((result, index) => {
                         const name = result.itemLabel?.value || 'Unbekannt';
                         const type = result.typeLabel?.value || '-';
                         const account = result.account?.value || '';
@@ -681,13 +993,4 @@ async function displayResults(politicians, institutions) {
     `;
 
     resultsElement.innerHTML = html;
-
-    // Add click handler for download button
-    document.getElementById('downloadBtn').addEventListener('click', () => {
-        const markdown = generateMarkdown(uniquePoliticians, uniqueInstitutions);
-        downloadMarkdown(markdown, 'politiker-und-institutionen-im-fediverse.md');
-    });
-}
-
-// Load results when the page loads
-document.addEventListener('DOMContentLoaded', fetchWikidataResults); 
+} 

@@ -555,40 +555,40 @@ function renderTimeline() {
         timelineHtml = `<div class="timeline-party-row">${markers}</div>`;
     } else {
         // For unfiltered view, group by party as before
-        const partyGroups = new Map();
-        partyAccounts.forEach((accountData) => {
-            const party = getPartyAffiliation(accountData.account.name, accountData.account.category, accountData.account.url);
-            if (!partyGroups.has(party)) {
-                partyGroups.set(party, []);
-            }
-            partyGroups.get(party).push(accountData);
-        });
+    const partyGroups = new Map();
+    partyAccounts.forEach((accountData) => {
+        const party = getPartyAffiliation(accountData.account.name, accountData.account.category, accountData.account.url);
+        if (!partyGroups.has(party)) {
+            partyGroups.set(party, []);
+        }
+        partyGroups.get(party).push(accountData);
+    });
 
-        // Sort parties by number of accounts (descending)
-        const sortedParties = Array.from(partyGroups.entries())
-            .sort((a, b) => b[1].length - a[1].length);
+    // Sort parties by number of accounts (descending)
+    const sortedParties = Array.from(partyGroups.entries())
+        .sort((a, b) => b[1].length - a[1].length);
 
-        // Generate timeline rows for each party
+    // Generate timeline rows for each party
         timelineHtml = sortedParties.map(([party, accounts]) => {
-            const markers = accounts.map(({account, created_at, is_bot}) => {
-                if (!created_at) return '';
-                
-                const date = new Date(created_at);
-                if (isNaN(date.getTime())) return '';
-                
-                const position = ((date - earliestDate) / timeSpan * 100).toFixed(2);
+        const markers = accounts.map(({account, created_at, is_bot}) => {
+            if (!created_at) return '';
+            
+            const date = new Date(created_at);
+            if (isNaN(date.getTime())) return '';
+            
+            const position = ((date - earliestDate) / timeSpan * 100).toFixed(2);
                 const color = partyColorMap[party] || 'rgba(200, 200, 200, 1.0)';
-                
-                return `
-                    <div class="timeline-marker${is_bot ? ' is-bot' : ''}" 
-                         style="left: ${position}%; background-color: ${color};"
-                         title="${account.name} (${party})${is_bot ? ' [Bot]' : ''}\nBeigetreten: ${date.toLocaleDateString()}">
-                    </div>
-                `;
-            }).filter(html => html).join('');
+            
+            return `
+                <div class="timeline-marker${is_bot ? ' is-bot' : ''}" 
+                     style="left: ${position}%; background-color: ${color};"
+                     title="${account.name} (${party})${is_bot ? ' [Bot]' : ''}\nBeigetreten: ${date.toLocaleDateString()}">
+                </div>
+            `;
+        }).filter(html => html).join('');
 
             return `<div class="timeline-party-row">${markers}</div>`;
-        }).join('');
+    }).join('');
     }
 
     // Generate year scale
@@ -603,11 +603,11 @@ function renderTimeline() {
         
         // Skip the first year label to prevent overflow
         if (year > startYear) {
-            yearScale.push(`
-                <div class="timeline-year" style="left: ${position}%">
-                    ${year}
-                </div>
-            `);
+        yearScale.push(`
+            <div class="timeline-year" style="left: ${position}%">
+                ${year}
+            </div>
+        `);
         }
 
         // Add month markers for each year
@@ -869,7 +869,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderStats(accounts);
         renderTimeline();
         renderPartyDistribution();
-        
+
         // Add scroll event listener
         window.addEventListener('scroll', updateActiveButtonOnScroll);
         
@@ -885,11 +885,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         if (clearButton) {
             clearButton.addEventListener('click', () => {
-                searchInput.value = '';
+            searchInput.value = '';
                 filterTables();
-            });
+        });
         }
-        
+
     } catch (error) {
         console.error('Error loading data:', error);
         document.getElementById('error').classList.remove('d-none');

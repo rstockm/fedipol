@@ -27,7 +27,7 @@ async function loadAccountsFromMarkdown() {
             recent_posts_count: null,
             is_bot: null,
             loading: false,
-            error: null  // Explicitly set error to null for unloaded accounts
+            error: null
         }));
         
         // Render initial accounts
@@ -35,6 +35,41 @@ async function loadAccountsFromMarkdown() {
         
         // Update export button state after initialization
         updateExportButton();
+        
+        // Try to load existing data from JSON only if explicitly requested
+        if (!window.location.search.includes('refresh')) {
+            try {
+                const jsonResponse = await fetch('fedipol_data.json');
+                if (jsonResponse.ok) {
+                    const data = await jsonResponse.json();
+                    const jsonData = data.data || data;
+                    
+                    // Enhance existing accounts with data from JSON
+                    allAccounts = allAccounts.map(account => {
+                        const existingData = jsonData[account.link];
+                        if (existingData) {
+                            return {
+                                ...account,
+                                posts_count: existingData.posts_count,
+                                recent_posts_count: existingData.recent_posts_count,
+                                created_at: existingData.created_at,
+                                is_bot: existingData.is_bot,
+                                loading: false,
+                                error: null
+                            };
+                        }
+                        return account;
+                    });
+                    
+                    // Re-render with enhanced data
+                    renderAccounts(allAccounts);
+                    updateExportButton();
+                }
+            } catch (jsonError) {
+                console.log('No existing JSON data found:', jsonError);
+                // Continue with only markdown data
+            }
+        }
         
     } catch (error) {
         console.error('Error loading markdown file:', error);
@@ -203,6 +238,9 @@ async function loadAccountData(account) {
         
         const accountData = await lookupResponse.json();
         
+        // Check for automation keywords in note
+        const isAutomated = checkForAutomationKeywords(accountData.note || '');
+        
         // Get recent posts
         const sixtyDaysAgo = new Date();
         sixtyDaysAgo.setDate(sixtyDaysAgo.getDate() - 60);
@@ -243,7 +281,7 @@ async function loadAccountData(account) {
         account.created_at = accountData.created_at;
         account.posts_count = accountData.statuses_count;
         account.recent_posts_count = recentPosts.length;
-        account.is_bot = accountData.bot;
+        account.is_bot = accountData.bot || isAutomated;
         
         // Mark as loaded and update counter
         account.loading = false;
@@ -267,6 +305,30 @@ async function loadAccountData(account) {
         // Check if all accounts are loaded and update export button
         updateExportButton();
     }
+}
+
+// Function to check for automation keywords in account description
+function checkForAutomationKeywords(note) {
+    if (!note) return false;
+    
+    // Remove HTML tags for clean text search
+    const cleanNote = note.replace(/<[^>]*>/g, ' ');
+    
+    // Keywords that indicate automation
+    const automationKeywords = [
+        'unofficial',
+        'automated',
+        'mirror',
+        'bot',
+        'automatisiert',
+        'automatisch'
+    ];
+    
+    // Convert to lowercase for case-insensitive search
+    const lowercaseNote = cleanNote.toLowerCase();
+    
+    // Check if any of the keywords are present
+    return automationKeywords.some(keyword => lowercaseNote.includes(keyword));
 }
 
 // Function to update loading progress
@@ -371,10 +433,23 @@ function parseMarkdownContent(content) {
                 const name = cells[0];
                 const link = cells[1];
                 
+                // Determine party based on domain and current section
+                let party = currentParty;
+                try {
+                    const url = new URL(link);
+                    if (url.hostname === 'gruene.social') {
+                        party = 'Grüne';
+                    } else if (url.hostname === 'linke.social') {
+                        party = 'Linke';
+                    }
+                } catch (e) {
+                    console.warn('Invalid URL:', link);
+                }
+                
                 accounts.push({
                     name,
                     position: currentPosition,
-                    party: currentParty,
+                    party,
                     link
                 });
             }
@@ -465,41 +540,8 @@ function updateExportButton() {
 // Initialize when document is ready
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // First load accounts from markdown
+        // Load accounts from markdown and optionally enhance with JSON data
         await loadAccountsFromMarkdown();
-        
-        // Then try to load existing data from JSON
-        try {
-            const response = await fetch('fedipol_data.json');
-            if (response.ok) {
-                const data = await response.json();
-                const jsonData = data.data || data;
-                
-                // Enhance existing accounts with data from JSON
-                allAccounts = allAccounts.map(account => {
-                    const existingData = jsonData[account.link];
-                    if (existingData) {
-                        return {
-                            ...account,
-                            posts_count: existingData.posts_count,
-                            recent_posts_count: existingData.recent_posts_count,
-                            created_at: existingData.created_at,
-                            is_bot: existingData.is_bot,
-                            loading: false,
-                            error: null
-                        };
-                    }
-                    return account;
-                });
-                
-                // Re-render with enhanced data
-                renderAccounts(allAccounts);
-                updateExportButton();
-            }
-        } catch (jsonError) {
-            console.log('No existing JSON data found or error loading it:', jsonError);
-            // Continue without JSON data
-        }
         
         // Set up button event listeners
         const scanButton = document.getElementById('scanButton');
