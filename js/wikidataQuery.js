@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
             politicians = await filterMostRecentAccounts(politicians);
         }
         
-        const markdown = generateMarkdown(politicians, institutions);
+        const markdown = await generateMarkdown(politicians, institutions);
         downloadMarkdown(markdown, 'politiker-und-institutionen-im-fediverse.md');
     });
     
@@ -754,7 +754,50 @@ async function filterMostRecentAccounts(results) {
     return filteredResults;
 }
 
-function generateMarkdown(politicians, institutions) {
+// Function to normalize Fediverse URLs
+function normalizeUrl(url) {
+    try {
+        // Remove trailing slashes and convert to lowercase
+        return url.toLowerCase().replace(/\/+$/, '');
+    } catch (error) {
+        console.error('Error normalizing URL:', error);
+        return url;
+    }
+}
+
+// Function to load excluded accounts
+async function loadExcludedAccounts() {
+    try {
+        const response = await fetch('/exclude.json');
+        if (!response.ok) {
+            console.warn('Could not load exclude.json');
+            return [];
+        }
+        const data = await response.json();
+        return data.excluded_accounts.map(url => formatFediverseUrl(url));
+    } catch (error) {
+        console.error('Error loading exclude.json:', error);
+        return [];
+    }
+}
+
+// Function to filter out excluded accounts
+function filterExcludedAccounts(accounts, excludedAccounts) {
+    return accounts.filter(account => {
+        const accountUrl = formatFediverseUrl(account.account?.value || '');
+        return !excludedAccounts.includes(accountUrl);
+    });
+}
+
+// Function to generate markdown
+async function generateMarkdown(politicians, institutions) {
+    // Load excluded accounts
+    const excludedAccounts = await loadExcludedAccounts();
+    
+    // Filter out excluded accounts
+    politicians = filterExcludedAccounts(politicians, excludedAccounts);
+    institutions = filterExcludedAccounts(institutions, excludedAccounts);
+
     let markdown = '# Politiker und Institutionen im Fediverse\n\n';
     
     // Group politicians by position

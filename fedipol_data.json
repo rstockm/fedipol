@@ -1,190 +1,377 @@
 {
   "data": {
-    "https://die-partei.social/@DiePARTEI_Erding": {
+    "https://gruene.social/@Gruene_Neuhofen": {
       "account": {
-        "name": "Die PARTEI Erding",
-        "url": "https://die-partei.social/@DiePARTEI_Erding",
-        "category": "Kreisverband (Die PARTEI)"
+        "name": "Bündnis '90/Die Grünen Ortsverband Neuhofen",
+        "url": "https://gruene.social/@Gruene_Neuhofen",
+        "category": "Ortsverband (Grüne)"
       },
-      "posts_count": 7,
-      "recent_posts_count": 0,
-      "created_at": "2022-05-24T00:00:00.000Z",
+      "posts_count": 235,
+      "recent_posts_count": 46,
+      "created_at": "2023-11-12T00:00:00.000Z",
       "is_bot": false
     },
-    "https://die-partei.social/@diepartei_pi": {
+    "https://gruene.social/@erzgruen": {
       "account": {
-        "name": "Die PARTEI Pinneberg",
-        "url": "https://die-partei.social/@diepartei_pi",
-        "category": "Kreisverband (Die PARTEI)"
-      },
-      "posts_count": 74,
-      "recent_posts_count": 0,
-      "created_at": "2021-08-07T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@DieParteiSchwerin": {
-      "account": {
-        "name": "Die PARTEI Schwerin",
-        "url": "https://die-partei.social/@DieParteiSchwerin",
-        "category": "Kreisverband (Die PARTEI)"
-      },
-      "posts_count": 51,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-12T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.cologne/@DiePARTEI_Leverkusen": {
-      "account": {
-        "name": "Die PARTEI Leverkusen",
-        "url": "https://social.cologne/@DiePARTEI_Leverkusen",
-        "category": "Kreisverband (Die PARTEI)"
-      },
-      "posts_count": 972,
-      "recent_posts_count": 23,
-      "created_at": "2022-04-27T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://mastodon.social/@dieparteiLL": {
-      "account": {
-        "name": "Die PARTEI Landsberg",
-        "url": "https://mastodon.social/@dieparteiLL",
-        "category": "Kreisverband (Die PARTEI)"
-      },
-      "posts_count": 0,
-      "recent_posts_count": 0,
-      "created_at": "2022-10-30T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@DiePARTEI_RT": {
-      "account": {
-        "name": "Die PARTEI Reutlingen",
-        "url": "https://die-partei.social/@DiePARTEI_RT",
-        "category": "Kreisverband (Die PARTEI)"
+        "name": "Bündnis 90/Die Grünen Kreisverband Erzgebirge",
+        "url": "https://gruene.social/@erzgruen",
+        "category": "Ortsverband (Grüne)"
       },
       "posts_count": 2,
-      "recent_posts_count": 2,
-      "created_at": "2025-01-26T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@kvwow": {
-      "account": {
-        "name": "Die PARTEI WOW",
-        "url": "https://die-partei.social/@kvwow",
-        "category": "Kreisverband (Die PARTEI)"
-      },
-      "posts_count": 0,
       "recent_posts_count": 0,
-      "created_at": "2022-01-08T00:00:00.000Z",
+      "created_at": "2022-11-08T00:00:00.000Z",
       "is_bot": false
     },
-    "https://troet.cafe/@PARTEILahnDill": {
+    "https://gruene.social/@AllachUntermenzing": {
       "account": {
-        "name": "Die PARTEI Lahn-Dill",
-        "url": "https://troet.cafe/@PARTEILahnDill",
-        "category": "Kreisverband (Die PARTEI)"
+        "name": "Bündnis '90/Die Grünen Ortsverband Allach-Untermenzing",
+        "url": "https://gruene.social/@AllachUntermenzing",
+        "category": "Ortsverband (Grüne)"
       },
-      "posts_count": 26,
-      "recent_posts_count": 1,
-      "created_at": "2023-09-05T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@Die_PARTEI_DaDi": {
-      "account": {
-        "name": "Die PARTEI Darmstadt-Dieburg",
-        "url": "https://die-partei.social/@Die_PARTEI_DaDi",
-        "category": "Kreisverband (Die PARTEI)"
-      },
-      "posts_count": 53,
-      "recent_posts_count": 10,
-      "created_at": "2022-10-29T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@hildesheim": {
-      "account": {
-        "name": "Die PARTEI Hildesheim",
-        "url": "https://die-partei.social/@hildesheim",
-        "category": "Kreisverband (Die PARTEI)"
-      },
-      "posts_count": 63,
-      "recent_posts_count": 25,
-      "created_at": "2022-11-07T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@DiePARTEI_Mainz": {
-      "account": {
-        "name": "Die PARTEI Mainz",
-        "url": "https://die-partei.social/@DiePARTEI_Mainz",
-        "category": "Kreisverband (Die PARTEI)"
-      },
-      "posts_count": 9,
+      "posts_count": 40,
       "recent_posts_count": 0,
-      "created_at": "2022-11-16T00:00:00.000Z",
+      "created_at": "2023-01-21T00:00:00.000Z",
       "is_bot": false
     },
-    "https://hessen.social/@DieParteiWetterau": {
+    "https://gruene.social/@roethenbach": {
       "account": {
-        "name": "Die PARTEI Wetterau",
-        "url": "https://hessen.social/@DieParteiWetterau",
-        "category": "Kreisverband (Die PARTEI)"
+        "name": "Bündnis '90/Die Grünen Ortsverband Röthenbach",
+        "url": "https://gruene.social/@roethenbach",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 36,
+      "recent_posts_count": 8,
+      "created_at": "2024-06-05T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruenesiegburg": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Siegburg",
+        "url": "https://gruene.social/@gruenesiegburg",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 88,
+      "recent_posts_count": 34,
+      "created_at": "2022-12-23T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@buerstadt": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Bürstadt",
+        "url": "https://gruene.social/@buerstadt",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 87,
+      "recent_posts_count": 47,
+      "created_at": "2024-09-17T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@GrueneBeelitz": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Beelitz",
+        "url": "https://gruene.social/@GrueneBeelitz",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 267,
+      "recent_posts_count": 120,
+      "created_at": "2023-02-06T00:00:00.000Z",
+      "is_bot": true
+    },
+    "https://gruene.social/@B90_Gruene_Havelland": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Havelland",
+        "url": "https://gruene.social/@B90_Gruene_Havelland",
+        "category": "Ortsverband (Grüne)"
       },
       "posts_count": 23,
       "recent_posts_count": 0,
-      "created_at": "2022-11-13T00:00:00.000Z",
+      "created_at": "2020-05-03T00:00:00.000Z",
       "is_bot": false
     },
-    "https://machteburch.social/@diepartei_md": {
+    "https://gruene.social/@gruene_rheinfelden": {
       "account": {
-        "name": "Die PARTEI Magdeburg",
-        "url": "https://machteburch.social/@diepartei_md",
-        "category": "Kreisverband (Die PARTEI)"
+        "name": "Bündnis '90/Die Grünen Ortsverband Rheinfelden",
+        "url": "https://gruene.social/@gruene_rheinfelden",
+        "category": "Ortsverband (Grüne)"
       },
-      "posts_count": 20,
-      "recent_posts_count": 0,
-      "created_at": "2020-03-02T00:00:00.000Z",
+      "posts_count": 39,
+      "recent_posts_count": 16,
+      "created_at": "2024-04-16T00:00:00.000Z",
       "is_bot": false
     },
-    "https://die-partei.social/@dieparteimuc": {
+    "https://gruene.social/@stockelsdorf": {
       "account": {
-        "name": "Die PARTEI München",
-        "url": "https://die-partei.social/@dieparteimuc",
-        "category": "Kreisverband (Die PARTEI)"
+        "name": "Bündnis '90/Die Grünen Ortsverband Stockelsdorf",
+        "url": "https://gruene.social/@stockelsdorf",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 179,
+      "recent_posts_count": 43,
+      "created_at": "2023-09-17T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@GrabenNeudorf": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Graben-Neudorf",
+        "url": "https://gruene.social/@GrabenNeudorf",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 145,
+      "recent_posts_count": 74,
+      "created_at": "2022-10-31T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@muenster_nord": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Münster Nord",
+        "url": "https://gruene.social/@muenster_nord",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 82,
+      "recent_posts_count": 1,
+      "created_at": "2022-10-29T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@harsefeld": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Harsefeld",
+        "url": "https://gruene.social/@harsefeld",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 830,
+      "recent_posts_count": 120,
+      "created_at": "2021-09-28T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruene_uedem": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Uedem",
+        "url": "https://gruene.social/@gruene_uedem",
+        "category": "Ortsverband (Grüne)"
       },
       "posts_count": 32,
-      "recent_posts_count": 0,
+      "recent_posts_count": 2,
       "created_at": "2022-11-15T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.cologne/@DiePARTEIKoeln": {
+    "https://mastodon.social/@B90GRNAidlingen": {
       "account": {
-        "name": "Die PARTEI Köln",
-        "url": "https://social.cologne/@DiePARTEIKoeln",
-        "category": "Kreisverband (Die PARTEI)"
+        "name": "Bündnis '90/Die Grünen Ortsverband Aidlingen",
+        "url": "https://mastodon.social/@B90GRNAidlingen",
+        "category": "Ortsverband (Grüne)"
       },
-      "posts_count": 120,
+      "posts_count": 2,
       "recent_posts_count": 0,
-      "created_at": "2022-11-06T00:00:00.000Z",
+      "created_at": "2023-06-19T00:00:00.000Z",
       "is_bot": false
     },
-    "https://die-partei.social/@diePARTEI_NWM": {
+    "https://gruene.social/@GrueneTornesch": {
       "account": {
-        "name": "Die PARTEI Nordwestmecklenburg",
-        "url": "https://die-partei.social/@diePARTEI_NWM",
-        "category": "Kreisverband (Die PARTEI)"
+        "name": "Bündnis '90/Die Grünen Ortsverband Tornesch",
+        "url": "https://gruene.social/@GrueneTornesch",
+        "category": "Ortsverband (Grüne)"
       },
-      "posts_count": 20,
-      "recent_posts_count": 0,
-      "created_at": "2022-01-17T00:00:00.000Z",
+      "posts_count": 63,
+      "recent_posts_count": 2,
+      "created_at": "2022-10-30T00:00:00.000Z",
       "is_bot": false
     },
-    "https://die-partei.social/@diepartei_kvkn": {
+    "https://gruene.social/@lahntal": {
       "account": {
-        "name": "Die PARTEI Kreisverband Konstanz",
-        "url": "https://die-partei.social/@diepartei_kvkn",
-        "category": "Kreisverband (Die PARTEI)"
+        "name": "Bündnis '90/Die Grünen Ortsverband Lahntal",
+        "url": "https://gruene.social/@lahntal",
+        "category": "Ortsverband (Grüne)"
       },
-      "posts_count": 9,
+      "posts_count": 31,
+      "recent_posts_count": 4,
+      "created_at": "2022-11-04T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruene_michendorf": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Michendorf",
+        "url": "https://gruene.social/@gruene_michendorf",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 52,
+      "recent_posts_count": 36,
+      "created_at": "2020-03-13T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@GrueneSchwerte": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Schwerte",
+        "url": "https://gruene.social/@GrueneSchwerte",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 7,
       "recent_posts_count": 0,
-      "created_at": "2022-11-07T00:00:00.000Z",
+      "created_at": "2022-11-11T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@GrueneLage": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Lage",
+        "url": "https://gruene.social/@GrueneLage",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 31,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-21T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@wedemark": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Wedemark",
+        "url": "https://gruene.social/@wedemark",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 31,
+      "recent_posts_count": 0,
+      "created_at": "2022-04-27T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gochsheim": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Gochsheim-Weyer",
+        "url": "https://gruene.social/@gochsheim",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 249,
+      "recent_posts_count": 37,
+      "created_at": "2022-11-16T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@ov_roemerberg": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Römerberg",
+        "url": "https://gruene.social/@ov_roemerberg",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 5,
+      "recent_posts_count": 0,
+      "created_at": "2022-12-09T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruenebo": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Bad Oeynhausen",
+        "url": "https://gruene.social/@gruenebo",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 77,
+      "recent_posts_count": 3,
+      "created_at": "2022-10-29T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@OrtverbandStade": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Hansestadt Stade",
+        "url": "https://gruene.social/@OrtverbandStade",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 1206,
+      "recent_posts_count": 110,
+      "created_at": "2022-11-19T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruene_schlangenbad": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Schlangenbad",
+        "url": "https://gruene.social/@gruene_schlangenbad",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 53,
+      "recent_posts_count": 0,
+      "created_at": "2021-01-09T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@GrueneStadtbergen": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Kreistagsfraktion Stadtbergen",
+        "url": "https://gruene.social/@GrueneStadtbergen",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 24,
+      "recent_posts_count": 1,
+      "created_at": "2022-10-31T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruenetoevo": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Tönisvorst",
+        "url": "https://gruene.social/@gruenetoevo",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 51,
+      "recent_posts_count": 3,
+      "created_at": "2022-11-08T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruenemuenchenhadern": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband München-Hadern",
+        "url": "https://gruene.social/@gruenemuenchenhadern",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 5669,
+      "recent_posts_count": 120,
+      "created_at": "2021-04-26T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@ov_gruene_verden": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Verden",
+        "url": "https://gruene.social/@ov_gruene_verden",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 2,
+      "recent_posts_count": 0,
+      "created_at": "2022-12-12T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@GrueneDietzenbach": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Dietzenbach",
+        "url": "https://gruene.social/@GrueneDietzenbach",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 1,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-19T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruenedransfeld": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Dransfeld",
+        "url": "https://gruene.social/@gruenedransfeld",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 1,
+      "recent_posts_count": 0,
+      "created_at": "2022-12-19T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@Gruene_Roesrath": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Rösrath",
+        "url": "https://gruene.social/@Gruene_Roesrath",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 10,
+      "recent_posts_count": 7,
+      "created_at": "2022-11-14T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruene_hohenbrunn": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Ortsverband Hohenbrunn",
+        "url": "https://gruene.social/@gruene_hohenbrunn",
+        "category": "Ortsverband (Grüne)"
+      },
+      "posts_count": 3,
+      "recent_posts_count": 2,
+      "created_at": "2022-11-08T00:00:00.000Z",
       "is_bot": false
     },
     "https://die-partei.social/@dieparteimg": {
@@ -198,15 +385,48 @@
       "created_at": "2022-04-29T00:00:00.000Z",
       "is_bot": false
     },
-    "https://die-partei.social/@DiePARTEI_Freising": {
+    "https://die-partei.social/@DiePARTEI_Mainz": {
       "account": {
-        "name": "Die PARTEI Freising",
-        "url": "https://die-partei.social/@DiePARTEI_Freising",
+        "name": "Die PARTEI Mainz",
+        "url": "https://die-partei.social/@DiePARTEI_Mainz",
         "category": "Kreisverband (Die PARTEI)"
       },
-      "posts_count": 79,
-      "recent_posts_count": 3,
-      "created_at": "2022-11-10T00:00:00.000Z",
+      "posts_count": 9,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-16T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@DieParteiSchwerin": {
+      "account": {
+        "name": "Die PARTEI Schwerin",
+        "url": "https://die-partei.social/@DieParteiSchwerin",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 51,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-12T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.cologne/@DiePARTEIKoeln": {
+      "account": {
+        "name": "Die PARTEI Köln",
+        "url": "https://social.cologne/@DiePARTEIKoeln",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 120,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-06T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@diepartei_kvkn": {
+      "account": {
+        "name": "Die PARTEI Kreisverband Konstanz",
+        "url": "https://die-partei.social/@diepartei_kvkn",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 9,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-07T00:00:00.000Z",
       "is_bot": false
     },
     "https://die-partei.social/@Die_PARTEI_Harz": {
@@ -231,6 +451,17 @@
       "created_at": "2022-12-17T00:00:00.000Z",
       "is_bot": false
     },
+    "https://die-partei.social/@hildesheim": {
+      "account": {
+        "name": "Die PARTEI Hildesheim",
+        "url": "https://die-partei.social/@hildesheim",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 63,
+      "recent_posts_count": 25,
+      "created_at": "2022-11-07T00:00:00.000Z",
+      "is_bot": false
+    },
     "https://die-partei.social/@goettingen": {
       "account": {
         "name": "Die PARTEI Göttingen",
@@ -240,6 +471,50 @@
       "posts_count": 32,
       "recent_posts_count": 0,
       "created_at": "2022-11-18T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://hessen.social/@DieParteiWetterau": {
+      "account": {
+        "name": "Die PARTEI Wetterau",
+        "url": "https://hessen.social/@DieParteiWetterau",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 23,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-13T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@DiePARTEIDo": {
+      "account": {
+        "name": "Die PARTEI Dortmund",
+        "url": "https://die-partei.social/@DiePARTEIDo",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 175,
+      "recent_posts_count": 36,
+      "created_at": "2022-11-22T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.cologne/@DiePARTEI_Leverkusen": {
+      "account": {
+        "name": "Die PARTEI Leverkusen",
+        "url": "https://social.cologne/@DiePARTEI_Leverkusen",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 972,
+      "recent_posts_count": 23,
+      "created_at": "2022-04-27T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://troet.cafe/@PARTEILahnDill": {
+      "account": {
+        "name": "Die PARTEI Lahn-Dill",
+        "url": "https://troet.cafe/@PARTEILahnDill",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 26,
+      "recent_posts_count": 1,
+      "created_at": "2023-09-05T00:00:00.000Z",
       "is_bot": false
     },
     "https://osna.social/@diepartei": {
@@ -253,26 +528,37 @@
       "created_at": "2022-12-22T00:00:00.000Z",
       "is_bot": false
     },
-    "https://die-partei.social/@marburgbiedenkopf": {
+    "https://machteburch.social/@diepartei_md": {
       "account": {
-        "name": "Die PARTEI Marburg-Biedenkopf",
-        "url": "https://die-partei.social/@marburgbiedenkopf",
+        "name": "Die PARTEI Magdeburg",
+        "url": "https://machteburch.social/@diepartei_md",
         "category": "Kreisverband (Die PARTEI)"
       },
-      "posts_count": 4,
+      "posts_count": 20,
       "recent_posts_count": 0,
-      "created_at": "2022-11-19T00:00:00.000Z",
+      "created_at": "2020-03-02T00:00:00.000Z",
       "is_bot": false
     },
-    "https://mastodon.social/@die_partei_krefeld": {
+    "https://die-partei.social/@Die_PARTEI_DaDi": {
       "account": {
-        "name": "Die PARTEI Kreisverband Krefeld",
-        "url": "https://mastodon.social/@die_partei_krefeld",
+        "name": "Die PARTEI Darmstadt-Dieburg",
+        "url": "https://die-partei.social/@Die_PARTEI_DaDi",
         "category": "Kreisverband (Die PARTEI)"
       },
-      "posts_count": 12,
+      "posts_count": 53,
+      "recent_posts_count": 10,
+      "created_at": "2022-10-29T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@DiePARTEI_Erding": {
+      "account": {
+        "name": "Die PARTEI Erding",
+        "url": "https://die-partei.social/@DiePARTEI_Erding",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 7,
       "recent_posts_count": 0,
-      "created_at": "2023-06-28T00:00:00.000Z",
+      "created_at": "2022-05-24T00:00:00.000Z",
       "is_bot": false
     },
     "https://die-partei.social/@DiePARTEI_MKK": {
@@ -286,15 +572,26 @@
       "created_at": "2022-11-15T00:00:00.000Z",
       "is_bot": false
     },
-    "https://die-partei.social/@fulda": {
+    "https://die-partei.social/@diepartei_pi": {
       "account": {
-        "name": "Die PARTEI Fulda",
-        "url": "https://die-partei.social/@fulda",
+        "name": "Die PARTEI Pinneberg",
+        "url": "https://die-partei.social/@diepartei_pi",
         "category": "Kreisverband (Die PARTEI)"
       },
-      "posts_count": 106,
-      "recent_posts_count": 24,
-      "created_at": "2023-12-12T00:00:00.000Z",
+      "posts_count": 74,
+      "recent_posts_count": 0,
+      "created_at": "2021-08-07T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@DiePARTEI_Freising": {
+      "account": {
+        "name": "Die PARTEI Freising",
+        "url": "https://die-partei.social/@DiePARTEI_Freising",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 79,
+      "recent_posts_count": 3,
+      "created_at": "2022-11-10T00:00:00.000Z",
       "is_bot": false
     },
     "https://die-partei.social/@dieparteiZw": {
@@ -319,15 +616,510 @@
       "created_at": "2022-05-01T00:00:00.000Z",
       "is_bot": false
     },
-    "https://die-partei.social/@DiePARTEIDo": {
+    "https://mastodon.social/@die_partei_krefeld": {
       "account": {
-        "name": "Die PARTEI Dortmund",
-        "url": "https://die-partei.social/@DiePARTEIDo",
+        "name": "Die PARTEI Kreisverband Krefeld",
+        "url": "https://mastodon.social/@die_partei_krefeld",
         "category": "Kreisverband (Die PARTEI)"
       },
-      "posts_count": 174,
-      "recent_posts_count": 35,
-      "created_at": "2022-11-22T00:00:00.000Z",
+      "posts_count": 12,
+      "recent_posts_count": 0,
+      "created_at": "2023-06-28T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@dieparteimuc": {
+      "account": {
+        "name": "Die PARTEI München",
+        "url": "https://die-partei.social/@dieparteimuc",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 32,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-15T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@marburgbiedenkopf": {
+      "account": {
+        "name": "Die PARTEI Marburg-Biedenkopf",
+        "url": "https://die-partei.social/@marburgbiedenkopf",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 4,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-19T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@DiePARTEI_RT": {
+      "account": {
+        "name": "Die PARTEI Reutlingen",
+        "url": "https://die-partei.social/@DiePARTEI_RT",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 2,
+      "recent_posts_count": 2,
+      "created_at": "2025-01-26T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@fulda": {
+      "account": {
+        "name": "Die PARTEI Fulda",
+        "url": "https://die-partei.social/@fulda",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 105,
+      "recent_posts_count": 23,
+      "created_at": "2023-12-12T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@kvwow": {
+      "account": {
+        "name": "Die PARTEI WOW",
+        "url": "https://die-partei.social/@kvwow",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 0,
+      "recent_posts_count": 0,
+      "created_at": "2022-01-08T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://mastodon.social/@dieparteiLL": {
+      "account": {
+        "name": "Die PARTEI Landsberg",
+        "url": "https://mastodon.social/@dieparteiLL",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 0,
+      "recent_posts_count": 0,
+      "created_at": "2022-10-30T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@diePARTEI_NWM": {
+      "account": {
+        "name": "Die PARTEI Nordwestmecklenburg",
+        "url": "https://die-partei.social/@diePARTEI_NWM",
+        "category": "Kreisverband (Die PARTEI)"
+      },
+      "posts_count": 20,
+      "recent_posts_count": 0,
+      "created_at": "2022-01-17T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://freiewaehler.social/@Bundesvereinigung": {
+      "account": {
+        "name": "Freie Wähler",
+        "url": "https://freiewaehler.social/@Bundesvereinigung",
+        "category": "politische Partei in Deutschland"
+      },
+      "posts_count": 598,
+      "recent_posts_count": 38,
+      "created_at": "2023-01-02T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@boerde": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Börde",
+        "url": "https://gruene.social/@boerde",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 236,
+      "recent_posts_count": 45,
+      "created_at": "2021-07-21T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruene_ol": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Oldenburg-Stadt",
+        "url": "https://gruene.social/@gruene_ol",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 49,
+      "recent_posts_count": 3,
+      "created_at": "2023-01-10T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruene_potsdam": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Potsdam",
+        "url": "https://gruene.social/@gruene_potsdam",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 198,
+      "recent_posts_count": 32,
+      "created_at": "2023-03-09T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruene_tk": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Treptow-Köpenick",
+        "url": "https://gruene.social/@gruene_tk",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 228,
+      "recent_posts_count": 0,
+      "created_at": "2019-09-27T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gifhorn": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Gifhorn",
+        "url": "https://gruene.social/@gifhorn",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 595,
+      "recent_posts_count": 84,
+      "created_at": "2022-10-31T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@hagen": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Hagen",
+        "url": "https://gruene.social/@hagen",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 10,
+      "recent_posts_count": 0,
+      "created_at": "2022-10-29T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@kv_gruene_verden": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Verden",
+        "url": "https://gruene.social/@kv_gruene_verden",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 31,
+      "recent_posts_count": 1,
+      "created_at": "2022-02-04T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@GrueneES": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Esslingen",
+        "url": "https://gruene.social/@GrueneES",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 819,
+      "recent_posts_count": 24,
+      "created_at": "2022-11-12T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruene_bonn": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Bonn",
+        "url": "https://gruene.social/@gruene_bonn",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 62,
+      "recent_posts_count": 0,
+      "created_at": "2023-06-27T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@lk_leipzig": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Landkreis Leipzig",
+        "url": "https://gruene.social/@lk_leipzig",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 127,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-12T00:00:00.000Z",
+      "is_bot": true
+    },
+    "https://gruene.social/@gruene_leipzig": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Leipzig",
+        "url": "https://gruene.social/@gruene_leipzig",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 427,
+      "recent_posts_count": 84,
+      "created_at": "2024-01-26T00:00:00.000Z",
+      "is_bot": true
+    },
+    "https://gruene.social/@gruene_fri": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Friesland",
+        "url": "https://gruene.social/@gruene_fri",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 10,
+      "recent_posts_count": 0,
+      "created_at": "2022-05-27T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@GrueneXhain": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Friedrichshain-Kreuzberg",
+        "url": "https://gruene.social/@GrueneXhain",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 277,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-24T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@KV_Aurich_Norden": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Aurich-Norden",
+        "url": "https://gruene.social/@KV_Aurich_Norden",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 217,
+      "recent_posts_count": 51,
+      "created_at": "2021-02-19T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://norden.social/@GrueneKiel": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Kreisverband Kiel",
+        "url": "https://norden.social/@GrueneKiel",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 0,
+      "recent_posts_count": 0,
+      "created_at": "2020-01-22T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@GrueneGreiz": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Kreisverband Greiz",
+        "url": "https://gruene.social/@GrueneGreiz",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 228,
+      "recent_posts_count": 30,
+      "created_at": "2023-03-05T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruenechemnitz": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Chemnitz",
+        "url": "https://gruene.social/@gruenechemnitz",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 113,
+      "recent_posts_count": 16,
+      "created_at": "2023-01-18T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruene_md": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Magdeburg",
+        "url": "https://gruene.social/@gruene_md",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 711,
+      "recent_posts_count": 79,
+      "created_at": "2022-11-07T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruenebochum": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Bochum",
+        "url": "https://gruene.social/@gruenebochum",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 3,
+      "recent_posts_count": 0,
+      "created_at": "2023-08-18T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@niederbarnim": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Kreisverband Barnim",
+        "url": "https://gruene.social/@niederbarnim",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 94,
+      "recent_posts_count": 7,
+      "created_at": "2022-11-21T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@Rheinisch_Bergischer_Kreis": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Kreisverband Rhein-Berg",
+        "url": "https://gruene.social/@Rheinisch_Bergischer_Kreis",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 7,
+      "recent_posts_count": 2,
+      "created_at": "2022-11-14T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@GruenePankow": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Pankow",
+        "url": "https://gruene.social/@GruenePankow",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 1270,
+      "recent_posts_count": 61,
+      "created_at": "2022-11-24T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@altona": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Altona",
+        "url": "https://gruene.social/@altona",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 51,
+      "recent_posts_count": 11,
+      "created_at": "2022-11-14T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@hochtaunus": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Hochtaunus",
+        "url": "https://gruene.social/@hochtaunus",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 42,
+      "recent_posts_count": 0,
+      "created_at": "2020-06-07T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruene_ab": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Aschaffenburg-Stadt",
+        "url": "https://gruene.social/@gruene_ab",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 10,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-02T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruenerostock": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Kreisverband Rostock",
+        "url": "https://gruene.social/@gruenerostock",
+        "category": "Kreisverband (Grüne)"
+      },
+      "posts_count": 1,
+      "recent_posts_count": 0,
+      "created_at": "2023-09-08T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://nrw.social/@dielinkebonn": {
+      "account": {
+        "name": "Die Linke Kreisverband Bonn",
+        "url": "https://nrw.social/@dielinkebonn",
+        "category": "Kreisverband (Linke)"
+      },
+      "posts_count": 3,
+      "recent_posts_count": 0,
+      "created_at": "2023-04-06T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://aschaffenburg.social/@linke": {
+      "account": {
+        "name": "Die Linke Kreisverband Aschaffenburg-Miltenberg",
+        "url": "https://aschaffenburg.social/@linke",
+        "category": "Kreisverband (Linke)"
+      },
+      "posts_count": 89,
+      "recent_posts_count": 1,
+      "created_at": "2023-09-29T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://hessen.social/@Linke_RTK": {
+      "account": {
+        "name": "Die Linke Kreisverband Rheingau-Taunus-Kreis",
+        "url": "https://hessen.social/@Linke_RTK",
+        "category": "Kreisverband (Linke)"
+      },
+      "posts_count": 78,
+      "recent_posts_count": 0,
+      "created_at": "2022-05-05T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://linke.social/@dielinke_dortmund": {
+      "account": {
+        "name": "Die Linke Dortmund",
+        "url": "https://linke.social/@dielinke_dortmund",
+        "category": "Kreisverband (Linke)"
+      },
+      "posts_count": 122,
+      "recent_posts_count": 39,
+      "created_at": "2024-04-07T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://sueden.social/@DieLinke_KA": {
+      "account": {
+        "name": "Die Linke Kreisverband Karlsruhe",
+        "url": "https://sueden.social/@DieLinke_KA",
+        "category": "Kreisverband (Linke)"
+      },
+      "posts_count": 153,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-18T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://linke.social/@teltowflaeming": {
+      "account": {
+        "name": "Die Linke Teltow-Fläming",
+        "url": "https://linke.social/@teltowflaeming",
+        "category": "Kreisverband (Linke)"
+      },
+      "posts_count": 232,
+      "recent_posts_count": 0,
+      "created_at": "2024-04-04T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://sueden.social/@oedplandshut": {
+      "account": {
+        "name": "ÖDP Landshut",
+        "url": "https://sueden.social/@oedplandshut",
+        "category": "Kreisverband (ÖDP)"
+      },
+      "posts_count": 40,
+      "recent_posts_count": 5,
+      "created_at": "2022-11-13T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://nrw.social/@oedpduesseldorf": {
+      "account": {
+        "name": "ÖDP Kreisverband Düsseldorf-Niederrhein",
+        "url": "https://nrw.social/@oedpduesseldorf",
+        "category": "Kreisverband (ÖDP)"
+      },
+      "posts_count": 464,
+      "recent_posts_count": 61,
+      "created_at": "2022-11-02T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://muenster.im/@oedp_muenster": {
+      "account": {
+        "name": "ÖDP Kreisverband Münster",
+        "url": "https://muenster.im/@oedp_muenster",
+        "category": "Kreisverband (ÖDP)"
+      },
+      "posts_count": 247,
+      "recent_posts_count": 11,
+      "created_at": "2022-12-01T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://leipzig.town/@oedp": {
+      "account": {
+        "name": "ÖDP Kreisverband Leipzig",
+        "url": "https://leipzig.town/@oedp",
+        "category": "Kreisverband (ÖDP)"
+      },
+      "posts_count": 2,
+      "recent_posts_count": 0,
+      "created_at": "2024-04-04T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruenemv": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Mecklenburg-Vorpommern",
+        "url": "https://gruene.social/@gruenemv",
+        "category": "Landesverband (Grüne)"
+      },
+      "posts_count": 2,
+      "recent_posts_count": 0,
+      "created_at": "2023-08-28T00:00:00.000Z",
       "is_bot": false
     },
     "https://gruene.social/@gruene_berlin": {
@@ -374,303 +1166,6 @@
       "created_at": "2022-11-02T00:00:00.000Z",
       "is_bot": false
     },
-    "https://gruene.social/@gruenemv": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Mecklenburg-Vorpommern",
-        "url": "https://gruene.social/@gruenemv",
-        "category": "Landesverband (Grüne)"
-      },
-      "posts_count": 2,
-      "recent_posts_count": 0,
-      "created_at": "2023-08-28T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gifhorn": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Gifhorn",
-        "url": "https://gruene.social/@gifhorn",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 595,
-      "recent_posts_count": 85,
-      "created_at": "2022-10-31T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_ol": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Oldenburg-Stadt",
-        "url": "https://gruene.social/@gruene_ol",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 49,
-      "recent_posts_count": 3,
-      "created_at": "2023-01-10T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@hagen": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Hagen",
-        "url": "https://gruene.social/@hagen",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 10,
-      "recent_posts_count": 0,
-      "created_at": "2022-10-29T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_md": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Magdeburg",
-        "url": "https://gruene.social/@gruene_md",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 709,
-      "recent_posts_count": 78,
-      "created_at": "2022-11-07T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_bonn": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Bonn",
-        "url": "https://gruene.social/@gruene_bonn",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 62,
-      "recent_posts_count": 0,
-      "created_at": "2023-06-27T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_fri": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Friesland",
-        "url": "https://gruene.social/@gruene_fri",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 10,
-      "recent_posts_count": 0,
-      "created_at": "2022-05-27T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@hochtaunus": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Hochtaunus",
-        "url": "https://gruene.social/@hochtaunus",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 42,
-      "recent_posts_count": 0,
-      "created_at": "2020-06-07T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_potsdam": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Potsdam",
-        "url": "https://gruene.social/@gruene_potsdam",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 192,
-      "recent_posts_count": 27,
-      "created_at": "2023-03-09T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_leipzig": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Leipzig",
-        "url": "https://gruene.social/@gruene_leipzig",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 422,
-      "recent_posts_count": 80,
-      "created_at": "2024-01-26T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://gruene.social/@GrueneXhain": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Friedrichshain-Kreuzberg",
-        "url": "https://gruene.social/@GrueneXhain",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 277,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-24T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@KV_Aurich_Norden": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Aurich-Norden",
-        "url": "https://gruene.social/@KV_Aurich_Norden",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 217,
-      "recent_posts_count": 51,
-      "created_at": "2021-02-19T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_tk": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Treptow-Köpenick",
-        "url": "https://gruene.social/@gruene_tk",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 228,
-      "recent_posts_count": 0,
-      "created_at": "2019-09-27T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_ab": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Aschaffenburg-Stadt",
-        "url": "https://gruene.social/@gruene_ab",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 10,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-02T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@kv_gruene_verden": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Verden",
-        "url": "https://gruene.social/@kv_gruene_verden",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 31,
-      "recent_posts_count": 1,
-      "created_at": "2022-02-04T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@boerde": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Börde",
-        "url": "https://gruene.social/@boerde",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 236,
-      "recent_posts_count": 46,
-      "created_at": "2021-07-21T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@altona": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Altona",
-        "url": "https://gruene.social/@altona",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 51,
-      "recent_posts_count": 11,
-      "created_at": "2022-11-14T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruenebochum": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Bochum",
-        "url": "https://gruene.social/@gruenebochum",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 3,
-      "recent_posts_count": 0,
-      "created_at": "2023-08-18T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruenerostock": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Rostock",
-        "url": "https://gruene.social/@gruenerostock",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 1,
-      "recent_posts_count": 0,
-      "created_at": "2023-09-08T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@GruenePankow": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Pankow",
-        "url": "https://gruene.social/@GruenePankow",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 1270,
-      "recent_posts_count": 61,
-      "created_at": "2022-11-24T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@GrueneGreiz": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Kreisverband Greiz",
-        "url": "https://gruene.social/@GrueneGreiz",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 227,
-      "recent_posts_count": 31,
-      "created_at": "2023-03-05T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@niederbarnim": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Kreisverband Barnim",
-        "url": "https://gruene.social/@niederbarnim",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 94,
-      "recent_posts_count": 7,
-      "created_at": "2022-11-21T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@GrueneES": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Esslingen",
-        "url": "https://gruene.social/@GrueneES",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 819,
-      "recent_posts_count": 24,
-      "created_at": "2022-11-12T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@lk_leipzig": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Landkreis Leipzig",
-        "url": "https://gruene.social/@lk_leipzig",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 127,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-12T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://norden.social/@GrueneKiel": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Kreisverband Kiel",
-        "url": "https://norden.social/@GrueneKiel",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 0,
-      "recent_posts_count": 0,
-      "created_at": "2020-01-22T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@Rheinisch_Bergischer_Kreis": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Kreisverband Rhein-Berg",
-        "url": "https://gruene.social/@Rheinisch_Bergischer_Kreis",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 7,
-      "recent_posts_count": 2,
-      "created_at": "2022-11-14T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruenechemnitz": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Chemnitz",
-        "url": "https://gruene.social/@gruenechemnitz",
-        "category": "Kreisverband (Grüne)"
-      },
-      "posts_count": 113,
-      "recent_posts_count": 17,
-      "created_at": "2023-01-18T00:00:00.000Z",
-      "is_bot": false
-    },
     "https://mastodon.social/@die_linke_nds": {
       "account": {
         "name": "Die Linke Niedersachsen",
@@ -680,6 +1175,17 @@
       "posts_count": 25,
       "recent_posts_count": 0,
       "created_at": "2022-05-11T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://linke.social/@dielinkehessen": {
+      "account": {
+        "name": "Die Linke Hessen",
+        "url": "https://linke.social/@dielinkehessen",
+        "category": "Landesverband (Linke)"
+      },
+      "posts_count": 37,
+      "recent_posts_count": 24,
+      "created_at": "2024-11-25T00:00:00.000Z",
       "is_bot": false
     },
     "https://mastodon.social/@die_linke_th": {
@@ -704,457 +1210,6 @@
       "created_at": "2022-11-14T00:00:00.000Z",
       "is_bot": false
     },
-    "https://aschaffenburg.social/@linke": {
-      "account": {
-        "name": "Die Linke Kreisverband Aschaffenburg-Miltenberg",
-        "url": "https://aschaffenburg.social/@linke",
-        "category": "Kreisverband (Linke)"
-      },
-      "posts_count": 89,
-      "recent_posts_count": 1,
-      "created_at": "2023-09-29T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://hessen.social/@Linke_RTK": {
-      "account": {
-        "name": "Die Linke Kreisverband Rheingau-Taunus-Kreis",
-        "url": "https://hessen.social/@Linke_RTK",
-        "category": "Kreisverband (Linke)"
-      },
-      "posts_count": 78,
-      "recent_posts_count": 0,
-      "created_at": "2022-05-05T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://sueden.social/@DieLinke_KA": {
-      "account": {
-        "name": "Die Linke Kreisverband Karlsruhe",
-        "url": "https://sueden.social/@DieLinke_KA",
-        "category": "Kreisverband (Linke)"
-      },
-      "posts_count": 153,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-18T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://nrw.social/@dielinkebonn": {
-      "account": {
-        "name": "Die Linke Kreisverband Bonn",
-        "url": "https://nrw.social/@dielinkebonn",
-        "category": "Kreisverband (Linke)"
-      },
-      "posts_count": 3,
-      "recent_posts_count": 0,
-      "created_at": "2023-04-06T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@erzgruen": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Erzgebirge",
-        "url": "https://gruene.social/@erzgruen",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 2,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-08T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@B90_Gruene_Havelland": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Kreisverband Havelland",
-        "url": "https://gruene.social/@B90_Gruene_Havelland",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 23,
-      "recent_posts_count": 0,
-      "created_at": "2020-05-03T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_rheinfelden": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Rheinfelden",
-        "url": "https://gruene.social/@gruene_rheinfelden",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 39,
-      "recent_posts_count": 16,
-      "created_at": "2024-04-16T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@GrueneStadtbergen": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Kreistagsfraktion Stadtbergen",
-        "url": "https://gruene.social/@GrueneStadtbergen",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 24,
-      "recent_posts_count": 1,
-      "created_at": "2022-10-31T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruenetoevo": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Tönisvorst",
-        "url": "https://gruene.social/@gruenetoevo",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 51,
-      "recent_posts_count": 3,
-      "created_at": "2022-11-08T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruenemuenchenhadern": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband München-Hadern",
-        "url": "https://gruene.social/@gruenemuenchenhadern",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 5635,
-      "recent_posts_count": 120,
-      "created_at": "2021-04-26T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@ov_gruene_verden": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Verden",
-        "url": "https://gruene.social/@ov_gruene_verden",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 2,
-      "recent_posts_count": 0,
-      "created_at": "2022-12-12T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@GrueneLage": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Lage",
-        "url": "https://gruene.social/@GrueneLage",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 31,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-21T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruenedransfeld": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Dransfeld",
-        "url": "https://gruene.social/@gruenedransfeld",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 1,
-      "recent_posts_count": 0,
-      "created_at": "2022-12-19T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@Gruene_Roesrath": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Rösrath",
-        "url": "https://gruene.social/@Gruene_Roesrath",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 7,
-      "recent_posts_count": 4,
-      "created_at": "2022-11-14T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_hohenbrunn": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Hohenbrunn",
-        "url": "https://gruene.social/@gruene_hohenbrunn",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 3,
-      "recent_posts_count": 2,
-      "created_at": "2022-11-08T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@GrueneSchwerte": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Schwerte",
-        "url": "https://gruene.social/@GrueneSchwerte",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 7,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-11T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@GrabenNeudorf": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Graben-Neudorf",
-        "url": "https://gruene.social/@GrabenNeudorf",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 145,
-      "recent_posts_count": 74,
-      "created_at": "2022-10-31T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@wedemark": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Wedemark",
-        "url": "https://gruene.social/@wedemark",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 31,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-27T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@muenster_nord": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Münster Nord",
-        "url": "https://gruene.social/@muenster_nord",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 82,
-      "recent_posts_count": 1,
-      "created_at": "2022-10-29T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@harsefeld": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Harsefeld",
-        "url": "https://gruene.social/@harsefeld",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 828,
-      "recent_posts_count": 120,
-      "created_at": "2021-09-28T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_uedem": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Uedem",
-        "url": "https://gruene.social/@gruene_uedem",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 32,
-      "recent_posts_count": 2,
-      "created_at": "2022-11-15T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@AllachUntermenzing": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Allach-Untermenzing",
-        "url": "https://gruene.social/@AllachUntermenzing",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 40,
-      "recent_posts_count": 0,
-      "created_at": "2023-01-21T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@roethenbach": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Röthenbach",
-        "url": "https://gruene.social/@roethenbach",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 36,
-      "recent_posts_count": 8,
-      "created_at": "2024-06-05T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@buerstadt": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Bürstadt",
-        "url": "https://gruene.social/@buerstadt",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 87,
-      "recent_posts_count": 47,
-      "created_at": "2024-09-17T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@GrueneTornesch": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Tornesch",
-        "url": "https://gruene.social/@GrueneTornesch",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 63,
-      "recent_posts_count": 2,
-      "created_at": "2022-10-30T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@lahntal": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Lahntal",
-        "url": "https://gruene.social/@lahntal",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 31,
-      "recent_posts_count": 4,
-      "created_at": "2022-11-04T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@GrueneBeelitz": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Beelitz",
-        "url": "https://gruene.social/@GrueneBeelitz",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 240,
-      "recent_posts_count": 115,
-      "created_at": "2023-02-06T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://mastodon.social/@B90GRNAidlingen": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Aidlingen",
-        "url": "https://mastodon.social/@B90GRNAidlingen",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 2,
-      "recent_posts_count": 0,
-      "created_at": "2023-06-19T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_michendorf": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Michendorf",
-        "url": "https://gruene.social/@gruene_michendorf",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 52,
-      "recent_posts_count": 36,
-      "created_at": "2020-03-13T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruenesiegburg": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Siegburg",
-        "url": "https://gruene.social/@gruenesiegburg",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 88,
-      "recent_posts_count": 35,
-      "created_at": "2022-12-23T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@GrueneDietzenbach": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Dietzenbach",
-        "url": "https://gruene.social/@GrueneDietzenbach",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 1,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-19T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruenebo": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Bad Oeynhausen",
-        "url": "https://gruene.social/@gruenebo",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 77,
-      "recent_posts_count": 3,
-      "created_at": "2022-10-29T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruene_schlangenbad": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Schlangenbad",
-        "url": "https://gruene.social/@gruene_schlangenbad",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 53,
-      "recent_posts_count": 0,
-      "created_at": "2021-01-09T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@stockelsdorf": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Stockelsdorf",
-        "url": "https://gruene.social/@stockelsdorf",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 179,
-      "recent_posts_count": 43,
-      "created_at": "2023-09-17T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@OrtverbandStade": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Hansestadt Stade",
-        "url": "https://gruene.social/@OrtverbandStade",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 1199,
-      "recent_posts_count": 109,
-      "created_at": "2022-11-19T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@Gruene_Neuhofen": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Neuhofen",
-        "url": "https://gruene.social/@Gruene_Neuhofen",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 234,
-      "recent_posts_count": 45,
-      "created_at": "2023-11-12T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@ov_roemerberg": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Römerberg",
-        "url": "https://gruene.social/@ov_roemerberg",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 5,
-      "recent_posts_count": 0,
-      "created_at": "2022-12-09T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gochsheim": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Ortsverband Gochsheim-Weyer",
-        "url": "https://gruene.social/@gochsheim",
-        "category": "Ortsverband (Grüne)"
-      },
-      "posts_count": 249,
-      "recent_posts_count": 37,
-      "created_at": "2022-11-16T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@dieparteirlp": {
-      "account": {
-        "name": "Die PARTEI Rheinland-Pfalz",
-        "url": "https://die-partei.social/@dieparteirlp",
-        "category": "Landesverband (Die PARTEI)"
-      },
-      "posts_count": 220,
-      "recent_posts_count": 41,
-      "created_at": "2022-11-05T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://nrw.social/@DiePARTEINRW": {
-      "account": {
-        "name": "Die PARTEI NRW",
-        "url": "https://nrw.social/@DiePARTEINRW",
-        "category": "Landesverband (Die PARTEI)"
-      },
-      "posts_count": 62,
-      "recent_posts_count": 4,
-      "created_at": "2022-12-01T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://mastodon.social/@DiePARTEIBerlin": {
-      "account": {
-        "name": "Die PARTEI Berlin",
-        "url": "https://mastodon.social/@DiePARTEIBerlin",
-        "category": "Landesverband (Die PARTEI)"
-      },
-      "posts_count": 6,
-      "recent_posts_count": 0,
-      "created_at": "2022-10-28T00:00:00.000Z",
-      "is_bot": false
-    },
     "https://piraten-partei.social/@lvbayern": {
       "account": {
         "name": "Piratenpartei Bayern",
@@ -1164,6 +1219,17 @@
       "posts_count": 20,
       "recent_posts_count": 3,
       "created_at": "2024-10-04T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://dresden.network/@piratensachsen": {
+      "account": {
+        "name": "Piratenpartei Sachsen",
+        "url": "https://dresden.network/@piratensachsen",
+        "category": "Landesverband (Piraten)"
+      },
+      "posts_count": 1059,
+      "recent_posts_count": 58,
+      "created_at": "2021-02-22T00:00:00.000Z",
       "is_bot": false
     },
     "https://mastodon.cloud/@PiratenBW": {
@@ -1177,24 +1243,13 @@
       "created_at": "2019-01-02T00:00:00.000Z",
       "is_bot": true
     },
-    "https://dresden.network/@piratensachsen": {
-      "account": {
-        "name": "Piratenpartei Sachsen",
-        "url": "https://dresden.network/@piratensachsen",
-        "category": "Landesverband (Piraten)"
-      },
-      "posts_count": 1056,
-      "recent_posts_count": 56,
-      "created_at": "2021-02-22T00:00:00.000Z",
-      "is_bot": false
-    },
     "https://nrw.social/@piraten": {
       "account": {
         "name": "Piratenpartei Nordrhein-Westfalen",
         "url": "https://nrw.social/@piraten",
         "category": "Landesverband (Piraten)"
       },
-      "posts_count": 3479,
+      "posts_count": 3485,
       "recent_posts_count": 120,
       "created_at": "2023-02-17T00:00:00.000Z",
       "is_bot": false
@@ -1205,8 +1260,8 @@
         "url": "https://leipzig.town/@PiratenLeipzig",
         "category": "Kreisverband (Piraten)"
       },
-      "posts_count": 25,
-      "recent_posts_count": 25,
+      "posts_count": 26,
+      "recent_posts_count": 26,
       "created_at": "2025-02-02T00:00:00.000Z",
       "is_bot": false
     },
@@ -1219,6 +1274,127 @@
       "posts_count": 103,
       "recent_posts_count": 12,
       "created_at": "2024-10-11T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://mastodon.social/@DiePARTEIBerlin": {
+      "account": {
+        "name": "Die PARTEI Berlin",
+        "url": "https://mastodon.social/@DiePARTEIBerlin",
+        "category": "Landesverband (Die PARTEI)"
+      },
+      "posts_count": 6,
+      "recent_posts_count": 0,
+      "created_at": "2022-10-28T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://nrw.social/@DiePARTEINRW": {
+      "account": {
+        "name": "Die PARTEI NRW",
+        "url": "https://nrw.social/@DiePARTEINRW",
+        "category": "Landesverband (Die PARTEI)"
+      },
+      "posts_count": 63,
+      "recent_posts_count": 5,
+      "created_at": "2022-12-01T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@dieparteirlp": {
+      "account": {
+        "name": "Die PARTEI Rheinland-Pfalz",
+        "url": "https://die-partei.social/@dieparteirlp",
+        "category": "Landesverband (Die PARTEI)"
+      },
+      "posts_count": 220,
+      "recent_posts_count": 41,
+      "created_at": "2022-11-05T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://spd.social/@SPD_Tornesch": {
+      "account": {
+        "name": "SPD Tornesch",
+        "url": "https://spd.social/@SPD_Tornesch",
+        "category": "SPD-Ortsverein (SPD)"
+      },
+      "posts_count": 1,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-24T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://spd.social/@SPD_Kaiserstuhl_Tuniberg": {
+      "account": {
+        "name": "SPD Kaiserstuhl Tuniberg",
+        "url": "https://spd.social/@SPD_Kaiserstuhl_Tuniberg",
+        "category": "SPD-Ortsverein (SPD)"
+      },
+      "posts_count": 66,
+      "recent_posts_count": 50,
+      "created_at": "2024-11-19T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://weserbergland.social/@spdholzminden": {
+      "account": {
+        "name": "SPD Holzminden",
+        "url": "https://weserbergland.social/@spdholzminden",
+        "category": "SPD-Ortsverein (SPD)"
+      },
+      "posts_count": 27,
+      "recent_posts_count": 2,
+      "created_at": "2023-01-08T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://spd.social/@SPDLeipzigONO": {
+      "account": {
+        "name": "SPD Leipzig Ost / Nordost",
+        "url": "https://spd.social/@SPDLeipzigONO",
+        "category": "SPD-Ortsverein (SPD)"
+      },
+      "posts_count": 70,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-12T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://dresden.network/@neustadtpiraten": {
+      "account": {
+        "name": "Neustadtpiraten",
+        "url": "https://dresden.network/@neustadtpiraten",
+        "category": "Ortsverband (Piraten)"
+      },
+      "posts_count": 209,
+      "recent_posts_count": 2,
+      "created_at": "2019-09-25T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://mastodon.world/@OedpThueringen": {
+      "account": {
+        "name": "ÖDP Thüringen",
+        "url": "https://mastodon.world/@OedpThueringen",
+        "category": "Landesverband (ÖDP)"
+      },
+      "posts_count": 25,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-23T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://mas.to/@oedpbayern": {
+      "account": {
+        "name": "ÖDP Bayern",
+        "url": "https://mas.to/@oedpbayern",
+        "category": "Landesverband (ÖDP)"
+      },
+      "posts_count": 621,
+      "recent_posts_count": 17,
+      "created_at": "2022-11-02T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@ffb": {
+      "account": {
+        "name": "Die PARTEI Fürstenfeldbruck",
+        "url": "https://die-partei.social/@ffb",
+        "category": "Ortsverband (Die PARTEI)"
+      },
+      "posts_count": 1,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-20T00:00:00.000Z",
       "is_bot": false
     },
     "https://die-partei.social/@Duderstadt": {
@@ -1243,26 +1419,37 @@
       "created_at": "2019-07-20T00:00:00.000Z",
       "is_bot": false
     },
-    "https://die-partei.social/@ffb": {
+    "https://masto.ai/@CDU_Niederbieber_Segendorf": {
       "account": {
-        "name": "Die PARTEI Fürstenfeldbruck",
-        "url": "https://die-partei.social/@ffb",
-        "category": "Ortsverband (Die PARTEI)"
+        "name": "CDU Ortsverband Niederbieber-Segendorf",
+        "url": "https://masto.ai/@CDU_Niederbieber_Segendorf",
+        "category": "Ortsverband (CDU)"
       },
-      "posts_count": 1,
+      "posts_count": 4,
       "recent_posts_count": 0,
-      "created_at": "2022-11-20T00:00:00.000Z",
+      "created_at": "2023-05-10T00:00:00.000Z",
       "is_bot": false
     },
-    "https://mastodon.social/@spdbawue": {
+    "https://norden.social/@voltbremen": {
       "account": {
-        "name": "SPD Baden-Württemberg",
-        "url": "https://mastodon.social/@spdbawue",
-        "category": "Landesverband (SPD)"
+        "name": "Volt Bremen",
+        "url": "https://norden.social/@voltbremen",
+        "category": "Landesverband (Volt)"
       },
-      "posts_count": 5,
+      "posts_count": 327,
+      "recent_posts_count": 16,
+      "created_at": "2019-10-31T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://mstdn.social/@voltdeutschland": {
+      "account": {
+        "name": "Volt Deutschland",
+        "url": "https://mstdn.social/@voltdeutschland",
+        "category": "politische Partei in Deutschland"
+      },
+      "posts_count": 166,
       "recent_posts_count": 0,
-      "created_at": "2022-12-15T00:00:00.000Z",
+      "created_at": "2022-12-02T00:00:00.000Z",
       "is_bot": false
     },
     "https://mastodon.de/@linkezittau": {
@@ -1274,28 +1461,6 @@
       "posts_count": 4,
       "recent_posts_count": 0,
       "created_at": "2024-04-10T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://dresden.network/@neustadtpiraten": {
-      "account": {
-        "name": "Neustadtpiraten",
-        "url": "https://dresden.network/@neustadtpiraten",
-        "category": "Ortsverband (Piraten)"
-      },
-      "posts_count": 209,
-      "recent_posts_count": 2,
-      "created_at": "2019-09-25T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://masto.ai/@CDU_Niederbieber_Segendorf": {
-      "account": {
-        "name": "CDU Ortsverband Niederbieber-Segendorf",
-        "url": "https://masto.ai/@CDU_Niederbieber_Segendorf",
-        "category": "Ortsverband (CDU)"
-      },
-      "posts_count": 4,
-      "recent_posts_count": 0,
-      "created_at": "2023-05-10T00:00:00.000Z",
       "is_bot": false
     },
     "https://respublicae.eu/@HelmutScholzMEP": {
@@ -1551,50 +1716,6 @@
       "created_at": "2020-03-10T00:00:00.000Z",
       "is_bot": false
     },
-    "https://spd.social/@SPDLeipzigONO": {
-      "account": {
-        "name": "SPD Leipzig Ost / Nordost",
-        "url": "https://spd.social/@SPDLeipzigONO",
-        "category": "SPD-Ortsverein (SPD)"
-      },
-      "posts_count": 70,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-12T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://spd.social/@SPD_Kaiserstuhl_Tuniberg": {
-      "account": {
-        "name": "SPD Kaiserstuhl Tuniberg",
-        "url": "https://spd.social/@SPD_Kaiserstuhl_Tuniberg",
-        "category": "SPD-Ortsverein (SPD)"
-      },
-      "posts_count": 66,
-      "recent_posts_count": 50,
-      "created_at": "2024-11-19T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://weserbergland.social/@spdholzminden": {
-      "account": {
-        "name": "SPD Holzminden",
-        "url": "https://weserbergland.social/@spdholzminden",
-        "category": "SPD-Ortsverein (SPD)"
-      },
-      "posts_count": 27,
-      "recent_posts_count": 2,
-      "created_at": "2023-01-08T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://spd.social/@SPD_Tornesch": {
-      "account": {
-        "name": "SPD Tornesch",
-        "url": "https://spd.social/@SPD_Tornesch",
-        "category": "SPD-Ortsverein (SPD)"
-      },
-      "posts_count": 1,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-24T00:00:00.000Z",
-      "is_bot": false
-    },
     "https://respublicae.eu/@michabl": {
       "account": {
         "name": "Michael Bloss",
@@ -1628,6 +1749,17 @@
       "created_at": "2022-11-28T00:00:00.000Z",
       "is_bot": false
     },
+    "https://respublicae.eu/@TerryReintke": {
+      "account": {
+        "name": "Terry Reintke",
+        "url": "https://respublicae.eu/@TerryReintke",
+        "category": "Mitglied des Europäischen Parlaments (Grüne)"
+      },
+      "posts_count": 3082,
+      "recent_posts_count": 27,
+      "created_at": "2022-04-04T00:00:00.000Z",
+      "is_bot": true
+    },
     "https://respublicae.eu/@alexandra_geese": {
       "account": {
         "name": "Alexandra Geese",
@@ -1650,6 +1782,17 @@
       "created_at": "2022-11-23T00:00:00.000Z",
       "is_bot": false
     },
+    "https://respublicae.eu/@Hannah_LBerg": {
+      "account": {
+        "name": "Hannah Neumann",
+        "url": "https://respublicae.eu/@Hannah_LBerg",
+        "category": "Mitglied des Europäischen Parlaments (Grüne)"
+      },
+      "posts_count": 2118,
+      "recent_posts_count": 0,
+      "created_at": "2022-04-03T00:00:00.000Z",
+      "is_bot": true
+    },
     "https://mastodon.online/@JuttaPaulus": {
       "account": {
         "name": "Jutta Paulus",
@@ -1661,17 +1804,6 @@
       "created_at": "2022-11-06T00:00:00.000Z",
       "is_bot": false
     },
-    "https://respublicae.eu/@TerryReintke": {
-      "account": {
-        "name": "Terry Reintke",
-        "url": "https://respublicae.eu/@TerryReintke",
-        "category": "Mitglied des Europäischen Parlaments (Grüne)"
-      },
-      "posts_count": 3082,
-      "recent_posts_count": 27,
-      "created_at": "2022-04-04T00:00:00.000Z",
-      "is_bot": true
-    },
     "https://respublicae.eu/@violavoncramon": {
       "account": {
         "name": "Viola von Cramon-Taubadel",
@@ -1681,17 +1813,6 @@
       "posts_count": 4292,
       "recent_posts_count": 0,
       "created_at": "2022-04-04T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://respublicae.eu/@Hannah_LBerg": {
-      "account": {
-        "name": "Hannah Neumann",
-        "url": "https://respublicae.eu/@Hannah_LBerg",
-        "category": "Mitglied des Europäischen Parlaments (Grüne)"
-      },
-      "posts_count": 2118,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-03T00:00:00.000Z",
       "is_bot": true
     },
     "https://gruene.social/@anna_cavazzini": {
@@ -1826,17 +1947,6 @@
       "created_at": "2022-05-06T00:00:00.000Z",
       "is_bot": true
     },
-    "https://social.linksfraktion.de/@sahra_wagenknecht": {
-      "account": {
-        "name": "Sahra Wagenknecht",
-        "url": "https://social.linksfraktion.de/@sahra_wagenknecht",
-        "category": "Mitglied des Deutschen Bundestages (BSW)"
-      },
-      "posts_count": 251,
-      "recent_posts_count": 0,
-      "created_at": "2022-05-05T00:00:00.000Z",
-      "is_bot": true
-    },
     "https://social.linksfraktion.de/@christianleye": {
       "account": {
         "name": "Christian Leye",
@@ -1870,6 +1980,17 @@
       "created_at": "2022-05-05T00:00:00.000Z",
       "is_bot": true
     },
+    "https://social.linksfraktion.de/@sahra_wagenknecht": {
+      "account": {
+        "name": "Sahra Wagenknecht",
+        "url": "https://social.linksfraktion.de/@sahra_wagenknecht",
+        "category": "Mitglied des Deutschen Bundestages (BSW)"
+      },
+      "posts_count": 251,
+      "recent_posts_count": 0,
+      "created_at": "2022-05-05T00:00:00.000Z",
+      "is_bot": true
+    },
     "https://social.linksfraktion.de/@klausernst": {
       "account": {
         "name": "Klaus Ernst",
@@ -1880,50 +2001,6 @@
       "recent_posts_count": 0,
       "created_at": "2022-05-04T00:00:00.000Z",
       "is_bot": true
-    },
-    "https://leipzig.town/@oedp": {
-      "account": {
-        "name": "ÖDP Kreisverband Leipzig",
-        "url": "https://leipzig.town/@oedp",
-        "category": "Kreisverband (ÖDP)"
-      },
-      "posts_count": 2,
-      "recent_posts_count": 0,
-      "created_at": "2024-04-04T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://sueden.social/@oedplandshut": {
-      "account": {
-        "name": "ÖDP Landshut",
-        "url": "https://sueden.social/@oedplandshut",
-        "category": "Kreisverband (ÖDP)"
-      },
-      "posts_count": 40,
-      "recent_posts_count": 5,
-      "created_at": "2022-11-13T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://nrw.social/@oedpduesseldorf": {
-      "account": {
-        "name": "ÖDP Kreisverband Düsseldorf-Niederrhein",
-        "url": "https://nrw.social/@oedpduesseldorf",
-        "category": "Kreisverband (ÖDP)"
-      },
-      "posts_count": 464,
-      "recent_posts_count": 62,
-      "created_at": "2022-11-02T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://muenster.im/@oedp_muenster": {
-      "account": {
-        "name": "ÖDP Kreisverband Münster",
-        "url": "https://muenster.im/@oedp_muenster",
-        "category": "Kreisverband (ÖDP)"
-      },
-      "posts_count": 247,
-      "recent_posts_count": 11,
-      "created_at": "2022-12-01T00:00:00.000Z",
-      "is_bot": false
     },
     "https://respublicae.eu/@jcoetjen": {
       "account": {
@@ -2063,8 +2140,8 @@
         "url": "https://linke.social/@AtesGuerpinar",
         "category": "Mitglied des Deutschen Bundestages (Linke)"
       },
-      "posts_count": 27,
-      "recent_posts_count": 27,
+      "posts_count": 29,
+      "recent_posts_count": 29,
       "created_at": "2024-12-23T00:00:00.000Z",
       "is_bot": false
     },
@@ -2112,6 +2189,17 @@
       "created_at": "2022-05-04T00:00:00.000Z",
       "is_bot": true
     },
+    "https://linke.social/@ankedb": {
+      "account": {
+        "name": "Anke Domscheit-Berg",
+        "url": "https://linke.social/@ankedb",
+        "category": "Mitglied des Deutschen Bundestages (Linke)"
+      },
+      "posts_count": 302,
+      "recent_posts_count": 64,
+      "created_at": "2024-03-27T00:00:00.000Z",
+      "is_bot": false
+    },
     "https://social.linksfraktion.de/@andrehahn": {
       "account": {
         "name": "André Hahn",
@@ -2130,7 +2218,7 @@
         "category": "Mitglied des Deutschen Bundestages (Linke)"
       },
       "posts_count": 104,
-      "recent_posts_count": 0,
+      "recent_posts_count": 15,
       "created_at": "2024-03-28T00:00:00.000Z",
       "is_bot": false
     },
@@ -2143,6 +2231,17 @@
       "posts_count": 362,
       "recent_posts_count": 0,
       "created_at": "2022-05-05T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://linke.social/@petra_sitte": {
+      "account": {
+        "name": "Petra Sitte",
+        "url": "https://linke.social/@petra_sitte",
+        "category": "Mitglied des Deutschen Bundestages (Linke)"
+      },
+      "posts_count": 1,
+      "recent_posts_count": 0,
+      "created_at": "2024-03-27T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.linksfraktion.de/@martina_renner": {
@@ -2222,26 +2321,26 @@
       "created_at": "2022-05-05T00:00:00.000Z",
       "is_bot": false
     },
-    "https://mas.to/@oedpbayern": {
+    "https://spd.social/@spdboehrenfeld": {
       "account": {
-        "name": "ÖDP Bayern",
-        "url": "https://mas.to/@oedpbayern",
-        "category": "Landesverband (ÖDP)"
+        "name": "SPD Bochum-Ehrenfeld",
+        "url": "https://spd.social/@spdboehrenfeld",
+        "category": "Ortsverband (SPD)"
       },
-      "posts_count": 620,
-      "recent_posts_count": 17,
-      "created_at": "2022-11-02T00:00:00.000Z",
+      "posts_count": 126,
+      "recent_posts_count": 35,
+      "created_at": "2023-05-26T00:00:00.000Z",
       "is_bot": false
     },
-    "https://mastodon.world/@OedpThueringen": {
+    "https://spd.social/@spd_niebuell": {
       "account": {
-        "name": "ÖDP Thüringen",
-        "url": "https://mastodon.world/@OedpThueringen",
-        "category": "Landesverband (ÖDP)"
+        "name": "SPD Niebüll",
+        "url": "https://spd.social/@spd_niebuell",
+        "category": "Ortsverband (SPD)"
       },
-      "posts_count": 25,
+      "posts_count": 11,
       "recent_posts_count": 0,
-      "created_at": "2022-11-23T00:00:00.000Z",
+      "created_at": "2022-12-25T00:00:00.000Z",
       "is_bot": false
     },
     "https://respublicae.eu/@krahmax": {
@@ -2416,7 +2515,7 @@
         "category": "Mitglied des Deutschen Bundestages (Grüne)"
       },
       "posts_count": 54,
-      "recent_posts_count": 51,
+      "recent_posts_count": 50,
       "created_at": "2024-12-18T00:00:00.000Z",
       "is_bot": false
     },
@@ -2442,17 +2541,6 @@
       "created_at": "2022-11-26T00:00:00.000Z",
       "is_bot": false
     },
-    "https://gruene.social/@GrueneBeate": {
-      "account": {
-        "name": "Beate Müller-Gemmeke",
-        "url": "https://gruene.social/@GrueneBeate",
-        "category": "Mitglied des Deutschen Bundestages (Grüne)"
-      },
-      "posts_count": 226,
-      "recent_posts_count": 19,
-      "created_at": "2022-11-24T00:00:00.000Z",
-      "is_bot": false
-    },
     "https://gruene.social/@JuergenKretz": {
       "account": {
         "name": "Jürgen Kretz",
@@ -2462,6 +2550,17 @@
       "posts_count": 19,
       "recent_posts_count": 1,
       "created_at": "2023-03-20T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@GrueneBeate": {
+      "account": {
+        "name": "Beate Müller-Gemmeke",
+        "url": "https://gruene.social/@GrueneBeate",
+        "category": "Mitglied des Deutschen Bundestages (Grüne)"
+      },
+      "posts_count": 227,
+      "recent_posts_count": 20,
+      "created_at": "2022-11-24T00:00:00.000Z",
       "is_bot": false
     },
     "https://gruene.social/@ArminGrau": {
@@ -2519,25 +2618,14 @@
       "created_at": "2022-11-23T00:00:00.000Z",
       "is_bot": false
     },
-    "https://gruene.social/@GoeringEckardt": {
-      "account": {
-        "name": "Katrin Göring-Eckardt",
-        "url": "https://gruene.social/@GoeringEckardt",
-        "category": "Mitglied des Deutschen Bundestages (Grüne)"
-      },
-      "posts_count": 163,
-      "recent_posts_count": 0,
-      "created_at": "2022-10-31T00:00:00.000Z",
-      "is_bot": false
-    },
     "https://respublicae.eu/@cem_oezdemir": {
       "account": {
         "name": "Cem Özdemir",
         "url": "https://respublicae.eu/@cem_oezdemir",
         "category": "Mitglied des Deutschen Bundestages (Grüne)"
       },
-      "posts_count": 3116,
-      "recent_posts_count": 96,
+      "posts_count": 3121,
+      "recent_posts_count": 92,
       "created_at": "2022-04-03T00:00:00.000Z",
       "is_bot": true
     },
@@ -2640,6 +2728,17 @@
       "created_at": "2022-10-30T00:00:00.000Z",
       "is_bot": false
     },
+    "https://gruene.social/@GoeringEckardt": {
+      "account": {
+        "name": "Katrin Göring-Eckardt",
+        "url": "https://gruene.social/@GoeringEckardt",
+        "category": "Mitglied des Deutschen Bundestages (Grüne)"
+      },
+      "posts_count": 163,
+      "recent_posts_count": 0,
+      "created_at": "2022-10-31T00:00:00.000Z",
+      "is_bot": false
+    },
     "https://gruene.social/@tessaganserer": {
       "account": {
         "name": "Tessa Ganserer",
@@ -2649,17 +2748,6 @@
       "posts_count": 19,
       "recent_posts_count": 0,
       "created_at": "2022-04-28T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@philipkraemer": {
-      "account": {
-        "name": "Philip Krämer",
-        "url": "https://gruene.social/@philipkraemer",
-        "category": "Mitglied des Deutschen Bundestages (Grüne)"
-      },
-      "posts_count": 6,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-23T00:00:00.000Z",
       "is_bot": false
     },
     "https://gruene.social/@deborahduering": {
@@ -2690,8 +2778,8 @@
         "url": "https://gruene.social/@katdro",
         "category": "Mitglied des Deutschen Bundestages (Grüne)"
       },
-      "posts_count": 502,
-      "recent_posts_count": 70,
+      "posts_count": 503,
+      "recent_posts_count": 68,
       "created_at": "2023-04-14T00:00:00.000Z",
       "is_bot": false
     },
@@ -2746,7 +2834,7 @@
         "category": "Mitglied des Deutschen Bundestages (Grüne)"
       },
       "posts_count": 1941,
-      "recent_posts_count": 15,
+      "recent_posts_count": 13,
       "created_at": "2019-11-26T00:00:00.000Z",
       "is_bot": false
     },
@@ -2781,6 +2869,17 @@
       "posts_count": 50,
       "recent_posts_count": 0,
       "created_at": "2022-11-07T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@philipkraemer": {
+      "account": {
+        "name": "Philip Krämer",
+        "url": "https://gruene.social/@philipkraemer",
+        "category": "Mitglied des Deutschen Bundestages (Grüne)"
+      },
+      "posts_count": 6,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-23T00:00:00.000Z",
       "is_bot": false
     },
     "https://freiburg.social/@drschaefer": {
@@ -2855,8 +2954,8 @@
         "url": "https://gruene.social/@zoe",
         "category": "Mitglied des Deutschen Bundestages (Grüne)"
       },
-      "posts_count": 167,
-      "recent_posts_count": 17,
+      "posts_count": 170,
+      "recent_posts_count": 20,
       "created_at": "2022-10-31T00:00:00.000Z",
       "is_bot": false
     },
@@ -2915,6 +3014,17 @@
       "created_at": "2023-01-12T00:00:00.000Z",
       "is_bot": false
     },
+    "https://hessen.social/@priska": {
+      "account": {
+        "name": "Priska Hinz",
+        "url": "https://hessen.social/@priska",
+        "category": "Mitglied des Hessischen Landtags (Grüne)"
+      },
+      "posts_count": 103,
+      "recent_posts_count": 0,
+      "created_at": "2022-10-29T00:00:00.000Z",
+      "is_bot": false
+    },
     "https://hessen.social/@NinaEisenhardt": {
       "account": {
         "name": "Nina Eisenhardt",
@@ -2933,64 +3043,20 @@
         "category": "Mitglied des Hessischen Landtags (Grüne)"
       },
       "posts_count": 589,
-      "recent_posts_count": 3,
+      "recent_posts_count": 2,
       "created_at": "2019-07-07T00:00:00.000Z",
       "is_bot": false
     },
-    "https://hessen.social/@priska": {
+    "https://respublicae.eu/@UdoBullmann": {
       "account": {
-        "name": "Priska Hinz",
-        "url": "https://hessen.social/@priska",
-        "category": "Mitglied des Hessischen Landtags (Grüne)"
+        "name": "Udo Bullmann",
+        "url": "https://respublicae.eu/@UdoBullmann",
+        "category": "Mitglied des Europäischen Parlaments (SPD)"
       },
-      "posts_count": 103,
+      "posts_count": 668,
       "recent_posts_count": 0,
-      "created_at": "2022-10-29T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://spd.social/@spdboehrenfeld": {
-      "account": {
-        "name": "SPD Bochum-Ehrenfeld",
-        "url": "https://spd.social/@spdboehrenfeld",
-        "category": "Ortsverband (SPD)"
-      },
-      "posts_count": 126,
-      "recent_posts_count": 36,
-      "created_at": "2023-05-26T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://spd.social/@spd_niebuell": {
-      "account": {
-        "name": "SPD Niebüll",
-        "url": "https://spd.social/@spd_niebuell",
-        "category": "Ortsverband (SPD)"
-      },
-      "posts_count": 11,
-      "recent_posts_count": 0,
-      "created_at": "2022-12-25T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://norden.social/@voltbremen": {
-      "account": {
-        "name": "Volt Bremen",
-        "url": "https://norden.social/@voltbremen",
-        "category": "Landesverband (Volt)"
-      },
-      "posts_count": 327,
-      "recent_posts_count": 16,
-      "created_at": "2019-10-31T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://mstdn.social/@voltdeutschland": {
-      "account": {
-        "name": "Volt Deutschland",
-        "url": "https://mstdn.social/@voltdeutschland",
-        "category": "politische Partei in Deutschland"
-      },
-      "posts_count": 166,
-      "recent_posts_count": 0,
-      "created_at": "2022-12-02T00:00:00.000Z",
-      "is_bot": false
+      "created_at": "2022-04-04T00:00:00.000Z",
+      "is_bot": true
     },
     "https://respublicae.eu/@PeterSimonMEP": {
       "account": {
@@ -3012,17 +3078,6 @@
       "posts_count": 460,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://respublicae.eu/@UdoBullmann": {
-      "account": {
-        "name": "Udo Bullmann",
-        "url": "https://respublicae.eu/@UdoBullmann",
-        "category": "Mitglied des Europäischen Parlaments (SPD)"
-      },
-      "posts_count": 668,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-04T00:00:00.000Z",
       "is_bot": true
     },
     "https://d-64.social/@woelken": {
@@ -3124,15 +3179,59 @@
       "created_at": "2022-04-03T00:00:00.000Z",
       "is_bot": true
     },
-    "https://freiewaehler.social/@Bundesvereinigung": {
+    "https://respublicae.eu/@marlenemortler": {
       "account": {
-        "name": "Freie Wähler",
-        "url": "https://freiewaehler.social/@Bundesvereinigung",
-        "category": "politische Partei in Deutschland"
+        "name": "Marlene Mortler",
+        "url": "https://respublicae.eu/@marlenemortler",
+        "category": "Mitglied des Europäischen Parlaments (CSU)"
       },
-      "posts_count": 598,
-      "recent_posts_count": 41,
-      "created_at": "2023-01-02T00:00:00.000Z",
+      "posts_count": 0,
+      "recent_posts_count": 0,
+      "created_at": "2022-04-03T00:00:00.000Z",
+      "is_bot": true
+    },
+    "https://respublicae.eu/@MarkusFerber": {
+      "account": {
+        "name": "Markus Ferber",
+        "url": "https://respublicae.eu/@MarkusFerber",
+        "category": "Mitglied des Europäischen Parlaments (CSU)"
+      },
+      "posts_count": 698,
+      "recent_posts_count": 0,
+      "created_at": "2022-04-03T00:00:00.000Z",
+      "is_bot": true
+    },
+    "https://respublicae.eu/@ManfredWeber": {
+      "account": {
+        "name": "Manfred Weber",
+        "url": "https://respublicae.eu/@ManfredWeber",
+        "category": "Mitglied des Europäischen Parlaments (CSU)"
+      },
+      "posts_count": 802,
+      "recent_posts_count": 0,
+      "created_at": "2022-04-03T00:00:00.000Z",
+      "is_bot": true
+    },
+    "https://respublicae.eu/@ANiebler": {
+      "account": {
+        "name": "Angelika Niebler",
+        "url": "https://respublicae.eu/@ANiebler",
+        "category": "Mitglied des Europäischen Parlaments (CSU)"
+      },
+      "posts_count": 371,
+      "recent_posts_count": 0,
+      "created_at": "2022-04-03T00:00:00.000Z",
+      "is_bot": true
+    },
+    "https://mastodon.social/@spdbawue": {
+      "account": {
+        "name": "SPD Baden-Württemberg",
+        "url": "https://mastodon.social/@spdbawue",
+        "category": "Landesverband (SPD)"
+      },
+      "posts_count": 5,
+      "recent_posts_count": 0,
+      "created_at": "2022-12-15T00:00:00.000Z",
       "is_bot": false
     },
     "https://respublicae.eu/@Andreas_Schwab": {
@@ -3278,50 +3377,6 @@
       "created_at": "2022-04-04T00:00:00.000Z",
       "is_bot": true
     },
-    "https://respublicae.eu/@marlenemortler": {
-      "account": {
-        "name": "Marlene Mortler",
-        "url": "https://respublicae.eu/@marlenemortler",
-        "category": "Mitglied des Europäischen Parlaments (CSU)"
-      },
-      "posts_count": 0,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://respublicae.eu/@MarkusFerber": {
-      "account": {
-        "name": "Markus Ferber",
-        "url": "https://respublicae.eu/@MarkusFerber",
-        "category": "Mitglied des Europäischen Parlaments (CSU)"
-      },
-      "posts_count": 698,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://respublicae.eu/@ManfredWeber": {
-      "account": {
-        "name": "Manfred Weber",
-        "url": "https://respublicae.eu/@ManfredWeber",
-        "category": "Mitglied des Europäischen Parlaments (CSU)"
-      },
-      "posts_count": 802,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://respublicae.eu/@ANiebler": {
-      "account": {
-        "name": "Angelika Niebler",
-        "url": "https://respublicae.eu/@ANiebler",
-        "category": "Mitglied des Europäischen Parlaments (CSU)"
-      },
-      "posts_count": 371,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": true
-    },
     "https://respublicae.eu/@MartinSonneborn": {
       "account": {
         "name": "Martin Sonneborn",
@@ -3329,7 +3384,7 @@
         "category": "Mitglied des Europäischen Parlaments (Die PARTEI)"
       },
       "posts_count": 2103,
-      "recent_posts_count": 113,
+      "recent_posts_count": 112,
       "created_at": "2022-04-03T00:00:00.000Z",
       "is_bot": true
     },
@@ -3340,17 +3395,6 @@
         "category": "Mitglied des Bayerischen Landtags (CSU)"
       },
       "posts_count": 579,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://respublicae.eu/@oezlemademirel": {
-      "account": {
-        "name": "Özlem Demirel-Böhlke",
-        "url": "https://respublicae.eu/@oezlemademirel",
-        "category": "Mitglied des Landtag Nordrhein-Westfalen (Linke)"
-      },
-      "posts_count": 947,
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
       "is_bot": true
@@ -3366,6 +3410,17 @@
       "created_at": "2022-04-03T00:00:00.000Z",
       "is_bot": true
     },
+    "https://nrw.social/@oezlemADemirel": {
+      "account": {
+        "name": "Özlem Demirel-Böhlke",
+        "url": "https://nrw.social/@oezlemADemirel",
+        "category": "Mitglied des Landtag Nordrhein-Westfalen (Linke)"
+      },
+      "posts_count": 2,
+      "recent_posts_count": 0,
+      "created_at": "2022-12-23T00:00:00.000Z",
+      "is_bot": false
+    },
     "https://mastodon.social/@hgbruenker": {
       "account": {
         "name": "Hans-Günter Brünker",
@@ -3377,14 +3432,25 @@
       "created_at": "2022-10-05T00:00:00.000Z",
       "is_bot": false
     },
+    "https://gruene.social/@volkmargruen": {
+      "account": {
+        "name": "Volkmar Seliger",
+        "url": "https://gruene.social/@volkmargruen",
+        "category": "Ratsherr (Grüne)"
+      },
+      "posts_count": 1388,
+      "recent_posts_count": 100,
+      "created_at": "2022-10-29T00:00:00.000Z",
+      "is_bot": false
+    },
     "https://mastodon.social/@manuelaripa": {
       "account": {
         "name": "Manuela Ripa",
         "url": "https://mastodon.social/@manuelaripa",
         "category": "Mitglied des Europäischen Parlaments (ÖDP)"
       },
-      "posts_count": 30,
-      "recent_posts_count": 30,
+      "posts_count": 31,
+      "recent_posts_count": 31,
       "created_at": "2025-01-07T00:00:00.000Z",
       "is_bot": false
     },
@@ -3453,6 +3519,17 @@
       "recent_posts_count": 0,
       "created_at": "2022-04-03T00:00:00.000Z",
       "is_bot": true
+    },
+    "https://dresden.network/@stillnotlovin": {
+      "account": {
+        "name": "Anne Herpertz",
+        "url": "https://dresden.network/@stillnotlovin",
+        "category": "Ratsherr (Piraten)"
+      },
+      "posts_count": 1759,
+      "recent_posts_count": 30,
+      "created_at": "2022-03-18T00:00:00.000Z",
+      "is_bot": false
     },
     "https://respublicae.eu/@ulimuellermdep": {
       "account": {
@@ -3553,6 +3630,193 @@
       "created_at": "2022-02-17T00:00:00.000Z",
       "is_bot": false
     },
+    "https://dresden.network/@martindulig": {
+      "account": {
+        "name": "Martin Dulig",
+        "url": "https://dresden.network/@martindulig",
+        "category": "Mitglied des Sächsischen Landtages (SPD)"
+      },
+      "posts_count": 29,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-07T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://hessen.social/@patrickburghardt": {
+      "account": {
+        "name": "Patrick Burghardt",
+        "url": "https://hessen.social/@patrickburghardt",
+        "category": "Mitglied des Hessischen Landtags (CDU)"
+      },
+      "posts_count": 20,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-14T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.hessen.de/@BorisRhein": {
+      "account": {
+        "name": "Boris Rhein",
+        "url": "https://social.hessen.de/@BorisRhein",
+        "category": "Mensch"
+      },
+      "posts_count": 391,
+      "recent_posts_count": 24,
+      "created_at": "2023-02-10T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://hessen.social/@hartmuthonka": {
+      "account": {
+        "name": "Hartmut Honka",
+        "url": "https://hessen.social/@hartmuthonka",
+        "category": "Mitglied des Hessischen Landtags (CDU)"
+      },
+      "posts_count": 103,
+      "recent_posts_count": 7,
+      "created_at": "2022-05-04T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://mastodon.social/@alwin_theobald": {
+      "account": {
+        "name": "Alwin Theobald",
+        "url": "https://mastodon.social/@alwin_theobald",
+        "category": "Mitglied des Landtages des Saarlands (CDU)"
+      },
+      "posts_count": 45,
+      "recent_posts_count": 0,
+      "created_at": "2022-07-22T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://muenchen.social/@roter_ritter": {
+      "account": {
+        "name": "Florian Ritter",
+        "url": "https://muenchen.social/@roter_ritter",
+        "category": "Mitglied des Bayerischen Landtags (SPD)"
+      },
+      "posts_count": 62,
+      "recent_posts_count": 5,
+      "created_at": "2022-04-28T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://muenchen.social/@feichtmeierin": {
+      "account": {
+        "name": "Christiane Feichtmeier",
+        "url": "https://muenchen.social/@feichtmeierin",
+        "category": "Mitglied des Bayerischen Landtags (SPD)"
+      },
+      "posts_count": 53,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-06T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://mastodon.social/@TobiasSchulze": {
+      "account": {
+        "name": "Tobias Schulze",
+        "url": "https://mastodon.social/@TobiasSchulze",
+        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
+      },
+      "posts_count": 770,
+      "recent_posts_count": 0,
+      "created_at": "2022-10-28T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://mstdn.social/@nikschrader": {
+      "account": {
+        "name": "Niklas Schrader",
+        "url": "https://mstdn.social/@nikschrader",
+        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
+      },
+      "posts_count": 41,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-04T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://berlin.social/@schluesselburg": {
+      "account": {
+        "name": "Sebastian Schlüsselburg",
+        "url": "https://berlin.social/@schluesselburg",
+        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
+      },
+      "posts_count": 174,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-14T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://berlin.social/@NiklasSchenker": {
+      "account": {
+        "name": "Niklas Schenker",
+        "url": "https://berlin.social/@NiklasSchenker",
+        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
+      },
+      "posts_count": 7,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-15T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://troet.cafe/@Katina_Schubert": {
+      "account": {
+        "name": "Katina Schubert",
+        "url": "https://troet.cafe/@Katina_Schubert",
+        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
+      },
+      "posts_count": 0,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-13T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://berlin.social/@schatzbln": {
+      "account": {
+        "name": "Carsten Schatz",
+        "url": "https://berlin.social/@schatzbln",
+        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
+      },
+      "posts_count": 14,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-08T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@stefanziller": {
+      "account": {
+        "name": "Stefan Ziller",
+        "url": "https://gruene.social/@stefanziller",
+        "category": "Mitglied des Abgeordnetenhauses von Berlin (Grüne)"
+      },
+      "posts_count": 46,
+      "recent_posts_count": 1,
+      "created_at": "2022-11-16T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://climatejustice.social/@MonikaHerrmann": {
+      "account": {
+        "name": "Monika Herrmann",
+        "url": "https://climatejustice.social/@MonikaHerrmann",
+        "category": "Bezirksbürgermeister von Friedrichshain-Kreuzberg (Grüne)"
+      },
+      "posts_count": 2229,
+      "recent_posts_count": 31,
+      "created_at": "2022-10-28T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://ohai.social/@pfadintegral": {
+      "account": {
+        "name": "Simon Weiß",
+        "url": "https://ohai.social/@pfadintegral",
+        "category": "Mitglied des Abgeordnetenhauses von Berlin (Piraten)"
+      },
+      "posts_count": 59,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-30T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://dju.social/@seeroiberjenny": {
+      "account": {
+        "name": "Anne Helm",
+        "url": "https://dju.social/@seeroiberjenny",
+        "category": "Mitglied des Abgeordnetenhauses von Berlin (Piraten)"
+      },
+      "posts_count": 1,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-14T00:00:00.000Z",
+      "is_bot": false
+    },
     "https://gruene.social/@olaf_meister": {
       "account": {
         "name": "Olaf Meister",
@@ -3615,7 +3879,7 @@
         "category": "Mitglied des Landtag Nordrhein-Westfalen (Grüne)"
       },
       "posts_count": 251,
-      "recent_posts_count": 7,
+      "recent_posts_count": 6,
       "created_at": "2022-11-10T00:00:00.000Z",
       "is_bot": false
     },
@@ -3663,28 +3927,6 @@
       "created_at": "2022-04-03T00:00:00.000Z",
       "is_bot": true
     },
-    "https://muenchen.social/@feichtmeierin": {
-      "account": {
-        "name": "Christiane Feichtmeier",
-        "url": "https://muenchen.social/@feichtmeierin",
-        "category": "Mitglied des Bayerischen Landtags (SPD)"
-      },
-      "posts_count": 53,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-06T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://muenchen.social/@roter_ritter": {
-      "account": {
-        "name": "Florian Ritter",
-        "url": "https://muenchen.social/@roter_ritter",
-        "category": "Mitglied des Bayerischen Landtags (SPD)"
-      },
-      "posts_count": 62,
-      "recent_posts_count": 6,
-      "created_at": "2022-04-28T00:00:00.000Z",
-      "is_bot": false
-    },
     "https://respublicae.eu/@Lambsdorff": {
       "account": {
         "name": "Alexander Graf Lambsdorff",
@@ -3729,226 +3971,6 @@
       "created_at": "2023-01-02T00:00:00.000Z",
       "is_bot": false
     },
-    "https://dresden.network/@martindulig": {
-      "account": {
-        "name": "Martin Dulig",
-        "url": "https://dresden.network/@martindulig",
-        "category": "Mitglied des Sächsischen Landtages (SPD)"
-      },
-      "posts_count": 29,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-07T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://hessen.social/@patrickburghardt": {
-      "account": {
-        "name": "Patrick Burghardt",
-        "url": "https://hessen.social/@patrickburghardt",
-        "category": "Mitglied des Hessischen Landtags (CDU)"
-      },
-      "posts_count": 20,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-14T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.hessen.de/@BorisRhein": {
-      "account": {
-        "name": "Boris Rhein",
-        "url": "https://social.hessen.de/@BorisRhein",
-        "category": "Mensch"
-      },
-      "posts_count": 391,
-      "recent_posts_count": 26,
-      "created_at": "2023-02-10T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://hessen.social/@hartmuthonka": {
-      "account": {
-        "name": "Hartmut Honka",
-        "url": "https://hessen.social/@hartmuthonka",
-        "category": "Mitglied des Hessischen Landtags (CDU)"
-      },
-      "posts_count": 103,
-      "recent_posts_count": 7,
-      "created_at": "2022-05-04T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://mastodon.social/@alwin_theobald": {
-      "account": {
-        "name": "Alwin Theobald",
-        "url": "https://mastodon.social/@alwin_theobald",
-        "category": "Mitglied des Landtages des Saarlands (CDU)"
-      },
-      "posts_count": 45,
-      "recent_posts_count": 0,
-      "created_at": "2022-07-22T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://mastodon.social/@TobiasSchulze": {
-      "account": {
-        "name": "Tobias Schulze",
-        "url": "https://mastodon.social/@TobiasSchulze",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
-      },
-      "posts_count": 770,
-      "recent_posts_count": 0,
-      "created_at": "2022-10-28T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://berlin.social/@NiklasSchenker": {
-      "account": {
-        "name": "Niklas Schenker",
-        "url": "https://berlin.social/@NiklasSchenker",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
-      },
-      "posts_count": 7,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-15T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://mstdn.social/@nikschrader": {
-      "account": {
-        "name": "Niklas Schrader",
-        "url": "https://mstdn.social/@nikschrader",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
-      },
-      "posts_count": 41,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-04T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://berlin.social/@schluesselburg": {
-      "account": {
-        "name": "Sebastian Schlüsselburg",
-        "url": "https://berlin.social/@schluesselburg",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
-      },
-      "posts_count": 174,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-14T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://troet.cafe/@Katina_Schubert": {
-      "account": {
-        "name": "Katina Schubert",
-        "url": "https://troet.cafe/@Katina_Schubert",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
-      },
-      "posts_count": 0,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-13T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://berlin.social/@schatzbln": {
-      "account": {
-        "name": "Carsten Schatz",
-        "url": "https://berlin.social/@schatzbln",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Linke)"
-      },
-      "posts_count": 14,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-08T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@stefanziller": {
-      "account": {
-        "name": "Stefan Ziller",
-        "url": "https://gruene.social/@stefanziller",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Grüne)"
-      },
-      "posts_count": 46,
-      "recent_posts_count": 1,
-      "created_at": "2022-11-16T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://mastodon.social/@Maristya": {
-      "account": {
-        "name": "Anja Schillhaneck",
-        "url": "https://mastodon.social/@Maristya",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Grüne)"
-      },
-      "posts_count": 4979,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-16T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://climatejustice.social/@MonikaHerrmann": {
-      "account": {
-        "name": "Monika Herrmann",
-        "url": "https://climatejustice.social/@MonikaHerrmann",
-        "category": "Bezirksbürgermeister von Friedrichshain-Kreuzberg (Grüne)"
-      },
-      "posts_count": 2229,
-      "recent_posts_count": 31,
-      "created_at": "2022-10-28T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://ohai.social/@pfadintegral": {
-      "account": {
-        "name": "Simon Weiß",
-        "url": "https://ohai.social/@pfadintegral",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Piraten)"
-      },
-      "posts_count": 59,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-30T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://dju.social/@seeroiberjenny": {
-      "account": {
-        "name": "Anne Helm",
-        "url": "https://dju.social/@seeroiberjenny",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (Piraten)"
-      },
-      "posts_count": 1,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-14T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@mibloq": {
-      "account": {
-        "name": "Miriam Block",
-        "url": "https://gruene.social/@mibloq",
-        "category": "Mitglied der Hamburgischen Bürgerschaft (Grüne)"
-      },
-      "posts_count": 95,
-      "recent_posts_count": 22,
-      "created_at": "2022-11-06T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://norden.social/@lenazagst": {
-      "account": {
-        "name": "Lena Zagst",
-        "url": "https://norden.social/@lenazagst",
-        "category": "Mitglied der Hamburgischen Bürgerschaft (Grüne)"
-      },
-      "posts_count": 3,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-15T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://respublicae.eu/@MartinSchulz": {
-      "account": {
-        "name": "Martin Schulz",
-        "url": "https://respublicae.eu/@MartinSchulz",
-        "category": "Vorsitzender der Sozialdemokratischen Partei Deutschlands (SPD)"
-      },
-      "posts_count": 143,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-03T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://social.cologne/@Nowabo": {
-      "account": {
-        "name": "Norbert Walter-Borjans",
-        "url": "https://social.cologne/@Nowabo",
-        "category": "Vorsitzender der Sozialdemokratischen Partei Deutschlands (SPD)"
-      },
-      "posts_count": 38,
-      "recent_posts_count": 2,
-      "created_at": "2022-12-04T00:00:00.000Z",
-      "is_bot": false
-    },
     "https://respublicae.eu/@hreul": {
       "account": {
         "name": "Herbert Reul",
@@ -3967,7 +3989,7 @@
         "category": "Mitglied des Thüringer Landtags (Linke)"
       },
       "posts_count": 357,
-      "recent_posts_count": 46,
+      "recent_posts_count": 45,
       "created_at": "2022-10-29T00:00:00.000Z",
       "is_bot": false
     },
@@ -3980,39 +4002,6 @@
       "posts_count": 0,
       "recent_posts_count": 0,
       "created_at": "2022-03-15T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://muenchen.social/@Walter804": {
-      "account": {
-        "name": "Manfred Walter",
-        "url": "https://muenchen.social/@Walter804",
-        "category": "Bürgermeister der Gemeinde Gilching (SPD)"
-      },
-      "posts_count": 4,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-18T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://don.linxx.net/@luna_le": {
-      "account": {
-        "name": "Juliane Nagel",
-        "url": "https://don.linxx.net/@luna_le",
-        "category": "Mitglied des Sächsischen Landtages (Linke)"
-      },
-      "posts_count": 612,
-      "recent_posts_count": 60,
-      "created_at": "2022-11-11T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@hannesdamm": {
-      "account": {
-        "name": "Hannes Damm",
-        "url": "https://gruene.social/@hannesdamm",
-        "category": "Mitglied des Landtag Mecklenburg-Vorpommern (Grüne)"
-      },
-      "posts_count": 2,
-      "recent_posts_count": 0,
-      "created_at": "2023-09-26T00:00:00.000Z",
       "is_bot": false
     },
     "https://norden.social/@otb": {
@@ -4099,8 +4088,85 @@
         "category": "Mensch"
       },
       "posts_count": 176,
-      "recent_posts_count": 21,
+      "recent_posts_count": 20,
       "created_at": "2024-02-22T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@mibloq": {
+      "account": {
+        "name": "Miriam Block",
+        "url": "https://gruene.social/@mibloq",
+        "category": "Mitglied der Hamburgischen Bürgerschaft (Grüne)"
+      },
+      "posts_count": 95,
+      "recent_posts_count": 22,
+      "created_at": "2022-11-06T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://norden.social/@lenazagst": {
+      "account": {
+        "name": "Lena Zagst",
+        "url": "https://norden.social/@lenazagst",
+        "category": "Mitglied der Hamburgischen Bürgerschaft (Grüne)"
+      },
+      "posts_count": 3,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-15T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://respublicae.eu/@MartinSchulz": {
+      "account": {
+        "name": "Martin Schulz",
+        "url": "https://respublicae.eu/@MartinSchulz",
+        "category": "Vorsitzender der Sozialdemokratischen Partei Deutschlands (SPD)"
+      },
+      "posts_count": 143,
+      "recent_posts_count": 0,
+      "created_at": "2022-04-03T00:00:00.000Z",
+      "is_bot": true
+    },
+    "https://social.cologne/@Nowabo": {
+      "account": {
+        "name": "Norbert Walter-Borjans",
+        "url": "https://social.cologne/@Nowabo",
+        "category": "Vorsitzender der Sozialdemokratischen Partei Deutschlands (SPD)"
+      },
+      "posts_count": 38,
+      "recent_posts_count": 2,
+      "created_at": "2022-12-04T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://muenchen.social/@Walter804": {
+      "account": {
+        "name": "Manfred Walter",
+        "url": "https://muenchen.social/@Walter804",
+        "category": "Bürgermeister der Gemeinde Gilching (SPD)"
+      },
+      "posts_count": 4,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-18T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://don.linxx.net/@luna_le": {
+      "account": {
+        "name": "Juliane Nagel",
+        "url": "https://don.linxx.net/@luna_le",
+        "category": "Mitglied des Sächsischen Landtages (Linke)"
+      },
+      "posts_count": 612,
+      "recent_posts_count": 60,
+      "created_at": "2022-11-11T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@hannesdamm": {
+      "account": {
+        "name": "Hannes Damm",
+        "url": "https://gruene.social/@hannesdamm",
+        "category": "Mitglied des Landtag Mecklenburg-Vorpommern (Grüne)"
+      },
+      "posts_count": 2,
+      "recent_posts_count": 0,
+      "created_at": "2023-09-26T00:00:00.000Z",
       "is_bot": false
     },
     "https://gruene.social/@ClaudiaMaicher": {
@@ -4109,7 +4175,7 @@
         "url": "https://gruene.social/@ClaudiaMaicher",
         "category": "Mitglied des Sächsischen Landtages (Grüne)"
       },
-      "posts_count": 493,
+      "posts_count": 494,
       "recent_posts_count": 27,
       "created_at": "2022-12-14T00:00:00.000Z",
       "is_bot": false
@@ -4123,28 +4189,6 @@
       "posts_count": 63,
       "recent_posts_count": 0,
       "created_at": "2022-12-14T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://mastodon.social/@pavel23": {
-      "account": {
-        "name": "Pavel Mayer",
-        "url": "https://mastodon.social/@pavel23",
-        "category": "Mitglied des Abgeordnetenhauses von Berlin (SPD)"
-      },
-      "posts_count": 1,
-      "recent_posts_count": 0,
-      "created_at": "2024-01-15T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://nahe.social/@steinmdl": {
-      "account": {
-        "name": "Markus Stein",
-        "url": "https://nahe.social/@steinmdl",
-        "category": "Mitglied des Landtag Rheinland-Pfalz (SPD)"
-      },
-      "posts_count": 1059,
-      "recent_posts_count": 62,
-      "created_at": "2022-09-22T00:00:00.000Z",
       "is_bot": false
     },
     "https://respublicae.eu/@bueti": {
@@ -4202,15 +4246,213 @@
       "created_at": "2022-11-01T00:00:00.000Z",
       "is_bot": false
     },
-    "https://mastodon.social/@_rya_": {
+    "https://mastodon.social/@pavel23": {
       "account": {
-        "name": "Birgit Rydlewski",
-        "url": "https://mastodon.social/@_rya_",
-        "category": "Mitglied des Landtag Nordrhein-Westfalen (Piraten)"
+        "name": "Pavel Mayer",
+        "url": "https://mastodon.social/@pavel23",
+        "category": "Mitglied des Abgeordnetenhauses von Berlin (SPD)"
       },
-      "posts_count": 70,
+      "posts_count": 1,
       "recent_posts_count": 0,
-      "created_at": "2017-04-14T00:00:00.000Z",
+      "created_at": "2024-01-15T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://nahe.social/@steinmdl": {
+      "account": {
+        "name": "Markus Stein",
+        "url": "https://nahe.social/@steinmdl",
+        "category": "Mitglied des Landtag Rheinland-Pfalz (SPD)"
+      },
+      "posts_count": 1062,
+      "recent_posts_count": 65,
+      "created_at": "2022-09-22T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://linke.social/@inesschwerdtner": {
+      "account": {
+        "name": "Ines Schwerdtner",
+        "url": "https://linke.social/@inesschwerdtner",
+        "category": "Parteivorsitzender (Linke)"
+      },
+      "posts_count": 2,
+      "recent_posts_count": 0,
+      "created_at": "2024-10-17T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://piraten-partei.social/@PiratenSH": {
+      "account": {
+        "name": "Piratenpartei Schleswig-Holstein",
+        "url": "https://piraten-partei.social/@PiratenSH",
+        "category": " (-)"
+      },
+      "posts_count": 183,
+      "recent_posts_count": 11,
+      "created_at": "2022-06-23T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@grueneltbb": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Landtagsfraktion Brandenburg",
+        "url": "https://gruene.social/@grueneltbb",
+        "category": " (Grüne)"
+      },
+      "posts_count": 25,
+      "recent_posts_count": 0,
+      "created_at": "2022-04-26T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@gruenenrw": {
+      "account": {
+        "name": "Bündnis 90/Die Grünen Nordrhein-Westfalen",
+        "url": "https://gruene.social/@gruenenrw",
+        "category": " (Grüne)"
+      },
+      "posts_count": 13,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-20T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@kelly_stiftung": {
+      "account": {
+        "name": "Petra-Kelly-Stiftung",
+        "url": "https://gruene.social/@kelly_stiftung",
+        "category": " (Grüne)"
+      },
+      "posts_count": 9,
+      "recent_posts_count": 0,
+      "created_at": "2022-12-15T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://piraten-partei.social/@vwt1812": {
+      "account": {
+        "name": "Lukas Küffner",
+        "url": "https://piraten-partei.social/@vwt1812",
+        "category": " (-)"
+      },
+      "posts_count": 87,
+      "recent_posts_count": 1,
+      "created_at": "2022-11-22T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@boell": {
+      "account": {
+        "name": "Heinrich-Böll-Stiftung",
+        "url": "https://gruene.social/@boell",
+        "category": " (Grüne)"
+      },
+      "posts_count": 283,
+      "recent_posts_count": 39,
+      "created_at": "2022-05-05T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://linke.social/@erlangerlinke": {
+      "account": {
+        "name": "Erlanger Linke",
+        "url": "https://linke.social/@erlangerlinke",
+        "category": " (Linke)"
+      },
+      "posts_count": 1,
+      "recent_posts_count": 0,
+      "created_at": "2023-07-06T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@jon": {
+      "account": {
+        "name": "Jon Worth",
+        "url": "https://gruene.social/@jon",
+        "category": " (Grüne)"
+      },
+      "posts_count": 29793,
+      "recent_posts_count": 120,
+      "created_at": "2022-10-31T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@DiePARTEI_RO": {
+      "account": {
+        "name": "Die PARTEI Kreisverband Rosenheim",
+        "url": "https://die-partei.social/@DiePARTEI_RO",
+        "category": " (-)"
+      },
+      "posts_count": 482,
+      "recent_posts_count": 119,
+      "created_at": "2022-05-29T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@bwgruen": {
+      "account": {
+        "name": "BundeswehrGrün",
+        "url": "https://gruene.social/@bwgruen",
+        "category": " (Grüne)"
+      },
+      "posts_count": 53,
+      "recent_posts_count": 2,
+      "created_at": "2022-10-27T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@Krstorevic": {
+      "account": {
+        "name": "Krsto Lazarević",
+        "url": "https://gruene.social/@Krstorevic",
+        "category": " (Grüne)"
+      },
+      "posts_count": 312,
+      "recent_posts_count": 1,
+      "created_at": "2022-11-18T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@dPARTEI": {
+      "account": {
+        "name": "Partei fir Aarbecht, Rechtsstaat, Trucmachin, Elitefërderung a basisdemokratesch Initiativ (d'PARTEI)",
+        "url": "https://die-partei.social/@dPARTEI",
+        "category": " (-)"
+      },
+      "posts_count": 120,
+      "recent_posts_count": 1,
+      "created_at": "2022-11-18T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@mainzbingen": {
+      "account": {
+        "name": "Die PARTEI Mainz-Bingen",
+        "url": "https://die-partei.social/@mainzbingen",
+        "category": " (-)"
+      },
+      "posts_count": 17,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-11T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@niedersachsen": {
+      "account": {
+        "name": "Die PARTEI Niedersachsen",
+        "url": "https://die-partei.social/@niedersachsen",
+        "category": " (-)"
+      },
+      "posts_count": 23,
+      "recent_posts_count": 0,
+      "created_at": "2022-10-29T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://die-partei.social/@DiePARTEISaar": {
+      "account": {
+        "name": "Die PARTEI Saar",
+        "url": "https://die-partei.social/@DiePARTEISaar",
+        "category": " (-)"
+      },
+      "posts_count": 0,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-08T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@stanislav_elinson": {
+      "account": {
+        "name": "Stanislav Elinson",
+        "url": "https://gruene.social/@stanislav_elinson",
+        "category": " (Grüne)"
+      },
+      "posts_count": 0,
+      "recent_posts_count": 0,
+      "created_at": "2022-12-20T00:00:00.000Z",
       "is_bot": false
     },
     "https://gruene.social/@juliaeisentraut": {
@@ -4242,7 +4484,7 @@
         "category": " (Grüne)"
       },
       "posts_count": 886,
-      "recent_posts_count": 47,
+      "recent_posts_count": 45,
       "created_at": "2019-11-24T00:00:00.000Z",
       "is_bot": false
     },
@@ -4266,17 +4508,6 @@
       "posts_count": 0,
       "recent_posts_count": 0,
       "created_at": "2019-09-27T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@urbach": {
-      "account": {
-        "name": "Bündnis '90/Die Grünen Urbach",
-        "url": "https://gruene.social/@urbach",
-        "category": " (Grüne)"
-      },
-      "posts_count": 296,
-      "recent_posts_count": 85,
-      "created_at": "2019-07-23T00:00:00.000Z",
       "is_bot": false
     },
     "https://gruene.social/@ninastahr": {
@@ -4417,8 +4648,8 @@
         "url": "https://gruene.social/@heilrath",
         "category": " (Grüne)"
       },
-      "posts_count": 5251,
-      "recent_posts_count": 110,
+      "posts_count": 5252,
+      "recent_posts_count": 106,
       "created_at": "2020-02-22T00:00:00.000Z",
       "is_bot": false
     },
@@ -4428,8 +4659,8 @@
         "url": "https://gruene.social/@janalbrecht",
         "category": " (Grüne)"
       },
-      "posts_count": 465,
-      "recent_posts_count": 14,
+      "posts_count": 467,
+      "recent_posts_count": 16,
       "created_at": "2022-04-26T00:00:00.000Z",
       "is_bot": false
     },
@@ -4472,7 +4703,7 @@
         "url": "https://gruene.social/@Gerbsen",
         "category": " (Grüne)"
       },
-      "posts_count": 1228,
+      "posts_count": 1229,
       "recent_posts_count": 120,
       "created_at": "2019-11-19T00:00:00.000Z",
       "is_bot": false
@@ -4497,6 +4728,17 @@
       "posts_count": 337,
       "recent_posts_count": 27,
       "created_at": "2021-03-10T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://gruene.social/@urbach": {
+      "account": {
+        "name": "Bündnis '90/Die Grünen Urbach",
+        "url": "https://gruene.social/@urbach",
+        "category": " (Grüne)"
+      },
+      "posts_count": 296,
+      "recent_posts_count": 85,
+      "created_at": "2019-07-23T00:00:00.000Z",
       "is_bot": false
     },
     "https://gruene.social/@maxvorstadt": {
@@ -4538,174 +4780,42 @@
         "url": "https://gruene.social/@gruenektkleve",
         "category": " (Grüne)"
       },
-      "posts_count": 19,
-      "recent_posts_count": 9,
+      "posts_count": 20,
+      "recent_posts_count": 10,
       "created_at": "2022-03-24T00:00:00.000Z",
       "is_bot": false
     },
-    "https://gruene.social/@grueneltbb": {
+    "https://linke.social/@pascalmeiser": {
       "account": {
-        "name": "Bündnis 90/Die Grünen Landtagsfraktion Brandenburg",
-        "url": "https://gruene.social/@grueneltbb",
-        "category": " (Grüne)"
-      },
-      "posts_count": 25,
-      "recent_posts_count": 0,
-      "created_at": "2022-04-26T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@gruenenrw": {
-      "account": {
-        "name": "Bündnis 90/Die Grünen Nordrhein-Westfalen",
-        "url": "https://gruene.social/@gruenenrw",
-        "category": " (Grüne)"
-      },
-      "posts_count": 13,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-20T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@kelly_stiftung": {
-      "account": {
-        "name": "Petra-Kelly-Stiftung",
-        "url": "https://gruene.social/@kelly_stiftung",
-        "category": " (Grüne)"
-      },
-      "posts_count": 9,
-      "recent_posts_count": 0,
-      "created_at": "2022-12-15T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://piraten-partei.social/@vwt1812": {
-      "account": {
-        "name": "Lukas Küffner",
-        "url": "https://piraten-partei.social/@vwt1812",
-        "category": " (-)"
-      },
-      "posts_count": 87,
-      "recent_posts_count": 1,
-      "created_at": "2022-11-22T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@boell": {
-      "account": {
-        "name": "Heinrich-Böll-Stiftung",
-        "url": "https://gruene.social/@boell",
-        "category": " (Grüne)"
-      },
-      "posts_count": 280,
-      "recent_posts_count": 37,
-      "created_at": "2022-05-05T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://linke.social/@erlangerlinke": {
-      "account": {
-        "name": "Erlanger Linke",
-        "url": "https://linke.social/@erlangerlinke",
+        "name": "Pascal Meiser",
+        "url": "https://linke.social/@pascalmeiser",
         "category": " (Linke)"
       },
-      "posts_count": 1,
-      "recent_posts_count": 0,
-      "created_at": "2023-07-06T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@jon": {
-      "account": {
-        "name": "Jon Worth",
-        "url": "https://gruene.social/@jon",
-        "category": " (Grüne)"
-      },
-      "posts_count": 29792,
-      "recent_posts_count": 120,
-      "created_at": "2022-10-31T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@DiePARTEI_RO": {
-      "account": {
-        "name": "Die PARTEI Kreisverband Rosenheim",
-        "url": "https://die-partei.social/@DiePARTEI_RO",
-        "category": " (-)"
-      },
-      "posts_count": 482,
-      "recent_posts_count": 120,
-      "created_at": "2022-05-29T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@bwgruen": {
-      "account": {
-        "name": "BundeswehrGrün",
-        "url": "https://gruene.social/@bwgruen",
-        "category": " (Grüne)"
-      },
-      "posts_count": 53,
-      "recent_posts_count": 2,
-      "created_at": "2022-10-27T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://gruene.social/@Krstorevic": {
-      "account": {
-        "name": "Krsto Lazarević",
-        "url": "https://gruene.social/@Krstorevic",
-        "category": " (Grüne)"
-      },
-      "posts_count": 312,
-      "recent_posts_count": 1,
-      "created_at": "2022-11-18T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@dPARTEI": {
-      "account": {
-        "name": "Partei fir Aarbecht, Rechtsstaat, Trucmachin, Elitefërderung a basisdemokratesch Initiativ (d'PARTEI)",
-        "url": "https://die-partei.social/@dPARTEI",
-        "category": " (-)"
-      },
-      "posts_count": 120,
-      "recent_posts_count": 1,
-      "created_at": "2022-11-18T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@mainzbingen": {
-      "account": {
-        "name": "Die PARTEI Mainz-Bingen",
-        "url": "https://die-partei.social/@mainzbingen",
-        "category": " (-)"
-      },
-      "posts_count": 17,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-11T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@niedersachsen": {
-      "account": {
-        "name": "Die PARTEI Niedersachsen",
-        "url": "https://die-partei.social/@niedersachsen",
-        "category": " (-)"
-      },
-      "posts_count": 23,
-      "recent_posts_count": 0,
-      "created_at": "2022-10-29T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://die-partei.social/@DiePARTEISaar": {
-      "account": {
-        "name": "Die PARTEI Saar",
-        "url": "https://die-partei.social/@DiePARTEISaar",
-        "category": " (-)"
-      },
       "posts_count": 0,
       "recent_posts_count": 0,
-      "created_at": "2022-11-08T00:00:00.000Z",
+      "created_at": "2024-03-28T00:00:00.000Z",
       "is_bot": false
     },
-    "https://gruene.social/@stanislav_elinson": {
+    "https://linke.social/@LinksfraktionHH": {
       "account": {
-        "name": "Stanislav Elinson",
-        "url": "https://gruene.social/@stanislav_elinson",
-        "category": " (Grüne)"
+        "name": "Fraktion Die Linke in der Hamburgischen Bürgerschaft",
+        "url": "https://linke.social/@LinksfraktionHH",
+        "category": " (Linke)"
       },
-      "posts_count": 0,
-      "recent_posts_count": 0,
-      "created_at": "2022-12-20T00:00:00.000Z",
+      "posts_count": 210,
+      "recent_posts_count": 9,
+      "created_at": "2022-05-11T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://linke.social/@DieLinke_Jena": {
+      "account": {
+        "name": "Die Linke Jena",
+        "url": "https://linke.social/@DieLinke_Jena",
+        "category": " (Linke)"
+      },
+      "posts_count": 11,
+      "recent_posts_count": 4,
+      "created_at": "2024-11-17T00:00:00.000Z",
       "is_bot": false
     },
     "https://linke.social/@dielinkespandau": {
@@ -4769,20 +4879,9 @@
         "url": "https://social.bund.de/@bmdv",
         "category": "Bundesministerium"
       },
-      "posts_count": 2032,
-      "recent_posts_count": 119,
+      "posts_count": 2036,
+      "recent_posts_count": 120,
       "created_at": "2022-11-14T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@bmi": {
-      "account": {
-        "name": "Bundesministerium des Innern und für Heimat",
-        "url": "https://social.bund.de/@bmi",
-        "category": "Bundesministerium"
-      },
-      "posts_count": 1495,
-      "recent_posts_count": 81,
-      "created_at": "2022-10-27T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.bund.de/@bmbf_bund": {
@@ -4791,20 +4890,9 @@
         "url": "https://social.bund.de/@bmbf_bund",
         "category": "Bundesministerium"
       },
-      "posts_count": 660,
-      "recent_posts_count": 45,
+      "posts_count": 662,
+      "recent_posts_count": 47,
       "created_at": "2022-03-16T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@bmuv": {
-      "account": {
-        "name": "Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz",
-        "url": "https://social.bund.de/@bmuv",
-        "category": "Bundesministerium"
-      },
-      "posts_count": 196,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-02T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.bund.de/@BMWK": {
@@ -4818,6 +4906,39 @@
       "created_at": "2022-11-02T00:00:00.000Z",
       "is_bot": false
     },
+    "https://social.bund.de/@bmi": {
+      "account": {
+        "name": "Bundesministerium des Innern und für Heimat",
+        "url": "https://social.bund.de/@bmi",
+        "category": "Bundesministerium"
+      },
+      "posts_count": 1497,
+      "recent_posts_count": 83,
+      "created_at": "2022-10-27T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@bmz": {
+      "account": {
+        "name": "Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung",
+        "url": "https://social.bund.de/@bmz",
+        "category": "Bundesministerium"
+      },
+      "posts_count": 1,
+      "recent_posts_count": 0,
+      "created_at": "2023-02-17T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@bmf": {
+      "account": {
+        "name": "Bundesministerium der Finanzen",
+        "url": "https://social.bund.de/@bmf",
+        "category": "Bundesministerium"
+      },
+      "posts_count": 427,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-28T00:00:00.000Z",
+      "is_bot": false
+    },
     "https://social.bund.de/@BKG": {
       "account": {
         "name": "Bundesamt für Kartographie und Geodäsie",
@@ -4825,7 +4946,7 @@
         "category": "Nationale Kartographiebehörde"
       },
       "posts_count": 700,
-      "recent_posts_count": 38,
+      "recent_posts_count": 30,
       "created_at": "2022-11-14T00:00:00.000Z",
       "is_bot": false
     },
@@ -4835,7 +4956,7 @@
         "url": "https://social.bund.de/@DS_Stiftung",
         "category": "Stiftung"
       },
-      "posts_count": 1538,
+      "posts_count": 1539,
       "recent_posts_count": 90,
       "created_at": "2021-05-21T00:00:00.000Z",
       "is_bot": true
@@ -4846,8 +4967,8 @@
         "url": "https://social.bund.de/@PRIF",
         "category": "Stiftung"
       },
-      "posts_count": 519,
-      "recent_posts_count": 30,
+      "posts_count": 520,
+      "recent_posts_count": 31,
       "created_at": "2022-11-18T00:00:00.000Z",
       "is_bot": false
     },
@@ -4873,14 +4994,36 @@
       "created_at": "2022-11-22T00:00:00.000Z",
       "is_bot": false
     },
+    "https://social.bund.de/@geomar_de": {
+      "account": {
+        "name": "Helmholtz-Zentrum für Ozeanforschung Kiel",
+        "url": "https://social.bund.de/@geomar_de",
+        "category": "Stiftung"
+      },
+      "posts_count": 5,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-22T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@bfdi": {
+      "account": {
+        "name": "Bundesbeauftragte für den Datenschutz und die Informationsfreiheit",
+        "url": "https://social.bund.de/@bfdi",
+        "category": "Oberste Bundesbehörde"
+      },
+      "posts_count": 3680,
+      "recent_posts_count": 29,
+      "created_at": "2020-04-29T00:00:00.000Z",
+      "is_bot": false
+    },
     "https://social.bund.de/@BlnBDI": {
       "account": {
         "name": "Berliner Beauftragte für Datenschutz und Informationsfreiheit",
         "url": "https://social.bund.de/@BlnBDI",
         "category": "Landesbehörde"
       },
-      "posts_count": 508,
-      "recent_posts_count": 23,
+      "posts_count": 509,
+      "recent_posts_count": 24,
       "created_at": "2021-08-13T00:00:00.000Z",
       "is_bot": false
     },
@@ -4912,8 +5055,8 @@
         "url": "https://social.bund.de/@lfdi_rlp",
         "category": "Landesbehörde"
       },
-      "posts_count": 218,
-      "recent_posts_count": 15,
+      "posts_count": 219,
+      "recent_posts_count": 16,
       "created_at": "2023-09-21T00:00:00.000Z",
       "is_bot": false
     },
@@ -4923,8 +5066,8 @@
         "url": "https://social.bund.de/@GRS",
         "category": "Non-Profit-Organisation"
       },
-      "posts_count": 571,
-      "recent_posts_count": 14,
+      "posts_count": 572,
+      "recent_posts_count": 15,
       "created_at": "2022-11-15T00:00:00.000Z",
       "is_bot": false
     },
@@ -4934,7 +5077,7 @@
         "url": "https://social.bund.de/@evzfoundation",
         "category": "Non-Profit-Organisation"
       },
-      "posts_count": 167,
+      "posts_count": 168,
       "recent_posts_count": 16,
       "created_at": "2022-11-22T00:00:00.000Z",
       "is_bot": false
@@ -4945,31 +5088,20 @@
         "url": "https://social.bund.de/@Bundesregierung",
         "category": "Exekutive"
       },
-      "posts_count": 601,
+      "posts_count": 603,
       "recent_posts_count": 61,
       "created_at": "2022-12-23T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@FITKOfoederal": {
+    "https://social.bund.de/@Ostbeauftragter": {
       "account": {
-        "name": "Föderale IT-Kooperation",
-        "url": "https://social.bund.de/@FITKOfoederal",
-        "category": "Anstalt des öffentlichen Rechts"
+        "name": "Beauftragter der Bundesregierung für Ostdeutschland und gleichwertige Lebensverhältnisse",
+        "url": "https://social.bund.de/@Ostbeauftragter",
+        "category": "Position"
       },
-      "posts_count": 432,
-      "recent_posts_count": 1,
-      "created_at": "2021-08-10T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@BAnst_PT": {
-      "account": {
-        "name": "Bundesanstalt für Post und Telekommunikation Deutsche Bundespost",
-        "url": "https://social.bund.de/@BAnst_PT",
-        "category": "Anstalt des öffentlichen Rechts"
-      },
-      "posts_count": 3,
+      "posts_count": 4,
       "recent_posts_count": 0,
-      "created_at": "2023-01-09T00:00:00.000Z",
+      "created_at": "2022-11-23T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.bund.de/@die_rente": {
@@ -4981,105 +5113,6 @@
       "posts_count": 314,
       "recent_posts_count": 6,
       "created_at": "2023-01-09T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@bfr": {
-      "account": {
-        "name": "Bundesinstitut für Risikobewertung",
-        "url": "https://social.bund.de/@bfr",
-        "category": "Forschungseinrichtung"
-      },
-      "posts_count": 788,
-      "recent_posts_count": 79,
-      "created_at": "2022-08-15T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@dlr_next": {
-      "account": {
-        "name": "Deutsches Zentrum für Luft- und Raumfahrt",
-        "url": "https://social.bund.de/@dlr_next",
-        "category": "Forschungseinrichtung"
-      },
-      "posts_count": 1859,
-      "recent_posts_count": 100,
-      "created_at": "2022-11-18T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@dai_weltweit": {
-      "account": {
-        "name": "Deutsches Archäologisches Institut",
-        "url": "https://social.bund.de/@dai_weltweit",
-        "category": "Forschungseinrichtung"
-      },
-      "posts_count": 293,
-      "recent_posts_count": 16,
-      "created_at": "2022-11-16T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@geomar_de": {
-      "account": {
-        "name": "Helmholtz-Zentrum für Ozeanforschung Kiel",
-        "url": "https://social.bund.de/@geomar_de",
-        "category": "Forschungseinrichtung"
-      },
-      "posts_count": 5,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-22T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@IPN_Kiel": {
-      "account": {
-        "name": "Leibniz-Institut für die Pädagogik der Naturwissenschaften und Mathematik",
-        "url": "https://social.bund.de/@IPN_Kiel",
-        "category": "Forschungseinrichtung"
-      },
-      "posts_count": 97,
-      "recent_posts_count": 0,
-      "created_at": "2022-12-21T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@MDC_Berlin": {
-      "account": {
-        "name": "Max-Delbrück-Centrum für Molekulare Medizin",
-        "url": "https://social.bund.de/@MDC_Berlin",
-        "category": "Forschungseinrichtung"
-      },
-      "posts_count": 377,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-10T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@dzne": {
-      "account": {
-        "name": "Deutsches Zentrum für Neurodegenerative Erkrankungen",
-        "url": "https://social.bund.de/@dzne",
-        "category": "Forschungseinrichtung"
-      },
-      "posts_count": 81,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-16T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@HelmholtzMunich": {
-      "account": {
-        "name": "Helmholtz-Zentrum München",
-        "url": "https://social.bund.de/@HelmholtzMunich",
-        "category": "Forschungseinrichtung"
-      },
-      "posts_count": 12,
-      "recent_posts_count": 0,
-      "created_at": "2022-12-01T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@bibb": {
-      "account": {
-        "name": "Bundesinstitut für Berufsbildung",
-        "url": "https://social.bund.de/@bibb",
-        "category": "Forschungseinrichtung"
-      },
-      "posts_count": 809,
-      "recent_posts_count": 45,
-      "created_at": "2022-12-28T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.bund.de/@itzbund": {
@@ -5110,7 +5143,7 @@
         "url": "https://mastodon.social/@dielinke",
         "category": "politische Partei"
       },
-      "posts_count": 789,
+      "posts_count": 800,
       "recent_posts_count": 120,
       "created_at": "2019-05-08T00:00:00.000Z",
       "is_bot": false
@@ -5170,13 +5203,24 @@
       "created_at": "2023-02-10T00:00:00.000Z",
       "is_bot": false
     },
+    "https://social.bund.de/@bfr": {
+      "account": {
+        "name": "Bundesinstitut für Risikobewertung",
+        "url": "https://social.bund.de/@bfr",
+        "category": "Lebensmittelsicherheitsbehörde"
+      },
+      "posts_count": 789,
+      "recent_posts_count": 77,
+      "created_at": "2022-08-15T00:00:00.000Z",
+      "is_bot": false
+    },
     "https://social.bund.de/@Zoll": {
       "account": {
         "name": "Generalzolldirektion",
         "url": "https://social.bund.de/@Zoll",
         "category": "Bundesbehörde in Deutschland"
       },
-      "posts_count": 2147,
+      "posts_count": 2150,
       "recent_posts_count": 120,
       "created_at": "2022-11-02T00:00:00.000Z",
       "is_bot": false
@@ -5192,6 +5236,17 @@
       "created_at": "2022-11-25T00:00:00.000Z",
       "is_bot": false
     },
+    "https://social.bund.de/@gdws_wsv_presse": {
+      "account": {
+        "name": "Wasserstraßen- und Schifffahrtsverwaltung des Bundes",
+        "url": "https://social.bund.de/@gdws_wsv_presse",
+        "category": "Behörde"
+      },
+      "posts_count": 576,
+      "recent_posts_count": 39,
+      "created_at": "2023-02-02T00:00:00.000Z",
+      "is_bot": false
+    },
     "https://social.bund.de/@antidiskriminierung": {
       "account": {
         "name": "Antidiskriminierungsstelle des Bundes",
@@ -5201,17 +5256,6 @@
       "posts_count": 9,
       "recent_posts_count": 0,
       "created_at": "2022-11-18T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@gdws_wsv_presse": {
-      "account": {
-        "name": "Wasserstraßen- und Schifffahrtsverwaltung des Bundes",
-        "url": "https://social.bund.de/@gdws_wsv_presse",
-        "category": "Behörde"
-      },
-      "posts_count": 576,
-      "recent_posts_count": 43,
-      "created_at": "2023-02-02T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.bund.de/@dsk": {
@@ -5243,7 +5287,7 @@
         "category": "Gremium"
       },
       "posts_count": 243,
-      "recent_posts_count": 27,
+      "recent_posts_count": 26,
       "created_at": "2023-04-28T00:00:00.000Z",
       "is_bot": false
     },
@@ -5253,9 +5297,31 @@
         "url": "https://social.bund.de/@deutscherwetterdienst",
         "category": "Bundesoberbehörde"
       },
-      "posts_count": 1689,
-      "recent_posts_count": 116,
+      "posts_count": 1694,
+      "recent_posts_count": 120,
       "created_at": "2022-11-07T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@unibwm": {
+      "account": {
+        "name": "Universität der Bundeswehr München",
+        "url": "https://social.bund.de/@unibwm",
+        "category": "Bundesoberbehörde"
+      },
+      "posts_count": 67,
+      "recent_posts_count": 4,
+      "created_at": "2022-11-22T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@BNetzA": {
+      "account": {
+        "name": "Bundesnetzagentur",
+        "url": "https://social.bund.de/@BNetzA",
+        "category": "Bundesoberbehörde"
+      },
+      "posts_count": 632,
+      "recent_posts_count": 25,
+      "created_at": "2022-11-30T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.bund.de/@Umweltbundesamt": {
@@ -5264,8 +5330,8 @@
         "url": "https://social.bund.de/@Umweltbundesamt",
         "category": "Bundesoberbehörde"
       },
-      "posts_count": 278,
-      "recent_posts_count": 33,
+      "posts_count": 279,
+      "recent_posts_count": 34,
       "created_at": "2023-01-25T00:00:00.000Z",
       "is_bot": false
     },
@@ -5276,19 +5342,8 @@
         "category": "Bundesoberbehörde"
       },
       "posts_count": 320,
-      "recent_posts_count": 24,
+      "recent_posts_count": 23,
       "created_at": "2022-12-01T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@loeffler_news": {
-      "account": {
-        "name": "Friedrich-Loeffler-Institut",
-        "url": "https://social.bund.de/@loeffler_news",
-        "category": "Bundesoberbehörde"
-      },
-      "posts_count": 116,
-      "recent_posts_count": 1,
-      "created_at": "2022-11-15T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.bund.de/@BaFin": {
@@ -5297,9 +5352,75 @@
         "url": "https://social.bund.de/@BaFin",
         "category": "Finanzaufsichtsbehörde"
       },
-      "posts_count": 112,
-      "recent_posts_count": 41,
+      "posts_count": 115,
+      "recent_posts_count": 44,
       "created_at": "2023-01-02T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@ltrlp": {
+      "account": {
+        "name": "Landtag Rheinland-Pfalz",
+        "url": "https://social.bund.de/@ltrlp",
+        "category": "Landesparlament"
+      },
+      "posts_count": 1231,
+      "recent_posts_count": 7,
+      "created_at": "2021-07-27T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@thueringerlandtag": {
+      "account": {
+        "name": "Thüringer Landtag",
+        "url": "https://social.bund.de/@thueringerlandtag",
+        "category": "Landesparlament"
+      },
+      "posts_count": 847,
+      "recent_posts_count": 44,
+      "created_at": "2023-01-16T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@BuergerschaftHH": {
+      "account": {
+        "name": "Hamburgische Bürgerschaft",
+        "url": "https://social.bund.de/@BuergerschaftHH",
+        "category": "Landesparlament"
+      },
+      "posts_count": 21,
+      "recent_posts_count": 0,
+      "created_at": "2023-04-12T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@LT_Nds": {
+      "account": {
+        "name": "Niedersächsischer Landtag",
+        "url": "https://social.bund.de/@LT_Nds",
+        "category": "Landesparlament"
+      },
+      "posts_count": 587,
+      "recent_posts_count": 48,
+      "created_at": "2022-12-20T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@hessischerlandtag": {
+      "account": {
+        "name": "Hessischer Landtag",
+        "url": "https://social.bund.de/@hessischerlandtag",
+        "category": "Landesparlament"
+      },
+      "posts_count": 365,
+      "recent_posts_count": 11,
+      "created_at": "2022-05-10T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@HBBuergerschaft": {
+      "account": {
+        "name": "Bremische Bürgerschaft",
+        "url": "https://social.bund.de/@HBBuergerschaft",
+        "category": "Landesparlament"
+      },
+      "posts_count": 336,
+      "recent_posts_count": 23,
+      "created_at": "2022-12-13T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.bund.de/@FraunhoferFOKUS": {
@@ -5309,7 +5430,7 @@
         "category": "Fraunhofer-Institut"
       },
       "posts_count": 542,
-      "recent_posts_count": 38,
+      "recent_posts_count": 37,
       "created_at": "2022-11-17T00:00:00.000Z",
       "is_bot": false
     },
@@ -5319,7 +5440,7 @@
         "url": "https://social.bund.de/@BayLfD",
         "category": "Datenschutzaufsichtsbehörde"
       },
-      "posts_count": 295,
+      "posts_count": 296,
       "recent_posts_count": 8,
       "created_at": "2022-04-29T00:00:00.000Z",
       "is_bot": false
@@ -5364,7 +5485,7 @@
         "category": "Bundesforschungsanstalt"
       },
       "posts_count": 186,
-      "recent_posts_count": 12,
+      "recent_posts_count": 10,
       "created_at": "2023-01-24T00:00:00.000Z",
       "is_bot": false
     },
@@ -5374,8 +5495,8 @@
         "url": "https://social.bund.de/@BAMResearch",
         "category": "Bundesforschungsanstalt"
       },
-      "posts_count": 333,
-      "recent_posts_count": 7,
+      "posts_count": 334,
+      "recent_posts_count": 8,
       "created_at": "2022-11-22T00:00:00.000Z",
       "is_bot": false
     },
@@ -5386,8 +5507,85 @@
         "category": "Bundesforschungsanstalt"
       },
       "posts_count": 832,
-      "recent_posts_count": 33,
+      "recent_posts_count": 32,
       "created_at": "2022-11-11T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@dai_weltweit": {
+      "account": {
+        "name": "Deutsches Archäologisches Institut",
+        "url": "https://social.bund.de/@dai_weltweit",
+        "category": "Forschungseinrichtung"
+      },
+      "posts_count": 294,
+      "recent_posts_count": 16,
+      "created_at": "2022-11-16T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@dzne": {
+      "account": {
+        "name": "Deutsches Zentrum für Neurodegenerative Erkrankungen",
+        "url": "https://social.bund.de/@dzne",
+        "category": "Forschungseinrichtung"
+      },
+      "posts_count": 81,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-16T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@HelmholtzMunich": {
+      "account": {
+        "name": "Helmholtz-Zentrum München",
+        "url": "https://social.bund.de/@HelmholtzMunich",
+        "category": "Forschungseinrichtung"
+      },
+      "posts_count": 12,
+      "recent_posts_count": 0,
+      "created_at": "2022-12-01T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@bibb": {
+      "account": {
+        "name": "Bundesinstitut für Berufsbildung",
+        "url": "https://social.bund.de/@bibb",
+        "category": "Forschungseinrichtung"
+      },
+      "posts_count": 809,
+      "recent_posts_count": 45,
+      "created_at": "2022-12-28T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@dlr_next": {
+      "account": {
+        "name": "Deutsches Zentrum für Luft- und Raumfahrt",
+        "url": "https://social.bund.de/@dlr_next",
+        "category": "Forschungseinrichtung"
+      },
+      "posts_count": 1861,
+      "recent_posts_count": 102,
+      "created_at": "2022-11-18T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@IPN_Kiel": {
+      "account": {
+        "name": "Leibniz-Institut für die Pädagogik der Naturwissenschaften und Mathematik",
+        "url": "https://social.bund.de/@IPN_Kiel",
+        "category": "Forschungseinrichtung"
+      },
+      "posts_count": 97,
+      "recent_posts_count": 0,
+      "created_at": "2022-12-21T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@MDC_Berlin": {
+      "account": {
+        "name": "Max-Delbrück-Centrum für Molekulare Medizin",
+        "url": "https://social.bund.de/@MDC_Berlin",
+        "category": "Forschungseinrichtung"
+      },
+      "posts_count": 377,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-10T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.bund.de/@KfW": {
@@ -5401,158 +5599,191 @@
       "created_at": "2022-11-10T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@thueringerlandtag": {
+    "https://social.bund.de/@kulturSPK": {
       "account": {
-        "name": "Thüringer Landtag",
-        "url": "https://social.bund.de/@thueringerlandtag",
-        "category": "Landesparlament"
+        "name": "Stiftung Preußischer Kulturbesitz",
+        "url": "https://social.bund.de/@kulturSPK",
+        "category": "Kulturstiftung"
       },
-      "posts_count": 847,
-      "recent_posts_count": 45,
-      "created_at": "2023-01-16T00:00:00.000Z",
+      "posts_count": 212,
+      "recent_posts_count": 31,
+      "created_at": "2022-11-21T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@hessischerlandtag": {
+    "https://social.hessen.de/@HBDI": {
       "account": {
-        "name": "Hessischer Landtag",
-        "url": "https://social.bund.de/@hessischerlandtag",
-        "category": "Landesparlament"
+        "name": "Hessischer Beauftragter für Datenschutz und Informationsfreiheit",
+        "url": "https://social.hessen.de/@HBDI",
+        "category": "Landesbeauftragter für den Datenschutz"
       },
-      "posts_count": 365,
+      "posts_count": 121,
       "recent_posts_count": 11,
-      "created_at": "2022-05-10T00:00:00.000Z",
+      "created_at": "2023-04-25T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@BuergerschaftHH": {
+    "https://social.hessen.de/@umwelthessen": {
       "account": {
-        "name": "Hamburgische Bürgerschaft",
-        "url": "https://social.bund.de/@BuergerschaftHH",
-        "category": "Landesparlament"
+        "name": "Hessische Ministerium für Landwirtschaft und Umwelt, Weinbau, Forsten, Jagd und Heimat",
+        "url": "https://social.hessen.de/@umwelthessen",
+        "category": "Landwirtschaftsministerium"
       },
-      "posts_count": 21,
+      "posts_count": 302,
+      "recent_posts_count": 22,
+      "created_at": "2023-02-14T00:00:00.000Z",
+      "is_bot": true
+    },
+    "https://social.hessen.de/@hmwk_hessen": {
+      "account": {
+        "name": "Hessisches Ministerium für Wissenschaft und Kunst",
+        "url": "https://social.hessen.de/@hmwk_hessen",
+        "category": "Wissenschaftsministerium"
+      },
+      "posts_count": 170,
       "recent_posts_count": 0,
-      "created_at": "2023-04-12T00:00:00.000Z",
+      "created_at": "2023-02-13T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@HBBuergerschaft": {
+    "https://social.bund.de/@loeffler_news": {
       "account": {
-        "name": "Bremische Bürgerschaft",
-        "url": "https://social.bund.de/@HBBuergerschaft",
-        "category": "Landesparlament"
+        "name": "Friedrich-Loeffler-Institut",
+        "url": "https://social.bund.de/@loeffler_news",
+        "category": "Institut"
       },
-      "posts_count": 336,
-      "recent_posts_count": 24,
-      "created_at": "2022-12-13T00:00:00.000Z",
+      "posts_count": 116,
+      "recent_posts_count": 1,
+      "created_at": "2022-11-15T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@LT_Nds": {
+    "https://social.hessen.de/@wirtschafthessen": {
       "account": {
-        "name": "Niedersächsischer Landtag",
-        "url": "https://social.bund.de/@LT_Nds",
-        "category": "Landesparlament"
+        "name": "Hessisches Ministerium für Wirtschaft, Energie, Verkehr, Wohnen und ländlichen Raum",
+        "url": "https://social.hessen.de/@wirtschafthessen",
+        "category": "Energieministerium"
       },
-      "posts_count": 586,
-      "recent_posts_count": 47,
-      "created_at": "2022-12-20T00:00:00.000Z",
+      "posts_count": 72,
+      "recent_posts_count": 4,
+      "created_at": "2023-02-13T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@ltrlp": {
+    "https://social.hessen.de/@SozialHessen": {
       "account": {
-        "name": "Landtag Rheinland-Pfalz",
-        "url": "https://social.bund.de/@ltrlp",
-        "category": "Landesparlament"
+        "name": "Hessisches Ministerium für Soziales und Integration",
+        "url": "https://social.hessen.de/@SozialHessen",
+        "category": "Sozialministerium"
       },
-      "posts_count": 1230,
+      "posts_count": 72,
+      "recent_posts_count": 0,
+      "created_at": "2023-02-16T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@Weizenbaum_Institut": {
+      "account": {
+        "name": "Weizenbaum-Institut",
+        "url": "https://social.bund.de/@Weizenbaum_Institut",
+        "category": "Wissenschaftsverlag"
+      },
+      "posts_count": 835,
+      "recent_posts_count": 83,
+      "created_at": "2022-11-03T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@bmuv": {
+      "account": {
+        "name": "Bundesministerium für Umwelt, Naturschutz, nukleare Sicherheit und Verbraucherschutz",
+        "url": "https://social.bund.de/@bmuv",
+        "category": "Verbraucherschutzministerium"
+      },
+      "posts_count": 196,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-02T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@bundesfinanzhof": {
+      "account": {
+        "name": "Bundesfinanzhof",
+        "url": "https://social.bund.de/@bundesfinanzhof",
+        "category": "Steuerrekursgericht"
+      },
+      "posts_count": 83,
       "recent_posts_count": 6,
-      "created_at": "2021-07-27T00:00:00.000Z",
+      "created_at": "2023-02-24T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@bundestag": {
+      "account": {
+        "name": "Deutscher Bundestag",
+        "url": "https://social.bund.de/@bundestag",
+        "category": "Legislative"
+      },
+      "posts_count": 402,
+      "recent_posts_count": 2,
+      "created_at": "2023-07-27T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@certbund": {
+      "account": {
+        "name": "Q96195105",
+        "url": "https://social.bund.de/@certbund",
+        "category": "Computer Emergency Response Team"
+      },
+      "posts_count": 60,
+      "recent_posts_count": 3,
+      "created_at": "2023-03-01T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.bund.de/@BayerischerLandtag": {
       "account": {
         "name": "Bayerischer Landtag",
         "url": "https://social.bund.de/@BayerischerLandtag",
-        "category": "Landesparlament"
+        "category": "Einkammerparlament"
       },
-      "posts_count": 893,
-      "recent_posts_count": 42,
+      "posts_count": 895,
+      "recent_posts_count": 44,
       "created_at": "2023-02-01T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@BNetzA": {
+    "https://social.bund.de/@bundessozialgericht": {
       "account": {
-        "name": "Bundesnetzagentur",
-        "url": "https://social.bund.de/@BNetzA",
-        "category": "Bundesagentur"
+        "name": "Bundessozialgericht",
+        "url": "https://social.bund.de/@bundessozialgericht",
+        "category": "oberstes Gericht"
       },
-      "posts_count": 632,
-      "recent_posts_count": 28,
+      "posts_count": 680,
+      "recent_posts_count": 10,
+      "created_at": "2022-11-21T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@bverwg_de": {
+      "account": {
+        "name": "Bundesverwaltungsgericht",
+        "url": "https://social.bund.de/@bverwg_de",
+        "category": "oberstes Gericht"
+      },
+      "posts_count": 108,
+      "recent_posts_count": 6,
+      "created_at": "2023-01-31T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@BGH_Bund": {
+      "account": {
+        "name": "Bundesgerichtshof",
+        "url": "https://social.bund.de/@BGH_Bund",
+        "category": "oberstes Gericht"
+      },
+      "posts_count": 453,
+      "recent_posts_count": 40,
+      "created_at": "2022-12-13T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@DZA": {
+      "account": {
+        "name": "Deutsches Zentrum für Altersfragen",
+        "url": "https://social.bund.de/@DZA",
+        "category": "Anlage"
+      },
+      "posts_count": 185,
+      "recent_posts_count": 12,
       "created_at": "2022-11-30T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@bfdi": {
-      "account": {
-        "name": "Bundesbeauftragte für den Datenschutz und die Informationsfreiheit",
-        "url": "https://social.bund.de/@bfdi",
-        "category": "Oberste Bundesbehörde"
-      },
-      "posts_count": 3680,
-      "recent_posts_count": 29,
-      "created_at": "2020-04-29T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@bmf": {
-      "account": {
-        "name": "Bundesministerium der Finanzen",
-        "url": "https://social.bund.de/@bmf",
-        "category": "Oberste Bundesbehörde"
-      },
-      "posts_count": 427,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-28T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@Ostbeauftragter": {
-      "account": {
-        "name": "Beauftragter der Bundesregierung für Ostdeutschland und gleichwertige Lebensverhältnisse",
-        "url": "https://social.bund.de/@Ostbeauftragter",
-        "category": "Position"
-      },
-      "posts_count": 4,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-23T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@BVL_Bund": {
-      "account": {
-        "name": "Bundesamt für Verbraucherschutz und Lebensmittelsicherheit",
-        "url": "https://social.bund.de/@BVL_Bund",
-        "category": "Bundesamt"
-      },
-      "posts_count": 355,
-      "recent_posts_count": 19,
-      "created_at": "2022-09-23T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@strahlenschutz": {
-      "account": {
-        "name": "Bundesamt für Strahlenschutz",
-        "url": "https://social.bund.de/@strahlenschutz",
-        "category": "Bundesamt"
-      },
-      "posts_count": 947,
-      "recent_posts_count": 65,
-      "created_at": "2022-05-31T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@bsi": {
-      "account": {
-        "name": "Bundesamt für Sicherheit in der Informationstechnik",
-        "url": "https://social.bund.de/@bsi",
-        "category": "Bundesamt"
-      },
-      "posts_count": 1806,
-      "recent_posts_count": 103,
-      "created_at": "2021-03-08T00:00:00.000Z",
       "is_bot": false
     },
     "https://social.bund.de/@base": {
@@ -5561,7 +5792,7 @@
         "url": "https://social.bund.de/@base",
         "category": "Bundesamt"
       },
-      "posts_count": 240,
+      "posts_count": 241,
       "recent_posts_count": 11,
       "created_at": "2022-11-14T00:00:00.000Z",
       "is_bot": false
@@ -5572,8 +5803,8 @@
         "url": "https://social.bund.de/@destatis",
         "category": "Bundesamt"
       },
-      "posts_count": 1191,
-      "recent_posts_count": 112,
+      "posts_count": 1194,
+      "recent_posts_count": 106,
       "created_at": "2022-10-31T00:00:00.000Z",
       "is_bot": false
     },
@@ -5588,26 +5819,125 @@
       "created_at": "2022-11-04T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@bmz": {
+    "https://social.bund.de/@BVL_Bund": {
       "account": {
-        "name": "Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung",
-        "url": "https://social.bund.de/@bmz",
-        "category": "Behörde"
+        "name": "Bundesamt für Verbraucherschutz und Lebensmittelsicherheit",
+        "url": "https://social.bund.de/@BVL_Bund",
+        "category": "Bundesamt"
       },
-      "posts_count": 1,
-      "recent_posts_count": 0,
-      "created_at": "2023-02-17T00:00:00.000Z",
+      "posts_count": 355,
+      "recent_posts_count": 18,
+      "created_at": "2022-09-23T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@AuswaertigesAmt": {
+    "https://social.bund.de/@strahlenschutz": {
       "account": {
-        "name": "Auswärtiges Amt",
-        "url": "https://social.bund.de/@AuswaertigesAmt",
-        "category": "Behörde"
+        "name": "Bundesamt für Strahlenschutz",
+        "url": "https://social.bund.de/@strahlenschutz",
+        "category": "Bundesamt"
       },
-      "posts_count": 809,
+      "posts_count": 948,
+      "recent_posts_count": 64,
+      "created_at": "2022-05-31T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@bsi": {
+      "account": {
+        "name": "Bundesamt für Sicherheit in der Informationstechnik",
+        "url": "https://social.bund.de/@bsi",
+        "category": "Bundesamt"
+      },
+      "posts_count": 1807,
+      "recent_posts_count": 102,
+      "created_at": "2021-03-08T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@TABundestag": {
+      "account": {
+        "name": "Büro für Technikfolgen-Abschätzung beim Deutschen Bundestag",
+        "url": "https://social.bund.de/@TABundestag",
+        "category": "akademische Einrichtung"
+      },
+      "posts_count": 141,
+      "recent_posts_count": 3,
+      "created_at": "2022-12-01T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@AlmanyaBE": {
+      "account": {
+        "name": "Deutsche Botschaft Ankara",
+        "url": "https://social.bund.de/@AlmanyaBE",
+        "category": "Botschaft"
+      },
+      "posts_count": 0,
       "recent_posts_count": 0,
-      "created_at": "2022-10-28T00:00:00.000Z",
+      "created_at": "2023-01-18T00:00:00.000Z",
+      "is_bot": true
+    },
+    "https://social.bund.de/@germanyinuk": {
+      "account": {
+        "name": "Deutsche Botschaft London",
+        "url": "https://social.bund.de/@germanyinuk",
+        "category": "Botschaft"
+      },
+      "posts_count": 226,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-18T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@GDI_DE": {
+      "account": {
+        "name": "GDI-DE",
+        "url": "https://social.bund.de/@GDI_DE",
+        "category": "Nationale Geodateninfrastruktur"
+      },
+      "posts_count": 66,
+      "recent_posts_count": 0,
+      "created_at": "2022-12-12T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@DIMR_Berlin": {
+      "account": {
+        "name": "Deutsches Institut für Menschenrechte",
+        "url": "https://social.bund.de/@DIMR_Berlin",
+        "category": "eingetragener Verein"
+      },
+      "posts_count": 2188,
+      "recent_posts_count": 104,
+      "created_at": "2022-11-28T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.hessen.de/@finanzen": {
+      "account": {
+        "name": "Hessisches Ministerium der Finanzen",
+        "url": "https://social.hessen.de/@finanzen",
+        "category": "Oberste Landesbehörde"
+      },
+      "posts_count": 198,
+      "recent_posts_count": 14,
+      "created_at": "2023-02-13T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@wbgu": {
+      "account": {
+        "name": "Wissenschaftlicher Beirat der Bundesregierung Globale Umweltveränderungen",
+        "url": "https://social.bund.de/@wbgu",
+        "category": "wissenschaftlicher Beirat"
+      },
+      "posts_count": 135,
+      "recent_posts_count": 12,
+      "created_at": "2022-11-15T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@TFK_Bundeswehr": {
+      "account": {
+        "name": "Territoriales Führungskommando der Bundeswehr",
+        "url": "https://social.bund.de/@TFK_Bundeswehr",
+        "category": "Kommandobehörde"
+      },
+      "posts_count": 0,
+      "recent_posts_count": 0,
+      "created_at": "2023-11-27T00:00:00.000Z",
       "is_bot": false
     },
     "https://mastodon.social/@originalerhalt": {
@@ -5627,7 +5957,7 @@
         "url": "https://xn--baw-joa.social/@stuttgart",
         "category": "Behörde"
       },
-      "posts_count": 897,
+      "posts_count": 898,
       "recent_posts_count": 56,
       "created_at": "2022-11-23T00:00:00.000Z",
       "is_bot": false
@@ -5639,7 +5969,7 @@
         "category": "Behörde"
       },
       "posts_count": 288,
-      "recent_posts_count": 19,
+      "recent_posts_count": 13,
       "created_at": "2023-01-11T00:00:00.000Z",
       "is_bot": false
     },
@@ -5664,6 +5994,17 @@
       "recent_posts_count": 0,
       "created_at": "2021-01-09T00:00:00.000Z",
       "is_bot": true
+    },
+    "https://social.bund.de/@AuswaertigesAmt": {
+      "account": {
+        "name": "Auswärtiges Amt",
+        "url": "https://social.bund.de/@AuswaertigesAmt",
+        "category": "Behörde"
+      },
+      "posts_count": 809,
+      "recent_posts_count": 0,
+      "created_at": "2022-10-28T00:00:00.000Z",
+      "is_bot": false
     },
     "https://bawü.social/@RPFreiburg": {
       "account": {
@@ -5693,273 +6034,31 @@
         "url": "https://wisskomm.social/@MaxWeberStiftung",
         "category": "Behörde"
       },
-      "posts_count": 524,
-      "recent_posts_count": 59,
+      "posts_count": 526,
+      "recent_posts_count": 60,
       "created_at": "2023-10-12T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@bundesarbeitsgericht": {
+    "https://social.bund.de/@FITKOfoederal": {
       "account": {
-        "name": "Bundesarbeitsgericht",
-        "url": "https://social.bund.de/@bundesarbeitsgericht",
-        "category": "Arbeitsgericht"
+        "name": "Föderale IT-Kooperation",
+        "url": "https://social.bund.de/@FITKOfoederal",
+        "category": "Anstalt des öffentlichen Rechts"
       },
-      "posts_count": 76,
-      "recent_posts_count": 6,
-      "created_at": "2023-01-30T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@BMWSB_Bund": {
-      "account": {
-        "name": "Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen",
-        "url": "https://social.bund.de/@BMWSB_Bund",
-        "category": "Bauministerium"
-      },
-      "posts_count": 2268,
-      "recent_posts_count": 74,
-      "created_at": "2022-10-31T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@Weizenbaum_Institut": {
-      "account": {
-        "name": "Weizenbaum-Institut",
-        "url": "https://social.bund.de/@Weizenbaum_Institut",
-        "category": "Wissenschaftsverlag"
-      },
-      "posts_count": 832,
-      "recent_posts_count": 84,
-      "created_at": "2022-11-03T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@Bf3R_centre": {
-      "account": {
-        "name": "Deutsches Zentrum zum Schutz von Versuchstieren",
-        "url": "https://social.bund.de/@Bf3R_centre",
-        "category": "Organisation"
-      },
-      "posts_count": 28,
-      "recent_posts_count": 2,
-      "created_at": "2023-01-23T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@verbraucherzentrale": {
-      "account": {
-        "name": "Verbraucherzentrale Bundesverband",
-        "url": "https://social.bund.de/@verbraucherzentrale",
-        "category": "Organisation"
-      },
-      "posts_count": 1060,
+      "posts_count": 432,
       "recent_posts_count": 0,
-      "created_at": "2022-11-29T00:00:00.000Z",
+      "created_at": "2021-08-10T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@LernendeSysteme": {
+    "https://social.bund.de/@BAnst_PT": {
       "account": {
-        "name": "Plattform Lernende Systeme",
-        "url": "https://social.bund.de/@LernendeSysteme",
-        "category": "Organisation"
+        "name": "Bundesanstalt für Post und Telekommunikation Deutsche Bundespost",
+        "url": "https://social.bund.de/@BAnst_PT",
+        "category": "Anstalt des öffentlichen Rechts"
       },
-      "posts_count": 168,
-      "recent_posts_count": 1,
-      "created_at": "2022-12-02T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@RNE_DE": {
-      "account": {
-        "name": "Rat für Nachhaltige Entwicklung",
-        "url": "https://social.bund.de/@RNE_DE",
-        "category": "Organisation"
-      },
-      "posts_count": 175,
+      "posts_count": 3,
       "recent_posts_count": 0,
-      "created_at": "2022-12-29T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@unibwm": {
-      "account": {
-        "name": "Universität der Bundeswehr München",
-        "url": "https://social.bund.de/@unibwm",
-        "category": "staatliche Universität"
-      },
-      "posts_count": 67,
-      "recent_posts_count": 4,
-      "created_at": "2022-11-22T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@bundessozialgericht": {
-      "account": {
-        "name": "Bundessozialgericht",
-        "url": "https://social.bund.de/@bundessozialgericht",
-        "category": "oberstes Gericht"
-      },
-      "posts_count": 680,
-      "recent_posts_count": 14,
-      "created_at": "2022-11-21T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@bundesfinanzhof": {
-      "account": {
-        "name": "Bundesfinanzhof",
-        "url": "https://social.bund.de/@bundesfinanzhof",
-        "category": "oberstes Gericht"
-      },
-      "posts_count": 83,
-      "recent_posts_count": 6,
-      "created_at": "2023-02-24T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@bverwg_de": {
-      "account": {
-        "name": "Bundesverwaltungsgericht",
-        "url": "https://social.bund.de/@bverwg_de",
-        "category": "oberstes Gericht"
-      },
-      "posts_count": 108,
-      "recent_posts_count": 6,
-      "created_at": "2023-01-31T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@BGH_Bund": {
-      "account": {
-        "name": "Bundesgerichtshof",
-        "url": "https://social.bund.de/@BGH_Bund",
-        "category": "oberstes Gericht"
-      },
-      "posts_count": 452,
-      "recent_posts_count": 41,
-      "created_at": "2022-12-13T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@bundestag": {
-      "account": {
-        "name": "Deutscher Bundestag",
-        "url": "https://social.bund.de/@bundestag",
-        "category": "Volksvertretung"
-      },
-      "posts_count": 402,
-      "recent_posts_count": 2,
-      "created_at": "2023-07-27T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@thw": {
-      "account": {
-        "name": "Technisches Hilfswerk",
-        "url": "https://social.bund.de/@thw",
-        "category": "Behörden und Organisationen mit Sicherheitsaufgaben"
-      },
-      "posts_count": 595,
-      "recent_posts_count": 10,
-      "created_at": "2022-09-28T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@Cyberagentur": {
-      "account": {
-        "name": "Agentur für Innovation in der Cybersicherheit",
-        "url": "https://social.bund.de/@Cyberagentur",
-        "category": "Gewerbebetrieb"
-      },
-      "posts_count": 240,
-      "recent_posts_count": 19,
-      "created_at": "2022-11-10T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@ZIF": {
-      "account": {
-        "name": "Zentrum für Internationale Friedenseinsätze",
-        "url": "https://social.bund.de/@ZIF",
-        "category": "karitative Vereinigung"
-      },
-      "posts_count": 5,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-15T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@germanyinuk": {
-      "account": {
-        "name": "Deutsche Botschaft London",
-        "url": "https://social.bund.de/@germanyinuk",
-        "category": "Botschaft"
-      },
-      "posts_count": 226,
-      "recent_posts_count": 0,
-      "created_at": "2022-11-18T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@AlmanyaBE": {
-      "account": {
-        "name": "Deutsche Botschaft Ankara",
-        "url": "https://social.bund.de/@AlmanyaBE",
-        "category": "Botschaft"
-      },
-      "posts_count": 0,
-      "recent_posts_count": 0,
-      "created_at": "2023-01-18T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://social.bund.de/@deutschesHeer": {
-      "account": {
-        "name": "Heer",
-        "url": "https://social.bund.de/@deutschesHeer",
-        "category": "Heer"
-      },
-      "posts_count": 108,
-      "recent_posts_count": 49,
-      "created_at": "2022-11-10T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.hessen.de/@umwelthessen": {
-      "account": {
-        "name": "Hessische Ministerium für Landwirtschaft und Umwelt, Weinbau, Forsten, Jagd und Heimat",
-        "url": "https://social.hessen.de/@umwelthessen",
-        "category": "Landwirtschaftsministerium"
-      },
-      "posts_count": 302,
-      "recent_posts_count": 23,
-      "created_at": "2023-02-14T00:00:00.000Z",
-      "is_bot": true
-    },
-    "https://social.bund.de/@kulturSPK": {
-      "account": {
-        "name": "Stiftung Preußischer Kulturbesitz",
-        "url": "https://social.bund.de/@kulturSPK",
-        "category": "Kulturstiftung"
-      },
-      "posts_count": 212,
-      "recent_posts_count": 33,
-      "created_at": "2022-11-21T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.hessen.de/@HBDI": {
-      "account": {
-        "name": "Hessischer Beauftragter für Datenschutz und Informationsfreiheit",
-        "url": "https://social.hessen.de/@HBDI",
-        "category": "Landesbeauftragter für den Datenschutz"
-      },
-      "posts_count": 121,
-      "recent_posts_count": 11,
-      "created_at": "2023-04-25T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.hessen.de/@hmwk_hessen": {
-      "account": {
-        "name": "Hessisches Ministerium für Wissenschaft und Kunst",
-        "url": "https://social.hessen.de/@hmwk_hessen",
-        "category": "Wissenschaftsministerium"
-      },
-      "posts_count": 170,
-      "recent_posts_count": 0,
-      "created_at": "2023-02-13T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.hessen.de/@wirtschafthessen": {
-      "account": {
-        "name": "Hessisches Ministerium für Wirtschaft, Energie, Verkehr, Wohnen und ländlichen Raum",
-        "url": "https://social.hessen.de/@wirtschafthessen",
-        "category": "Energieministerium"
-      },
-      "posts_count": 72,
-      "recent_posts_count": 4,
-      "created_at": "2023-02-13T00:00:00.000Z",
+      "created_at": "2023-01-09T00:00:00.000Z",
       "is_bot": false
     },
     "https://mas.to/@oedp_bundesverband": {
@@ -5968,8 +6067,8 @@
         "url": "https://mas.to/@oedp_bundesverband",
         "category": "politische Partei in Deutschland"
       },
-      "posts_count": 116,
-      "recent_posts_count": 80,
+      "posts_count": 118,
+      "recent_posts_count": 82,
       "created_at": "2024-10-23T00:00:00.000Z",
       "is_bot": false
     },
@@ -5980,7 +6079,7 @@
         "category": "politische Partei in Deutschland"
       },
       "posts_count": 967,
-      "recent_posts_count": 39,
+      "recent_posts_count": 37,
       "created_at": "2023-03-18T00:00:00.000Z",
       "is_bot": false
     },
@@ -6012,8 +6111,8 @@
         "url": "https://hessen.social/@VoltHessen",
         "category": "politische Partei in Deutschland"
       },
-      "posts_count": 360,
-      "recent_posts_count": 85,
+      "posts_count": 363,
+      "recent_posts_count": 87,
       "created_at": "2024-04-12T00:00:00.000Z",
       "is_bot": false
     },
@@ -6078,8 +6177,8 @@
         "url": "https://social.anoxinon.de/@Tierschutzpartei",
         "category": "politische Partei in Deutschland"
       },
-      "posts_count": 98,
-      "recent_posts_count": 98,
+      "posts_count": 100,
+      "recent_posts_count": 100,
       "created_at": "2022-11-13T00:00:00.000Z",
       "is_bot": false
     },
@@ -6094,103 +6193,114 @@
       "created_at": "2022-12-09T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.hessen.de/@SozialHessen": {
+    "https://social.bund.de/@bundesarbeitsgericht": {
       "account": {
-        "name": "Hessisches Ministerium für Soziales und Integration",
-        "url": "https://social.hessen.de/@SozialHessen",
-        "category": "Sozialministerium"
+        "name": "Bundesarbeitsgericht",
+        "url": "https://social.bund.de/@bundesarbeitsgericht",
+        "category": "Arbeitsgericht"
       },
-      "posts_count": 72,
+      "posts_count": 76,
+      "recent_posts_count": 6,
+      "created_at": "2023-01-30T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@verbraucherzentrale": {
+      "account": {
+        "name": "Verbraucherzentrale Bundesverband",
+        "url": "https://social.bund.de/@verbraucherzentrale",
+        "category": "Verbraucherorganisation"
+      },
+      "posts_count": 1060,
+      "recent_posts_count": 0,
+      "created_at": "2022-11-29T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@BMWSB_Bund": {
+      "account": {
+        "name": "Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen",
+        "url": "https://social.bund.de/@BMWSB_Bund",
+        "category": "Bauministerium"
+      },
+      "posts_count": 2268,
+      "recent_posts_count": 74,
+      "created_at": "2022-10-31T00:00:00.000Z",
+      "is_bot": false
+    },
+    "https://social.bund.de/@Bf3R_centre": {
+      "account": {
+        "name": "Deutsches Zentrum zum Schutz von Versuchstieren",
+        "url": "https://social.bund.de/@Bf3R_centre",
+        "category": "Organisation"
+      },
+      "posts_count": 28,
       "recent_posts_count": 1,
-      "created_at": "2023-02-16T00:00:00.000Z",
+      "created_at": "2023-01-23T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@certbund": {
+    "https://social.bund.de/@LernendeSysteme": {
       "account": {
-        "name": "Q96195105",
-        "url": "https://social.bund.de/@certbund",
-        "category": "Computer Emergency Response Team"
+        "name": "Plattform Lernende Systeme",
+        "url": "https://social.bund.de/@LernendeSysteme",
+        "category": "Organisation"
       },
-      "posts_count": 60,
-      "recent_posts_count": 3,
-      "created_at": "2023-03-01T00:00:00.000Z",
+      "posts_count": 168,
+      "recent_posts_count": 1,
+      "created_at": "2022-12-02T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@DZA": {
+    "https://social.bund.de/@RNE_DE": {
       "account": {
-        "name": "Deutsches Zentrum für Altersfragen",
-        "url": "https://social.bund.de/@DZA",
-        "category": "Anlage"
+        "name": "Rat für Nachhaltige Entwicklung",
+        "url": "https://social.bund.de/@RNE_DE",
+        "category": "Organisation"
       },
-      "posts_count": 185,
-      "recent_posts_count": 12,
-      "created_at": "2022-11-30T00:00:00.000Z",
+      "posts_count": 175,
+      "recent_posts_count": 0,
+      "created_at": "2022-12-29T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@TABundestag": {
+    "https://social.bund.de/@thw": {
       "account": {
-        "name": "Büro für Technikfolgen-Abschätzung beim Deutschen Bundestag",
-        "url": "https://social.bund.de/@TABundestag",
-        "category": "akademische Einrichtung"
+        "name": "Technisches Hilfswerk",
+        "url": "https://social.bund.de/@thw",
+        "category": "Behörden und Organisationen mit Sicherheitsaufgaben"
       },
-      "posts_count": 141,
-      "recent_posts_count": 3,
-      "created_at": "2022-12-01T00:00:00.000Z",
+      "posts_count": 596,
+      "recent_posts_count": 9,
+      "created_at": "2022-09-28T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@GDI_DE": {
+    "https://social.bund.de/@Cyberagentur": {
       "account": {
-        "name": "GDI-DE",
-        "url": "https://social.bund.de/@GDI_DE",
-        "category": "Nationale Geodateninfrastruktur"
+        "name": "Agentur für Innovation in der Cybersicherheit",
+        "url": "https://social.bund.de/@Cyberagentur",
+        "category": "Gewerbebetrieb"
       },
-      "posts_count": 66,
-      "recent_posts_count": 2,
-      "created_at": "2022-12-12T00:00:00.000Z",
+      "posts_count": 241,
+      "recent_posts_count": 20,
+      "created_at": "2022-11-10T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@DIMR_Berlin": {
+    "https://social.bund.de/@ZIF": {
       "account": {
-        "name": "Deutsches Institut für Menschenrechte",
-        "url": "https://social.bund.de/@DIMR_Berlin",
-        "category": "eingetragener Verein"
+        "name": "Zentrum für Internationale Friedenseinsätze",
+        "url": "https://social.bund.de/@ZIF",
+        "category": "karitative Vereinigung"
       },
-      "posts_count": 2185,
-      "recent_posts_count": 106,
-      "created_at": "2022-11-28T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.hessen.de/@finanzen": {
-      "account": {
-        "name": "Hessisches Ministerium der Finanzen",
-        "url": "https://social.hessen.de/@finanzen",
-        "category": "Oberste Landesbehörde"
-      },
-      "posts_count": 198,
-      "recent_posts_count": 14,
-      "created_at": "2023-02-13T00:00:00.000Z",
-      "is_bot": false
-    },
-    "https://social.bund.de/@wbgu": {
-      "account": {
-        "name": "Wissenschaftlicher Beirat der Bundesregierung Globale Umweltveränderungen",
-        "url": "https://social.bund.de/@wbgu",
-        "category": "wissenschaftlicher Beirat"
-      },
-      "posts_count": 135,
-      "recent_posts_count": 12,
+      "posts_count": 5,
+      "recent_posts_count": 0,
       "created_at": "2022-11-15T00:00:00.000Z",
       "is_bot": false
     },
-    "https://social.bund.de/@TFK_Bundeswehr": {
+    "https://social.bund.de/@deutschesHeer": {
       "account": {
-        "name": "Territoriales Führungskommando der Bundeswehr",
-        "url": "https://social.bund.de/@TFK_Bundeswehr",
-        "category": "Kommandobehörde"
+        "name": "Heer",
+        "url": "https://social.bund.de/@deutschesHeer",
+        "category": "Heer"
       },
-      "posts_count": 0,
-      "recent_posts_count": 0,
-      "created_at": "2023-11-27T00:00:00.000Z",
+      "posts_count": 109,
+      "recent_posts_count": 50,
+      "created_at": "2022-11-10T00:00:00.000Z",
       "is_bot": false
     }
   }
