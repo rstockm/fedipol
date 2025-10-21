@@ -1,6 +1,59 @@
 // Wikidata SPARQL endpoint
 const WIKIDATA_ENDPOINT = 'https://query.wikidata.org/sparql';
 
+// Party instances to include regardless of Wikidata presence
+const PARTY_INSTANCES = [
+    'linke.social',
+    'gruene.social',
+    'die-partei.social',
+    'piraten-partei.social'
+];
+
+function instanceToPartyName(instance) {
+    if (instance === 'gruene.social') return 'Bündnis 90/Die Grünen';
+    if (instance === 'linke.social') return 'Die Linke';
+    if (instance === 'die-partei.social') return 'Die PARTEI';
+    if (instance === 'piraten-partei.social') return 'Piratenpartei Deutschland';
+    return '-';
+}
+
+// Fetch public directory of a Mastodon instance (discoverable local accounts)
+async function fetchAccountsFromInstance(instance, maxAccounts = 500) {
+    const results = [];
+    const partyName = instanceToPartyName(instance);
+    let offset = 0;
+    const limit = 80; // Mastodon directory max is typically 80
+
+    try {
+        while (results.length < maxAccounts) {
+            const url = `https://${instance}/api/v1/directory?local=true&order=active&limit=${limit}&offset=${offset}`;
+            const resp = await fetch(url, { headers: { 'Accept': 'application/json' } });
+            if (!resp.ok) break;
+            const data = await resp.json();
+            if (!Array.isArray(data) || data.length === 0) break;
+
+            for (const acc of data) {
+                const accountUrl = acc.url || `https://${instance}/@${acc.acct || acc.username}`;
+                // Build object compatible with SPARQL bindings structure used downstream
+                results.push({
+                    itemLabel: { value: acc.display_name && acc.display_name.trim() ? acc.display_name : (acc.username || acc.acct || 'Unbekannt') },
+                    partyLabel: { value: partyName },
+                    // positionLabel intentionally omitted; later pipeline adds party as position if empty
+                    account: { value: accountUrl }
+                });
+                if (results.length >= maxAccounts) break;
+            }
+
+            if (data.length < limit) break; // no more pages
+            offset += limit;
+        }
+    } catch (e) {
+        // Fail soft; just return what we have
+    }
+
+    return results;
+}
+
 // SPARQL query to find German politicians with Fediverse accounts
 const PARLIAMENT_QUERY = `
 SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?partyLabel ?qid WHERE {
@@ -261,10 +314,20 @@ async function fetchWikidataResults() {
             institutionsResponse.json()
         ]);
         
-        // Combine all politician results
+        // Combine politician results from Wikidata
         currentPoliticians = [
             ...parliamentData.results.bindings,
             ...partyInstancesData.results.bindings
+        ];
+
+        // Additionally: fetch all accounts from party instances' public directories (independent of Wikidata)
+        const instanceBatches = await Promise.all(
+            PARTY_INSTANCES.map(inst => fetchAccountsFromInstance(inst))
+        );
+        const instanceAccounts = instanceBatches.flat();
+        currentPoliticians = [
+            ...currentPoliticians,
+            ...instanceAccounts
         ];
         
         currentInstitutions = institutionsData.results.bindings;
