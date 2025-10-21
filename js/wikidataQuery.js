@@ -10,6 +10,11 @@ const PARTY_INSTANCES = [
     'spd.social'
 ];
 
+// Institutional instances to include regardless of Wikidata presence
+const INSTITUTION_INSTANCES = [
+    'social.schleswig-holstein.de'
+];
+
 function instanceToPartyName(instance) {
     if (instance === 'gruene.social') return 'Bündnis 90/Die Grünen';
     if (instance === 'linke.social') return 'Die Linke';
@@ -53,6 +58,36 @@ async function fetchAccountsFromInstance(instance, maxAccounts = 500) {
         // Fail soft; just return what we have
     }
 
+    return results;
+}
+
+// Fetch public directory for institutional instances
+async function fetchInstitutionsFromInstance(instance, maxAccounts = 1000) {
+    const results = [];
+    let offset = 0;
+    const limit = 80;
+    try {
+        while (results.length < maxAccounts) {
+            const url = `https://${instance}/api/v1/directory?local=true&order=active&limit=${limit}&offset=${offset}`;
+            const resp = await fetch(url, { headers: { 'Accept': 'application/json' } });
+            if (!resp.ok) break;
+            const data = await resp.json();
+            if (!Array.isArray(data) || data.length === 0) break;
+            for (const acc of data) {
+                const accountUrl = acc.url || `https://${instance}/@${acc.acct || acc.username}`;
+                results.push({
+                    itemLabel: { value: acc.display_name && acc.display_name.trim() ? acc.display_name : (acc.username || acc.acct || 'Unbekannt') },
+                    typeLabel: { value: 'Institution (Instanz)' },
+                    account: { value: accountUrl }
+                });
+                if (results.length >= maxAccounts) break;
+            }
+            if (data.length < limit) break;
+            offset += limit;
+        }
+    } catch (e) {
+        // Soft fail
+    }
     return results;
 }
 
@@ -333,6 +368,22 @@ async function fetchWikidataResults() {
         ];
         
         currentInstitutions = institutionsData.results.bindings;
+
+        // Additionally fetch institutional instance directories and merge
+        const instBatches = await Promise.all(
+            INSTITUTION_INSTANCES.map(inst => fetchInstitutionsFromInstance(inst))
+        );
+        const instDirAccounts = instBatches.flat();
+        // Merge with simple de-duplication by account URL
+        const seen = new Set();
+        const mergedInstitutions = [];
+        for (const it of [...currentInstitutions, ...instDirAccounts]) {
+            const url = (it.account?.value || '').toLowerCase().replace(/\/+$/, '');
+            if (!url || seen.has(url)) continue;
+            seen.add(url);
+            mergedInstitutions.push(it);
+        }
+        currentInstitutions = mergedInstitutions;
         
         // Display results with current filter settings
         await updateDisplayedResults();
@@ -622,6 +673,7 @@ function getInstancePriority(account) {
     // Höchste Priorität: Offizielle Regierungsinstanzen
     if (acc.includes('social.bund.de')) return 30;
     if (acc.includes('social.hessen.de')) return 25;
+    if (acc.includes('social.schleswig-holstein.de')) return 25;
     
     // Hohe Priorität: Partei-spezifische Instanzen
     if (acc.includes('gruene.social')) return 20;
