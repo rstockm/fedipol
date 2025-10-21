@@ -1,18 +1,119 @@
 # Politiker und Institutionen im Fediverse
 
 
-## Kreisverband (Piraten)
+## Kreisverband (Grüne)
 
 | Wer | Link |
 | :-- | :-- |
-| Piraten Leipzig | https://leipzig.town/@PiratenLeipzig |
-| Piratenpartei Holzminden | https://weserbergland.social/@piraten_holzminden |
+| Bündnis 90/Die Grünen Kreisverband Oldenburg-Stadt | https://gruene.social/@gruene_ol |
+| Bündnis 90/Die Grünen Kreisverband Chemnitz | https://gruene.social/@gruenechemnitz |
+| Bündnis 90/Die Grünen Kreisverband Erzgebirge | https://gruene.social/@erzgruen |
+| Bündnis 90/Die Grünen Kreisverband Friesland | https://gruene.social/@gruene_fri |
+| Bündnis 90/Die Grünen Kreisverband Leipzig | https://gruene.social/@gruene_leipzig |
+| Bündnis 90/Die Grünen Kreisverband Landkreis Leipzig | https://gruene.social/@lk_leipzig |
+| Bündnis 90/Die Grünen Kreisverband Altona | https://gruene.social/@altona |
+| Bündnis 90/Die Grünen Kreisverband Magdeburg | https://gruene.social/@gruene_md |
+| Bündnis 90/Die Grünen Kreisverband Bonn | https://gruene.social/@gruene_bonn |
+| Bündnis 90/Die Grünen Kreisverband Gifhorn | https://gruene.social/@gifhorn |
+| Bündnis 90/Die Grünen Kreisverband Aurich-Norden | https://gruene.social/@KV_Aurich_Norden |
+| Bündnis 90/Die Grünen Kreisverband Esslingen | https://gruene.social/@GrueneES |
+| Bündnis 90/Die Grünen Kreisverband Fulda | https://gruene.social/@fulda |
+| Bündnis 90/Die Grünen Kreisverband Aschaffenburg-Stadt | https://gruene.social/@gruene_ab |
+| Bündnis 90/Die Grünen Kreisverband Potsdam | https://gruene.social/@gruene_potsdam |
+| Bündnis 90/Die Grünen Kreisverband Hagen | https://gruene.social/@hagen |
+| Bündnis 90/Die Grünen Kreisverband Bochum | https://gruene.social/@gruenebochum |
+| Bündnis 90/Die Grünen Kreisverband Verden | https://gruene.social/@kv_gruene_verden |
+| Bündnis 90/Die Grünen Kreisverband Havelland | https://gruene.social/@B90_Gruene_Havelland |
+| Bündnis 90/Die Grünen Kreisverband Börde | https://gruene.social/@boerde |
+| Bündnis 90/Die Grünen Kreisverband Hochtaunus | https://gruene.social/@hochtaunus |
+| Bündnis 90/Die Grünen Kreisverband Pankow | https://gruene.social/@GruenePankow |
+| Bündnis '90/Die Grünen Kreisverband Barnim | https://gruene.social/@niederbarnim |
+| Bündnis 90/Die Grünen Kreisverband Rostock | https://gruene.social/@gruenerostock |
+| Bündnis '90/Die Grünen Kreisverband Kiel | https://norden.social/@GrueneKiel |
+| Bündnis '90/Die Grünen Kreisverband Rhein-Berg | https://gruene.social/@Rheinisch_Bergischer_Kreis |
+| Bündnis 90/Die Grünen Kreisverband Friedrichshain-Kreuzberg | https://gruene.social/@GrueneXhain |
+| Bündnis 90/Die Grünen Kreisverband Gera | https://gruene.social/@GrueneGera |
+| Bündnis '90/Die Grünen Kreisverband Greiz | https://gruene.social/@GrueneGreiz |
+| Bündnis 90/Die Grünen Kreisverband Treptow-Köpenick | https://gruene.social/@gruene_tk |
+| Grüne Jugend Gera/Altenburg/Greiz | https://gruene.social/@gj_gag |
+
+
+## Landesverband (Linke)
+
+| Wer | Link |
+| :-- | :-- |
+| Die Linke Hessen | https://linke.social/@dielinkehessen |
+| Die Linke Thüringen | https://mastodon.social/@die_linke_th |
+| Die Linke Niedersachsen | https://mastodon.social/@die_linke_nds |
+| Die Linke Sachsen | https://don.linxx.net/@dielinke_sachsen |
+
+
+## Kreisverband (Linke)
+
+| Wer | Link |
+| :-- | :-- |
+| Die Linke Kreisverband Aschaffenburg-Miltenberg | https://aschaffenburg.social/@linke |
+| Die Linke Dortmund | https://linke.social/@dielinke_dortmund |
+| Die Linke Teltow-Fläming | https://linke.social/@teltowflaeming |
+| Die Linke Kreisverband Rheingau-Taunus-Kreis | https://hessen.social/@Linke_RTK |
+| Die Linke Kreisverband Karlsruhe | https://sueden.social/@DieLinke_KA |
+| Die Linke Kreisverband Bonn | https://nrw.social/@dielinkebonn |
+
+
+## Ortsverband (Die PARTEI)
+
+| Wer | Link |
+| :-- | :-- |
+| Die PARTEI Fürstenfeldbruck | https://die-partei.social/@ffb |
+| Die PARTEI Ortsverband Kronshagen | https://norden.social/@PARTEI_Kronshagen |
+| Die PARTEI Duderstadt | https://die-partei.social/@Duderstadt |
+
+
+## Ortsverband (Grüne)
+
+| Wer | Link |
+| :-- | :-- |
+| Bündnis '90/Die Grünen Ortsverband Dietzenbach | https://gruene.social/@GrueneDietzenbach |
+| Bündnis '90/Die Grünen Ortsverband Verden | https://gruene.social/@ov_gruene_verden |
+| Bündnis '90/Die Grünen Ortsverband Bad Oeynhausen | https://gruene.social/@gruenebo |
+| Bündnis '90/Die Grünen Ortsverband Hohenbrunn | https://gruene.social/@gruene_hohenbrunn |
+| Bündnis '90/Die Grünen Ortsverband Siegburg | https://gruene.social/@gruenesiegburg |
+| Bündnis '90/Die Grünen Ortsverband Dransfeld | https://gruene.social/@gruenedransfeld |
+| Bündnis '90/Die Grünen Ortsverband Graben-Neudorf | https://gruene.social/@GrabenNeudorf |
+| Bündnis '90/Die Grünen Ortsverband Schwerte | https://gruene.social/@GrueneSchwerte |
+| Bündnis '90/Die Grünen Ortsverband Harsefeld | https://gruene.social/@harsefeld |
+| Bündnis '90/Die Grünen Ortsverband Allach-Untermenzing | https://gruene.social/@AllachUntermenzing |
+| Bündnis '90/Die Grünen Ortsverband Michendorf | https://gruene.social/@gruene_michendorf |
+| Bündnis '90/Die Grünen Ortsverband Römerberg | https://gruene.social/@ov_roemerberg |
+| Bündnis '90/Die Grünen Ortsverband Bürstadt | https://gruene.social/@buerstadt |
+| Bündnis '90/Die Grünen Ortsverband Tönisvorst | https://gruene.social/@gruenetoevo |
+| Bündnis '90/Die Grünen Ortsverband Münster Nord | https://gruene.social/@muenster_nord |
+| Bündnis '90/Die Grünen Ortsverband Tornesch | https://gruene.social/@GrueneTornesch |
+| Bündnis '90/Die Grünen Ortsverband Neuhofen | https://gruene.social/@Gruene_Neuhofen |
+| Bündnis '90/Die Grünen Ortsverband Stockelsdorf | https://gruene.social/@stockelsdorf |
+| Bündnis '90/Die Grünen Ortsverband Rheinfelden | https://gruene.social/@gruene_rheinfelden |
+| Bündnis '90/Die Grünen Ortsverband Röthenbach | https://gruene.social/@roethenbach |
+| Bündnis '90/Die Grünen Ortsverband München-Hadern | https://gruene.social/@gruenemuenchenhadern |
+| Bündnis '90/Die Grünen Ortsverband Schlangenbad | https://gruene.social/@gruene_schlangenbad |
+| Bündnis '90/Die Grünen Ortsverband Uedem | https://gruene.social/@gruene_uedem |
+| Bündnis '90/Die Grünen Kreistagsfraktion Stadtbergen | https://gruene.social/@GrueneStadtbergen |
+| Bündnis '90/Die Grünen Ortsverband Gochsheim-Weyer | https://gruene.social/@gochsheim |
+| Bündnis '90/Die Grünen Ortsverband Aidlingen | https://mastodon.social/@B90GRNAidlingen |
+| Bündnis '90/Die Grünen Ortsverband Beelitz | https://gruene.social/@GrueneBeelitz |
+| Bündnis '90/Die Grünen Ortsverband Lahntal | https://gruene.social/@lahntal |
+| Bündnis '90/Die Grünen Ortsverband Wedemark | https://gruene.social/@wedemark |
+| Bündnis '90/Die Grünen Ortsverband Hansestadt Stade | https://gruene.social/@OrtverbandStade |
+| Bündnis '90/Die Grünen Ortsverband Rösrath | https://gruene.social/@Gruene_Roesrath |
+| Bündnis '90/Die Grünen Ortsverband Lage | https://gruene.social/@GrueneLage |
 
 
 ## Landesverband (Piraten)
 
 | Wer | Link |
 | :-- | :-- |
+| Piratenpartei Nordrhein-Westfalen | https://nrw.social/@piraten |
+| Piratenpartei Bayern | https://piraten-partei.social/@lvbayern |
+| Piratenpartei Rheinland-Pfalz | https://mastodon.social/@piratenrlp |
 | Piratenpartei Sachsen | https://dresden.network/@piratensachsen |
 | Piratenpartei Schleswig-Holstein | https://piraten-partei.social/@PiratenSH |
 | Piratenpartei Baden-Württemberg | https://mastodon.cloud/@PiratenBW |
@@ -20,24 +121,23 @@
 | Piratenpartei Niedersachsen | https://piratenpartei.social/@piratennds |
 | Piratenpartei Mecklenburg-Vorpommern | https://mastodon.partipirate.org/@PiratenMV |
 | Piratenpartei Hessen | https://piratenpartei.social/@hessen |
-| Piratenpartei Nordrhein-Westfalen | https://nrw.social/@piraten |
-| Piratenpartei Bayern | https://piraten-partei.social/@lvbayern |
-| Piratenpartei Rheinland-Pfalz | https://mastodon.social/@piratenrlp |
 
 
-## Landesverband (Die PARTEI)
+## SPD-Ortsverein (SPD)
 
 | Wer | Link |
 | :-- | :-- |
-| Die PARTEI Rheinland-Pfalz | https://die-partei.social/@dieparteirlp |
-| Die PARTEI NRW | https://nrw.social/@DiePARTEINRW |
-| Die PARTEI Berlin | https://mastodon.social/@DiePARTEIBerlin |
+| SPD Kaiserstuhl Tuniberg | https://spd.social/@SPD_Kaiserstuhl_Tuniberg |
+| SPD Tornesch | https://spd.social/@SPD_Tornesch |
+| SPD Leipzig Ost / Nordost | https://spd.social/@SPDLeipzigONO |
+| SPD Holzminden | https://weserbergland.social/@spdholzminden |
 
 
 ## Kreisverband (Die PARTEI)
 
 | Wer | Link |
 | :-- | :-- |
+| Die PARTEI Erding | https://die-partei.social/@DiePARTEI_Erding |
 | Die PARTEI München | https://die-partei.social/@dieparteimuc |
 | Die PARTEI Kreisverband Rosenheim | https://die-partei.social/@DiePARTEI_RO |
 | Die PARTEI Osnabrück | https://osna.social/@diepartei |
@@ -69,53 +169,37 @@
 | Die PARTEI Kreisverband Harz | https://die-partei.social/@Die_PARTEI_Harz |
 | Die PARTEI Kreisverband Krefeld | https://mastodon.social/@die_partei_krefeld |
 | Die PARTEI Reutlingen | https://die-partei.social/@DiePARTEI_RT |
-| Die PARTEI Erding | https://die-partei.social/@DiePARTEI_Erding |
 
 
-## Kreisverband (Grüne)
-
-| Wer | Link |
-| :-- | :-- |
-| Bündnis 90/Die Grünen Kreisverband Oldenburg-Stadt | https://gruene.social/@gruene_ol |
-| Bündnis 90/Die Grünen Kreisverband Chemnitz | https://gruene.social/@gruenechemnitz |
-| Bündnis 90/Die Grünen Kreisverband Erzgebirge | https://gruene.social/@erzgruen |
-| Bündnis 90/Die Grünen Kreisverband Friesland | https://gruene.social/@gruene_fri |
-| Bündnis 90/Die Grünen Kreisverband Leipzig | https://gruene.social/@gruene_leipzig |
-| Bündnis 90/Die Grünen Kreisverband Landkreis Leipzig | https://gruene.social/@lk_leipzig |
-| Bündnis 90/Die Grünen Kreisverband Magdeburg | https://gruene.social/@gruene_md |
-| Bündnis 90/Die Grünen Kreisverband Bonn | https://gruene.social/@gruene_bonn |
-| Bündnis 90/Die Grünen Kreisverband Gifhorn | https://gruene.social/@gifhorn |
-| Bündnis 90/Die Grünen Kreisverband Aurich-Norden | https://gruene.social/@KV_Aurich_Norden |
-| Bündnis 90/Die Grünen Kreisverband Aschaffenburg-Stadt | https://gruene.social/@gruene_ab |
-| Bündnis 90/Die Grünen Kreisverband Hagen | https://gruene.social/@hagen |
-| Bündnis 90/Die Grünen Kreisverband Bochum | https://gruene.social/@gruenebochum |
-| Bündnis 90/Die Grünen Kreisverband Verden | https://gruene.social/@kv_gruene_verden |
-| Bündnis 90/Die Grünen Kreisverband Börde | https://gruene.social/@boerde |
-| Bündnis 90/Die Grünen Kreisverband Hochtaunus | https://gruene.social/@hochtaunus |
-| Bündnis '90/Die Grünen Kreisverband Barnim | https://gruene.social/@niederbarnim |
-| Bündnis 90/Die Grünen Kreisverband Rostock | https://gruene.social/@gruenerostock |
-| Bündnis '90/Die Grünen Kreisverband Kiel | https://norden.social/@GrueneKiel |
-| Bündnis '90/Die Grünen Kreisverband Rhein-Berg | https://gruene.social/@Rheinisch_Bergischer_Kreis |
-| Bündnis 90/Die Grünen Kreisverband Altona | https://gruene.social/@altona |
-| Bündnis 90/Die Grünen Kreisverband Friedrichshain-Kreuzberg | https://gruene.social/@GrueneXhain |
-| Bündnis 90/Die Grünen Kreisverband Gera | https://gruene.social/@GrueneGera |
-| Bündnis '90/Die Grünen Kreisverband Greiz | https://gruene.social/@GrueneGreiz |
-| Bündnis 90/Die Grünen Kreisverband Treptow-Köpenick | https://gruene.social/@gruene_tk |
-| Bündnis 90/Die Grünen Kreisverband Esslingen | https://gruene.social/@GrueneES |
-| Bündnis 90/Die Grünen Kreisverband Fulda | https://gruene.social/@fulda |
-| Grüne Jugend Gera/Altenburg/Greiz | https://gruene.social/@gj_gag |
-| Bündnis 90/Die Grünen Kreisverband Potsdam | https://gruene.social/@gruene_potsdam |
-| Bündnis 90/Die Grünen Kreisverband Pankow | https://gruene.social/@GruenePankow |
-
-
-## Landesverband (Linke)
+## Ortsverband (CDU)
 
 | Wer | Link |
 | :-- | :-- |
-| Die Linke Hessen | https://linke.social/@dielinkehessen |
-| Die Linke Thüringen | https://mastodon.social/@die_linke_th |
-| Die Linke Sachsen | https://don.linxx.net/@dielinke_sachsen |
-| Die Linke Niedersachsen | https://mastodon.social/@die_linke_nds |
+| CDU Ortsverband Niederbieber-Segendorf | https://masto.ai/@CDU_Niederbieber_Segendorf |
+
+
+## politische Partei in Deutschland (Volt)
+
+| Wer | Link |
+| :-- | :-- |
+| Volt Deutschland | https://mstdn.social/@voltdeutschland |
+
+
+## Landesverband (Die PARTEI)
+
+| Wer | Link |
+| :-- | :-- |
+| Die PARTEI Berlin | https://mastodon.social/@DiePARTEIBerlin |
+| Die PARTEI Rheinland-Pfalz | https://die-partei.social/@dieparteirlp |
+| Die PARTEI NRW | https://nrw.social/@DiePARTEINRW |
+
+
+## Kreisverband (Piraten)
+
+| Wer | Link |
+| :-- | :-- |
+| Piraten Leipzig | https://leipzig.town/@PiratenLeipzig |
+| Piratenpartei Holzminden | https://weserbergland.social/@piraten_holzminden |
 
 
 ## Landesverband (Volt)
@@ -137,21 +221,27 @@
 | Bündnis 90/Die Grünen Niedersachsen | https://gruene.social/@gruenelvnds |
 
 
-## SPD-Ortsverein (SPD)
-
-| Wer | Link |
-| :-- | :-- |
-| SPD Tornesch | https://spd.social/@SPD_Tornesch |
-| SPD Leipzig Ost / Nordost | https://spd.social/@SPDLeipzigONO |
-| SPD Holzminden | https://weserbergland.social/@spdholzminden |
-| SPD Kaiserstuhl Tuniberg | https://spd.social/@SPD_Kaiserstuhl_Tuniberg |
-
-
 ## Ortsverband (Linke)
 
 | Wer | Link |
 | :-- | :-- |
 | Die Linke Ortsverband Zittau | https://mastodon.de/@linkezittau |
+
+
+## Landesverband (SPD)
+
+| Wer | Link |
+| :-- | :-- |
+| SPD Baden-Württemberg | https://mastodon.social/@spdbawue |
+| SPD Mecklenburg-Vorpommern | https://spd.social/@spdmv |
+
+
+## Ortsverband (SPD)
+
+| Wer | Link |
+| :-- | :-- |
+| SPD Bochum-Ehrenfeld | https://spd.social/@spdboehrenfeld |
+| SPD Niebüll | https://spd.social/@spd_niebuell |
 
 
 ## Ortsverband (Piraten)
@@ -161,85 +251,11 @@
 | Neustadtpiraten | https://dresden.network/@neustadtpiraten |
 
 
-## Ortsverband (Die PARTEI)
-
-| Wer | Link |
-| :-- | :-- |
-| Die PARTEI Ortsverband Kronshagen | https://norden.social/@PARTEI_Kronshagen |
-| Die PARTEI Duderstadt | https://die-partei.social/@Duderstadt |
-| Die PARTEI Fürstenfeldbruck | https://die-partei.social/@ffb |
-
-
-## Kreisverband (Linke)
-
-| Wer | Link |
-| :-- | :-- |
-| Die Linke Kreisverband Aschaffenburg-Miltenberg | https://aschaffenburg.social/@linke |
-| Die Linke Dortmund | https://linke.social/@dielinke_dortmund |
-| Die Linke Teltow-Fläming | https://linke.social/@teltowflaeming |
-| Die Linke Kreisverband Rheingau-Taunus-Kreis | https://hessen.social/@Linke_RTK |
-| Die Linke Kreisverband Karlsruhe | https://sueden.social/@DieLinke_KA |
-| Die Linke Kreisverband Bonn | https://nrw.social/@dielinkebonn |
-
-
 ## politische Partei in Deutschland (Freie Wähler)
 
 | Wer | Link |
 | :-- | :-- |
 | Freie Wähler | https://freiewaehler.social/@Bundesvereinigung |
-
-
-## Ortsverband (CDU)
-
-| Wer | Link |
-| :-- | :-- |
-| CDU Ortsverband Niederbieber-Segendorf | https://masto.ai/@CDU_Niederbieber_Segendorf |
-
-
-## politische Partei in Deutschland (Volt)
-
-| Wer | Link |
-| :-- | :-- |
-| Volt Deutschland | https://mstdn.social/@voltdeutschland |
-
-
-## Ortsverband (Grüne)
-
-| Wer | Link |
-| :-- | :-- |
-| Bündnis '90/Die Grünen Ortsverband Dransfeld | https://gruene.social/@gruenedransfeld |
-| Bündnis '90/Die Grünen Ortsverband Graben-Neudorf | https://gruene.social/@GrabenNeudorf |
-| Bündnis '90/Die Grünen Ortsverband Schwerte | https://gruene.social/@GrueneSchwerte |
-| Bündnis '90/Die Grünen Ortsverband Allach-Untermenzing | https://gruene.social/@AllachUntermenzing |
-| Bündnis '90/Die Grünen Ortsverband Michendorf | https://gruene.social/@gruene_michendorf |
-| Bündnis '90/Die Grünen Ortsverband Römerberg | https://gruene.social/@ov_roemerberg |
-| Bündnis '90/Die Grünen Ortsverband Bürstadt | https://gruene.social/@buerstadt |
-| Bündnis '90/Die Grünen Ortsverband Tönisvorst | https://gruene.social/@gruenetoevo |
-| Bündnis '90/Die Grünen Ortsverband Münster Nord | https://gruene.social/@muenster_nord |
-| Bündnis '90/Die Grünen Ortsverband Tornesch | https://gruene.social/@GrueneTornesch |
-| Bündnis '90/Die Grünen Ortsverband Neuhofen | https://gruene.social/@Gruene_Neuhofen |
-| Bündnis '90/Die Grünen Ortsverband Stockelsdorf | https://gruene.social/@stockelsdorf |
-| Bündnis '90/Die Grünen Ortsverband Rheinfelden | https://gruene.social/@gruene_rheinfelden |
-| Bündnis '90/Die Grünen Ortsverband Röthenbach | https://gruene.social/@roethenbach |
-| Bündnis '90/Die Grünen Ortsverband Uedem | https://gruene.social/@gruene_uedem |
-| Bündnis '90/Die Grünen Ortsverband Gochsheim-Weyer | https://gruene.social/@gochsheim |
-| Bündnis '90/Die Grünen Ortsverband Beelitz | https://gruene.social/@GrueneBeelitz |
-| Bündnis '90/Die Grünen Ortsverband Lahntal | https://gruene.social/@lahntal |
-| Bündnis '90/Die Grünen Ortsverband Hansestadt Stade | https://gruene.social/@OrtverbandStade |
-| Bündnis '90/Die Grünen Ortsverband Rösrath | https://gruene.social/@Gruene_Roesrath |
-| Bündnis '90/Die Grünen Ortsverband Dietzenbach | https://gruene.social/@GrueneDietzenbach |
-| Bündnis '90/Die Grünen Ortsverband Verden | https://gruene.social/@ov_gruene_verden |
-| Bündnis '90/Die Grünen Ortsverband Bad Oeynhausen | https://gruene.social/@gruenebo |
-| Bündnis '90/Die Grünen Ortsverband Hohenbrunn | https://gruene.social/@gruene_hohenbrunn |
-| Bündnis '90/Die Grünen Ortsverband Siegburg | https://gruene.social/@gruenesiegburg |
-| Bündnis '90/Die Grünen Ortsverband Harsefeld | https://gruene.social/@harsefeld |
-| Bündnis '90/Die Grünen Ortsverband München-Hadern | https://gruene.social/@gruenemuenchenhadern |
-| Bündnis 90/Die Grünen Kreisverband Havelland | https://gruene.social/@B90_Gruene_Havelland |
-| Bündnis '90/Die Grünen Ortsverband Schlangenbad | https://gruene.social/@gruene_schlangenbad |
-| Bündnis '90/Die Grünen Kreistagsfraktion Stadtbergen | https://gruene.social/@GrueneStadtbergen |
-| Bündnis '90/Die Grünen Ortsverband Aidlingen | https://mastodon.social/@B90GRNAidlingen |
-| Bündnis '90/Die Grünen Ortsverband Wedemark | https://gruene.social/@wedemark |
-| Bündnis '90/Die Grünen Ortsverband Lage | https://gruene.social/@GrueneLage |
 
 
 ## Kreisverband (ÖDP)
@@ -260,29 +276,29 @@
 | Caren Lay | https://linke.social/@carenlay |
 | Jan van Aken | https://mastodon.social/@vanaken |
 | Ina Latendorf | https://social.linksfraktion.de/@ina_latendorf |
-| Janine Wissler | https://social.linksfraktion.de/@janine_wissler |
 | Clara Bünger | https://social.linksfraktion.de/@clarabuenger |
-| Jan Korte | https://linke.social/@jankorte |
 | Anne-Mieke Bremer | https://mastodon.de/@Koffeinpiratin |
 | Sonja Lemke | https://mastodon.art/@sonjalemke |
 | Ines Schwerdtner | https://linke.social/@inesschwerdtner |
 | Jan Köstering | https://ruhr.social/@j_koestering |
 | Cornelia Möhring | https://social.linksfraktion.de/@cornelia_moehring |
-| Matthias W. Birkwald | https://social.linksfraktion.de/@matthias_w_birkwald |
-| Martina Renner | https://social.linksfraktion.de/@martina_renner |
+| Janine Wissler | https://social.linksfraktion.de/@janine_wissler |
+| Jan Korte | https://linke.social/@jankorte |
 | Ralph Lenkert | https://social.linksfraktion.de/@ralphlenkert |
-| Thomas Lutze | https://social.linksfraktion.de/@thomaslutze |
 | Petra Sitte | https://linke.social/@petra_sitte |
 | André Hahn | https://social.linksfraktion.de/@andrehahn |
 | Nicole Gohlke | https://social.linksfraktion.de/@nicolegohlke |
 | Victor Perli | https://social.linksfraktion.de/@victorperli |
-| Anke Domscheit-Berg | https://linke.social/@ankedb |
-| Ates Gürpinar | https://linke.social/@AtesGuerpinar |
 | Gökay Akbulut | https://social.linksfraktion.de/@goekayakbulut |
-| Sören Pellmann | https://social.linksfraktion.de/@soeren_pellmann |
+| Matthias W. Birkwald | https://social.linksfraktion.de/@matthias_w_birkwald |
+| Martina Renner | https://social.linksfraktion.de/@martina_renner |
 | Doris Achelwilm | https://norden.social/@dorisachelwilm |
+| Thomas Lutze | https://social.linksfraktion.de/@thomaslutze |
 | Susanne Ferschl | https://social.linksfraktion.de/@susanneferschl |
 | Pascal Meiser | https://linke.social/@pascalmeiser |
+| Anke Domscheit-Berg | https://linke.social/@ankedb |
+| Ates Gürpinar | https://linke.social/@AtesGuerpinar |
+| Sören Pellmann | https://social.linksfraktion.de/@soeren_pellmann |
 | Heidi Reichinnek | https://social.linksfraktion.de/@heidi_reichinnek |
 | Bernd Riexinger | https://social.linksfraktion.de/@bernd_riexinger |
 | Gesine Lötzsch | https://social.linksfraktion.de/@gesine_loetzsch |
@@ -295,66 +311,50 @@
 
 | Wer | Link |
 | :-- | :-- |
-| Filiz Polat | https://gruene.social/@FilizPolat |
-| Zoe Mayer | https://gruene.social/@zoe |
-| Awet Tesfaiesus | https://cultur.social/@awet |
-| Janosch Dahmen | https://home.social/@janoschdahmen |
-| Leon Eckert | https://gruene.social/@Lecker |
 | Kassem Taher Saleh | https://gruene.social/@kassemtahersaleh |
+| Filiz Polat | https://gruene.social/@FilizPolat |
 | Ophelia Nick | https://gruene.social/@ophelianick |
 | Hanna Steinmüller | https://gruene.social/@HanSteinmueller |
+| Zoe Mayer | https://gruene.social/@zoe |
+| Awet Tesfaiesus | https://cultur.social/@awet |
+| Paula Piechotta | https://gruene.social/@Paulapiechotta |
+| Janosch Dahmen | https://home.social/@janoschdahmen |
+| Nyke Slawik | https://social.cologne/@nykeslawik |
+| Johannes Wagner | https://gruene.social/@yooHannes |
+| Leon Eckert | https://gruene.social/@Lecker |
+| Rebecca Lenhard | https://gruene.social/@RebeccaLenhard |
+| Agnieszka Brugger | https://gruene.social/@agnieszka |
 | Robin Wagener | https://gruene.social/@robinwagener |
 | Sebastian Schäfer | https://freiburg.social/@drschaefer |
-| Paula Piechotta | https://gruene.social/@Paulapiechotta |
+| Kai Gehring | https://gruene.social/@KaiGehring |
 | Sara Nanni | https://mastodon.green/@sarananni |
 | Deborah Düring | https://gruene.social/@deborahduering |
 | Andreas Audretsch | https://gruene.social/@anaudretsch |
 | Armin Grau | https://gruene.social/@ArminGrau |
 | Chantal Kopf | https://freiburg.social/@ChantalKopf |
 | Jan-Niclas Gesenhues | https://mstdn.social/@j_gesenhues |
-| Nyke Slawik | https://social.cologne/@nykeslawik |
-| Johannes Wagner | https://gruene.social/@yooHannes |
-| Rebecca Lenhard | https://gruene.social/@RebeccaLenhard |
+| Victoria Broßart | https://gruene.social/@GrueneVictoria |
 | Kirsten Kappert-Gonther | https://gruene.social/@kirstenKappert |
-| Agnieszka Brugger | https://gruene.social/@agnieszka |
 | Katharina Dröge | https://gruene.social/@katdro |
 | Michael Kellner | https://gruene.social/@MichaelKellner |
-| Kai Gehring | https://gruene.social/@KaiGehring |
 | Harald Ebner | https://gruene.social/@HaraldEbner |
 | Irene Mihalic | https://gruene.social/@IreneMihalic |
-| Tabea Rößner | https://gruene.social/@TabeaRoessner |
-| Victoria Broßart | https://gruene.social/@GrueneVictoria |
-| Till Steffen | https://det.social/@TillausEimsbuettel |
-| Wolfgang Strengmann-Kuhn | https://gruene.social/@w_sk |
 | Lisa Paus | https://gruene.social/@LisaPaus |
 | Konstantin von Notz | https://gruene.social/@KonstantinNotz |
-| Maria Klein-Schmeink | https://nrw.social/@MKleinSchmeink |
-| Katrin Göring-Eckardt | https://gruene.social/@GoeringEckardt |
+| Tabea Rößner | https://gruene.social/@TabeaRoessner |
 | Erhard Grundl | https://gruene.social/@Erhard_Grundl |
+| Till Steffen | https://det.social/@TillausEimsbuettel |
 | Sandra Detzer | https://gruene.social/@Detzer_Sandra |
 | Lisa Badum | https://gruene.social/@badumlisa |
-| Franziska Brantner | https://gruene.social/@franziskabrantner |
-| Misbah Khan | https://gruene.social/@MisbahKhan |
+| Wolfgang Strengmann-Kuhn | https://gruene.social/@w_sk |
+| Maria Klein-Schmeink | https://nrw.social/@MKleinSchmeink |
+| Katrin Göring-Eckardt | https://gruene.social/@GoeringEckardt |
 | Ekin Deligöz | https://gruene.social/@ekindeligoez |
+| Franziska Brantner | https://gruene.social/@franziskabrantner |
 | Anna Lührmann | https://gruene.social/@annaluehrmann |
+| Misbah Khan | https://gruene.social/@MisbahKhan |
 | Beate Müller-Gemmeke | https://gruene.social/@GrueneBeate |
 | Britta Haßelmann | https://gruene.social/@BriHasselmann |
-
-
-## Landesverband (SPD)
-
-| Wer | Link |
-| :-- | :-- |
-| SPD Baden-Württemberg | https://mastodon.social/@spdbawue |
-| SPD Mecklenburg-Vorpommern | https://spd.social/@spdmv |
-
-
-## Ortsverband (SPD)
-
-| Wer | Link |
-| :-- | :-- |
-| SPD Bochum-Ehrenfeld | https://spd.social/@spdboehrenfeld |
-| SPD Niebüll | https://spd.social/@spd_niebuell |
 
 
 ## Ortsverband (ÖDP)
@@ -369,14 +369,14 @@
 | Wer | Link |
 | :-- | :-- |
 | Peter Simon | https://respublicae.eu/@PeterSimonMEP |
+| Matthias Ecke | https://mastodon.social/@mattecke |
 | René Repasi | https://mastodon.online/@repasi |
 | Birgit Sippel | https://respublicae.eu/@BirgitSippelMEP |
-| Katarina Barley | https://respublicae.eu/@katarinabarley |
-| Matthias Ecke | https://mastodon.social/@mattecke |
 | Karsten Lucke | https://respublicae.eu/@karstenlucke |
+| Katarina Barley | https://respublicae.eu/@katarinabarley |
 | Tiemo Wölken | https://d-64.social/@woelken |
 | Udo Bullmann | https://respublicae.eu/@UdoBullmann |
-| Bernd Lange | https://respublicae.eu/@berndlange |
+| Q65437 | https://respublicae.eu/@berndlange |
 | Jens Geier | https://respublicae.eu/@EuropaJens |
 
 
@@ -408,13 +408,6 @@
 | Sebastian Fiedler | https://ruhr.social/@fiedelseb |
 
 
-## Mitglied des Niedersächsischen Landtages (FDP)
-
-| Wer | Link |
-| :-- | :-- |
-| Jan-Christoph Oetjen | https://respublicae.eu/@jcoetjen |
-
-
 ## Bürgermeister (CDU)
 
 | Wer | Link |
@@ -429,33 +422,11 @@
 | Anne Herpertz | https://dresden.network/@stillnotlovin |
 
 
-## Bürgermeister (SPD)
+## Mitglied des Niedersächsischen Landtages (FDP)
 
 | Wer | Link |
 | :-- | :-- |
-| Gabriele Preuß | https://respublicae.eu/@gabrielepreuss |
-
-
-## Mitglied des Europäischen Parlaments (Grüne)
-
-| Wer | Link |
-| :-- | :-- |
-| Terry Reintke | https://respublicae.eu/@TerryReintke |
-| Sergey Lagodinsky | https://gruene.social/@SLagodinsky |
-| Erik Marquardt | https://respublicae.eu/@ErikMarquardt |
-| Romeo Franz | https://respublicae.eu/@romeofranz1 |
-| Jutta Paulus | https://mastodon.online/@JuttaPaulus |
-| Anna Cavazzini | https://gruene.social/@anna_cavazzini |
-| Anna Deparnay-Grunenberg | https://freiburg.social/@AnnaDeparnayGrunenberg |
-| Hannah Neumann | https://respublicae.eu/@Hannah_LBerg |
-| Henrike Hahn | https://respublicae.eu/@henrikehahn |
-| Michael Bloss | https://respublicae.eu/@michabl |
-| Niklas Nienaß | https://respublicae.eu/@nnienass |
-| Daniel Freund | https://mastodon.world/@daniel_freund |
-| Alexandra Geese | https://respublicae.eu/@alexandra_geese |
-| Katrin Langensiepen | https://respublicae.eu/@katrinlangensie |
-| Viola von Cramon-Taubadel | https://respublicae.eu/@violavoncramon |
-| Rasmus Andresen | https://gruene.social/@RasmusAndresen |
+| Jan-Christoph Oetjen | https://respublicae.eu/@jcoetjen |
 
 
 ## Ratsherr (Grüne)
@@ -472,32 +443,6 @@
 | Ulrike Rodust | https://respublicae.eu/@UlrikeRodust |
 
 
-## Mitglied des Europäischen Parlaments (CDU)
-
-| Wer | Link |
-| :-- | :-- |
-| Hildegard Bentele | https://respublicae.eu/@hildebentele |
-| Axel Voss | https://respublicae.eu/@AxelVossMdEP |
-| Dennis Radtke | https://respublicae.eu/@RadtkeMdEP |
-| davidmcallister | https://respublicae.eu/@davidmcallister |
-| Thomas Mann | https://respublicae.eu/@ThomasMannEP |
-| Markus Pieper | https://respublicae.eu/@markuspiepermep |
-| Andreas Schwab | https://respublicae.eu/@Andreas_Schwab |
-| Daniel Caspary | https://respublicae.eu/@caspary |
-| Sabine Verheyen | https://respublicae.eu/@sabineverheyen |
-| Peter Jahr | https://respublicae.eu/@peter_jahr |
-| Peter Liese MEP | https://respublicae.eu/@peterliese |
-| Michael Gahler | https://respublicae.eu/@gahler_michael |
-
-
-## Mitglied des Deutschen Bundestages (AfD)
-
-| Wer | Link |
-| :-- | :-- |
-| Beatrix von Storch | https://respublicae.eu/@Beatrix_vStorch |
-| Maximilian Krah | https://respublicae.eu/@krahmax |
-
-
 ## Mitglied des Europäischen Parlaments (Linke)
 
 | Wer | Link |
@@ -512,20 +457,88 @@
 | Wer | Link |
 | :-- | :-- |
 | Marlene Mortler | https://respublicae.eu/@marlenemortler |
-| Angelika Niebler | https://respublicae.eu/@ANiebler |
 | Markus Ferber | https://respublicae.eu/@MarkusFerber |
+| Angelika Niebler | https://respublicae.eu/@ANiebler |
 | Manfred Weber | https://respublicae.eu/@ManfredWeber |
+
+
+## Bürgermeister (SPD)
+
+| Wer | Link |
+| :-- | :-- |
+| Gabriele Preuß | https://respublicae.eu/@gabrielepreuss |
+
+
+## Mitglied des Europäischen Parlaments (Grüne)
+
+| Wer | Link |
+| :-- | :-- |
+| Terry Reintke | https://respublicae.eu/@TerryReintke |
+| Erik Marquardt | https://respublicae.eu/@ErikMarquardt |
+| Sergey Lagodinsky | https://gruene.social/@SLagodinsky |
+| Romeo Franz | https://respublicae.eu/@romeofranz1 |
+| Michael Bloss | https://respublicae.eu/@michabl |
+| Jutta Paulus | https://mastodon.online/@JuttaPaulus |
+| Anna Cavazzini | https://gruene.social/@anna_cavazzini |
+| Niklas Nienaß | https://respublicae.eu/@nnienass |
+| Daniel Freund | https://mastodon.world/@daniel_freund |
+| Anna Deparnay-Grunenberg | https://freiburg.social/@AnnaDeparnayGrunenberg |
+| Hannah Neumann | https://respublicae.eu/@Hannah_LBerg |
+| Alexandra Geese | https://respublicae.eu/@alexandra_geese |
+| Katrin Langensiepen | https://respublicae.eu/@katrinlangensie |
+| Henrike Hahn | https://respublicae.eu/@henrikehahn |
+| Viola von Cramon-Taubadel | https://respublicae.eu/@violavoncramon |
+| Rasmus Andresen | https://gruene.social/@RasmusAndresen |
 
 
 ## Mitglied des Europäischen Parlaments (AfD)
 
 | Wer | Link |
 | :-- | :-- |
-| Guido Reil | https://respublicae.eu/@GuidoReil |
 | Nicolaus Fest | https://respublicae.eu/@Nicolaus_Fest |
+| Guido Reil | https://respublicae.eu/@GuidoReil |
 | Joachim Kuhs | https://respublicae.eu/@joachim_kuhs |
 | Christine Anderson | https://respublicae.eu/@c____anderson |
 | Markus Buchheit | https://respublicae.eu/@BuchheitMarkus |
+
+
+## Mitglied des Europäischen Parlaments (CDU)
+
+| Wer | Link |
+| :-- | :-- |
+| Hildegard Bentele | https://respublicae.eu/@hildebentele |
+| Axel Voss | https://respublicae.eu/@AxelVossMdEP |
+| Dennis Radtke | https://respublicae.eu/@RadtkeMdEP |
+| Q74151 | https://respublicae.eu/@ThomasMannEP |
+| Markus Pieper | https://respublicae.eu/@markuspiepermep |
+| Andreas Schwab | https://respublicae.eu/@Andreas_Schwab |
+| Q85566 | https://respublicae.eu/@peterliese |
+| Michael Gahler | https://respublicae.eu/@gahler_michael |
+| Daniel Caspary | https://respublicae.eu/@caspary |
+| Sabine Verheyen | https://respublicae.eu/@sabineverheyen |
+| Peter Jahr | https://respublicae.eu/@peter_jahr |
+
+
+## Mitglied des Deutschen Bundestages (AfD)
+
+| Wer | Link |
+| :-- | :-- |
+| Beatrix von Storch | https://respublicae.eu/@Beatrix_vStorch |
+| Maximilian Krah | https://respublicae.eu/@krahmax |
+
+
+## Mitglied des Deutschen Bundestages (BSW)
+
+| Wer | Link |
+| :-- | :-- |
+| Jessica Tatti | https://social.linksfraktion.de/@jessica_tatti |
+| Klaus Ernst | https://social.linksfraktion.de/@klausernst |
+| Alexander Ulrich | https://social.linksfraktion.de/@alexander_ulrich |
+| Jacqueline Nastić | https://social.linksfraktion.de/@zaklin_nastic |
+| Amira Mohamed Ali | https://social.linksfraktion.de/@amira_mohamed_ali |
+| Sahra Wagenknecht | https://social.linksfraktion.de/@sahra_wagenknecht |
+| Q77684 | https://social.linksfraktion.de/@sevimdagdelen |
+| Andrej Hunko | https://social.linksfraktion.de/@andrejhunko |
 
 
 ## Mitglied des Europäischen Parlaments (Freie Wähler)
@@ -533,20 +546,6 @@
 | Wer | Link |
 | :-- | :-- |
 | Ulrike Müller | https://respublicae.eu/@ulimuellermdep |
-
-
-## Mitglied des Deutschen Bundestages (BSW)
-
-| Wer | Link |
-| :-- | :-- |
-| Klaus Ernst | https://social.linksfraktion.de/@klausernst |
-| Alexander Ulrich | https://social.linksfraktion.de/@alexander_ulrich |
-| Amira Mohamed Ali | https://social.linksfraktion.de/@amira_mohamed_ali |
-| Jessica Tatti | https://social.linksfraktion.de/@jessica_tatti |
-| Jacqueline Nastić | https://social.linksfraktion.de/@zaklin_nastic |
-| Sahra Wagenknecht | https://social.linksfraktion.de/@sahra_wagenknecht |
-| Sevim Dağdelen, MdB | https://social.linksfraktion.de/@sevimdagdelen |
-| Andrej Hunko | https://social.linksfraktion.de/@andrejhunko |
 
 
 ## Mitglied des Deutschen Bundestages (FDP)
@@ -570,6 +569,13 @@
 | Svenja Hahn | https://respublicae.eu/@svenja_hahn |
 
 
+## Mitglied des Niedersächsischen Landtages (CDU)
+
+| Wer | Link |
+| :-- | :-- |
+| Q62093 | https://respublicae.eu/@davidmcallister |
+
+
 ## Mitglied des Deutschen Bundestages (CDU)
 
 | Wer | Link |
@@ -578,6 +584,13 @@
 | Antje Tillmann | https://mastodon.social/@AntjeTillmann |
 | Ingeborg Gräßle | https://respublicae.eu/@inge_graessle |
 | Armin Laschet | https://respublicae.eu/@ArminLaschet |
+
+
+## Mitglied des Bayerischen Landtags (CSU)
+
+| Wer | Link |
+| :-- | :-- |
+| Monika Hohlmeier | https://respublicae.eu/@MHohlmeier |
 
 
 ## Mitglied des Deutschen Bundestages (CSU)
@@ -606,13 +619,6 @@
 | Priska Hinz | https://hessen.social/@priska |
 
 
-## Mitglied des Bayerischen Landtags (CSU)
-
-| Wer | Link |
-| :-- | :-- |
-| Monika Hohlmeier | https://respublicae.eu/@MHohlmeier |
-
-
 ## Mitglied des Thüringer Landtags (CDU)
 
 | Wer | Link |
@@ -639,6 +645,24 @@
 | Wer | Link |
 | :-- | :-- |
 | Manuela Ripa | https://mastodon.social/@manuelaripa |
+
+
+## Mitglied des Abgeordnetenhauses von Berlin (Linke)
+
+| Wer | Link |
+| :-- | :-- |
+| Carsten Schatz | https://berlin.social/@schatzbln |
+| Niklas Schenker | https://berlin.social/@NiklasSchenker |
+| Tobias Schulze | https://mastodon.social/@TobiasSchulze |
+| Niklas Schrader | https://mstdn.social/@nikschrader |
+| Anne Helm | https://dju.social/@seeroiberjenny |
+
+
+## Stadtrat in Freising (SPD)
+
+| Wer | Link |
+| :-- | :-- |
+| Andreas Mehltretter | https://sueden.social/@mehltretter |
 
 
 ## Mitglied des Sächsischen Landtages (Grüne)
@@ -710,56 +734,8 @@
 | Wer | Link |
 | :-- | :-- |
 | Elmar Hayn | https://gruene.social/@ElmarHaynMdL |
-| Sanne Kurz | https://gruene.social/@sannekurz_mdl |
 | Eva Lettenbauer | https://gruene.social/@EvaLettenbauer |
-
-
-## Mitglied des Abgeordnetenhauses von Berlin (Linke)
-
-| Wer | Link |
-| :-- | :-- |
-| Carsten Schatz | https://berlin.social/@schatzbln |
-| Niklas Schenker | https://berlin.social/@NiklasSchenker |
-| Tobias Schulze | https://mastodon.social/@TobiasSchulze |
-| Niklas Schrader | https://mstdn.social/@nikschrader |
-| Anne Helm | https://dju.social/@seeroiberjenny |
-
-
-## Stadtrat in Freising (SPD)
-
-| Wer | Link |
-| :-- | :-- |
-| Andreas Mehltretter | https://sueden.social/@mehltretter |
-
-
-## Mitglied der Bremischen Bürgerschaft (Grüne)
-
-| Wer | Link |
-| :-- | :-- |
-| Helga Trüpel | https://respublicae.eu/@HelgaTruepel |
-
-
-## Botschafter der Bundesrepublik Deutschland in der Russischen Föderation (FDP)
-
-| Wer | Link |
-| :-- | :-- |
-| Alexander Graf Lambsdorff | https://respublicae.eu/@Lambsdorff |
-
-
-## Mitglied des Abgeordnetenhauses von Berlin (SPD)
-
-| Wer | Link |
-| :-- | :-- |
-| Katina Schubert | https://troet.cafe/@Katina_Schubert |
-| Sebastian Schlüsselburg | https://berlin.social/@schluesselburg |
-| Pavel Mayer | https://mastodon.social/@pavel23 |
-
-
-## Mitglied des Landtag Nordrhein-Westfalen (CDU)
-
-| Wer | Link |
-| :-- | :-- |
-| Herbert Reul | https://respublicae.eu/@hreul |
+| Sanne Kurz | https://gruene.social/@sannekurz_mdl |
 
 
 ## Mitglied des Abgeordnetenhauses von Berlin (Piraten)
@@ -818,13 +794,6 @@
 | Sebastian Striegel | https://gruene.social/@striegse |
 
 
-## Mitglied des Niedersächsischen Landtages (CDU)
-
-| Wer | Link |
-| :-- | :-- |
-| davidmcallister | https://respublicae.eu/@davidmcallister |
-
-
 ## Mitglied des Landtages von Baden-Württemberg (FDP)
 
 | Wer | Link |
@@ -847,26 +816,27 @@
 | Hannes Damm | https://gruene.social/@hannesdamm |
 
 
-## Mitglied des Sächsischen Landtages (Linke)
+## Mitglied des Landtag Rheinland-Pfalz (SPD)
 
 | Wer | Link |
 | :-- | :-- |
-| Juliane Nagel | https://don.linxx.net/@luna_le |
+| Markus Stein | https://nahe.social/@steinmdl |
 
 
-## Mitglied des Thüringer Landtags (Linke)
-
-| Wer | Link |
-| :-- | :-- |
-| Katharina König-Preuss | https://mastodon.social/@katharinakoenig |
-| Susanne Hennig-Wellsow | https://social.linksfraktion.de/@susanne_hennig_wellsow |
-
-
-## Mitglied des Hessischen Landtags (FDP)
+## Mitglied des Abgeordnetenhauses von Berlin (Grüne)
 
 | Wer | Link |
 | :-- | :-- |
-| Nicola Beer | https://respublicae.eu/@nicolabeerfdp |
+| Anja Schillhaneck | https://mastodon.social/@Maristya |
+| Stefan Ziller | https://gruene.social/@stefanziller |
+| Petra Vandrey | https://gruene.social/@PetraVandrey |
+
+
+## Bürgermeister der Gemeinde Gilching (SPD)
+
+| Wer | Link |
+| :-- | :-- |
+| Manfred Walter | https://muenchen.social/@Walter804 |
 
 
 ## Mitglied des Landtages von Baden-Württemberg (Wir Bürger)
@@ -876,12 +846,13 @@
 | Lars Patrick Berg | https://respublicae.eu/@L_P_Berg |
 
 
-## Mitglied des Abgeordnetenhauses von Berlin (Grüne)
+## Mitglied des Abgeordnetenhauses von Berlin (SPD)
 
 | Wer | Link |
 | :-- | :-- |
-| Stefan Ziller | https://gruene.social/@stefanziller |
-| Petra Vandrey | https://gruene.social/@PetraVandrey |
+| Sebastian Schlüsselburg | https://berlin.social/@schluesselburg |
+| Katina Schubert | https://troet.cafe/@Katina_Schubert |
+| Pavel Mayer | https://mastodon.social/@pavel23 |
 
 
 ## Mitglied des Schleswig-Holsteinischen Landtages (Piraten)
@@ -895,7 +866,15 @@
 
 | Wer | Link |
 | :-- | :-- |
-| Reinhard Bütikofer | https://respublicae.eu/@bueti |
+| Q31236 | https://respublicae.eu/@bueti |
+
+
+## Mitglied des Thüringer Landtags (Linke)
+
+| Wer | Link |
+| :-- | :-- |
+| Susanne Hennig-Wellsow | https://social.linksfraktion.de/@susanne_hennig_wellsow |
+| Katharina König-Preuss | https://mastodon.social/@katharinakoenig |
 
 
 ## Mitglied des Landtages des Saarlands (CDU)
@@ -903,6 +882,70 @@
 | Wer | Link |
 | :-- | :-- |
 | Alwin Theobald | https://mastodon.social/@alwin_theobald |
+
+
+## Mitglied der Bremischen Bürgerschaft (Grüne)
+
+| Wer | Link |
+| :-- | :-- |
+| Helga Trüpel | https://respublicae.eu/@HelgaTruepel |
+
+
+## Botschafter der Bundesrepublik Deutschland in der Russischen Föderation (FDP)
+
+| Wer | Link |
+| :-- | :-- |
+| Alexander Graf Lambsdorff | https://respublicae.eu/@Lambsdorff |
+
+
+## Mitglied des Landtag Nordrhein-Westfalen (CDU)
+
+| Wer | Link |
+| :-- | :-- |
+| Herbert Reul | https://respublicae.eu/@hreul |
+
+
+## Mitglied des Sächsischen Landtages (Linke)
+
+| Wer | Link |
+| :-- | :-- |
+| Juliane Nagel | https://don.linxx.net/@luna_le |
+
+
+## Mitglied des Hessischen Landtags (FDP)
+
+| Wer | Link |
+| :-- | :-- |
+| Nicola Beer | https://respublicae.eu/@nicolabeerfdp |
+
+
+## Mitglied des Landtag Rheinland-Pfalz (CDU)
+
+| Wer | Link |
+| :-- | :-- |
+| Q85545 | https://respublicae.eu/@langen_werner |
+
+
+## Mitglied der Hamburgischen Bürgerschaft (Grüne)
+
+| Wer | Link |
+| :-- | :-- |
+| Lena Zagst | https://norden.social/@lenazagst |
+| Miriam Block | https://gruene.social/@mibloq |
+
+
+## Mitglied des Landtag Nordrhein-Westfalen (Piraten)
+
+| Wer | Link |
+| :-- | :-- |
+| Birgit Rydlewski | https://mastodon.social/@_rya_ |
+
+
+## Mitglied des Thüringer Landtags (Grüne)
+
+| Wer | Link |
+| :-- | :-- |
+| Laura Wahl | https://mastodon.social/@laura_wahl_ |
 
 
 ## Vorsitzender der Sozialdemokratischen Partei Deutschlands (SPD)
@@ -920,47 +963,11 @@
 | Sven Schulze | https://respublicae.eu/@schulzeeuropa |
 
 
-## Mitglied des Landtag Rheinland-Pfalz (SPD)
-
-| Wer | Link |
-| :-- | :-- |
-| Markus Stein | https://nahe.social/@steinmdl |
-
-
 ## Chef der Staatskanzlei Schleswig-Holstein (CDU)
 
 | Wer | Link |
 | :-- | :-- |
 | Dirk Schrödter | https://norden.social/@dirkschroedter |
-
-
-## Bürgermeister der Gemeinde Gilching (SPD)
-
-| Wer | Link |
-| :-- | :-- |
-| Manfred Walter | https://muenchen.social/@Walter804 |
-
-
-## Mitglied des Landtag Rheinland-Pfalz (CDU)
-
-| Wer | Link |
-| :-- | :-- |
-| Werner Langen | https://respublicae.eu/@langen_werner |
-
-
-## Mitglied der Hamburgischen Bürgerschaft (Grüne)
-
-| Wer | Link |
-| :-- | :-- |
-| Lena Zagst | https://norden.social/@lenazagst |
-| Miriam Block | https://gruene.social/@mibloq |
-
-
-## Mitglied des Thüringer Landtags (Grüne)
-
-| Wer | Link |
-| :-- | :-- |
-| Laura Wahl | https://mastodon.social/@laura_wahl_ |
 
 
 ## Geschäftsführer (Grüne)
@@ -975,7 +982,6 @@
 | Wer | Link |
 | :-- | :-- |
 | Bernhard Herrmann | https://gruene.social/@BHerrmann_ |
-| Mathias Schindler | https://gruene.social/@mathias |
 | Gollaleh Ahmadi | https://gruene.social/@GollalehAhmadi |
 | Maik Außendorf | https://gruene.social/@AussenMa |
 | Patrick Schiffer | https://gruene.social/@pakki |
@@ -998,7 +1004,6 @@
 | Tobias B. Bacherle | https://gruene.social/@TBBacherle |
 | Julia Eisentraut | https://gruene.social/@juliaeisentraut |
 | Werner Graf | https://gruene.social/@grafwer |
-| Juliana Wimmer | https://gruene.social/@Julianawimmer |
 | Pia Schellhammer | https://gruene.social/@piaschellhammer |
 | Peter Heilrath | https://gruene.social/@heilrath |
 | Tessa Ganserer | https://gruene.social/@tessaganserer |
@@ -1014,91 +1019,102 @@
 | Cornelia Kost | https://gruene.social/@corneliakost |
 | Bündnis '90/Die Grünen Ortsgruppe Markkleeberg | https://gruene.social/@markkleeberg |
 | Michael Schütz | https://gruene.social/@MichaelSchuetz |
-| Lennart Quiring | https://gruene.social/@LennartQuiring |
+| Q131244292 | https://gruene.social/@LennartQuiring |
 | Bündnis '90/Die Grünen Ortsgruppe Stadthagen | https://gruene.social/@Stadthagen |
 | Bündnis '90/Die Grünen Kreistagsfraktion Kleve | https://gruene.social/@gruenektkleve |
 | Bündnis '90/Die Grünen Stadtteilgruppe Bornheim-Ostend | https://gruene.social/@Bornheim_Ostend |
+| Juliana Wimmer | https://gruene.social/@Julianawimmer |
 | Bündnis '90/Die Grünen Urbach | https://gruene.social/@urbach |
-| Tobias Linke | https://gruene.social/@teichralle |
-| Johannes Reetz | https://gruene.social/@JohannesReetz |
+| Konstantin Weddige | https://gruene.social/@weddige |
 | haplorhini | https://gruene.social/@haplorhini |
-| Martin Schlüter 🌻 | https://gruene.social/@maddin |
-| GRÜNE Bürstadt | https://gruene.social/@buerstadt |
-| Grüne München Hadern | https://gruene.social/@gruenemuenchenhadern |
-| Meikel | https://gruene.social/@meikel |
 | Bjørn Bäuchle | https://gruene.social/@baeuchle |
-| Peter König | https://gruene.social/@peter_koenig |
-| Die Grünen Ortsverband Stade | https://gruene.social/@OrtverbandStade |
-| Bettina Deutelmoser (sie/ihr) | https://gruene.social/@BDeutelmoser |
-| Kai Bojens 🇪🇺🖖 | https://gruene.social/@kaibojens |
-| Michael Christ | https://gruene.social/@MichaelChrist |
-| M. K. Broll | https://gruene.social/@MartinK |
-| Max L. | https://gruene.social/@max |
-| Andreas R. 🇪🇺 | https://gruene.social/@andreas |
-| Regine | https://gruene.social/@regineheidorn |
-| Sebastian Bergmann | https://gruene.social/@s_bergmann |
-| Tobias Rödel | https://gruene.social/@Tobiasroedel |
-| Corinna Balkow | https://gruene.social/@coba |
-| Grüne KV Ulm 🌻🏳️‍🌈 | https://gruene.social/@GrueneUlm |
 | David | https://gruene.social/@raidersfan |
+| Lukas Weidinger | https://gruene.social/@lukasweidinger |
+| Die Grünen Ortsverband Stade | https://gruene.social/@OrtverbandStade |
+| Peter König | https://gruene.social/@peter_koenig |
+| Michi ☀️🎸🏃‍♂️🇺🇦 | https://gruene.social/@Ccub |
+| M. K. Broll | https://gruene.social/@MartinK |
+| falkovdg | https://gruene.social/@falkovdg |
+| Johannes Reetz | https://gruene.social/@JohannesReetz |
+| Kai Bojens 🇪🇺🖖 | https://gruene.social/@kaibojens |
+| B'90 / Die Grünen, OV Gilching | https://gruene.social/@gruenegilching |
+| Andreas R. 🇪🇺 | https://gruene.social/@andreas |
+| Corinna Balkow | https://gruene.social/@coba |
+| Michael Christ | https://gruene.social/@MichaelChrist |
+| Grüne Kreisverband Stade | https://gruene.social/@Stade_KV |
+| Grüne Harsefeld | https://gruene.social/@harsefeld |
+| Ursula | https://gruene.social/@kleinerBaer |
+| Sebastian Bergmann | https://gruene.social/@s_bergmann |
+| Grüne im Bundestag 🇪🇺🏳️‍🌈 | https://gruene.social/@GrueneBundestag |
+| Tobias Linke | https://gruene.social/@teichralle |
+| Max L. | https://gruene.social/@max |
+| Sebastian Grässer | https://gruene.social/@seb |
+| Felix Winter | https://gruene.social/@winter |
+| Jack | https://gruene.social/@jack |
+| Victoria Broßart, MdB | https://gruene.social/@GrueneVictoria |
+| Grüne Chemnitz | https://gruene.social/@gruenechemnitz |
+| Grüne München Hadern | https://gruene.social/@gruenemuenchenhadern |
+| Martin G | https://gruene.social/@marting |
+| Bettina Deutelmoser (sie/ihr) | https://gruene.social/@BDeutelmoser |
+| Daniel Gaittet | https://gruene.social/@dgaittet |
+| Stadtrat Leipzig Vorlagen | https://gruene.social/@SRL_Vorlagen |
+| Patrik | https://gruene.social/@PatrikSchoenfeldt |
+| Dr. Zoe Mayer | https://gruene.social/@zoe |
+| Max Pfeuffer | https://gruene.social/@maxpfe |
+| Netzbegrünung | https://gruene.social/@netzbegruenung |
+| Marian Steinbach | https://gruene.social/@marian |
+| Grüne Gera 🌻 | https://gruene.social/@GrueneGera |
+| Michael Brandtner | https://gruene.social/@MBrandtner |
+| bicyclegrün | https://gruene.social/@bicycle |
+| 🇺🇦 Sven Seeberg | https://gruene.social/@sven |
+| B'90/ DIE GRÜNEN Stadthagen 💚 | https://gruene.social/@Stadthagen |
+| HolgerH 霍尔格 | https://gruene.social/@HolgerH |
 | Grüne OV Ludwigsburg | https://gruene.social/@gruene_ludwigsburg |
 | 🐧 Jonathan Treffler 🇺🇦🇵🇸 | https://gruene.social/@JonathanTreffler |
-| Grüne Kreisverband Stade | https://gruene.social/@Stade_KV |
-| Sven Günther | https://gruene.social/@SvenGuenther |
+| Regine | https://gruene.social/@regineheidorn |
+| Barbara-Marie | https://gruene.social/@Barbara_Marie_2025 |
 | Michael Panzner | https://gruene.social/@MichaelPanzner |
+| Alexander Bigga | https://gruene.social/@albigdd |
+| Patrick | https://gruene.social/@patrick |
+| Christian Saris | https://gruene.social/@gesus |
+| Die Alterswilde 💚👵🏻 (pausiert) | https://gruene.social/@Geisseltierchen |
+| Martin Schlüter 🌻 | https://gruene.social/@maddin |
+| GRÜNE Bürstadt | https://gruene.social/@buerstadt |
+| Meikel | https://gruene.social/@meikel |
+| Tobias Rödel | https://gruene.social/@Tobiasroedel |
+| Grüne KV Ulm 🌻🏳️‍🌈 | https://gruene.social/@GrueneUlm |
+| Sven Günther | https://gruene.social/@SvenGuenther |
 | Jörg Schwaab | https://gruene.social/@DerJoerg |
-| falkovdg | https://gruene.social/@falkovdg |
 | GRÜNE Magdeburg | https://gruene.social/@gruene_md |
-| Konstantin Weddige | https://gruene.social/@weddige |
 | Grüne Fraktion CW | https://gruene.social/@gruene_fraktion_cw |
 | Freiheitsgrün | https://gruene.social/@freiheitsgruen |
-| Grüne Harsefeld | https://gruene.social/@harsefeld |
-| bicyclegrün | https://gruene.social/@bicycle |
-| Stadtrat Leipzig Vorlagen | https://gruene.social/@SRL_Vorlagen |
-| Sebastian Grässer | https://gruene.social/@seb |
 | Benno Kress | https://gruene.social/@benno |
 | Knut Meenzen 🌻 | https://gruene.social/@herrjemineh |
-| Alexander Bigga | https://gruene.social/@albigdd |
 | Kreisverband Aurich-Norden | https://gruene.social/@KV_Aurich_Norden |
 | Dirk aus Aurich | https://gruene.social/@Dirk_Aurich |
 | Grüne Kreisverband Lörrach | https://gruene.social/@gruene_kv_loerrach |
 | GRÜNE OV Steinwald | https://gruene.social/@steinwaldgruene |
-| Michael Brandtner | https://gruene.social/@MBrandtner |
 | Grüne Niedersachsen | https://gruene.social/@gruenelvnds |
 | Grüne Potsdam | https://gruene.social/@gruene_potsdam |
-| B'90 / Die Grünen, OV Gilching | https://gruene.social/@gruenegilching |
 | Liliane V. Pollmann | https://gruene.social/@LilianeViola |
 | Der Wirrwolf | https://gruene.social/@Ralf_Schulz |
-| Martin G | https://gruene.social/@marting |
-| Die Alterswilde 💚👵🏻 (pausiert) | https://gruene.social/@Geisseltierchen |
 | Mathias Wellner | https://gruene.social/@mwellner |
 | Jonas Franz | https://gruene.social/@jonasfranz |
 | AG Mobilität des KV ChaWi | https://gruene.social/@ag_mobilitaet_chawi |
 | GritM_Buendnis_OST | https://gruene.social/@Buendnis90 |
 | Grüne OV Röthenbach | https://gruene.social/@roethenbach |
-| Lukas Weidinger | https://gruene.social/@lukasweidinger |
 | Christian Beyer | https://gruene.social/@aquu |
-| Victoria Broßart, MdB | https://gruene.social/@GrueneVictoria |
+| Mathias Schindler | https://gruene.social/@mathias |
 | gottstfl | https://gruene.social/@gottstfl |
-| HolgerH 霍尔格 | https://gruene.social/@HolgerH |
 | moin | https://gruene.social/@moin |
-| Jack | https://gruene.social/@jack |
-| 🇺🇦 Sven Seeberg | https://gruene.social/@sven |
 | Jörg von Frantzius | https://gruene.social/@jfrantzius |
 | Grüne Nippes | https://gruene.social/@gruene_nippes |
-| Patrick | https://gruene.social/@patrick |
-| Netzbegrünung | https://gruene.social/@netzbegruenung |
 | Marvin Frommhold | https://gruene.social/@depressiveRobot |
-| Felix Winter | https://gruene.social/@winter |
 | Torsten Schönebaum | https://gruene.social/@tosch |
-| Ursula | https://gruene.social/@kleinerBaer |
 | Margarete | https://gruene.social/@diemargarete |
 | Florian | https://gruene.social/@fwnklr |
 | Grüne Otzberg | https://gruene.social/@Otzberg |
-| Grüne im Bundestag 🇪🇺🏳️‍🌈 | https://gruene.social/@GrueneBundestag |
 | Volker Haßlinger | https://gruene.social/@vhasslinger |
-| Grüne Chemnitz | https://gruene.social/@gruenechemnitz |
-| Patrik | https://gruene.social/@PatrikSchoenfeldt |
 | GAR NRW | https://gruene.social/@garnrw |
 | Grüne LAG Drogenpolitik Berlin | https://gruene.social/@lag_drogenpolitik |
 | Bündnis90/Die Grünen KV Fulda | https://gruene.social/@fulda |
@@ -1114,33 +1130,25 @@
 | Olaf Böttcher | https://gruene.social/@olafbnm |
 | Andreas Linnemann | https://gruene.social/@AndreasLinnemann |
 | BÜNDNIS 90/DIE GRÜNEN Neuhofen | https://gruene.social/@Gruene_Neuhofen |
-| Michi ☀️🎸🏃‍♂️🇺🇦 | https://gruene.social/@Ccub |
 | Dominic Hallau | https://gruene.social/@DominicHallau |
-| Dr. Zoe Mayer | https://gruene.social/@zoe |
 | B'90/GRÜNE Pankow | https://gruene.social/@GruenePankow |
 | Nicolas Scharioth | https://gruene.social/@nicolas |
-| Daniel Gaittet | https://gruene.social/@dgaittet |
 | Grüne Beelitz | https://gruene.social/@GrueneBeelitz |
-| Max Pfeuffer | https://gruene.social/@maxpfe |
 | Grüne Michendorf | https://gruene.social/@gruene_michendorf |
 | Bündnis 90 / Die Grünen Urbach | https://gruene.social/@urbach |
 | Jonas | https://gruene.social/@jonas |
 | Jochen | https://gruene.social/@Jochen |
 | Grüner KV Schwäbisch Hall | https://gruene.social/@KV_SHA |
 | Sabrina | https://gruene.social/@sabrina |
-| Grüne Gera 🌻 | https://gruene.social/@GrueneGera |
 | Jo | https://gruene.social/@johannes |
 | Informatix | https://gruene.social/@powerriegel |
 | Jan Hamisch | https://gruene.social/@JanHamisch |
 | BÜNDNISGRÜNE SOE | https://gruene.social/@soe |
-| Christian Saris | https://gruene.social/@gesus |
-| B'90/ DIE GRÜNEN Stadthagen 💚 | https://gruene.social/@Stadthagen |
 | GRÜNE Altona | https://gruene.social/@altona |
 | Grüne Stadt Roth | https://gruene.social/@Gruene_Stadt_Roth |
 | Grüne Ratsfraktion Hannover | https://gruene.social/@Gruene_Rat_Hannover |
 | Grüne Jugend GAG | https://gruene.social/@gj_gag |
 | PitStorm (Pit) | https://gruene.social/@PitStorm |
-| Marian Steinbach | https://gruene.social/@marian |
 | Moderation | https://gruene.social/@moderation |
 | Grüne Kreistagsfraktion Kleve | https://gruene.social/@gruenektkleve |
 | LAG Grundeinkommen NDS | https://gruene.social/@GrundeinkommenNiedersachsen |
@@ -1190,7 +1198,6 @@
 | Elias Weckwerth | https://gruene.social/@Weckwerth |
 | GRÜNE Kreisverband Rhein-Berg | https://gruene.social/@Rheinisch_Bergischer_Kreis |
 | Jan Kürschner | https://gruene.social/@jan_kuerschner |
-| Barbara-Marie | https://gruene.social/@Barbara_Marie_2025 |
 | 🇵🇸Manu🌱Carrasco Molina | https://gruene.social/@manu |
 | Grüne Graben-Neudorf | https://gruene.social/@GrabenNeudorf |
 | Bernd Herd | https://gruene.social/@herdsoft |
@@ -1207,6 +1214,7 @@
 | GRÜNE OV Gochsheim-Weyer | https://gruene.social/@gochsheim |
 | MartinHase | https://gruene.social/@martinhase |
 | Nico | https://gruene.social/@niwett |
+| Lennart Quiring | https://gruene.social/@LennartQuiring |
 | PL | https://gruene.social/@PLoh |
 | Christoph Schnegg | https://gruene.social/@ch_schnegg |
 | Bettina | https://gruene.social/@Bettina |
@@ -1286,7 +1294,6 @@
 | Oxymoronia | https://gruene.social/@Oxymoronia |
 | Marek Worreschk | https://gruene.social/@MarekW |
 | Patric | https://gruene.social/@patric |
-| Philipp | https://gruene.social/@philipp |
 | Tobi | https://gruene.social/@tobiasmitter |
 | Ulf Klose | https://gruene.social/@UlfKlose |
 | Frederik Ostermeier | https://gruene.social/@frederikostermeier |
@@ -1462,12 +1469,50 @@
 | Michaela Baldus | https://gruene.social/@elabaldus |
 | Grüne OG Markkleeberg | https://gruene.social/@markkleeberg |
 | Birgitta | https://gruene.social/@Birgitta |
+| Dirk Spingler | https://gruene.social/@dirkspingler |
+
+
+##  (SPD)
+
+| Wer | Link |
+| :-- | :-- |
+| Anna Kassautzki | https://spd.social/@annakassautzki |
+| SPD Kreisverband Breisgau-Hochschwarzwald | https://spd.social/@rotwild_im_schwarzwald |
+| SPD International | https://spd.social/@spdinternational |
+| SPD Friesenheim | https://spd.social/@spd_friesenheim |
+| SPD Schlutup | https://spd.social/@schlutup |
+| Erhard Goller | https://spd.social/@ErhardGoller |
+| Heribert Schindler 🪷📿🙏 | https://spd.social/@Heribert |
+| SPD Adlershof | https://spd.social/@SPDAdlershof |
+| thomas | https://spd.social/@thomas |
+| Oliver Czulo | https://spd.social/@OliverCzulo |
+| SPD Winsen (Luhe) | https://spd.social/@spdwinsenluhe |
+| annakassautzki | https://spd.social/@annakassautzki |
+| Torsten Behrens | https://spd.social/@torsten |
+| Norbert | https://spd.social/@NorbertSchenkelRheinbach |
+| SPD Dossenheim | https://spd.social/@dossenheim |
+| SPD-Freundeskreis Italien | https://spd.social/@spditalien |
+| SPD Neuendettelsau | https://spd.social/@neuendettelsau |
+| SPD Geschichtswerkstatt | https://spd.social/@geschichte |
+| SPD Betriebsgruppe Bundeswehr | https://spd.social/@spd_bg_bundeswehr |
+| kreidefinger | https://spd.social/@kreidefinger |
+| SPD OV Fritzlar | https://spd.social/@SPD_Fritzlar |
+| Carmen Sinnokrot | https://spd.social/@Carmen |
+| SPD OV Niebüll | https://spd.social/@spd_niebuell |
+| SPD Freundesgruppe in Peking | https://spd.social/@PekingSPD |
+| SPD Klimaforum | https://spd.social/@klimaforum |
+| M. Penke | https://spd.social/@mpenke |
+| Dominik De Marco | https://spd.social/@ddm |
+| phil lehmann | https://spd.social/@phil |
+| SPD Parteivorstand | https://spd.social/@SPD |
+| CElmenthaler | https://spd.social/@CElmenthaler |
 
 
 ##  (-)
 
 | Wer | Link |
 | :-- | :-- |
+| Q115212023 | https://gruene.social/@mathias |
 | Petra-Kelly-Stiftung | https://gruene.social/@kelly_stiftung |
 | Lukas Küffner | https://piraten-partei.social/@vwt1812 |
 | Bündnis 90/Die Grünen Landtagsfraktion Brandenburg | https://gruene.social/@grueneltbb |
@@ -1487,9 +1532,10 @@
 | Fraktion Die Linke in der Hamburgischen Bürgerschaft | https://linke.social/@LinksfraktionHH |
 | Die Linke Jena | https://linke.social/@DieLinke_Jena |
 | Die Linke Bezirksverband Spandau | https://linke.social/@dielinkespandau |
+| Die Linke in Rosenheim | https://linke.social/@dielinke_rosenheim |
+| Digitale Linke | https://linke.social/@digitale_linke |
 | Jannik Balint | https://linke.social/@jannik |
 | Die Linke Halle (Saale) | https://linke.social/@dielinke_halle |
-| Die Linke in Rosenheim | https://linke.social/@dielinke_rosenheim |
 | LinksfraktionTK | https://linke.social/@linksfraktiontk |
 | Viktor Linsel | https://linke.social/@viktor_linsel |
 | Die Linke Kaiserslautern | https://linke.social/@dielinke_kaiserslautern |
@@ -1497,7 +1543,6 @@
 | DIE LINKE. Wendland | https://linke.social/@Wendland |
 | Bernhard Weißenbacher | https://linke.social/@BernhardWeissenbacher |
 | Linksjugend 'Solid Wendland | https://linke.social/@Linksjugend_Wendland |
-| Digitale Linke | https://linke.social/@digitale_linke |
 | DIE LINKE KV Erding-Ebersberg | https://linke.social/@die_linke_ed_ebe |
 | c-ra | https://linke.social/@chira |
 | galluskai | https://linke.social/@galluskai |
@@ -1551,17 +1596,17 @@
 | Die PARTEI Oberfranken | https://die-partei.social/@Die_PARTEI_Ofr |
 | Die PARTEI Landau/Südliche Weinstraße | https://die-partei.social/@parteilandau |
 | Olaf Schlösser :antifa: | https://die-partei.social/@olafschloesser |
-| TheoRee | https://die-partei.social/@TheoRee |
-| WessiKaOssilator | https://die-partei.social/@wessi |
-| PARTEIBonze | https://die-partei.social/@PARTEIBonze |
-| :die_partei: Thilo | https://die-partei.social/@Thilo |
 | Luca | https://die-partei.social/@luca |
+| Josef A. Preiselbauer® | https://die-partei.social/@Preiselbauer |
+| PARTEIBonze | https://die-partei.social/@PARTEIBonze |
+| WessiKaOssilator | https://die-partei.social/@wessi |
 | Mossad-Ultrá Oliver 📟 | https://die-partei.social/@oliver |
+| TheoRee | https://die-partei.social/@TheoRee |
+| :die_partei: Thilo | https://die-partei.social/@Thilo |
 | forekickerofwaterquarter | https://die-partei.social/@ueberbilkforekicker |
 | Die PARTEI Landau / SÜW | https://die-partei.social/@parteilandau |
 | Die PARTEI RLP | https://die-partei.social/@dieparteirlp |
 | Chris Loth | https://die-partei.social/@s0me1_sp3c14l |
-| Josef A. Preiselbauer® | https://die-partei.social/@Preiselbauer |
 | Die PARTEI Freising 🏳️‍🌈 | https://die-partei.social/@DiePARTEI_Freising |
 | MagentaRot | https://die-partei.social/@ich_liebe |
 | bayernmarie | https://die-partei.social/@bayernmarie |
@@ -1590,9 +1635,9 @@
 | Wer | Link |
 | :-- | :-- |
 | 📎Nick | https://piraten-partei.social/@nick |
+| Piratenpartei SH | https://piraten-partei.social/@PiratenSH |
 | Amboss_der_Agitator | https://piraten-partei.social/@Amboss_der_Agitator |
 | Anne ☠️ | https://piraten-partei.social/@AnGie |
-| Piratenpartei SH | https://piraten-partei.social/@PiratenSH |
 | Andreas Thomas Klauner | https://piraten-partei.social/@atklauner |
 | AG Bildung (PIRATEN) | https://piraten-partei.social/@AG_Bildung |
 | Piratenpartei Niederbayern | https://piraten-partei.social/@piraten_ndb |
@@ -1609,286 +1654,6 @@
 | Jeanine B. aus H. 🖖 | https://piraten-partei.social/@JeanineBausH |
 
 
-## Sonstige
-
-| Institution | Link |
-| :-- | :-- |
-| Wissenschaftsjahr | https://social.bund.de/@wissenschaftsjahr |
-| Expertenkommission Forschung und Innovation | https://social.bund.de/@EFI_Kommission |
-| Hessische Landesregierung | https://social.hessen.de/@landesregierung |
-
-
-## Nationale Kartographiebehörde
-
-| Institution | Link |
-| :-- | :-- |
-| Bundesamt für Kartographie und Geodäsie | https://social.bund.de/@BKG |
-
-
-## politische Partei
-
-| Institution | Link |
-| :-- | :-- |
-| Piratenpartei Deutschland | https://piratenpartei.social/@piratenpartei |
-| Freie Wähler | https://freiewaehler.social/@Bundesvereinigung |
-| Die Linke | https://mastodon.social/@dielinke |
-| Partei Mensch Umwelt Tierschutz | https://social.anoxinon.de/@Tierschutzpartei |
-| Partei des Fortschritts | https://mastodon.social/@pdf_bund |
-| Die Sonstigen | https://climatejustice.social/@diesonstigen |
-
-
-## Bundesamt
-
-| Institution | Link |
-| :-- | :-- |
-| Bundesamt für Verbraucherschutz und Lebensmittelsicherheit | https://social.bund.de/@BVL_Bund |
-| Bundesamt für die Sicherheit der nuklearen Entsorgung | https://social.bund.de/@base |
-| Bundesamt für Migration und Flüchtlinge | https://social.bund.de/@bamf |
-| Bundesamt für Strahlenschutz | https://social.bund.de/@strahlenschutz |
-
-
-## Stiftung
-
-| Institution | Link |
-| :-- | :-- |
-| Leibniz-Institut Hessische Stiftung Friedens- und Konfliktforschung | https://social.bund.de/@PRIF |
-| Deutsche Stiftung für Engagement und Ehrenamt | https://social.bund.de/@dsee |
-| Helmholtz-Zentrum für Ozeanforschung Kiel | https://social.bund.de/@geomar_de |
-
-
-## Politikergedenkstiftung
-
-| Institution | Link |
-| :-- | :-- |
-| Bundeskanzler-Willy-Brandt-Stiftung | https://social.bund.de/@BWBStiftung |
-| Bundeskanzler-Helmut-Schmidt-Stiftung | https://social.bund.de/@BKHS_Stiftung |
-
-
-## Bundesbehörde in Deutschland
-
-| Institution | Link |
-| :-- | :-- |
-| Generalzolldirektion | https://social.bund.de/@Zoll |
-| Bundesanstalt für Gewässerkunde | https://social.bund.de/@BfG |
-| Generaldirektion Wasserstraßen und Schifffahrt | https://social.bund.de/@gdws_wsv_presse |
-| Bundeszentrale für politische Bildung | https://social.bund.de/@bpb |
-| Deutsches Archäologisches Institut | https://social.bund.de/@dai_weltweit |
-| Bundesanstalt für Finanzdienstleistungsaufsicht | https://social.bund.de/@BaFin |
-| Antidiskriminierungsstelle des Bundes | https://social.bund.de/@antidiskriminierung |
-
-
-## Gruppe
-
-| Institution | Link |
-| :-- | :-- |
-| Deutsche Rentenversicherung | https://social.bund.de/@die_rente |
-
-
-## Forschungseinrichtung
-
-| Institution | Link |
-| :-- | :-- |
-| Max-Delbrück-Centrum für Molekulare Medizin | https://social.bund.de/@MDC_Berlin |
-| Leibniz-Institut für die Pädagogik der Naturwissenschaften und Mathematik | https://social.bund.de/@IPN_Kiel |
-| Fraunhofer-Institut für Offene Kommunikationssysteme | https://social.bund.de/@FraunhoferFOKUS |
-| Bundesinstitut für Berufsbildung | https://social.bund.de/@bibb |
-| Bundesinstitut für Risikobewertung | https://social.bund.de/@bfr |
-| Deutsches Zentrum für Luft- und Raumfahrt | https://social.bund.de/@dlr_next |
-| Weizenbaum-Institut | https://social.bund.de/@Weizenbaum_Institut |
-| Helmholtz-Zentrum München | https://social.bund.de/@HelmholtzMunich |
-
-
-## oberstes Gericht
-
-| Institution | Link |
-| :-- | :-- |
-| Bundesarbeitsgericht | https://social.bund.de/@bundesarbeitsgericht |
-| Bundesgerichtshof | https://social.bund.de/@BGH_Bund |
-| Bundesfinanzhof | https://social.bund.de/@bundesfinanzhof |
-
-
-## Anstalt des öffentlichen Rechts
-
-| Institution | Link |
-| :-- | :-- |
-| Bundesanstalt für Post und Telekommunikation Deutsche Bundespost | https://social.bund.de/@BAnst_PT |
-| Föderale IT-Kooperation | https://social.bund.de/@FITKOfoederal |
-
-
-## Non-Profit-Organisation
-
-| Institution | Link |
-| :-- | :-- |
-| Stiftung Datenschutz | https://social.bund.de/@DS_Stiftung |
-| Stiftung „Erinnerung, Verantwortung und Zukunft“ | https://social.bund.de/@evzfoundation |
-| Stiftung Preußischer Kulturbesitz | https://social.bund.de/@kulturSPK |
-| Gesellschaft für Anlagen- und Reaktorsicherheit | https://social.bund.de/@GRS |
-| German Institute for Global and Area Studies | https://social.bund.de/@GIGA_Institute |
-
-
-## Landesbeauftragter für den Datenschutz
-
-| Institution | Link |
-| :-- | :-- |
-| Sächsische Datenschutz- und Transparenzbeauftragte | https://social.bund.de/@sdb |
-| Berliner Beauftragte für Datenschutz und Informationsfreiheit | https://social.bund.de/@BlnBDI |
-| Bayerischer Landesbeauftragter für den Datenschutz | https://social.bund.de/@BayLfD |
-| Landesbeauftragte für den Datenschutz Niedersachsen | https://social.bund.de/@datenschutz_nds |
-
-
-## Bundesoberbehörde
-
-| Institution | Link |
-| :-- | :-- |
-| Bundesanstalt für Materialforschung und -prüfung | https://social.bund.de/@BAMResearch |
-| Friedrich-Loeffler-Institut | https://social.bund.de/@loeffler_news |
-| Paul-Ehrlich-Institut | https://social.bund.de/@PEI_Germany |
-| Bundesinstitut für Öffentliche Gesundheit | https://social.bund.de/@bzga |
-| Umweltbundesamt | https://social.bund.de/@Umweltbundesamt |
-| Bundeszentrale für Kinder- und Jugendmedienschutz | https://social.bund.de/@BzKJ |
-| Robert Koch-Institut | https://social.bund.de/@RKI |
-| Bundesnachrichtendienst | https://social.bund.de/@bnd |
-| Bundesamt für Sicherheit in der Informationstechnik | https://social.bund.de/@bsi |
-
-
-## akademische Einrichtung
-
-| Institution | Link |
-| :-- | :-- |
-| Büro für Technikfolgen-Abschätzung beim Deutschen Bundestag | https://social.bund.de/@TABundestag |
-
-
-## Sozialversicherungsträger
-
-| Institution | Link |
-| :-- | :-- |
-| Deutsche Rentenversicherung Bund | https://social.bund.de/@die_rente |
-
-
-## Organisation
-
-| Institution | Link |
-| :-- | :-- |
-| Deutsches Zentrum zum Schutz von Versuchstieren | https://social.bund.de/@Bf3R_centre |
-| Deutsches Zentrum für Neurodegenerative Erkrankungen | https://social.bund.de/@dzne |
-| Rat für Nachhaltige Entwicklung | https://social.bund.de/@RNE_DE |
-| Zentrum für Digitale Souveränität der Öffentlichen Verwaltung | https://social.bund.de/@zendis |
-| Q136406518 | https://social.bund.de/@CivicCoding |
-| Plattform Lernende Systeme | https://social.bund.de/@LernendeSysteme |
-
-
-## Oberste Bundesbehörde
-
-| Institution | Link |
-| :-- | :-- |
-| Bundesbeauftragte für den Datenschutz und die Informationsfreiheit | https://social.bund.de/@bfdi |
-| Bundesministerium der Finanzen | https://social.bund.de/@bmf |
-
-
-## Nationale Geodateninfrastruktur
-
-| Institution | Link |
-| :-- | :-- |
-| GDI-DE | https://social.bund.de/@GDI_DE |
-
-
-## Gremium
-
-| Institution | Link |
-| :-- | :-- |
-| Sachverständigenrat für Integration und Migration | https://social.bund.de/@SVR_Migration |
-| Datenschutzkonferenz | https://social.bund.de/@dsk |
-| Sachverständigenrat für Umweltfragen | https://social.bund.de/@umweltrat |
-
-
-## Bauministerium
-
-| Institution | Link |
-| :-- | :-- |
-| Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen | https://social.bund.de/@BMWSB_Bund |
-
-
-## Botschaft
-
-| Institution | Link |
-| :-- | :-- |
-| Deutsche Botschaft Ankara | https://social.bund.de/@AlmanyaBE |
-| Deutsche Botschaft London | https://social.bund.de/@germanyinuk |
-
-
-## karitative Vereinigung
-
-| Institution | Link |
-| :-- | :-- |
-| Zentrum für Internationale Friedenseinsätze | https://social.bund.de/@ZIF |
-
-
-## eingetragener Verein
-
-| Institution | Link |
-| :-- | :-- |
-| Deutsches Institut für Menschenrechte | https://social.bund.de/@DIMR_Berlin |
-
-
-## Mensch
-
-| Institution | Link |
-| :-- | :-- |
-| Burkhard Blienert | https://social.bund.de/@Sucht_Drogen_Beauftr_Blienert |
-| Boris Rhein | https://social.hessen.de/@BorisRhein |
-
-
-## Zollverwaltung
-
-| Institution | Link |
-| :-- | :-- |
-| Bundeszollverwaltung | https://social.bund.de/@Zoll |
-
-
-## Behörde
-
-| Institution | Link |
-| :-- | :-- |
-| Wasserstraßen- und Schifffahrtsverwaltung des Bundes | https://social.bund.de/@gdws_wsv_presse |
-| Wissenschaftsrat | https://wisskomm.social/@WissRat |
-| Regierungspräsidium Freiburg | https://bawü.social/@RPFreiburg |
-| Stadtverwaltung Mannheim | https://bawü.social/@mannheim |
-| Max Weber Stiftung | https://wisskomm.social/@MaxWeberStiftung |
-| Koordinierungsstelle für die Erhaltung des schriftlichen Kulturguts | https://mastodon.social/@originalerhalt |
-| Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung | https://social.bund.de/@bmz |
-| Landesamt für Umwelt, Landwirtschaft und Geologie | https://social.sachsen.de/@lfulg |
-| Stadtverwaltung Köln | https://social.cologne/@koeln |
-| Stadtverwaltung Stuttgart | https://xn--baw-joa.social/@stuttgart |
-
-
-## Anlage
-
-| Institution | Link |
-| :-- | :-- |
-| Deutsches Zentrum für Altersfragen | https://social.bund.de/@DZA |
-
-
-## Legislative
-
-| Institution | Link |
-| :-- | :-- |
-| Deutscher Bundestag | https://social.bund.de/@bundestag |
-
-
-## Kommandobehörde
-
-| Institution | Link |
-| :-- | :-- |
-| Territoriales Führungskommando der Bundeswehr | https://social.bund.de/@TFK_Bundeswehr |
-
-
-## Heer
-
-| Institution | Link |
-| :-- | :-- |
-| Heer | https://social.bund.de/@deutschesHeer |
-
-
 ## politische Partei in Deutschland
 
 | Institution | Link |
@@ -1897,6 +1662,8 @@
 | mut | https://lsbt.me/@parteimut |
 | Volt Deutschland | https://mstdn.social/@voltdeutschland |
 | Klimaliste | https://climatejustice.social/@Klimaliste_Deutschland |
+| Freie Wähler | https://freiewaehler.social/@Bundesvereinigung |
+| Partei Mensch Umwelt Tierschutz | https://social.anoxinon.de/@Tierschutzpartei |
 | Sozialistische Alternative | https://troet.cafe/@SAV |
 | Demokratie in Bewegung | https://social.dib.de/@DiB |
 | Volt Baden-Württemberg | https://mastodon.social/@voltbw |
@@ -1908,13 +1675,35 @@
 | Partei der Humanisten | https://social.diehumanisten.de/@parteiderhumanisten |
 
 
+## Landesförderinstitut
+
+| Institution | Link |
+| :-- | :-- |
+| Kreditanstalt für Wiederaufbau | https://social.bund.de/@KfW |
+
+
+## Behörde
+
+| Institution | Link |
+| :-- | :-- |
+| Wissenschaftsrat | https://wisskomm.social/@WissRat |
+| Regierungspräsidium Freiburg | https://bawü.social/@RPFreiburg |
+| Stadtverwaltung Mannheim | https://bawü.social/@mannheim |
+| Max Weber Stiftung | https://wisskomm.social/@MaxWeberStiftung |
+| Koordinierungsstelle für die Erhaltung des schriftlichen Kulturguts | https://mastodon.social/@originalerhalt |
+| Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung | https://social.bund.de/@bmz |
+| Landesamt für Umwelt, Landwirtschaft und Geologie | https://social.sachsen.de/@lfulg |
+| Stadtverwaltung Köln | https://social.cologne/@koeln |
+| Stadtverwaltung Stuttgart | https://xn--baw-joa.social/@stuttgart |
+| Wasserstraßen- und Schifffahrtsverwaltung des Bundes | https://social.bund.de/@gdws_wsv_presse |
+
+
 ## Landesbehörde
 
 | Institution | Link |
 | :-- | :-- |
 | Landesbeauftragter für den Datenschutz und die Informationsfreiheit Rheinland-Pfalz | https://social.bund.de/@lfdi_rlp |
 | Hessisches Ministerium für Soziales und Integration | https://social.hessen.de/@SozialHessen |
-| Hessische Staatskanzlei | https://social.hessen.de/@landesregierung |
 | Hessisches Ministerium der Justiz | https://social.hessen.de/@Justiz |
 
 
@@ -1925,6 +1714,16 @@
 | Hessisches Ministerium für Landwirtschaft und Umwelt, Weinbau, Forsten, Jagd und Heimat | https://social.hessen.de/@umwelthessen |
 
 
+## politische Partei
+
+| Institution | Link |
+| :-- | :-- |
+| Partei des Fortschritts | https://mastodon.social/@pdf_bund |
+| Die Sonstigen | https://climatejustice.social/@diesonstigen |
+| Piratenpartei Deutschland | https://piratenpartei.social/@piratenpartei |
+| Die Linke | https://mastodon.social/@dielinke |
+
+
 ## Datenschutzaufsichtsbehörde
 
 | Institution | Link |
@@ -1932,18 +1731,14 @@
 | Hessischer Beauftragter für Datenschutz und Informationsfreiheit | https://social.hessen.de/@HBDI |
 
 
-## Registrierungsstelle
+## Landesbeauftragter für den Datenschutz
 
 | Institution | Link |
 | :-- | :-- |
-| Statistisches Bundesamt | https://social.bund.de/@destatis |
-
-
-## Verlag
-
-| Institution | Link |
-| :-- | :-- |
-| Presse- und Informationsamt der Bundesregierung | https://social.bund.de/@Bundespresseamt |
+| Landesbeauftragte für den Datenschutz Niedersachsen | https://social.bund.de/@datenschutz_nds |
+| Sächsische Datenschutz- und Transparenzbeauftragte | https://social.bund.de/@sdb |
+| Berliner Beauftragte für Datenschutz und Informationsfreiheit | https://social.bund.de/@BlnBDI |
+| Bayerischer Landesbeauftragter für den Datenschutz | https://social.bund.de/@BayLfD |
 
 
 ## Außenministerium
@@ -1951,6 +1746,15 @@
 | Institution | Link |
 | :-- | :-- |
 | Auswärtiges Amt | https://social.bund.de/@AuswaertigesAmt |
+
+
+## Stiftung
+
+| Institution | Link |
+| :-- | :-- |
+| Deutsche Stiftung für Engagement und Ehrenamt | https://social.bund.de/@dsee |
+| Leibniz-Institut Hessische Stiftung Friedens- und Konfliktforschung | https://social.bund.de/@PRIF |
+| Helmholtz-Zentrum für Ozeanforschung Kiel | https://social.bund.de/@geomar_de |
 
 
 ## Wohnbauministerium
@@ -1974,12 +1778,18 @@
 | Hessisches Ministerium für Digitale Strategie und Entwicklung | https://social.hessen.de/@DigitalesHessen |
 
 
-## Dienstleister
+## Bundesoberbehörde
 
 | Institution | Link |
 | :-- | :-- |
-| BWI GmbH | https://social.bund.de/@bwi |
-| Informationstechnikzentrum Bund | https://social.bund.de/@itzbund |
+| Umweltbundesamt | https://social.bund.de/@Umweltbundesamt |
+| Bundesnachrichtendienst | https://social.bund.de/@bnd |
+| Bundesanstalt für Materialforschung und -prüfung | https://social.bund.de/@BAMResearch |
+| Friedrich-Loeffler-Institut | https://social.bund.de/@loeffler_news |
+| Paul-Ehrlich-Institut | https://social.bund.de/@PEI_Germany |
+| Bundesinstitut für Öffentliche Gesundheit | https://social.bund.de/@bzga |
+| Bundeszentrale für Kinder- und Jugendmedienschutz | https://social.bund.de/@BzKJ |
+| Bundesamt für Sicherheit in der Informationstechnik | https://social.bund.de/@bsi |
 
 
 ## Bundesministerium
@@ -1987,8 +1797,43 @@
 | Institution | Link |
 | :-- | :-- |
 | Bundesministerium für Digitales und Staatsmodernisierung | https://social.bund.de/@bmds |
-| Bundesministerium für Wirtschaft und Energie | https://social.bund.de/@BMWK |
 | Bundesministerium für Forschung, Technologie und Raumfahrt | https://social.bund.de/@bmftr_bund |
+| Bundesministerium für Wirtschaft und Energie | https://social.bund.de/@BMWK |
+
+
+## Landesparlament
+
+| Institution | Link |
+| :-- | :-- |
+| Bayerischer Landtag | https://social.bund.de/@BayerischerLandtag |
+| Hessischer Landtag | https://social.bund.de/@HessischerLandtag |
+| Hamburgische Bürgerschaft | https://social.bund.de/@BuergerschaftHH |
+| Niedersächsischer Landtag | https://social.bund.de/@LT_Nds |
+| Landtag Rheinland-Pfalz | https://social.bund.de/@ltrlp |
+| Bremische Bürgerschaft | https://social.bund.de/@HBBuergerschaft |
+| Thüringer Landtag | https://social.bund.de/@thueringerlandtag |
+
+
+## Bundesgericht
+
+| Institution | Link |
+| :-- | :-- |
+| Bundessozialgericht | https://social.bund.de/@bundessozialgericht |
+| Bundesverwaltungsgericht | https://social.bund.de/@bverwg_de |
+
+
+## Bundesforschungsanstalt
+
+| Institution | Link |
+| :-- | :-- |
+| Robert Koch-Institut | https://social.bund.de/@RKI |
+
+
+## Klimaministerium
+
+| Institution | Link |
+| :-- | :-- |
+| Bundesministerium für Umwelt, Klimaschutz, Naturschutz und nukleare Sicherheit | https://social.bund.de/@umweltministerium |
 
 
 ## Computer Emergency Response Team
@@ -2005,24 +1850,71 @@
 | Hessisches Ministerium für Wissenschaft und Kunst | https://social.hessen.de/@hmwk_hessen |
 
 
-## Landesparlament
+## Organisation
 
 | Institution | Link |
 | :-- | :-- |
-| Hamburgische Bürgerschaft | https://social.bund.de/@BuergerschaftHH |
-| Niedersächsischer Landtag | https://social.bund.de/@LT_Nds |
-| Thüringer Landtag | https://social.bund.de/@thueringerlandtag |
-| Hessischer Landtag | https://social.bund.de/@HessischerLandtag |
-| Landtag Rheinland-Pfalz | https://social.bund.de/@ltrlp |
-| Bremische Bürgerschaft | https://social.bund.de/@HBBuergerschaft |
+| Q136406518 | https://social.bund.de/@CivicCoding |
+| Deutsches Zentrum zum Schutz von Versuchstieren | https://social.bund.de/@Bf3R_centre |
+| Deutsches Zentrum für Neurodegenerative Erkrankungen | https://social.bund.de/@dzne |
+| Rat für Nachhaltige Entwicklung | https://social.bund.de/@RNE_DE |
+| Zentrum für Digitale Souveränität der Öffentlichen Verwaltung | https://social.bund.de/@zendis |
+| Plattform Lernende Systeme | https://social.bund.de/@LernendeSysteme |
+| Deutsches Institut für Menschenrechte | https://social.bund.de/@DIMR_Berlin |
+
+
+## Innenministerium
+
+| Institution | Link |
+| :-- | :-- |
+| Bundesministerium des Innern | https://social.bund.de/@bmi |
 
 
 ## Gewerbebetrieb
 
 | Institution | Link |
 | :-- | :-- |
-| Agentur für Innovation in der Cybersicherheit | https://social.bund.de/@Cyberagentur |
 | Deutsche Energie-Agentur | https://social.bund.de/@dena |
+| Agentur für Innovation in der Cybersicherheit | https://social.bund.de/@Cyberagentur |
+
+
+## Non-Profit-Organisation
+
+| Institution | Link |
+| :-- | :-- |
+| Stiftung Preußischer Kulturbesitz | https://social.bund.de/@kulturSPK |
+| Stiftung Datenschutz | https://social.bund.de/@DS_Stiftung |
+| Gesellschaft für Anlagen- und Reaktorsicherheit | https://social.bund.de/@GRS |
+| German Institute for Global and Area Studies | https://social.bund.de/@GIGA_Institute |
+| Stiftung „Erinnerung, Verantwortung und Zukunft“ | https://social.bund.de/@evzfoundation |
+
+
+## oberstes Gericht
+
+| Institution | Link |
+| :-- | :-- |
+| Bundesgerichtshof | https://social.bund.de/@BGH_Bund |
+| Bundesfinanzhof | https://social.bund.de/@bundesfinanzhof |
+| Bundesarbeitsgericht | https://social.bund.de/@bundesarbeitsgericht |
+
+
+## Bundesbehörde in Deutschland
+
+| Institution | Link |
+| :-- | :-- |
+| Antidiskriminierungsstelle des Bundes | https://social.bund.de/@antidiskriminierung |
+| Generalzolldirektion | https://social.bund.de/@Zoll |
+| Bundesanstalt für Finanzdienstleistungsaufsicht | https://social.bund.de/@BaFin |
+| Bundesanstalt für Gewässerkunde | https://social.bund.de/@BfG |
+| Deutsches Archäologisches Institut | https://social.bund.de/@dai_weltweit |
+
+
+## Mensch
+
+| Institution | Link |
+| :-- | :-- |
+| Boris Rhein | https://social.hessen.de/@BorisRhein |
+| Burkhard Blienert | https://social.bund.de/@Sucht_Drogen_Beauftr_Blienert |
 
 
 ## Open-Data-Portal
@@ -2030,6 +1922,13 @@
 | Institution | Link |
 | :-- | :-- |
 | GovData | https://social.bund.de/@opendata |
+
+
+## Bildungseinrichtung
+
+| Institution | Link |
+| :-- | :-- |
+| Bundeszentrale für politische Bildung | https://social.bund.de/@bpb |
 
 
 ## staatliche Organisation
@@ -2046,25 +1945,155 @@
 | Hessisches Ministerium der Finanzen | https://social.hessen.de/@finanzen |
 
 
-## Einkammerparlament
+## Politikergedenkstiftung
 
 | Institution | Link |
 | :-- | :-- |
-| Bayerischer Landtag | https://social.bund.de/@BayerischerLandtag |
+| Bundeskanzler-Helmut-Schmidt-Stiftung | https://social.bund.de/@BKHS_Stiftung |
+| Bundeskanzler-Willy-Brandt-Stiftung | https://social.bund.de/@BWBStiftung |
 
 
-## Umweltministerium
-
-| Institution | Link |
-| :-- | :-- |
-| Bundesministerium für Umwelt, Klimaschutz, Naturschutz und nukleare Sicherheit | https://social.bund.de/@bmuv |
-
-
-## Landesförderinstitut
+## Heer
 
 | Institution | Link |
 | :-- | :-- |
-| Kreditanstalt für Wiederaufbau | https://social.bund.de/@KfW |
+| Heer | https://social.bund.de/@deutschesHeer |
+
+
+## Sonstige
+
+| Institution | Link |
+| :-- | :-- |
+| Wissenschaftsjahr | https://social.bund.de/@wissenschaftsjahr |
+| Expertenkommission Forschung und Innovation | https://social.bund.de/@EFI_Kommission |
+
+
+## Nationale Kartographiebehörde
+
+| Institution | Link |
+| :-- | :-- |
+| Bundesamt für Kartographie und Geodäsie | https://social.bund.de/@BKG |
+
+
+## Bundesamt
+
+| Institution | Link |
+| :-- | :-- |
+| Bundesamt für Verbraucherschutz und Lebensmittelsicherheit | https://social.bund.de/@BVL_Bund |
+| Bundesamt für die Sicherheit der nuklearen Entsorgung | https://social.bund.de/@base |
+| Bundesamt für Migration und Flüchtlinge | https://social.bund.de/@bamf |
+| Bundesamt für Strahlenschutz | https://social.bund.de/@strahlenschutz |
+
+
+## Forschungseinrichtung
+
+| Institution | Link |
+| :-- | :-- |
+| Weizenbaum-Institut | https://social.bund.de/@Weizenbaum_Institut |
+| Max-Delbrück-Centrum für Molekulare Medizin | https://social.bund.de/@MDC_Berlin |
+| Leibniz-Institut für die Pädagogik der Naturwissenschaften und Mathematik | https://social.bund.de/@IPN_Kiel |
+| Fraunhofer-Institut für Offene Kommunikationssysteme | https://social.bund.de/@FraunhoferFOKUS |
+| Bundesinstitut für Berufsbildung | https://social.bund.de/@bibb |
+| Bundesinstitut für Risikobewertung | https://social.bund.de/@bfr |
+| Deutsches Zentrum für Luft- und Raumfahrt | https://social.bund.de/@dlr_next |
+| Deutsches Zentrum für Altersfragen | https://social.bund.de/@DZA |
+| Helmholtz-Zentrum München | https://social.bund.de/@HelmholtzMunich |
+
+
+## Gruppe
+
+| Institution | Link |
+| :-- | :-- |
+| Deutsche Rentenversicherung | https://social.bund.de/@die_rente |
+
+
+## Anstalt des öffentlichen Rechts
+
+| Institution | Link |
+| :-- | :-- |
+| Bundesanstalt für Post und Telekommunikation Deutsche Bundespost | https://social.bund.de/@BAnst_PT |
+| Föderale IT-Kooperation | https://social.bund.de/@FITKOfoederal |
+
+
+## akademische Einrichtung
+
+| Institution | Link |
+| :-- | :-- |
+| Büro für Technikfolgen-Abschätzung beim Deutschen Bundestag | https://social.bund.de/@TABundestag |
+
+
+## Oberste Bundesbehörde
+
+| Institution | Link |
+| :-- | :-- |
+| Bundesbeauftragte für den Datenschutz und die Informationsfreiheit | https://social.bund.de/@bfdi |
+| Bundesministerium der Finanzen | https://social.bund.de/@bmf |
+
+
+## Exekutive
+
+| Institution | Link |
+| :-- | :-- |
+| Bundesregierung | https://social.bund.de/@Bundesregierung |
+
+
+## Bauministerium
+
+| Institution | Link |
+| :-- | :-- |
+| Bundesministerium für Wohnen, Stadtentwicklung und Bauwesen | https://social.bund.de/@BMWSB_Bund |
+
+
+## karitative Vereinigung
+
+| Institution | Link |
+| :-- | :-- |
+| Zentrum für Internationale Friedenseinsätze | https://social.bund.de/@ZIF |
+
+
+## staatlicher Wetterdienst
+
+| Institution | Link |
+| :-- | :-- |
+| Deutscher Wetterdienst | https://social.bund.de/@deutscherwetterdienst |
+
+
+## Legislative
+
+| Institution | Link |
+| :-- | :-- |
+| Deutscher Bundestag | https://social.bund.de/@bundestag |
+
+
+## Kommandobehörde
+
+| Institution | Link |
+| :-- | :-- |
+| Territoriales Führungskommando der Bundeswehr | https://social.bund.de/@TFK_Bundeswehr |
+
+
+## Gremium
+
+| Institution | Link |
+| :-- | :-- |
+| GDI-DE | https://social.bund.de/@GDI_DE |
+| Sachverständigenrat für Umweltfragen | https://social.bund.de/@umweltrat |
+| Sachverständigenrat für Integration und Migration | https://social.bund.de/@SVR_Migration |
+| Datenschutzkonferenz | https://social.bund.de/@dsk |
+
+
+## Registrierungsstelle
+
+| Institution | Link |
+| :-- | :-- |
+| Statistisches Bundesamt | https://social.bund.de/@destatis |
+
+
+## Verlag
+
+| Institution | Link |
+| :-- | :-- |
+| Presse- und Informationsamt der Bundesregierung | https://social.bund.de/@Bundespresseamt |
 
 
 ## Position
@@ -2081,12 +2110,12 @@
 | Bundesnetzagentur | https://social.bund.de/@BNetzA |
 
 
-## Bundesgericht
+## Dienstleister
 
 | Institution | Link |
 | :-- | :-- |
-| Bundesverwaltungsgericht | https://social.bund.de/@bverwg_de |
-| Bundessozialgericht | https://social.bund.de/@bundessozialgericht |
+| BWI GmbH | https://social.bund.de/@bwi |
+| Informationstechnikzentrum Bund | https://social.bund.de/@itzbund |
 
 
 ## Verkehrsministerium
@@ -2096,18 +2125,19 @@
 | Bundesministerium für Verkehr | https://social.bund.de/@bmdv |
 
 
-## Exekutive
-
-| Institution | Link |
-| :-- | :-- |
-| Bundesregierung | https://social.bund.de/@Bundesregierung |
-
-
 ## Q130382582
 
 | Institution | Link |
 | :-- | :-- |
 | Universität der Bundeswehr München | https://social.bund.de/@unibwm |
+
+
+## Botschaft
+
+| Institution | Link |
+| :-- | :-- |
+| Deutsche Botschaft London | https://social.bund.de/@germanyinuk |
+| Deutsche Botschaft Ankara | https://social.bund.de/@AlmanyaBE |
 
 
 ## Behörden und Organisationen mit Sicherheitsaufgaben
@@ -2117,23 +2147,27 @@
 | Technisches Hilfswerk | https://social.bund.de/@thw |
 
 
-## Innenministerium
-
-| Institution | Link |
-| :-- | :-- |
-| Bundesministerium des Innern | https://social.bund.de/@bmi |
-
-
-## staatlicher Wetterdienst
-
-| Institution | Link |
-| :-- | :-- |
-| Deutscher Wetterdienst | https://social.bund.de/@deutscherwetterdienst |
-
-
 ## wissenschaftlicher Beirat
 
 | Institution | Link |
 | :-- | :-- |
 | Wissenschaftlicher Beirat der Bundesregierung Globale Umweltveränderungen | https://social.bund.de/@wbgu |
+
+
+## Institution (Instanz)
+
+| Institution | Link |
+| :-- | :-- |
+| Sven Thomsen | https://social.schleswig-holstein.de/@CIO |
+| Die Gerichte im echten Norden | https://social.schleswig-holstein.de/@gerichteSH |
+| TSV Bordesholm | https://social.schleswig-holstein.de/@tsvbordesholm |
+| Land Schleswig-Holstein :vfd: | https://social.schleswig-holstein.de/@landesregierung |
+| nodes.sh | https://social.schleswig-holstein.de/@nodes_sh |
+| Behindertenbeauftragte S-H | https://social.schleswig-holstein.de/@lbsh |
+| Firemon 112 e.V. | https://social.schleswig-holstein.de/@firemon112 |
+| DigitalHub.SH | https://social.schleswig-holstein.de/@digitalhubsh |
+| Markus Pooch | https://social.schleswig-holstein.de/@digilab_grosshansdorf |
+| Freiwilligenzentrum Kreis Plön | https://social.schleswig-holstein.de/@freiwilligenzentrum_ploen |
+| Gemeinde Neuwittenbek | https://social.schleswig-holstein.de/@neuwittenbek |
+| Stiftung Klimawald | https://social.schleswig-holstein.de/@klimawald |
 
