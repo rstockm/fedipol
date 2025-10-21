@@ -12,6 +12,8 @@ const PARTY_INSTANCES = [
 
 // Institutional instances to include regardless of Wikidata presence
 const INSTITUTION_INSTANCES = [
+    'social.bund.de',
+    'social.hessen.de',
     'social.schleswig-holstein.de'
 ];
 
