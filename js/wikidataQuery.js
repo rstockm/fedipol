@@ -6,7 +6,8 @@ const PARTY_INSTANCES = [
     'linke.social',
     'gruene.social',
     'die-partei.social',
-    'piraten-partei.social'
+    'piraten-partei.social',
+    'spd.social'
 ];
 
 function instanceToPartyName(instance) {
@@ -14,6 +15,7 @@ function instanceToPartyName(instance) {
     if (instance === 'linke.social') return 'Die Linke';
     if (instance === 'die-partei.social') return 'Die PARTEI';
     if (instance === 'piraten-partei.social') return 'Piratenpartei Deutschland';
+    if (instance === 'spd.social') return 'Sozialdemokratische Partei Deutschlands';
     return '-';
 }
 
@@ -171,7 +173,7 @@ SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?party
   ?statement ps:P4033 ?account .
   
   # Filter for specific instances
-  VALUES ?instance { "linke.social" "gruene.social" "die-partei.social" "piraten-partei.social" }
+  VALUES ?instance { "linke.social" "gruene.social" "die-partei.social" "piraten-partei.social" "spd.social" }
   FILTER(CONTAINS(STR(?account), ?instance))
   
   # Get party affiliation (both membership and broader affiliations)
@@ -411,6 +413,12 @@ async function updateDisplayedResults() {
                 partyLabel: { value: 'Piratenpartei Deutschland' }
             };
         }
+        if (account.includes('spd.social') && (!politician.partyLabel || !politician.partyLabel.value)) {
+            return {
+                ...politician,
+                partyLabel: { value: 'Sozialdemokratische Partei Deutschlands' }
+            };
+        }
         return politician;
     });
     
@@ -620,6 +628,7 @@ function getInstancePriority(account) {
     if (acc.includes('linke.social')) return 20;
     if (acc.includes('die-partei.social')) return 20;
     if (acc.includes('piraten-partei.social')) return 20;
+    if (acc.includes('spd.social')) return 20;
     
     // Standard-Priorität für alle anderen
     return 10;
