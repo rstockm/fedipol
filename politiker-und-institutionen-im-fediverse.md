@@ -630,7 +630,7 @@
 
 | Wer | Link |
 | :-- | :-- |
-| Patrick Breyer | https://chaos.social/@echo_pbreyer |
+| Patrick Breyer | https://digitalcourage.social/@echo_pbreyer |
 
 
 ## Mitglied des Europäischen Parlaments (Die PARTEI)
