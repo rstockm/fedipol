@@ -1650,10 +1650,10 @@
       "created_at": "2025-07-04T00:00:00.000Z",
       "is_bot": false
     },
-    "https://mastodon.art/@sonjalemke": {
+    "https://ruhr.social/@sonjalemke": {
       "account": {
         "name": "Sonja Lemke",
-        "url": "https://mastodon.art/@sonjalemke",
+        "url": "https://ruhr.social/@sonjalemke",
         "category": "Mitglied des Deutschen Bundestages (Linke)"
       },
       "posts_count": 48,

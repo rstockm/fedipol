@@ -278,7 +278,7 @@
 | Ina Latendorf | https://social.linksfraktion.de/@ina_latendorf |
 | Clara Bünger | https://social.linksfraktion.de/@clarabuenger |
 | Anne-Mieke Bremer | https://mastodon.de/@Koffeinpiratin |
-| Sonja Lemke | https://mastodon.art/@sonjalemke |
+| Sonja Lemke | https://ruhr.social/@sonjalemke |
 | Ines Schwerdtner | https://linke.social/@inesschwerdtner |
 | Jan Köstering | https://ruhr.social/@j_koestering |
 | Cornelia Möhring | https://social.linksfraktion.de/@cornelia_moehring |
