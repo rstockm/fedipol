@@ -125,8 +125,12 @@ function getPlatformIcon(url) {
 function getPartyAffiliation(name, category, url) {
     const allParentheses = Array.from(category.matchAll(/\((.*?)\)/g));
     if (!allParentheses.length) return '-';
-    
+
+    // Falls die Klammer nur die Instanz markiert (z. B. "Institution (Instanz)"),
+    // nicht als Partei werten
     const partyInBrackets = allParentheses[allParentheses.length - 1][1].trim();
+    if (/^instanz$/i.test(partyInBrackets)) return '-';
+    if (/^institution/i.test(category)) return '-';
     
     const partyMap = {
         'SPD': 'SPD',
@@ -154,7 +158,11 @@ function getPartyAffiliation(name, category, url) {
 // Function to check if account has party affiliation
 function hasPartyAffiliation(name, category, url) {
     const allParentheses = Array.from(category.matchAll(/\((.*?)\)/g));
-    return allParentheses.length > 0;
+    if (!allParentheses.length) return false;
+    const last = allParentheses[allParentheses.length - 1][1].trim();
+    if (/^instanz$/i.test(last)) return false;
+    if (/^institution/i.test(category)) return false;
+    return true;
 }
 
 // Function to get party class name

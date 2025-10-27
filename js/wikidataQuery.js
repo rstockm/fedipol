@@ -125,6 +125,7 @@ SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?party
   
   ?item p:P4033 ?statement .  # Mastodon address
   ?statement ps:P4033 ?account .
+  FILTER NOT EXISTS { ?statement pq:P582 ?end }
   
   {
     # Current members of parliament and other positions
@@ -208,6 +209,7 @@ SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?party
   # All accounts on party-specific instances
   ?item p:P4033 ?statement .
   ?statement ps:P4033 ?account .
+  FILTER NOT EXISTS { ?statement pq:P582 ?end }
   
   # Filter for specific instances
   VALUES ?instance { "linke.social" "gruene.social" "die-partei.social" "piraten-partei.social" "spd.social" }
@@ -244,6 +246,7 @@ SELECT DISTINCT ?item ?itemLabel ?type ?typeLabel ?account ?qid WHERE {
         # Regular institutions query
         ?item p:P4033 ?statement .  # Has Mastodon address
         ?statement ps:P4033 ?account .
+        FILTER NOT EXISTS { ?statement pq:P582 ?end }
         
         # Must be in Germany
         ?item wdt:P17 wd:Q183 .
@@ -270,6 +273,7 @@ SELECT DISTINCT ?item ?itemLabel ?type ?typeLabel ?account ?qid WHERE {
         # All accounts on social.bund.de
         ?item p:P4033 ?statement .
         ?statement ps:P4033 ?account .
+        FILTER NOT EXISTS { ?statement pq:P582 ?end }
         FILTER(CONTAINS(STR(?account), "social.bund.de"))
         
         # Get the type if available
@@ -282,6 +286,7 @@ SELECT DISTINCT ?item ?itemLabel ?type ?typeLabel ?account ?qid WHERE {
         # All accounts on social.hessen.de
         ?item p:P4033 ?statement .
         ?statement ps:P4033 ?account .
+        FILTER NOT EXISTS { ?statement pq:P582 ?end }
         FILTER(CONTAINS(STR(?account), "social.hessen.de"))
         
         # Get the type if available
@@ -741,7 +746,15 @@ async function removeDuplicates(results) {
 function generatePartyStatistics(results) {
     const partyStats = {};
     
-    results.forEach(result => {
+    // Institutionelle Accounts nicht in der Parteien-Statistik mitzählen
+    const filtered = results.filter(result => {
+        const account = (result.account?.value || '').toLowerCase();
+        const isInstitutionInstance = INSTITUTION_INSTANCES.some(inst => account.includes(inst));
+        const isInstitutionType = (result.typeLabel?.value || '').toLowerCase().includes('institution');
+        return !isInstitutionInstance && !isInstitutionType;
+    });
+
+    filtered.forEach(result => {
         const party = result.partyLabel?.value || '-';
         const mappedParty = getPartyAbbreviation(party);
         partyStats[mappedParty] = (partyStats[mappedParty] || 0) + 1;
