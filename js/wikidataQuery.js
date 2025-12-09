@@ -270,6 +270,20 @@ SELECT DISTINCT ?item ?itemLabel ?type ?typeLabel ?account ?qid WHERE {
       }
       UNION
       {
+        # regional groups of political parties in germany
+        ?parent wdt:P17 wd:Q183 .  # located in (P17) Germany (Q183)
+        ?parent wdt:P31 ?type .    # instance of (P31)
+        
+        VALUES ?type {
+          wd:Q7278     # political party
+          wd:Q2023214  # political party in Germany
+        }
+
+        ?item wdt:P749 ?parent. # parent organization or unit (P749)
+        ?item wdt:P4033 ?account .  # Has Mastodon address
+      }
+      UNION
+      {
         # All accounts on social.bund.de
         ?item p:P4033 ?statement .
         ?statement ps:P4033 ?account .
