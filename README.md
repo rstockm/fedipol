@@ -69,6 +69,15 @@ Alle persistenten Daten liegen unter `FEDIPOL_DATA_DIR` (lokal `./var`, auf Clou
 `/app/data`): `db.sqlite3`, `raw/`, `checkpoints/`, `analytics/generations/`,
 `exports/generations/`, `locks/`.
 
+## Shadow-Vergleich gegen die Baseline
+
+Der Export des letzten Laufs laesst sich maschinell mit dem eingefrorenen
+Vertragsstand vergleichen (Bot-Konsistenz, Mengen, Rate-Limit-Restingaende):
+
+```sh
+.venv/bin/python scripts/compare_with_baseline.py
+```
+
 ## Deployment (Cloudron)
 
 ```sh
@@ -80,6 +89,15 @@ cloudron env set --app fedipol.example.org DJANGO_CSRF_TRUSTED_ORIGINS=https://f
 Das Manifest deklariert `localstorage` mit SQLite-Pfad und den Scheduler-Job
 `nightly_etl` (03:00 UTC). Der ETL braucht keine Secrets; die Mastodon-APIs und
 Wikidata sind öffentlich.
+
+### CI-Workflow
+
+`.github/workflows/ci.yml` liegt im Repository-Baum, kann aber nur mit einem
+Token inklusive `workflow`-Scope gepusht werden:
+
+```sh
+gh auth refresh -s workflow   # einmalig Scope ergaenzen, dann Datei committen
+```
 
 ## Rollen der Legacy-Dateien
 
