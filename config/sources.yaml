@@ -26,6 +26,10 @@ directory:
   page_size: 80
   max_accounts_per_instance: 1000
 
+# Versionierte kuratierte Liste (u. a. Accounts aus fedipolitik und
+# manuellen Ergaenzungen, die nicht in Wikidata/Instanzverzeichnissen sind).
+curated_list: config/curated_accounts.md
+
 # Bot-Heuristik: offizielles Mastodon-Bot-Flag ODER Keyword in der
 # Account-Beschreibung (case-insensitive, HTML wird entfernt).
 bot_keywords:

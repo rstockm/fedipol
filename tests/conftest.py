@@ -13,6 +13,20 @@ TEST_DATA_DIR = REPO_ROOT / "tests" / ".test-data"
 os.environ.setdefault("FEDIPOL_DATA_DIR", str(TEST_DATA_DIR))
 
 
+@pytest.fixture(autouse=True)
+def isolated_config(tmp_path, monkeypatch):
+    """Tests erhalten eine isolierte Konfigurationskopie ohne Kuratierliste."""
+    import shutil
+
+    config_copy = tmp_path / "config"
+    shutil.copytree(REPO_ROOT / "config", config_copy)
+    curated = config_copy / "curated_accounts.md"
+    if curated.exists():
+        curated.unlink()
+    monkeypatch.setenv("FEDIPOL_CONFIG_DIR", str(config_copy))
+    return config_copy
+
+
 @pytest.fixture()
 def data_paths(tmp_path, monkeypatch):
     """Isoliertes Datenverzeichnis pro Test."""

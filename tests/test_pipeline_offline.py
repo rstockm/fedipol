@@ -1,7 +1,5 @@
 """End-to-End-Pipeline-Tests im Offline-Modus (Fixtures statt Netzwerk)."""
 import json
-import shutil
-from pathlib import Path
 
 from fedipol.etl.paths import DataPaths
 from fedipol.etl.pipeline import Pipeline, PipelineConfig
@@ -97,8 +95,8 @@ def test_failed_run_keeps_previous_generation(data_paths, recorder, strict_drop_
     assert result1.published
 
     # Alle Accounts per Override ausschliessen -> Qualitaetspruefung muss greifen
+    # (isolated_config stellt bereits eine temporaere Konfigurationskopie bereit)
     config_dir = tmp_path / "config"
-    shutil.copytree(Path("config"), config_dir)
     (config_dir / "account_overrides.yaml").write_text(
         "\n".join(
             [

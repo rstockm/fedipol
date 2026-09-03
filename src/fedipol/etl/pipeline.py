@@ -36,6 +36,7 @@ from fedipol.etl.normalize import canonical_url, instance_priority, position_pri
 from fedipol.etl.overrides import OverrideSet, load_overrides, validate_against
 from fedipol.etl.paths import DataPaths, load_paths
 from fedipol.etl.quality import check_export, check_freshness_landscape
+from fedipol.etl.sources.curated_list import CuratedAccount, load_curated_list
 from fedipol.etl.sources.mastodon import EnrichmentResult, MastodonEnricher
 from fedipol.etl.sources.mastodon_directory import DirectoryAccount, fetch_instance_directory
 from fedipol.etl.sources.wikidata import load_query, parse_bindings, run_sparql_query
@@ -144,6 +145,7 @@ class Pipeline:
         self.institution_instances: list[str] = list(raw["institution_instances"])
         self.directory_config = dict(raw.get("directory", {}))
         self.bot_keywords: list[str] = list(raw.get("bot_keywords", []))
+        self.curated_list_path = raw.get("curated_list")
         self.excluded_accounts_file = raw.get("excluded_accounts_file")
 
     def _overrides(self) -> OverrideSet:
@@ -249,6 +251,15 @@ class Pipeline:
                     except Exception as exc:  # noqa: BLE001
                         warnings.append(f"Verzeichnis {instance} unvollstaendig: {exc}")
 
+        # --- 2b. Kuratierte Liste ----------------------------------------
+        curated_rows: list[CuratedAccount] = []
+        if self.curated_list_path:
+            curated_path = Path(self.curated_list_path)
+            if not curated_path.is_absolute():
+                curated_path = self.paths.config_dir().parent / self.curated_list_path
+            curated_rows = load_curated_list(curated_path)
+            logger.info("Kuratierte Liste: %d Accounts", len(curated_rows))
+
         # --- 3. Kandidaten kanonisieren ----------------------------------
         candidates: dict[str, dict] = {}
         for row in wikidata_rows:
@@ -292,6 +303,28 @@ class Pipeline:
                 "qid": None,
                 "instance": row.instance,
                 "source": f"directory:{row.instance}",
+            }
+        for row in curated_rows:
+            try:
+                canon = canonical_url(row.url)
+            except ValueError:
+                continue
+            if canon in candidates:
+                # Vorhandene Kandidaten (Wikidata/Verzeichnis) nicht ueberschreiben,
+                # aber fehlende Felder aus der Kuratierung ergaenzen.
+                entry = candidates[canon]
+                entry["position"] = entry["position"] or row.position
+                entry["party"] = entry["party"] or row.party
+                continue
+            candidates[canon] = {
+                "url": canon,
+                "name": row.name,
+                "kind": "person",
+                "position": row.position,
+                "party": row.party,
+                "qid": None,
+                "instance": canon.split("//", 1)[-1].split("/", 1)[0],
+                "source": "curated",
             }
 
         candidate_list = list(candidates.values())
