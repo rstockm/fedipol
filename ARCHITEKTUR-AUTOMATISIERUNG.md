@@ -5,6 +5,35 @@ Analysierter Upstream-Stand: [`1b5c8b19`](https://github.com/rstockm/fedipol/com
 Repository: <https://github.com/rstockm/fedipol>  
 Dashboard: <https://rstockm.github.io/fedipol/>
 
+## Umsetzungsstand (Appendix, 3. September 2026)
+
+Die Roadmap ist bis Phase 5 umgesetzt und live validiert:
+
+- **Phase 0-4 abgeschlossen.** Serverseitige Pipeline (Django Service App,
+  DuckDB-Generationsmodell, Cloudron-Paketierung) mit 61 automatisierten
+  Tests und Contract-Baseline; Umsetzung in ADR-0001 dokumentiert.
+- **Live-Nachtlaeufe**: drei vollstaendige Laeufe gegen die echten Quellen
+  (1.200-1.540 Kandidaten, ~59 Instanzen). Rate Limits (429) werden per
+  `Retry-After` respektiert, Instanz-Drosselung mittels InstancePacer
+  (mindestens 1 s zwischen Request-Starts je Instanz).
+- **Shadow-Vergleich gegen die eingefrorene Baseline (Mai 2026)**:
+  Ueberschneidungsmenge 850 Accounts; `is_bot` zu 100 % konsistent
+  (3 natuerliche Profil-Aenderungen), `created_at` zu 100 % identisch.
+  Abweichungen bei Postzahlernaeren erwartbar (vier Monate Aktivitaet).
+- **Quellergaenzung**: 304 der zunachst fehlenden Alt-Accounts stammen aus
+  der kuratierten Liste (fedipolitik/manuelle Pflege); `config/curated_accounts.md`
+  ist als dritte Quelle angebunden (Port des Legacy-Markdown-Parsers).
+- **Kontinuitaet**: fehlgeschlagene Einzelanreicherungen werden pro Lauf
+  per Checkpoint wiederaufgenommen; Accounts ohne aktuellen Wert bleiben
+  per Last-known-good (als veraltet markiert) im Export, statt zu
+  verschwinden (968 -> 1.136 Accounts zwischen Lauf 1 und 2).
+- **Offen**: Dashboard-Hosting-Entscheidung (ADR-0002, Proposed),
+  CI-Workflow-Datei benoetigt einmalig `workflow`-Scope, Cloudron-Install
+  auf echter Instanz sowie Alarmierung fuer fehlgeschlagene Naechtlaeufe.
+
+Entwicklung weiter unten im Originaltext: Ist-Analyse, Zielarchitektur und
+alle Details zu Phasen und Alternativen.
+
 ## Kurzfassung
 
 Der vorgeschlagene Umbau ist sinnvoll und weitgehend automatisierbar. Der heutige Prozess ist keine klassische serverseitige ETL-Pipeline, sondern eine Abfolge browserbasierter Werkzeuge, Downloads und manueller Datei-Updates. Die fachliche Ermittlung und Anreicherung der Accounts findet in JavaScript im Browser statt. Das eigentliche Dashboard liest anschließend nur die erzeugte Datei `fedipol_data.json`.
