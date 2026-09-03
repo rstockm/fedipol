@@ -22,10 +22,13 @@ def published_generation(data_paths, permissive_limits):
     return data_paths
 
 
-def test_healthz_without_generation_is_unhealthy():
+def test_healthz_without_generation_is_degraded_but_alive():
+    """Frische Installation: Prozess lebt, Datenstatus wird separat gemeldet."""
     response = Client().get("/healthz")
-    assert response.status_code == 503
-    assert response.json()["status"] == "unhealthy"
+    assert response.status_code == 200
+    body = response.json()
+    assert body["status"] == "degraded_no_generation"
+    assert body["checks"]["active_generation"] is False
 
 
 def test_export_without_generation_is_503():

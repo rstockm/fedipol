@@ -3,6 +3,11 @@
 # 1. Als Root: Persistenzverzeichnis vorbereiten.
 # 2. Als App-Benutzer: idempotente Initialisierung (Secret-Key, Migrationen).
 # 3. exec: langlebiger Gunicorn-Prozess (Signalweiterleitung via exec).
+#
+# Wichtig: Die Plattform-Umgebung (CLOUDRON_*, Nutzer-Env wie
+# DJANGO_ALLOWED_HOSTS) bleibt erhalten; nur HOME und PATH werden gezielt
+# gesetzt. Kein `setpriv --reset-env` - es wuerde die Env-Variablen
+# vernichten, die der Cloudron-Healthcheck und die Settings brauchen.
 
 set -eu
 
@@ -19,12 +24,9 @@ chown -R "${APP_USER}:${APP_USER}" "${DATA_DIR}"
 
 # --- Phase 2: Initialisierung als App-Benutzer ----------------------------
 run_as_app() {
-    setpriv --reuid="${APP_USER}" --regid="${APP_USER}" --clear-groups \
-        --reset-env --inh-caps=-all \
-        env PATH="/app/.venv/bin:/usr/bin:/bin" \
-            HOME="/app/code" \
-            DJANGO_SETTINGS_MODULE=fedipol.settings \
-            FEDIPOL_DATA_DIR="${DATA_DIR}" \
+    setpriv --reuid="${APP_USER}" --regid="${APP_USER}" --clear-groups --inh-caps=-all \
+        env HOME="/app/code" PATH="/app/.venv/bin:/usr/bin:/bin" \
+        FEDIPOL_DATA_DIR="${DATA_DIR}" DJANGO_SETTINGS_MODULE=fedipol.settings \
         "$@"
 }
 
@@ -36,16 +38,12 @@ run_as_app /bin/sh -c '
     fi
     cd /app/code
     /app/.venv/bin/python manage.py migrate --noinput
-    /app/.venv/bin/python manage.py check --deploy 2>/dev/null || true
 '
 
 # --- Phase 3: Anwendungsprozess (unprivilegiert, via exec) ----------------
-exec setpriv --reuid="${APP_USER}" --regid="${APP_USER}" --clear-groups \
-    --reset-env --inh-caps=-all \
-    env PATH="/app/.venv/bin:/usr/bin:/bin" \
-        HOME="/app/code" \
-        DJANGO_SETTINGS_MODULE=fedipol.settings \
-        FEDIPOL_DATA_DIR="${DATA_DIR}" \
+exec setpriv --reuid="${APP_USER}" --regid="${APP_USER}" --clear-groups --inh-caps=-all \
+    env HOME="/app/code" PATH="/app/.venv/bin:/usr/bin:/bin" \
+        FEDIPOL_DATA_DIR="${DATA_DIR}" DJANGO_SETTINGS_MODULE=fedipol.settings \
     /app/.venv/bin/gunicorn fedipol.wsgi:application \
         --bind 0.0.0.0:8000 \
         --workers "${GUNICORN_WORKERS:-2}" \

@@ -76,8 +76,13 @@ def export_manifest(request) -> JsonResponse:
 
 @require_GET
 def healthz(request) -> JsonResponse:
-    """Liveness/Readiness: Prozess, SQLite und aktive Generation pruefen."""
-    checks = {"process": True, "sqlite": False, "active_generation": False}
+    """Liveness: Prozess und SQLite; Datenstatus separat über /health/data.
+
+    Eine App ohne publizierte Generation (frische Installation) ist
+    betriebsbereit; Cloudron-Healthchecks dürfen sie daher nicht als
+    unhealthy einstufen.
+    """
+    checks = {"process": True, "sqlite": False}
     try:
         from django.db import connection
 
@@ -88,6 +93,7 @@ def healthz(request) -> JsonResponse:
         return JsonResponse({"status": "unhealthy", "checks": checks}, status=503)
 
     export_dir = _active_export_dir()
+    checks["active_generation"] = export_dir is not None
     if export_dir is not None:
         try:
             import json
@@ -96,11 +102,10 @@ def healthz(request) -> JsonResponse:
             json.loads(payload)  # vollstaendig parsebar
             checks["active_generation"] = True
         except Exception:
-            pass
+            checks["active_generation"] = False
 
-    if all(checks.values()):
-        return JsonResponse({"status": "healthy", "checks": checks})
-    return JsonResponse({"status": "unhealthy", "checks": checks}, status=503)
+    status = "healthy" if checks["active_generation"] else "degraded_no_generation"
+    return JsonResponse({"status": status, "checks": checks})
 
 
 @require_GET

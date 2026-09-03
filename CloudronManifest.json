@@ -15,12 +15,12 @@
       "sqlite": {
         "paths": ["/app/data/db.sqlite3"]
       }
-    }
-  },
-  "scheduler": {
-    "nightly_etl": {
-      "schedule": "0 3 * * *",
-      "command": "/app/code/deploy/etl-job.sh"
+    },
+    "scheduler": {
+      "nightly_etl": {
+        "schedule": "0 3 * * *",
+        "command": "/app/code/deploy/etl-job.sh"
+      }
     }
   },
   "postInstallMessage": "Env-Variablen setzen: DJANGO_ALLOWED_HOSTS und DJANGO_CSRF_TRUSTED_ORIGINS auf die App-Domain. Der taegliche ETL laeuft um 03:00 UTC."
