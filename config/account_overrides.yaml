@@ -1,0 +1,13 @@
+# Versionierte redaktionelle Overrides fuer einzelne Accounts.
+#
+# Jeder Eintrag muss `url` und `reason` enthalten. Moegliche Felder:
+#   exclude: true          Account ganz aus dem Dashboard entfernen
+#   replaced_by: <url>     Accountumzug: alter Eintrag entfaellt
+#   force_bot: true|false  Bot-Status festlegen (False Positives korrigieren)
+#   display_name: <text>   Anzeigename ueberschreiben
+#   category: <text>       Kategorie (inkl. Partei-Klammer) ueberschreiben
+#   expires: "YYYY-MM-DD"  optionales Ablaufdatum fuer temporare Korrekturen
+#
+# Nicht mehr existierende Ziel-URLs fuehren zu Warnungen, nicht zu Fehlern.
+
+accounts: []

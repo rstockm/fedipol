@@ -1,0 +1,26 @@
+# SPARQL-Abfrage: Accounts auf Parteiinstanzen laut Wikidata
+# Portiert aus js/wikidataQuery.js (PARTY_INSTANCES_QUERY), Stand 1b5c8b19.
+SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?partyLabel ?qid WHERE {
+  ?item p:P4033 ?statement .
+  ?statement ps:P4033 ?account .
+  FILTER NOT EXISTS { ?statement pq:P582 ?end }
+
+  VALUES ?instance { "linke.social" "gruene.social" "die-partei.social" "piraten-partei.social" "spd.social" }
+  FILTER(CONTAINS(STR(?account), ?instance))
+
+  OPTIONAL {
+    { ?item wdt:P102 ?party }
+    UNION
+    { ?item wdt:P1416 ?party }
+  }
+
+  OPTIONAL {
+    ?item p:P39 ?positionStatement .
+    ?positionStatement ps:P39 ?position .
+    FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
+  }
+
+  BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de" }
+}

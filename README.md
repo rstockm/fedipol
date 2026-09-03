@@ -2,116 +2,92 @@
 
 Ein interaktives Dashboard zur Analyse der Fediverse-Aktivitäten deutscher Politiker:innen und politischer Institutionen.
 
-Zur Datenvisualisierung: https://rstockm.github.io/fedipol/
+- Dashboard (Legacy, unverändert): https://rstockm.github.io/fedipol/
+- Architektur-Entscheidung: [ARCHITEKTUR-AUTOMATISIERUNG.md](ARCHITEKTUR-AUTOMATISIERUNG.md)
 
-## Ziel des Projektes
+## Was ist neu
 
-Der Fediverse Activity Tracker bietet einen Überblick über die Präsenz und Aktivität deutscher Politiker:innen und politischer Institutionen im Fediverse. Das Tool ermöglicht es, Trends und Entwicklungen in der politischen Kommunikation auf dezentralen sozialen Plattformen zu beobachten und zu analysieren.
+Der bisherige Prozess lief vollständig im Browser: Wikidata- und Instanzabfragen in `wikidata.html`, der Account-Scan in `enhancement.html`, danach manuelle Downloads von Markdown und `fedipol_data.json` samt manueller Commits. Diese Pipeline ist jetzt serverseitig automatisiert:
 
-![CleanShot 2025-02-08 at 11 58 15@2x](https://github.com/user-attachments/assets/22b496fb-ae12-4a2f-8252-ccbb2deb18f5)
+```
+Wikidata SPARQL (versionierte Queries)
+  Instanzverzeichnisse (gruene.social, spd.social, social.bund.de, ...)
+  Mastodon-API (Lookup + Statuspagination)
+        |
+        v
+  Raw-Artefakte  ->  DuckDB Staging  ->  Marts  ->  Qualitätsprüfungen
+        |
+        v
+  immutable Generation (DuckDB + fedipol_data.json + manifest.json)
+        |
+        v
+  Django-App: Dashboard (unverändert), Export, Health, Freshness
+```
 
+- **Täglicher Nachtlauf** per Cloudron Scheduler (03:00 UTC) als Django Management Command.
+- **DuckDB** für Staging, Transformationen und Marts als unveränderliche Generationen; SQLite nur für Betriebszustand (Läufe, aktive Generation).
+- **Robustheit**: feste Timeouts, Retries mit Backoff, `Retry-After`, instanzbewusste Parallelität, Checkpoints (Wiederaufnahme), Last-known-good-Fallback auf die Vorgängergeneration, Interprozess-Lock, saubere SIGTERM-Behandlung.
+- **Qualitätstor**: Veröffentlicht wird nur geprüft; ein fehlgeschlagener Lauf lässt den letzten erfolgreichen Stand aktiv.
+- **Dashboard unverändert**: `index.html`, `info.html`, CSS und `js/ui.js` werden 1:1 ausgeliefert und nur mit dem neuen Export gespeist. Der Datenvertrag von `fedipol_data.json` ist identisch (eingefroren als Test-Baseline).
+- **Redaktion statt Handarbeit**: Korrekturen (falsche Bot-Markierung, Accountumzug, Ausschluss) werden in [`config/account_overrides.yaml`](config/account_overrides.yaml) versioniert - nicht mehr im Browser nachbearbeitet.
 
+## Projektstruktur
 
-## Datengrundlage
+```
+manage.py                     Django-Verwaltungsskript
+src/fedipol/settings.py       Umgebungsgesteuerte Settings (Cloudron-tauglich)
+src/fedipol/ops/              Betriebs-App: SQLite-Modelle, Health/Export/Dashboard-Views
+src/fedipol/ops/management/commands/run_fedipol_etl.py   der Nachtlauf
+src/fedipol/etl/              Pipeline: sources, staging, marts, quality, export,
+                              generations, checkpoint, locking, pipeline
+src/fedipol/etl/sql/          versioniertes DuckDB-SQL (staging.sql, marts.sql)
+config/queries/*.sparql       Wikidata-Abfragen (aus dem bisherigen JS portiert)
+config/sources.yaml           Instanzen, Bot-Keywords, Endpunkte
+config/account_overrides.yaml redaktionelle Korrekturen (versioniert)
+dashboard/                    unveraenderte Dashboard-Assets vom GitHub-Pages-Stand
+tests/                        pytest/pytest-django, Fixtures, Contract-Tests
+deploy/                       start.sh (Cloudron) und etl-job.sh (Scheduler)
+Dockerfile, CloudronManifest.json, Makefile, uv.lock
+```
 
-- Basiert auf den Daten des [fedipolitik](https://codeberg.org/open/fedipolitik) Projekts
-- **Mit Sicherheit fehlen dort noch Accounts: bitte einfach dort ergänzen!**
-- Lizenziert unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.de)
-- Erfasst werden Accounts von:
-  - Politiker:innen aller Parteien
-  - Politischen Institutionen
-  - Parteiorganisationen
-  - Parlamentsfraktionen
-- Unterstützte Plattformen:
-  - Mastodon
-  - Pleroma
-  - Pixelfed
-  - PeerTube
-  - Lemmy
-  - Misskey
+## Entwicklung
 
-## Funktionen
+```sh
+make check      # Lint (ruff) + Tests (pytest) - 55 Tests
+make migrate    # SQLite-Betriebsdatenbank anlegen
+make etl-smoke  # ETL mit 25 Accounts (echte Quellen)
+make etl        # vollständiger ETL-Lauf
+make serve      # App unter http://127.0.0.1:8000 (Dashboard + Export + Health)
+```
 
-### Navigation und Filter
+Endpunkte: `/healthz` (Liveness/Readiness), `/health/data` (Datenaktualität getrennt),
+`/fedipol_data.json` (aktive Generation), `/manifest.json` (Lauf-Metadaten), `/` (Dashboard).
 
-- Schnellzugriff-Buttons für verschiedene Bereiche:
-  - Parteien
-  - Institutionen
-  - Instanzen
-- Suchfunktion für Accounts mit Echtzeit-Filterung
-- Parteienfilter über die interaktive Verteilungsgrafik
+### Datenverzeichnis
 
-### Parteien-Übersicht
+Alle persistenten Daten liegen unter `FEDIPOL_DATA_DIR` (lokal `./var`, auf Cloudron
+`/app/data`): `db.sqlite3`, `raw/`, `checkpoints/`, `analytics/generations/`,
+`exports/generations/`, `locks/`.
 
-- Visualisierung der Verteilung nach Parteien
-- Farbkodierung für verschiedene Parteien
-- Unterscheidung zwischen regulären Accounts und Bots
-- Interaktive Zeitleiste des Datums der Account-Erstellungen
+## Deployment (Cloudron)
 
-### Account-Listen
+```sh
+cloudron install --location fedipol.example.org
+cloudron env set --app fedipol.example.org DJANGO_ALLOWED_HOSTS=fedipol.example.org
+cloudron env set --app fedipol.example.org DJANGO_CSRF_TRUSTED_ORIGINS=https://fedipol.example.org
+```
 
-- Sortierbare Tabellen für:
-  - Partei-Accounts
-  - Institutionen
-- Anzeige von:
-  - Account-Name und Kategorie
-  - Parteizugehörigkeit
-  - Plattform-Icon
-  - Bot-Kennzeichnung
+Das Manifest deklariert `localstorage` mit SQLite-Pfad und den Scheduler-Job
+`nightly_etl` (03:00 UTC). Der ETL braucht keine Secrets; die Mastodon-APIs und
+Wikidata sind öffentlich.
 
-### Aktivitäts-Tracking
+## Rollen der Legacy-Dateien
 
-- Analyse der Posting-Frequenz
-- Unterscheidung zwischen:
-  - Gesamtzahl der Posts seit Beitritt
-  - Aktivität in den letzten 60 Tagen
-- Visuelle Darstellung durch Fortschrittsbalken:
-  - Grün: Aktuelle Aktivität (60 Tage)
-  - Blau: Gesamtaktivität
+`wikidata.html`, `enhancement.html` und die zugehörigen Browser-Workflows sind
+durch die serverseitige Pipeline ersetzt und nicht mehr Teil der App. Die
+Visualisierung in `js/ui.js` bleibt unverändert in Benutzung.
 
-### Export-Funktionen
+## Lizenz
 
-- Export der aktuellen Daten im JSON-Format
-- Offline-Verfügbarkeit durch lokalen Cache
-- Manuelle Aktualisierung der Daten möglich
-
-
-## Technische Grundlage
-
-### Frontend-Technologien
-
-- HTML5
-- CSS3 mit Media Queries für Responsive Design
-- JavaScript (ES6+)
-- Bootstrap 5.3.3 für das UI-Framework
-- Font Awesome 6.5.1 für Icons
-- SortableJS für Tabellensortierung
-
-### Daten-Management
-
-- Lokale Datenspeicherung via localStorage
-- JSON-basierte Datenhaltung
-- Caching-Mechanismus für optimale Performance
-- Asynchrone API-Abfragen
-
-### API-Integration
-
-- Mastodon API v1 Integration
-- Batch-Processing für API-Anfragen
-- Rate-Limiting-Berücksichtigung
-- Fehlertolerante Datenabfrage
-
-### Performance-Optimierungen
-
-- Lazy Loading für Daten
-- Optimierte API-Batch-Verarbeitung
-- Effizientes DOM-Management
-- Debouncing für Suchanfragen
-
-### Deployment
-
-- Statisches Hosting möglich
-- Keine Server-Komponente erforderlich
-- Minimale Abhängigkeiten
-- Einfache Installation und Wartung
-- Kann grundsätzlich auch für andere Account-Sammlungen angepasst werden
+MIT - siehe [LICENSE](LICENSE). Die Daten basieren auf Wikidata und den
+abgefragten Fediverse-Instanzen (CC BY-SA 4.0 für die Wiki-Daten).

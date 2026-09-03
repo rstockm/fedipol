@@ -1,0 +1,40 @@
+# Quellkonfiguration der fedipol ETL-Pipeline
+wikidata:
+  endpoint: https://query.wikidata.org/sparql
+  language: de
+  queries:
+    parliament: config/queries/parliament.sparql
+    party_instances: config/queries/party_instances.sparql
+    institutions: config/queries/institutions.sparql
+
+# Parteiinstanzen: alle Verzeichnis-Accounts gelten als Politiker-Accounts
+# der jeweiligen Partei (unabhaengig von Wikidata).
+party_instances:
+  linke.social: Die Linke
+  gruene.social: Bündnis 90/Die Grünen
+  die-partei.social: Die PARTEI
+  piraten-partei.social: Piratenpartei Deutschland
+  spd.social: Sozialdemokratische Partei Deutschlands
+
+# Institutionelle Instanzen: alle Verzeichnis-Accounts gelten als Institution.
+institution_instances:
+  - social.bund.de
+  - social.hessen.de
+  - social.schleswig-holstein.de
+
+directory:
+  page_size: 80
+  max_accounts_per_instance: 1000
+
+# Bot-Heuristik: offizielles Mastodon-Bot-Flag ODER Keyword in der
+# Account-Beschreibung (case-insensitive, HTML wird entfernt).
+bot_keywords:
+  - unofficial
+  - automated
+  - mirror
+  - bot
+  - automatisiert
+  - automatisch
+
+# Account-URLs, die grundsätzlich ausgeschlossen werden (Port von exclude.json).
+excluded_accounts_file: config/excluded_accounts.json

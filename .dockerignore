@@ -1,0 +1,9 @@
+.venv/
+var/
+tests/.test-data/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+db.sqlite3
+.DS_Store

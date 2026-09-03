@@ -1,0 +1,26 @@
+{
+  "results": {
+    "bindings": [
+      {
+        "item": {"value": "http://www.wikidata.org/entity/Q123"},
+        "itemLabel": {"value": "Erika Musterfrau"},
+        "position": {"value": "http://www.wikidata.org/entity/Q91459453"},
+        "positionLabel": {"value": "Kreisverband"},
+        "party": {"value": "http://www.wikidata.org/entity/Q49766"},
+        "partyLabel": {"value": "Bündnis 90/Die Grünen"},
+        "qid": {"value": "Q123"},
+        "account": {"value": "https://gruene.social/@erika_musterfrau"}
+      },
+      {
+        "item": {"value": "http://www.wikidata.org/entity/Q456"},
+        "itemLabel": {"value": "Max Beispiel"},
+        "position": {"value": "http://www.wikidata.org/entity/Q1939555"},
+        "positionLabel": {"value": "Mitglied des Deutschen Bundestages"},
+        "party": {"value": "http://www.wikidata.org/entity/Q49764"},
+        "partyLabel": {"value": "Die Linke"},
+        "qid": {"value": "Q456"},
+        "account": {"value": "https://mastodon.social/@maxbeispiel"}
+      }
+    ]
+  }
+}

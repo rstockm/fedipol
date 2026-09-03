@@ -1,0 +1,22 @@
+{
+  "results": {
+    "bindings": [
+      {
+        "item": {"value": "http://www.wikidata.org/entity/Q1001"},
+        "itemLabel": {"value": "Beispielministerium"},
+        "type": {"value": "http://www.wikidata.org/entity/Q327333"},
+        "typeLabel": {"value": "Ministerium"},
+        "qid": {"value": "Q1001"},
+        "account": {"value": "https://social.bund.de/@beispielministerium"}
+      },
+      {
+        "item": {"value": "http://www.wikidata.org/entity/Q1002"},
+        "itemLabel": {"value": "Beispielbehörde"},
+        "type": {"value": "http://www.wikidata.org/entity/Q2659904"},
+        "typeLabel": {"value": "Behörde"},
+        "qid": {"value": "Q1002"},
+        "account": {"value": "https://social.bund.de/@beispielbehoerde"}
+      }
+    ]
+  }
+}

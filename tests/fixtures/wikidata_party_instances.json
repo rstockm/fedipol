@@ -1,0 +1,16 @@
+{
+  "results": {
+    "bindings": [
+      {
+        "item": {"value": "http://www.wikidata.org/entity/Q789"},
+        "itemLabel": {"value": "Petra Partei"},
+        "position": {"value": "http://www.wikidata.org/entity/Q49768"},
+        "positionLabel": {"value": "Sozialdemokratische Partei Deutschlands"},
+        "party": {"value": "http://www.wikidata.org/entity/Q49768"},
+        "partyLabel": {"value": "Sozialdemokratische Partei Deutschlands"},
+        "qid": {"value": "Q789"},
+        "account": {"value": "https://spd.social/@petrapartei/"}
+      }
+    ]
+  }
+}

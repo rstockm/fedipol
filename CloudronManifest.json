@@ -1,0 +1,27 @@
+{
+  "manifestVersion": 2,
+  "version": "1.0.0",
+  "title": "Fedipol",
+  "tagline": "Fediverse Activity Tracker: deutsche Politiker:innen und Institutionen im Fediverse",
+  "description": "Automatisierte taegliche ETL-Pipeline (Wikidata, Instanzverzeichnisse, Mastodon-APIs) mit DuckDB-Datenhaltung und unveraendertem Dashboard.",
+  "author": "Ralf Stockmann",
+  "website": "https://rstockm.github.io/fedipol/",
+  "contactEmail": "rstockm@gmail.com",
+  "httpPort": 8000,
+  "healthCheckPath": "/healthz",
+  "memoryLimit": 1073741824,
+  "addons": {
+    "localstorage": {
+      "sqlite": {
+        "paths": ["/app/data/db.sqlite3"]
+      }
+    }
+  },
+  "scheduler": {
+    "nightly_etl": {
+      "schedule": "0 3 * * *",
+      "command": "/app/code/deploy/etl-job.sh"
+    }
+  },
+  "postInstallMessage": "Env-Variablen setzen: DJANGO_ALLOWED_HOSTS und DJANGO_CSRF_TRUSTED_ORIGINS auf die App-Domain. Der taegliche ETL laeuft um 03:00 UTC."
+}

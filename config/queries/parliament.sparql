@@ -1,0 +1,94 @@
+# SPARQL-Abfrage: Deutsche Politiker:innen mit aktuellem Mandat oder Parteiorganisation
+# Portiert aus js/wikidataQuery.js (PARLIAMENT_QUERY), Stand 1b5c8b19.
+SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?partyLabel ?qid WHERE {
+  {
+    ?item wdt:P102 ?party
+  } UNION {
+    ?item wdt:P1416 ?party
+  }
+
+  {
+    VALUES ?party {
+      wd:Q49768
+      wd:Q49762
+      wd:Q49763
+      wd:Q13124
+      wd:Q49764
+      wd:Q49766
+      wd:Q6721203
+      wd:Q13129
+      wd:Q22748
+      wd:Q327389
+      wd:Q106205950
+      wd:Q123121346
+    }
+  } UNION {
+    ?party wdt:P31 wd:Q2023214
+  }
+
+  ?item p:P4033 ?statement .
+  ?statement ps:P4033 ?account .
+  FILTER NOT EXISTS { ?statement pq:P582 ?end }
+
+  {
+    VALUES ?membership {
+      wd:Q1939555
+      wd:Q27169
+      wd:Q1939559
+      wd:Q708492
+      wd:Q30185
+      wd:Q3154693
+      wd:Q113885691
+      wd:Q113134496
+    }
+    ?item p:P39 ?membershipStatement .
+    ?membershipStatement ps:P39 ?membership .
+    FILTER NOT EXISTS { ?membershipStatement pq:P582 ?endtime }
+    BIND(?membership AS ?position)
+  }
+  UNION
+  {
+    ?item wdt:P31 wd:Q2023214 .
+    BIND(wd:Q2023214 AS ?position)
+  }
+  UNION
+  {
+    VALUES ?organization_type {
+      wd:Q131745197
+      wd:Q91459453
+      wd:Q18744396
+      wd:Q86189847
+    }
+    ?item wdt:P31 ?organization_type .
+    BIND(?organization_type AS ?position)
+  }
+  UNION
+  {
+    ?item p:P39 ?positionStatement .
+    ?positionStatement ps:P39 ?position .
+    FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
+
+    {
+      ?position wdt:P17 wd:Q183 .
+    }
+    UNION
+    {
+      VALUES ?position { wd:Q27169 wd:Q1939559 }
+    }
+    UNION
+    {
+      VALUES ?position {
+        wd:Q1939555
+        wd:Q708492
+        wd:Q30185
+        wd:Q3154693
+        wd:Q113885691
+        wd:Q113134496
+      }
+    }
+  }
+
+  BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de" }
+}

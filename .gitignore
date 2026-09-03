@@ -1,8 +1,17 @@
-# OS generated files
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Lokale Laufzeitdaten (ETL, Generationen, SQLite)
+var/
+tests/.test-data/
+db.sqlite3
+
+# Editor / OS
+.idea/
+.vscode/
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db 

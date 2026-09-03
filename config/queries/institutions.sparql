@@ -1,0 +1,54 @@
+# SPARQL-Abfrage: Politische Institutionen im Fediverse
+# Portiert aus js/wikidataQuery.js (INSTITUTIONS_QUERY), Stand 1b5c8b19.
+SELECT DISTINCT ?item ?itemLabel ?type ?typeLabel ?account ?qid WHERE {
+  {
+    SELECT DISTINCT ?item ?type ?account WHERE {
+      {
+        ?item p:P4033 ?statement .
+        ?statement ps:P4033 ?account .
+        FILTER NOT EXISTS { ?statement pq:P582 ?end }
+
+        ?item wdt:P17 wd:Q183 .
+
+        ?item wdt:P31 ?type .
+
+        VALUES ?type {
+          wd:Q7278
+          wd:Q327333
+          wd:Q31075
+          wd:Q2659904
+          wd:Q4471
+          wd:Q2166081
+          wd:Q1663594
+          wd:Q2023214
+          wd:Q1672092
+          wd:Q2324813
+        }
+      }
+      UNION
+      {
+        ?item p:P4033 ?statement .
+        ?statement ps:P4033 ?account .
+        FILTER NOT EXISTS { ?statement pq:P582 ?end }
+        FILTER(CONTAINS(STR(?account), "social.bund.de"))
+        OPTIONAL {
+          ?item wdt:P31 ?type .
+        }
+      }
+      UNION
+      {
+        ?item p:P4033 ?statement .
+        ?statement ps:P4033 ?account .
+        FILTER NOT EXISTS { ?statement pq:P582 ?end }
+        FILTER(CONTAINS(STR(?account), "social.hessen.de"))
+        OPTIONAL {
+          ?item wdt:P31 ?type .
+        }
+      }
+    }
+  }
+
+  BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de" }
+} LIMIT 10000
