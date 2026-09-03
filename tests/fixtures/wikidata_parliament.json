@@ -20,6 +20,14 @@
         "partyLabel": {"value": "Die Linke"},
         "qid": {"value": "Q456"},
         "account": {"value": "https://mastodon.social/@maxbeispiel"}
+      },
+      {
+        "item": {"value": "http://www.wikidata.org/entity/Q999"},
+        "itemLabel": {"value": "Behoerde Beispiel"},
+        "position": {"value": "http://www.wikidata.org/entity/Q2659904"},
+        "positionLabel": {"value": "Behoerde"},
+        "qid": {"value": "Q999"},
+        "account": {"value": "https://mastodon.social/@beispielbehoerde2"}
       }
     ]
   }

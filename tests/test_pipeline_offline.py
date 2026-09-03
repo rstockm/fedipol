@@ -10,6 +10,7 @@ FIXTURE_ACCOUNTS = [
     "https://spd.social/@petrapartei",
     "https://social.bund.de/@beispielministerium",
     "https://social.bund.de/@beispielbehoerde",
+    "https://mastodon.social/@beispielbehoerde2",
 ]
 
 
@@ -71,6 +72,12 @@ def test_pipeline_offline_publishes_compatible_export(data_paths, recorder, perm
     assert (
         data["https://social.bund.de/@beispielministerium"]["account"]["category"] == "Ministerium"
     )
+    # Person ohne bekannte Partei: Kategorie ohne Klammer (Legacy-Vertrag,
+    # sonst entsteht im Dashboard eine namenlose graue Legenden-Gruppe)
+    assert (
+        data["https://mastodon.social/@beispielbehoerde2"]["account"]["category"] == "Behoerde"
+    )
+    assert "(" not in data["https://mastodon.social/@beispielbehoerde2"]["account"]["category"]
 
 
 def test_pipeline_offline_is_idempotent(data_paths, recorder, permissive_limits):

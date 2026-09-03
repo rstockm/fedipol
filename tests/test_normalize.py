@@ -49,6 +49,15 @@ def test_dashboard_category_format_matches_legacy_contract():
     assert dashboard_category("", "Die Linke") == " (Linke)"
 
 
+def test_dashboard_category_without_party_has_no_bracket():
+    # Regression: leere Klammer erzeugt im Dashboard eine namenlose graue
+    # Legenden-Gruppe. Legacy: Klammer entfaellt ohne Partei.
+    assert dashboard_category("Behörde", "") == "Behörde"
+    assert dashboard_category("Behörde", None) == "Behörde"
+    assert dashboard_category("politische Partei in Deutschland", "") == "politische Partei in Deutschland"
+    assert dashboard_category("", "") == ""
+
+
 def test_bot_note_heuristics():
     keywords = ["bot", "automatisiert", "mirror"]
     assert is_bot_note("<p>Ich bin ein Mirror</p>", keywords)

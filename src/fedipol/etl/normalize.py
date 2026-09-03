@@ -108,9 +108,16 @@ def party_abbreviation(party_name: str) -> str:
 
 
 def dashboard_category(position: str, party_name: str) -> str:
-    """Kategorie im bisherigen Format 'Position (Kuerzel)' bzw. ' (Kuerzel)'."""
+    """Kategorie im bisherigen Format 'Position (Kuerzel)' bzw. ' (Kuerzel)'.
+
+    Legacy-Vertrag (js/enhancement.js): Die Klammer entfaellt komplett, wenn
+    keine Partei bekannt ist ('Behoerde' statt 'Behoerde ()'). Sonst wuerde
+    das Dashboard eine namenlose graue Legenden-Gruppe erzeugen.
+    """
     abbr = party_abbreviation(party_name)
     position = (position or "").strip()
+    if not abbr:
+        return position
     return f"{position} ({abbr})"
 
 
