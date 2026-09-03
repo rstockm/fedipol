@@ -75,6 +75,25 @@ class PipelineResult:
     error: str | None = None
 
 
+class InstancePacer:
+    """Mindestabstand zwischen Request-Starts je Instanz (Rate-Limit-Schonung)."""
+
+    def __init__(self, min_interval: float) -> None:
+        self.min_interval = min_interval
+        self._lock = threading.Lock()
+        self._next_slot: dict[str, float] = {}
+
+    def reserve(self, host: str) -> float:
+        """Liefert die Wartezeit in Sekunden bis zum erlaubten Request-Start."""
+        import time as _time
+
+        with self._lock:
+            now = _time.monotonic()
+            start = max(now, self._next_slot.get(host, 0.0))
+            self._next_slot[host] = start + self.min_interval
+            return start - now
+
+
 class _SigTermGuard:
     """Setzt ein Flag, wenn der Prozess SIGTERM erhaelt."""
 
@@ -398,8 +417,10 @@ class Pipeline:
 
         per_instance = int(self._etl_limits().get("per_instance_concurrency", 2))
         global_limit = int(self._etl_limits().get("global_concurrency", 6))
+        min_interval = float(self._etl_limits().get("per_instance_min_interval", 1.0))
         instance_slots: dict[str, threading.Semaphore] = {}
         global_slot = threading.Semaphore(global_limit)
+        pacer = InstancePacer(min_interval)
 
         def work(account):  # noqa: ANN001
             if checkpoint.completed(account["url"]):
@@ -409,6 +430,13 @@ class Pipeline:
             host = url.split("//", 1)[-1].split("/", 1)[0]
             sem = instance_slots.setdefault(host, threading.Semaphore(per_instance))
             with global_slot, sem:
+                if sigterm.triggered:
+                    return None
+                delay = pacer.reserve(host)
+                if delay > 0:
+                    import time as _time
+
+                    _time.sleep(delay)
                 if sigterm.triggered:
                     return None
                 result = enricher.enrich(url)

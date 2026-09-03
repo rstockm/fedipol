@@ -145,6 +145,7 @@ ETL = {
     # Instanzverhalten
     "global_concurrency": int(os.environ.get("FEDIPOL_GLOBAL_CONCURRENCY", "6")),
     "per_instance_concurrency": int(os.environ.get("FEDIPOL_PER_INSTANCE_CONCURRENCY", "2")),
+    "per_instance_min_interval": float(os.environ.get("FEDIPOL_PER_INSTANCE_MIN_INTERVAL", "1.0")),
     "status_pages_max": int(os.environ.get("FEDIPOL_STATUS_PAGES_MAX", "3")),
     # Qualitaetsgrenzen vor Veroeffentlichung
     "max_stale_share": float(os.environ.get("FEDIPOL_MAX_STALE_SHARE", "0.15")),
