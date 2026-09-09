@@ -36,9 +36,17 @@ def test_dashboard_renders_with_export(live_server, published_generation, settin
         page.goto(f"{live_server.url}/")
         expect(page.locator("h1")).to_contain_text("Fedipol")
 
-        # Partei-Verteilung und Tabellen vorhanden
+        # Partei-Verteilung, kumuliertes Histogramm und Tabellen vorhanden
         expect(page.locator(".party-distribution-legend")).to_be_visible()
+        expect(page.locator(".cumulative-chart svg")).to_be_visible()
+        assert page.locator(".cumulative-chart rect").count() > 100
         expect(page.locator("#accountsTableBody tr").first).to_be_visible()
+
+        # Parteifilter wirkt auch im kumulierten Histogramm
+        page.locator(".party-legend-item", has_text="SPD").first.click()
+        page.wait_for_timeout(150)
+        assert page.locator(".cumulative-chart rect").count() > 0
+        assert "SPD" in (page.locator(".cumulative-chart rect title").first.text_content() or "")
 
         # Parteifilter klicken und Zuruecksetzen pruefen
         page.locator(".party-legend-item").first.click()

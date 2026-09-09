@@ -28,7 +28,7 @@ Wikidata SPARQL (versionierte Queries)
 - **DuckDB** für Staging, Transformationen und Marts als unveränderliche Generationen; SQLite nur für Betriebszustand (Läufe, aktive Generation).
 - **Robustheit**: feste Timeouts, Retries mit Backoff, `Retry-After`, instanzbewusste Parallelität, Checkpoints (Wiederaufnahme), Last-known-good-Fallback auf die Vorgängergeneration, Interprozess-Lock, saubere SIGTERM-Behandlung.
 - **Qualitätstor**: Veröffentlicht wird nur geprüft; ein fehlgeschlagener Lauf lässt den letzten erfolgreichen Stand aktiv.
-- **Dashboard unverändert**: `index.html`, `info.html`, CSS und `js/ui.js` werden 1:1 ausgeliefert und nur mit dem neuen Export gespeist. Der Datenvertrag von `fedipol_data.json` ist identisch (eingefroren als Test-Baseline).
+- **Dashboard unverändert**: `index.html`, `info.html`, CSS und `js/ui.js` werden 1:1 ausgeliefert und nur mit dem neuen Export gespeist. Der Datenvertrag von `fedipol_data.json` ist identisch (eingefroren als Test-Baseline). Einzige Ergänzung auf ausdrücklichen Wunsch: ein kumuliertes, nach Parteien gestapeltes Histogramm der Accountzahl im Zeitverlauf zwischen Verteilungsbalken und Timeline (`renderCumulativeHistogram` in `js/ui.js`), reagiert auf den Parteifilter und nutzt die gleichen Partifarben.
 - **Redaktion statt Handarbeit**: Korrekturen (falsche Bot-Markierung, Accountumzug, Ausschluss) werden in [`config/account_overrides.yaml`](config/account_overrides.yaml) versioniert - nicht mehr im Browser nachbearbeitet.
 
 ## Projektstruktur

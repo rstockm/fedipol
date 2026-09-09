@@ -17,6 +17,26 @@
     <link rel="stylesheet" href="css/styles.css">
     
     <style>
+        /* Kumuliertes, gestapeltes Histogramm der Accounts im Zeitverlauf */
+        .cumulative-chart svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .cumulative-chart rect {
+            transition: opacity 0.15s ease-in-out;
+        }
+        .cumulative-chart rect:hover {
+            opacity: 0.7;
+        }
+        .cumulative-chart text {
+            font-size: 10px;
+            fill: #6c757d;
+        }
+        .cumulative-chart line {
+            stroke-width: 1;
+        }
+
         .stats-bar {
             background-color: #0d6efd;
             height: 25px;
@@ -271,6 +291,13 @@
             <div class="card-body">
                 <div class="party-distribution-bar"></div>
                 <div class="party-distribution-legend mt-2 d-flex flex-wrap gap-1"></div>
+                <div class="cumulative-container mt-4">
+                    <div class="d-flex justify-content-between align-items-baseline">
+                        <h3 class="h6 mb-0">Accounts im Zeitverlauf</h3>
+                        <span class="small text-muted">kumuliert, gestapelt nach Partei (größte unten)</span>
+                    </div>
+                    <div class="cumulative-chart mt-2"></div>
+                </div>
                 <hr class="my-4">
                 <div class="timeline-container">
                     <div class="timeline-bar"></div>

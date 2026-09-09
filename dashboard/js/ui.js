@@ -497,6 +497,127 @@ function renderInstances(instances) {
 }
 
 // Function to render timeline
+// Function to render cumulative stacked histogram of accounts over time
+function renderCumulativeHistogram() {
+    const container = document.querySelector('.cumulative-chart');
+    if (!container) {
+        return;
+    }
+
+    // Basis wie beim Timeline-Scatter: nur Accounts mit Partei und Erstellungsdatum
+    let accounts = Array.from(loadedAccounts.values())
+        .filter(({account}) => hasPartyAffiliation(account.name, account.category, account.url))
+        .filter(({created_at}) => created_at && !isNaN(new Date(created_at).getTime()));
+
+    if (activePartyFilter) {
+        accounts = accounts.filter(({account}) => getPartyAffiliation(account.name, account.category, account.url) === activePartyFilter);
+    }
+
+    if (accounts.length === 0) {
+        container.innerHTML = '<div class="text-muted text-center p-3">Keine Daten verfügbar</div>';
+        return;
+    }
+
+    const monthIndexOf = (date) => date.getFullYear() * 12 + date.getMonth();
+    const monthLabel = (mi) => new Date(Math.floor(mi / 12), mi % 12, 1)
+        .toLocaleDateString('de-DE', { month: 'short', year: 'numeric' });
+
+    const firstMonth = Math.min(...accounts.map(({created_at}) => monthIndexOf(new Date(created_at))));
+    const lastMonth = monthIndexOf(new Date());
+    const numMonths = Math.max(lastMonth - firstMonth + 1, 1);
+
+    // Accounts pro Partei und Erstellungsmonat zaehlen
+    const byParty = new Map();
+    accounts.forEach(({account, created_at}) => {
+        const party = activePartyFilter || getPartyAffiliation(account.name, account.category, account.url);
+        if (!byParty.has(party)) {
+            byParty.set(party, new Array(numMonths).fill(0));
+        }
+        byParty.get(party)[monthIndexOf(new Date(created_at)) - firstMonth]++;
+    });
+
+    // Kumuliere; groesste Parteien unten im Stapel
+    const ordered = Array.from(byParty.entries())
+        .sort((a, b) => b[1].reduce((s, v) => s + v, 0) - a[1].reduce((s, v) => s + v, 0))
+        .map(([party, counts]) => {
+            const series = [];
+            let sum = 0;
+            for (const c of counts) {
+                sum += c;
+                series.push(sum);
+            }
+            return { party, series };
+        });
+
+    const totals = new Array(numMonths).fill(0);
+    ordered.forEach(({series}) => series.forEach((v, i) => { totals[i] += v; }));
+    const yMax = Math.max(...totals, 1);
+
+    // "Nette" Y-Skala (Schritte 1/2/2.5/5 x 10^k, rund 6 Rasterlinien)
+    const rawStep = yMax / 6;
+    const pow = Math.pow(10, Math.floor(Math.log10(rawStep || 1)));
+    let tickStep = 10 * pow;
+    for (const m of [1, 2, 2.5, 5]) {
+        if (m * pow >= rawStep) {
+            tickStep = m * pow;
+            break;
+        }
+    }
+    const yTop = Math.max(Math.ceil(yMax / tickStep) * tickStep, tickStep);
+
+    // SVG-Geometrie (responsive ueber viewBox)
+    const W = 1000, H = 280;
+    const M = { top: 10, right: 8, bottom: 24, left: 48 };
+    const plotW = W - M.left - M.right;
+    const plotH = H - M.top - M.bottom;
+    const band = plotW / numMonths;
+    const barW = Math.min(Math.max(band - 1, 1), 48);
+    const yOf = (v) => M.top + plotH - (v / yTop) * plotH;
+
+    const parts = [];
+
+    // Rasterlinien und Y-Beschriftung
+    for (let t = 0; t <= yTop; t += tickStep) {
+        const y = yOf(t);
+        parts.push(`<line x1="${M.left}" y1="${y.toFixed(2)}" x2="${W - M.right}" y2="${y.toFixed(2)}" stroke="#e9ecef"/>`);
+        parts.push(`<text x="${M.left - 6}" y="${(y + 3).toFixed(2)}" text-anchor="end">${t}</text>`);
+    }
+
+    // X-Beschriftung: Jahre an den Januar-Positionen
+    for (let i = 0; i < numMonths; i++) {
+        const mi = firstMonth + i;
+        if (mi % 12 === 0) {
+            const x = (M.left + i * band).toFixed(2);
+            parts.push(`<line x1="${x}" y1="${M.top}" x2="${x}" y2="${M.top + plotH}" stroke="#f1f3f5"/>`);
+            parts.push(`<text x="${Number(x) + 3}" y="${H - 6}">${Math.floor(mi / 12)}</text>`);
+        }
+    }
+
+    // Gestapelte Balken: pro Monat von unten (groesste Partei) nach oben
+    for (let i = 0; i < numMonths; i++) {
+        let offset = 0;
+        for (const { party, series } of ordered) {
+            const cum = series[i];
+            const segStart = offset;
+            const segEnd = offset + cum;
+            offset = segEnd;
+            if (cum === 0) {
+                continue;
+            }
+            const color = partyColorMap[party] || 'rgba(200, 200, 200, 1.0)';
+            const yTopPx = yOf(segEnd);
+            const yBottomPx = yOf(segStart);
+            parts.push(
+                `<rect x="${(M.left + i * band).toFixed(2)}" y="${yTopPx.toFixed(2)}" width="${barW.toFixed(2)}" height="${Math.max(yBottomPx - yTopPx, 0.5).toFixed(2)}" fill="${color}">` +
+                `<title>${party}: ${cum} (gesamt ${totals[i]}) · ${monthLabel(firstMonth + i)}</title></rect>`
+            );
+        }
+    }
+
+    container.innerHTML =
+        `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Kumuliertes Histogramm der Accounts im Zeitverlauf, gestapelt nach Partei">${parts.join('')}</svg>`;
+}
+
 function renderTimeline() {
     const timelineBar = document.querySelector('.timeline-bar');
     if (!timelineBar) {
@@ -752,8 +873,13 @@ function applyPartyFilter(party) {
     // Filter tables
     filterTables();
     
-    // Re-render timeline with new filter
+    // Re-render timeline and cumulative histogram with new filter
     renderTimeline();
+    try {
+        renderCumulativeHistogram();
+    } catch (error) {
+        console.error('Error rendering cumulative histogram:', error);
+    }
 }
 
 // Function to filter tables based on active filters
@@ -876,6 +1002,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderInstances(Array.from(instances.values()));
         renderStats(accounts);
         renderTimeline();
+        try {
+            renderCumulativeHistogram();
+        } catch (error) {
+            console.error('Error rendering cumulative histogram:', error);
+        }
         renderPartyDistribution();
 
         // Add scroll event listener
