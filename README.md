@@ -2,7 +2,7 @@
 
 Ein interaktives Dashboard zur Analyse der Fediverse-Aktivitäten deutscher Politiker:innen und politischer Institutionen.
 
-- Dashboard (Legacy, unverändert): https://rstockm.github.io/fedipol/
+- Dashboard: https://rstockm.github.io/fedipol/ (GitHub Pages, Daten direkt aus der Cloudron-App; siehe ADR-0002)
 - Architektur-Entscheidung: [ARCHITEKTUR-AUTOMATISIERUNG.md](ARCHITEKTUR-AUTOMATISIERUNG.md)
 
 ## Was ist neu
@@ -81,14 +81,32 @@ Vertragsstand vergleichen (Bot-Konsistenz, Mengen, Rate-Limit-Restingaende):
 ## Deployment (Cloudron)
 
 ```sh
-cloudron install --location fedipol.example.org
-cloudron env set --app fedipol.example.org DJANGO_ALLOWED_HOSTS=fedipol.example.org
-cloudron env set --app fedipol.example.org DJANGO_CSRF_TRUSTED_ORIGINS=https://fedipol.example.org
+cloudron install --location fedipol.wolkenbar.de
+cloudron env set --app fedipol.wolkenbar.de DJANGO_ALLOWED_HOSTS=fedipol.wolkenbar.de
+cloudron env set --app fedipol.wolkenbar.de DJANGO_CSRF_TRUSTED_ORIGINS=https://fedipol.wolkenbar.de
+cloudron env set --app fedipol.wolkenbar.de FEDIPOL_CORS_ORIGINS=https://rstockm.github.io
 ```
 
 Das Manifest deklariert `localstorage` mit SQLite-Pfad und den Scheduler-Job
 `nightly_etl` (03:00 UTC). Der ETL braucht keine Secrets; die Mastodon-APIs und
 Wikidata sind öffentlich.
+
+### Dashboard auf GitHub Pages
+
+Haupt-Traffic läuft über die etablierte URL https://rstockm.github.io/fedipol/
+(Pages-Source: Branch `main`, Root). Veroeffentlicht wird der Stand von
+`dashboard/`; `js/ui.js` lädt den Export dort direkt aus der Cloudron-App
+(`FEDIPOL_CORS_ORIGINS` spiegelt die Pages-Origin in CORS-Headern,
+`fedipol.ops.middleware.PublicCorsMiddleware`). Auf der App-Domain selbst
+bleibt alles beim selben Origin.
+
+Seiten-Update (Frontend-Release):
+
+```sh
+# dashboard/* nach main kopieren (index.html, info.html, css/, js/ui.js)
+# Legacy-Reste der Browser-Pipeline auf main entfernen und pushen;
+# Pages baut automatisch. Verifikation: Dashboard lädt Daten, Histogramm füllt sich.
+```
 
 ### CI-Workflow
 

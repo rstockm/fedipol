@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fediverse Activity Tracker</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Optional: Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        /* Kumuliertes, gestapeltes Histogramm der Accounts im Zeitverlauf */
+        .cumulative-chart svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .cumulative-chart rect {
+            transition: opacity 0.15s ease-in-out;
+        }
+        .cumulative-chart rect:hover {
+            opacity: 0.7;
+        }
+        .cumulative-chart text {
+            font-size: 10px;
+            fill: #6c757d;
+        }
+        .cumulative-chart line {
+            stroke-width: 1;
+        }
+
+        .stats-bar {
+            background-color: #0d6efd;
+            height: 25px;
+            transition: width 0.5s ease-in-out;
+        }
+        .stats-label {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .stats-count {
+            min-width: 50px;
+            text-align: right;
+        }
+        /* Sticky header styles */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        /* Add padding to main content to prevent it from appearing under the sticky header */
+        .main-content {
+            padding-top: 1rem;
+        }
+        /* Active button state */
+        .nav-btn.active {
+            background-color: #0d6efd !important;
+            color: white !important;
+        }
+        /* Timeline styles */
+        .timeline-container {
+            margin-top: 1rem;
+        }
+
+        /* Party filter styles */
+        .party-segment {
+            height: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 1;
+        }
+        .party-segment:hover {
+            opacity: 0.8;
+            transform: scaleY(1.1);
+        }
+        .party-segment.active {
+            opacity: 1;
+            transform: scaleY(1.2);
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            z-index: 1;
+            position: relative;
+        }
+        .party-legend-item {
+            transition: all 0.3s ease;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.9em;
+            margin: 1px;
+        }
+        .party-legend-item:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        .party-legend-item.active {
+            background-color: rgba(0,0,0,0.1);
+            font-weight: bold;
+        }
+        .party-color {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .party-name {
+            margin-right: 4px;
+        }
+        .party-count {
+            margin-right: 2px;
+        }
+        #resetFilter {
+            display: none;
+            font-size: 0.9em;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        #resetFilter:hover {
+            color: #0d6efd;
+        }
+
+        /* Inactive account styles */
+        tr.is-inactive {
+            opacity: 0.6;
+        }
+        tr.is-inactive:hover {
+            opacity: 0.8;
+        }
+        tr.is-inactive .posts-bar-fill {
+            opacity: 0.5;
+        }
+
+        .timeline-bar {
+            position: relative;
+            width: 100%;
+            height: 60px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            overflow: visible;
+            margin-bottom: 20px;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            width: 6px;  /* Default width for squares */
+            height: 6px;  /* Default height for squares */
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.8;
+            transition: all 0.2s ease-in-out;
+            pointer-events: all;
+            cursor: help;
+            border-radius: 0;  /* Perfect squares */
+        }
+
+        .timeline-marker:hover {
+            opacity: 1;
+            width: 10px;
+            height: 10px;
+            z-index: 10;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-marker.is-bot {
+            opacity: 0.4;
+            height: 70%;
+            top: 30%;
+        }
+
+        .timeline-marker.is-bot:hover {
+            opacity: 0.6;
+            width: 4px;
+        }
+
+        /* Add styles for filtered state */
+        .timeline-bar.filtered {
+            height: 40px;
+        }
+        
+        .timeline-bar.filtered .timeline-party-row {
+            height: 100%;
+        }
+
+        .timeline-bar.filtered .timeline-marker {
+            height: 100%;
+            width: 2px;
+            top: 0;
+            transform: translateX(-50%);
+            border-radius: 0;
+        }
+
+        .timeline-bar.filtered .timeline-marker:hover {
+            width: 4px;
+            height: 100%;
+        }
+
+        .timeline-bar.filtered .timeline-marker.is-bot {
+            height: 60%;
+            top: 40%;
+            opacity: 0.4;
+        }
+
+        .timeline-bar.filtered .timeline-marker.is-bot:hover {
+            opacity: 0.6;
+        }
+
+        .timeline-labels {
+            margin-top: 0.5rem;
+            padding: 0 2px;
+            font-size: 0.85em;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://matomo.wolkenbar.de/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
+</head>
+<body>
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">
+                    <span class="d-none d-md-inline">Fediverse Activity Tracker</span>
+                    <span class="d-inline d-md-none">Fedipol</span>
+                </h1>
+                <div class="btn-group">
+                    <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('accountsContainer')" data-bs-toggle="tooltip" title="Parteien">
+                        <i class="bi bi-people-fill"></i>
+                        <span class="btn-text d-none d-md-inline">Parteien</span>
+                    </button>
+                    <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('institutionsContainer')" data-bs-toggle="tooltip" title="Institutionen">
+                        <i class="bi bi-building"></i>
+                        <span class="btn-text d-none d-md-inline">Institutionen</span>
+                    </button>
+                    <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('instancesContainer')" data-bs-toggle="tooltip" title="Instanzen">
+                        <i class="bi bi-hdd-network-fill"></i>
+                        <span class="btn-text d-none d-md-inline">Instanzen</span>
+                    </button>
+                    <a href="info.html" class="btn btn-outline-primary" data-bs-toggle="tooltip" title="Info">
+                        <i class="bi bi-info-circle"></i>
+                        <span class="btn-text d-none d-md-inline">Info</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <div id="settingsStatus"></div>
+
+        <!-- Party Distribution -->
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-3">
+                    <h2 class="h5 mb-0">Verteilung nach Parteien</h2>
+                    <a href="#" id="resetFilter" onclick="applyPartyFilter(null); return false;">
+                        <i class="bi bi-x-circle"></i> Filter zurücksetzen
+                    </a>
+                </div>
+                <div class="small text-muted" id="partyDistributionTotal"></div>
+            </div>
+            <div class="card-body">
+                <div class="party-distribution-bar"></div>
+                <div class="party-distribution-legend mt-2 d-flex flex-wrap gap-1"></div>
+                <div class="cumulative-container mt-4">
+                    <div class="d-flex justify-content-between align-items-baseline">
+                        <h3 class="h6 mb-0">Accounts im Zeitverlauf</h3>
+                        <span class="small text-muted">kumuliert, gestapelt nach Partei (größte unten)</span>
+                    </div>
+                    <div class="cumulative-chart mt-2"></div>
+                </div>
+                <hr class="my-4">
+                <div class="timeline-container">
+                    <div class="timeline-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accounts Section -->
+        <div id="accountsContainer" class="mt-4">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h2 class="h5 mb-0">Gefundene Accounts</h2>
+                    <div class="input-group" style="width: 250px">
+                        <input type="search" class="form-control rounded-pill" id="accountSearch" placeholder="Suche..." aria-label="Suche">
+                        <button class="btn btn-link position-absolute end-0 pe-3" type="button" id="clearSearch" style="display: none; z-index: 4;">
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40px">Art</th>
+                                    <th>Account</th>
+                                    <th>Partei</th>
+                                    <th>Posts</th>
+                                </tr>
+                            </thead>
+                            <tbody id="accountsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Institutions Section -->
+        <div id="institutionsContainer" class="mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="h5 mb-0">Institutionen</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40px">Art</th>
+                                    <th>Account</th>
+                                    <th>Posts</th>
+                                </tr>
+                            </thead>
+                            <tbody id="institutionsTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instances Section -->
+        <div id="instancesContainer" class="mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="h5 mb-0">Gefundene Instanzen</h2>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>URL</th>
+                                    <th>Kategorie</th>
+                                </tr>
+                            </thead>
+                            <tbody id="instancesTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Statistics Section -->
+        <div id="statsContainer" class="mt-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="h5 mb-0">Accounts pro Kategorie</h2>
+                </div>
+                <div class="card-body">
+                    <div id="statsContent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+    <script src="js/ui.js"></script>
+    <footer class="text-muted small py-2 border-top fixed-bottom bg-white">
+        Daten von <a href="https://rstockm.github.io/fedipol/info.html" target="_blank">Wikidata</a> 
+        (<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank">CC BY-SA 4.0</a>)
+        | von <a href="https://chaos.social/@rstockm" target="_blank">Ralf Stockmann</a>
+        | <a href="https://github.com/rstockm/fedipol" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+    </footer>
+</body>
+</html> 

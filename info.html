@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fedipol - Informationen zur Datenabfrage</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    
+    <style>
+        pre {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            overflow-x: auto;
+            position: relative;
+        }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        .main-content {
+            padding-top: 1rem;
+        }
+        .query-section {
+            margin-top: 2rem;
+        }
+        .query-explanation {
+            margin-bottom: 1rem;
+        }
+        .copy-button {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            z-index: 1;
+        }
+        .copy-button:hover {
+            background-color: #e9ecef;
+        }
+        .copy-button.copied {
+            background-color: #198754;
+            color: white;
+            border-color: #198754;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">Fedipol - Informationen zur Datenabfrage</h1>
+                <a href="index.html" class="btn btn-outline-primary">
+                    <i class="bi bi-arrow-left"></i>
+                    Zurück zur Übersicht
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        <!-- Wikidata-Abfragen -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Wikidata-Abfragen</h2>
+            </div>
+            <div class="card-body">
+                <h3 class="h6">Abfrage von Politiker:innen</h3>
+                <p>Die Suche nach Politiker:innen erfolgt über drei verschiedene Wege:</p>
+                <ol>
+                    <li>
+                        <strong>Parlamentsmitglieder und Politiker:innen:</strong>
+                        <ul>
+                            <li>Muss einer politischen Partei angehören (P102) oder eine Verbindung haben (P1416)</li>
+                            <li>Muss eine Mastodon-Adresse haben (P4033)</li>
+                            <li>Muss entweder:</li>
+                            <ul>
+                                <li>Mitglied des Bundestags (Q1939555)</li>
+                                <li>Mitglied des Europäischen Parlaments (Q27169)</li>
+                                <li>Mitglied eines Landtags (Q1939559)</li>
+                                <li>Ratsherr/Ratsmitglied (Q708492)</li>
+                                <li>Bürgermeister (Q30185)</li>
+                                <li>Stadtrat (Q3154693)</li>
+                                <li>Bezirksverordneter (Q113885691)</li>
+                                <li>Kreisrat (Q113134496)</li>
+                                <li>Eine aktuelle politische Position in Deutschland oder der EU innehaben</li>
+                            </ul>
+                            <li>Muss einer der folgenden Parteien angehören:</li>
+                            <ul>
+                                <li>SPD (Q49768)</li>
+                                <li>CDU (Q49762)</li>
+                                <li>CSU (Q49763)</li>
+                                <li>FDP (Q13124)</li>
+                                <li>Die Linke (Q49764)</li>
+                                <li>Bündnis 90/Die Grünen (Q49766)</li>
+                                <li>Alternative für Deutschland (Q6721203)</li>
+                                <li>Piratenpartei Deutschland (Q13129)</li>
+                                <li>Die PARTEI (Q22748)</li>
+                                <li>Freie Wähler (Q327389)</li>
+                                <li>Volt Deutschland (Q106205950)</li>
+                                <li>Bündnis Sahra Wagenknecht (Q123121346)</li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Parteiorganisationen:</strong>
+                        <ul>
+                            <li>Erfasst werden:</li>
+                            <ul>
+                                <li>SPD-Ortsvereine (Q131745197)</li>
+                                <li>Kreisverbände (Q91459453)</li>
+                                <li>Landesverbände (Q18744396)</li>
+                                <li>Ortsverbände (Q86189847)</li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Accounts auf Partei-Instanzen:</strong>
+                        <ul>
+                            <li>Erfasst werden alle Accounts auf:</li>
+                            <ul>
+                                <li>linke.social (Die Linke)</li>
+                                <li>gruene.social (Bündnis 90/Die Grünen)</li>
+                                <li>die-partei.social (Die PARTEI)</li>
+                                <li>piraten-partei.social (Piratenpartei Deutschland)</li>
+                            </ul>
+                            <li>Parteizugehörigkeit wird automatisch basierend auf der Instanz zugeordnet</li>
+                            <li>Zusätzliche Informationen aus Wikidata werden hinzugefügt, falls vorhanden</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="query-section">
+                    <h4 class="h6">SPARQL-Abfrage für Politiker:innen</h4>
+                    <div class="query-explanation">
+                        Die SPARQL-Abfrage kombiniert Parlamentsmitglieder, Politiker:innen und Parteiorganisationen:
+                    </div>
+                    <div class="alert alert-info mb-3">
+                        <i class="bi bi-lightbulb"></i> Diese SPARQL-Abfrage können Sie direkt im <a href="https://query.wikidata.org" target="_blank">Wikidata Query Service</a> ausprobieren und erkunden.
+                    </div>
+                    <pre><code id="politicians-query">SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?partyLabel ?qid WHERE {
+  # German politicians with positions and Fediverse accounts
+  {
+    ?item wdt:P102 ?party     # Political party membership
+  } UNION {
+    ?item wdt:P1416 ?party    # Affiliations (broader than just membership)
+  }
+  
+  # Party must be a major German party or a political party in Germany
+  {
+    VALUES ?party {
+      wd:Q49768     # SPD
+      wd:Q49762     # CDU
+      wd:Q49763     # CSU
+      wd:Q13124     # FDP
+      wd:Q49764     # Die Linke
+      wd:Q49766     # Bündnis 90/Die Grünen
+      wd:Q6721203   # Alternative für Deutschland
+      wd:Q13129     # Piratenpartei Deutschland
+      wd:Q22748     # Die PARTEI
+      wd:Q327389    # Freie Wähler
+      wd:Q106205950 # Volt Deutschland
+      wd:Q123121346 # Bündnis Sahra Wagenknecht
+    }
+  } UNION {
+    ?party wdt:P31 wd:Q2023214   # Instance of political party in Germany
+  }
+  
+  ?item p:P4033 ?statement .  # Mastodon address
+  ?statement ps:P4033 ?account .
+  
+  {
+    # Current members of parliament and other positions
+    VALUES ?membership { 
+      wd:Q1939555   # Member of Bundestag
+      wd:Q27169     # Member of the European Parliament
+      wd:Q1939559   # Member of Landtag
+      wd:Q708492    # Ratsherr/Ratsmitglied
+      wd:Q30185     # Bürgermeister
+      wd:Q3154693   # Stadtrat
+      wd:Q113885691 # Bezirksverordneter
+      wd:Q113134496 # Kreisrat
+    }
+    ?item p:P39 ?membershipStatement .
+    ?membershipStatement ps:P39 ?membership .
+    # Filter for current positions (no end date)
+    FILTER NOT EXISTS { ?membershipStatement pq:P582 ?endtime }
+    BIND(?membership AS ?position)
+  }
+  UNION
+  {
+    # Political parties in Germany
+    ?item wdt:P31 wd:Q2023214 .  # Instance of political party in Germany
+    BIND(wd:Q2023214 AS ?position)
+  }
+  UNION
+  {
+    # Local and regional party organizations
+    VALUES ?organization_type {
+      wd:Q131745197  # SPD local associations
+      wd:Q91459453   # District associations
+      wd:Q18744396   # State associations
+      wd:Q86189847   # Local associations
+    }
+    ?item wdt:P31 ?organization_type .
+    BIND(?organization_type AS ?position)
+  }
+  UNION
+  {
+    # Other political positions
+    ?item p:P39 ?positionStatement .
+    ?positionStatement ps:P39 ?position .
+    
+    # Filter for current positions (no end date)
+    FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
+    
+    # Position must be either in Germany OR an EU position
+    {
+      # German positions
+      ?position wdt:P17 wd:Q183 .
+    } 
+    UNION 
+    {
+      # EU Parliament and Landtag positions
+      VALUES ?position { wd:Q27169 wd:Q1939559 }
+    }
+    UNION
+    {
+      # Specific positions that don't need country filtering
+      VALUES ?position { 
+        wd:Q1939555   # Member of Bundestag
+        wd:Q708492    # Ratsherr/Ratsmitglied
+        wd:Q30185     # Bürgermeister
+        wd:Q3154693   # Stadtrat
+        wd:Q113885691 # Bezirksverordneter
+        wd:Q113134496 # Kreisrat
+      }
+    }
+  }
+  
+  # Extract QID
+  BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
+  
+  # Labels in German only
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de" }
+}</code><button class="copy-button" onclick="copyQuery('politicians-query')"><i class="bi bi-clipboard"></i> Kopieren</button></pre>
+                </div>
+
+                <div class="query-section">
+                    <h4 class="h6">SPARQL-Abfrage für Partei-Instanzen</h4>
+                    <div class="query-explanation">
+                        Separate Abfrage für Accounts auf linke.social, gruene.social, die-partei.social und piraten-partei.social:
+                    </div>
+                    <div class="alert alert-info mb-3">
+                        <i class="bi bi-lightbulb"></i> Diese SPARQL-Abfrage können Sie direkt im <a href="https://query.wikidata.org" target="_blank">Wikidata Query Service</a> ausprobieren und erkunden.
+                    </div>
+                    <pre><code id="party-instances-query">SELECT DISTINCT ?item ?itemLabel ?position ?positionLabel ?account ?party ?partyLabel ?qid WHERE {
+  # All accounts on party-specific instances
+  ?item p:P4033 ?statement .
+  ?statement ps:P4033 ?account .
+  
+  # Filter for specific instances
+  VALUES ?instance { "linke.social" "gruene.social" "die-partei.social" "piraten-partei.social" }
+  FILTER(CONTAINS(STR(?account), ?instance))
+  
+  # Get party affiliation (both membership and broader affiliations)
+  OPTIONAL {
+    { ?item wdt:P102 ?party }    # Party membership
+    UNION
+    { ?item wdt:P1416 ?party }   # Affiliations
+  }
+  
+  # Get position if available
+  OPTIONAL {
+    ?item p:P39 ?positionStatement .
+    ?positionStatement ps:P39 ?position .
+    FILTER NOT EXISTS { ?positionStatement pq:P582 ?endtime }
+  }
+  
+  # Extract QID
+  BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
+  
+  # Labels in German only
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de" }
+}</code><button class="copy-button" onclick="copyQuery('party-instances-query')"><i class="bi bi-clipboard"></i> Kopieren</button></pre>
+                </div>
+
+                <h3 class="h6 mt-4">Abfrage von Institutionen</h3>
+                <p>Die Suche nach Institutionen erfolgt über drei Wege:</p>
+                <ol>
+                    <li>
+                        <strong>Deutsche Institutionen:</strong>
+                        <ul>
+                            <li>Muss eine Mastodon-Adresse haben (P4033)</li>
+                            <li>Muss in Deutschland sein (P17)</li>
+                            <li>Muss einer der folgenden Typen sein:</li>
+                            <ul>
+                                <li>Politische Partei (Q7278)</li>
+                                <li>Ministerium (Q327333)</li>
+                                <li>Legislative (Q31075)</li>
+                                <li>Behörde (Q2659904)</li>
+                                <li>Regionalparlament (Q4471)</li>
+                                <li>Jugendorganisation (Q2166081)</li>
+                                <li>Politische Stiftung (Q1663594)</li>
+                                <li>Politische Partei in Deutschland (Q2023214)</li>
+                                <li>Regionalverband (Q1672092)</li>
+                                <li>Parlamentsfraktion (Q2324813)</li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Accounts auf social.bund.de:</strong>
+                        <ul>
+                            <li>Alle Accounts auf dieser Instanz werden erfasst</li>
+                            <li>Typ der Institution wird aus Wikidata ergänzt, falls vorhanden</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Accounts auf social.hessen.de:</strong>
+                        <ul>
+                            <li>Alle Accounts auf dieser Instanz werden erfasst</li>
+                            <li>Typ der Institution wird aus Wikidata ergänzt, falls vorhanden</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="query-section">
+                    <h4 class="h6">SPARQL-Abfrage für Institutionen</h4>
+                    <div class="query-explanation">
+                        Die SPARQL-Abfrage kombiniert reguläre Institutionen und spezielle Instanzen:
+                    </div>
+                    <div class="alert alert-info mb-3">
+                        <i class="bi bi-lightbulb"></i> Diese SPARQL-Abfrage können Sie direkt im <a href="https://query.wikidata.org" target="_blank">Wikidata Query Service</a> ausprobieren und erkunden.
+                    </div>
+                    <pre><code id="institutions-query">SELECT DISTINCT ?item ?itemLabel ?type ?typeLabel ?account ?qid WHERE {
+  {
+    SELECT DISTINCT ?item ?type ?account WHERE {
+      {
+        # Regular institutions query
+        ?item p:P4033 ?statement .  # Has Mastodon address
+        ?statement ps:P4033 ?account .
+        
+        # Must be in Germany
+        ?item wdt:P17 wd:Q183 .
+        
+        # Type of institution
+        ?item wdt:P31 ?type .
+        
+        # Filter for relevant types
+        VALUES ?type {
+          wd:Q7278     # political party
+          wd:Q327333   # government ministry
+          wd:Q31075    # legislature
+          wd:Q2659904  # government agency
+          wd:Q4471     # regional parliament
+          wd:Q2166081  # youth organization
+          wd:Q1663594  # political foundation
+          wd:Q2023214  # political party in Germany
+          wd:Q1672092  # Regionalverband
+          wd:Q2324813  # parliamentary group
+        }
+      }
+      UNION
+      {
+        # All accounts on social.bund.de
+        ?item p:P4033 ?statement .
+        ?statement ps:P4033 ?account .
+        FILTER(CONTAINS(STR(?account), "social.bund.de"))
+        
+        # Get the type if available
+        OPTIONAL {
+          ?item wdt:P31 ?type .
+        }
+      }
+      UNION
+      {
+        # All accounts on social.hessen.de
+        ?item p:P4033 ?statement .
+        ?statement ps:P4033 ?account .
+        FILTER(CONTAINS(STR(?account), "social.hessen.de"))
+        
+        # Get the type if available
+        OPTIONAL {
+          ?item wdt:P31 ?type .
+        }
+      }
+    }
+  }
+  
+  # Extract QID
+  BIND(REPLACE(STR(?item), "http://www.wikidata.org/entity/", "") AS ?qid)
+  
+  # Labels in German only
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de" }
+} LIMIT 10000</code><button class="copy-button" onclick="copyQuery('institutions-query')"><i class="bi bi-clipboard"></i> Kopieren</button></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mastodon-API -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Mastodon-API-Abfragen</h2>
+            </div>
+            <div class="card-body">
+                <p>Für jeden gefundenen Account werden folgende Daten über die Mastodon-API abgefragt:</p>
+                <ul>
+                    <li>Account-Informationen (Erstellungsdatum, Bot-Status)</li>
+                    <li>Gesamtzahl der Posts</li>
+                    <li>Anzahl der Posts in den letzten 60 Tagen</li>
+                </ul>
+
+                <h3 class="h6 mt-4">API-Endpunkte</h3>
+                <ol>
+                    <li>
+                        <strong>Account-Lookup:</strong>
+                        <pre><code>GET https://&lt;instance&gt;/api/v1/accounts/lookup?acct=&lt;username&gt;</code></pre>
+                        <p>Liefert grundlegende Account-Informationen wie Erstellungsdatum und Bot-Status.</p>
+                    </li>
+                    <li>
+                        <strong>Account-Posts:</strong>
+                        <pre><code>GET https://&lt;instance&gt;/api/v1/accounts/&lt;id&gt;/statuses?limit=40</code></pre>
+                        <p>Liefert die letzten Posts des Accounts. Die Abfrage wird wiederholt, bis Posts gefunden werden, die älter als 60 Tage sind.</p>
+                    </li>
+                </ol>
+
+                <div class="alert alert-info mt-4">
+                    <i class="bi bi-info-circle"></i> Die API-Abfragen werden in Batches von 10 Accounts mit einer Verzögerung von 1 Sekunde zwischen den Batches durchgeführt, um die Server nicht zu überlasten.
+                </div>
+            </div>
+        </div>
+
+        <!-- Datenverarbeitung -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2 class="h5 mb-0">Datenverarbeitung</h2>
+            </div>
+            <div class="card-body">
+                <p>Die gesammelten Daten werden wie folgt verarbeitet:</p>
+                <ul>
+                    <li>Alle Ergebnisse werden nach Partei/Institution und Name sortiert</li>
+                    <li>Doppelte Einträge werden automatisch entfernt</li>
+                    <li>Parteinamen werden in gängige Abkürzungen umgewandelt (z.B. "Bündnis 90/Die Grünen" → "Grüne")</li>
+                    <li>Fediverse-URLs werden in ein einheitliches Format gebracht</li>
+                    <li>Die Ergebnisse werden in einer Markdown-Datei gespeichert, die als Grundlage für weitere Verarbeitungen dient</li>
+                </ul>
+
+                <h3 class="h6 mt-4">Bot-Erkennung</h3>
+                <p>Die Erkennung von automatisierten Accounts (Bots) erfolgt über mehrere Kriterien:</p>
+                <ol>
+                    <li>
+                        <strong>Bot-Flag:</strong>
+                        <ul>
+                            <li>Prüfung des offiziellen Bot-Flags im Account-Profil (Mastodon-API)</li>
+                            <li>Wenn ein Account sich selbst als Bot kennzeichnet, wird er automatisch als Bot markiert</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Automatisierungs-Keywords:</strong>
+                        <ul>
+                            <li>Analyse der Account-Beschreibung auf spezifische Keywords</li>
+                            <li>Berücksichtigte Keywords:</li>
+                            <ul>
+                                <li>'unofficial' - Hinweis auf inoffizielle/automatische Spiegelung</li>
+                                <li>'automated' - Direkte Kennzeichnung als automatisiert</li>
+                                <li>'mirror' - Spiegelung von Inhalten anderer Plattformen</li>
+                                <li>'bot' - Explizite Bot-Kennzeichnung</li>
+                                <li>'automatisiert' - Deutsche Kennzeichnung</li>
+                                <li>'automatisch' - Alternative deutsche Kennzeichnung</li>
+                            </ul>
+                            <li>Die Suche erfolgt case-insensitive und nach Entfernung von HTML-Tags</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h3 class="h6 mt-4">Deduplizierung nach Aktivität</h3>
+                <p>Bei mehreren Accounts der gleichen Person wird der aktivste Account bevorzugt:</p>
+                <ol>
+                    <li>
+                        <strong>Aktivitätskriterien:</strong>
+                        <ul>
+                            <li>Primär: Anzahl der Posts in den letzten 60 Tagen</li>
+                            <li>Sekundär: Gesamtzahl der Posts</li>
+                            <li>Tertiär: Erstellungsdatum des Accounts (neuere Accounts werden bevorzugt)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Deduplizierungsprozess:</strong>
+                        <ul>
+                            <li>Gruppierung der Accounts nach Namen und Position</li>
+                            <li>Innerhalb jeder Gruppe:</li>
+                            <ul>
+                                <li>Vergleich der Aktivität der letzten 60 Tage</li>
+                                <li>Bei gleicher Aktivität: Vergleich der Gesamtposts</li>
+                                <li>Bei gleicher Gesamtanzahl: Bevorzugung des neueren Accounts</li>
+                            </ul>
+                            <li>Nur der aktivste Account wird in der finalen Liste behalten</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Ausnahmen:</strong>
+                        <ul>
+                            <li>Accounts auf Partei-Instanzen (gruene.social, linke.social) werden immer behalten</li>
+                            <li>Accounts mit unterschiedlichen Positionen werden als separate Einträge behandelt</li>
+                            <li>Bot-Accounts werden bei der Deduplizierung nachrangig behandelt</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <div class="alert alert-info mt-4">
+                    <i class="bi bi-info-circle"></i> Die SPARQL-Abfragen werden über den Wikidata-Endpunkt ausgeführt und die Ergebnisse werden in deutscher Sprache angefordert. Falls keine deutsche Bezeichnung verfügbar ist, wird auf die englische Version zurückgegriffen.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-muted small py-2 border-top fixed-bottom bg-white">
+        <div class="container">
+            Daten von <a href="https://codeberg.org/open/fedipolitik" target="_blank">fedipolitik</a> 
+            (<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank">CC BY-SA 4.0</a>)
+            | von <a href="https://chaos.social/@rstockm" target="_blank">Ralf Stockmann</a>
+            | <a href="https://github.com/rstockm/fedipol" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        function copyQuery(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const button = codeElement.nextElementSibling;
+            
+            // Copy text to clipboard
+            navigator.clipboard.writeText(codeElement.textContent).then(() => {
+                // Visual feedback
+                button.innerHTML = '<i class="bi bi-check"></i> Kopiert!';
+                button.classList.add('copied');
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    button.innerHTML = '<i class="bi bi-clipboard"></i> Kopieren';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                button.innerHTML = '<i class="bi bi-exclamation-triangle"></i> Fehler';
+                setTimeout(() => {
+                    button.innerHTML = '<i class="bi bi-clipboard"></i> Kopieren';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html> 

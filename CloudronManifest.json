@@ -1,6 +1,6 @@
 {
   "manifestVersion": 2,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "Fedipol",
   "tagline": "Fediverse Activity Tracker: deutsche Politiker:innen und Institutionen im Fediverse",
   "description": "Automatisierte taegliche ETL-Pipeline (Wikidata, Instanzverzeichnisse, Mastodon-APIs) mit DuckDB-Datenhaltung und unveraendertem Dashboard.",
@@ -23,5 +23,5 @@
       }
     }
   },
-  "postInstallMessage": "Env-Variablen setzen: DJANGO_ALLOWED_HOSTS und DJANGO_CSRF_TRUSTED_ORIGINS auf die App-Domain. Der taegliche ETL laeuft um 03:00 UTC."
+  "postInstallMessage": "Env-Variablen setzen: DJANGO_ALLOWED_HOSTS und DJANGO_CSRF_TRUSTED_ORIGINS auf die App-Domain, FEDIPOL_CORS_ORIGINS=https://rstockm.github.io fuer das GitHub-Pages-Dashboard. Der taegliche ETL laeuft um 03:00 UTC."
 }

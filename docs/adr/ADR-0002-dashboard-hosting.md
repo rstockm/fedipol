@@ -1,7 +1,7 @@
 # ADR-0002: Dashboard-Hosting (Cloudron-integriert oder GitHub Pages)
 
-- Status: Proposed
-- Datum: 2026-09-03
+- Status: Accepted (Variante B1)
+- Datum: 2026-09-03 (Entscheidung: 2026-09-11)
 - Verantwortlich: Ralf Stockmann
 - Betroffene Guideline: GUIDELINES.md (App-Profile), OPERATIONS-GUIDELINES.md (GitHub Pages, Publikation)
 - Ersetzt: keines
@@ -18,21 +18,22 @@ zitiert; die Daten sind oeffentlich (Wikidata, CC BY-SA 4.0).
 
 ## Entscheidung
 
-Noch nicht abschliessend entschieden. Beide Varianten sind im Code
-unterstuetzt, weil beide denselben Export-Vertrag bedienen:
+Entschieden am 2026-09-11 nach erfolgreichem Shadow-Betrieb: **Variante B1**.
+Der Haupt-Traffic bleibt auf GitHub Pages unter der etablierten URL
+https://rstockm.github.io/fedipol/ (Pages-Source: Branch `main`).
 
-- **Variante A - Cloudron-integriert (Zugpferd der Framework-Konformitaet):**
-  Die App liefert Dashboard und Daten aus einer Domain. Kein CORS, atomarer
-  Generationwechsel am selben Ort, keine GitHub-Abhaenigkeit im Betrieb.
-  Nachteil: oeffentliche URL aendert sich (Weiterleitung moeglich),
-  Verfuegbarkeit an die App gebunden.
-
-- **Variante B - GitHub Pages beibehalten:**
-  - B1: Pages liest den Export direkt vom Cloudron-Endpunkt (CORS noetig,
-    Abhaengigkeit von der App-Verfuegbarkeit).
-  - B2: Nach erfolgreichem ETL stoesst Cloudron einen GitHub-Workflow
-    (`repository_dispatch`) an, der einen versionierten Export abruft,
-    validiert und als Pages-Artefakt deployt (kein taeglicher Git-Commit).
+- Veroeffentlicht wird der unveränderte Stand von `dashboard/`
+  (`index.html`, `info.html`, `css/`, `js/ui.js`). Die Legacy-Dateien der
+  Browser-Pipeline (`wikidata.html`, `enhancement.html`, `fedipol_data.json`,
+  `exclude.json`) sind auf `main` entfernt.
+- `js/ui.js` waelt die Datenquelle nach Host: auf `*.github.io` laedt es den
+  Export direkt aus der Cloudron-App (`https://fedipol.wolkenbar.de/fedipol_data.json`),
+  sonst vom selben Origin (App-Betrieb, lokaler Server).
+- Damit der Cross-Origin-Abruf klappt, spiegelt die App freigegebene Origins
+  (Umgebungsvariable `FEDIPOL_CORS_ORIGINS`, gesetzt auf
+  `https://rstockm.github.io`) in den CORS-Antwortheadern
+  (`fedipol.ops.middleware.PublicCorsMiddleware`). Nur lesende Endpunkte,
+  keine Cookies.
 
 ## Alternativen
 
@@ -42,24 +43,28 @@ unterstuetzt, weil beide denselben Export-Vertrag bedienen:
 
 ## Konsequenzen
 
-- Die Entscheidung kann bis nach dem Shadow-Betrieb (mehrere reale
-  Naechtlaeufe, Vergleich mit der Baseline) aufgeschoben werden.
-- Bei Variante B wird ein GitHub-Token (Scope: Actions ausloesen) als
-  Cloudron-Umgebungsvariable benoetigt und ein zusaetzliches
-  Deployment-Monitoring (ETL-Erfolg ≠ Pages-Deploy).
-- Bei Variante A ist eine 301-Weiterleitung der alten Pages-URL bzw. ein
-  Hinweis auf der Pages-Seite zu organisieren.
+- Kein taeglicher Git-Commit und kein Workflow-Dispatch: Pages zeigt den
+  Frontend-Stand von `main`, die Daten kommen live aus der aktiven
+  Exportgeneration der App.
+- Abhaengigkeit der Datenverfuegbarkeit von der App (bekannter Nachteil von
+  B1); ein fehlgeschlagener ETL-Lauf laesst die letzte Generation aktiv, ein
+  nicht erreichbarer Cloudron zeigt im Dashboard eine Fehlermeldung.
+- Pages-Updates sind manuelle Frontend-Releases: `dashboard/` nach `main`
+  uebernehmen (siehe README, Abschnitt Deployment).
+- Die CORS-Freigabe ist an die App-Env gebunden; ohne
+  `FEDIPOL_CORS_ORIGINS=https://rstockm.github.io` bleibt der Abruf leer.
 
 ## Verifikation
 
 - Shadow-Betrieb: mehrere Nachtlaeufe vergleichen Export vs. Baseline
-  (Accountzahl, Kategorien, Bot-Status, Aktivitaet).
-- Variante A: Playwright-Smoke-Test gegen die App-Domain.
-- Variante B: End-to-End-Test des Dispatch-Workflows inkl. Rollback auf
-  den letzten validierten Export.
+  (Accountzahl, Kategorien, Bot-Status, Aktivitaet) - durchgefuehrt.
+- Endpunkt-Check: `curl -H "Origin: https://rstockm.github.io" -I
+  https://fedipol.wolkenbar.de/fedipol_data.json` muss
+  `Access-Control-Allow-Origin` spiegeln.
+- Browser-Smoke-Test der Pages-URL: Histogramm, Parteifilter und Timeline
+  fuellen sich mit den App-Daten.
 
-## Ablösung
+## Abloesung
 
-Entscheidung nach erfolgreichem Shadow-Betrieb; dieses ADR wird dann auf
-Accepted gesetzt (mit gewaehlter Variante) oder durch ein Nachfolger-ADR
-ersetzt.
+Keine; Entscheidungsgrundlage fuer kuenftige Hosting-Aenderungen (z. B. Umzug
+auf Variante A oder B2) bleibt dieser ADR.

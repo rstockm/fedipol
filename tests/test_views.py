@@ -36,6 +36,38 @@ def test_export_without_generation_is_503():
     assert response.status_code == 503
 
 
+def test_export_reflects_allowed_pages_origin(published_generation, settings):
+    settings.FEDIPOL_CORS_ORIGINS = ["https://rstockm.github.io"]
+    response = Client().get(
+        "/fedipol_data.json", HTTP_ORIGIN="https://rstockm.github.io"
+    )
+    assert response.status_code == 200
+    assert response["Access-Control-Allow-Origin"] == "https://rstockm.github.io"
+    assert response["Vary"] == "Origin"
+
+
+def test_export_does_not_cors_untrusted_or_missing_origin(
+    published_generation, settings
+):
+    settings.FEDIPOL_CORS_ORIGINS = ["https://rstockm.github.io"]
+    untrusted = Client().get(
+        "/fedipol_data.json", HTTP_ORIGIN="https://example.org"
+    )
+    assert "Access-Control-Allow-Origin" not in untrusted
+    without_origin = Client().get("/fedipol_data.json")
+    assert "Access-Control-Allow-Origin" not in without_origin
+
+
+def test_preflight_allowed_origin_is_answered(settings):
+    settings.FEDIPOL_CORS_ORIGINS = ["https://rstockm.github.io"]
+    response = Client().options(
+        "/fedipol_data.json", HTTP_ORIGIN="https://rstockm.github.io"
+    )
+    assert response.status_code == 204
+    assert response["Access-Control-Allow-Origin"] == "https://rstockm.github.io"
+    assert response["Access-Control-Allow-Methods"] == "GET, OPTIONS"
+
+
 def test_healthz_healthy_after_publication(published_generation):
     response = Client().get("/healthz")
     assert response.status_code == 200

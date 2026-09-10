@@ -64,6 +64,11 @@ ALLOWED_HOSTS = [h.strip() for h in _allowed_hosts.split(",") if h.strip()]
 _csrf_origins = os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", "")
 CSRF_TRUSTED_ORIGINS = [o.strip() for o in _csrf_origins.split(",") if o.strip()]
 
+# Origins, die per CORS auf die oeffentlichen Lese-Endpunkte zugreifen duerfen
+# (GitHub Pages: https://rstockm.github.io)
+_cors_origins = os.environ.get("FEDIPOL_CORS_ORIGINS", "")
+FEDIPOL_CORS_ORIGINS = [o.strip() for o in _cors_origins.split(",") if o.strip()]
+
 if not DEBUG:
     SECURE_HSTS_SECONDS = int(os.environ.get("DJANGO_HSTS_SECONDS", "31536000"))
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
@@ -85,6 +90,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "fedipol.ops.middleware.PublicCorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]

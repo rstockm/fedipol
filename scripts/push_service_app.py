@@ -26,18 +26,6 @@ EXCLUDE_SUFFIX = {".pyc"}
 # ci.yml: Pushen erfordert Token mit workflow-Scope (einmalig gh auth refresh -s workflow)
 EXCLUDE_PATHS = {"tests/.test-data", "db.sqlite3", ".github/workflows/ci.yml"}
 
-REMOVE = [
-    "index.html", "info.html", "css/styles.css", "js/ui.js", "js/mastodonApi.js",
-    "js/wikidataQuery.js", "js/enhancement.js", "fedipol_data.json", "wikidata.html",
-    "enhancement.html", "exclude.json", "politiker-und-institutionen-im-fediverse.md",
-    ".cursorindexingignore",
-    ".specstory/.gitignore",
-    ".specstory/history/2025-02-08_09-00Z-repository-analysis-request.md",
-    ".specstory/history/2025-02-08_09-01Z-überprüfung-des-fedipol-repositories.md",
-    ".specstory/history/2025-02-08_23-37Z-integration-eines-wikidata-moduls-für-politische-entitäten.md",
-    ".specstory/history/2025-10-21_22-58Z-starte-lokalen-python-webserver-auf-macos.md",
-]
-
 
 def api(method: str, path: str, payload: dict | None = None) -> dict:
     token = os.popen("gh auth token").read().strip()
@@ -73,7 +61,10 @@ def main() -> int:
     except urllib.error.HTTPError:
         print("parent: main")
 
-    entries = [{"path": p, "mode": "100644", "type": "blob", "sha": None} for p in REMOVE]
+    # base_tree: main-Baum; Loesch-Einträge für Pfade, die im base_tree fehlen,
+    # liefern GitRPC::BadObjectState - deshalb keine REMOVE-Liste mehr (die
+    # Legacy-Pfade sind seit dem Pages-Update nicht mehr im main-Baum).
+    entries = []
 
     count = 0
     for path in sorted(ROOT.rglob("*")):
