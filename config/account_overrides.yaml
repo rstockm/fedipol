@@ -10,4 +10,11 @@
 #
 # Nicht mehr existierende Ziel-URLs fuehren zu Warnungen, nicht zu Fehlern.
 
-accounts: []
+accounts:
+  - url: https://gruene.social/@gruene_leipzig
+    reason: >
+      False Positive der Bot-Heuristik: das Keyword "bot" matched den
+      Handle der ehrenamtlichen Betreuung (@depressiveRobot) in der
+      Account-Beschreibung. Der Account ist redaktionell betreut, kein Bot
+      (Mastodon-API bot=false). force_bot korrigiert das.
+    force_bot: false
