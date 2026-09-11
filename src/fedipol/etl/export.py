@@ -113,6 +113,8 @@ def build_dashboard_rows(
             # Ohne Beobachtung kein Export (wie bisher nur gescannte Accounts).
             continue
         _url, posts_count, recent_count, created_at, is_bot, freshness = fact
+        if override is not None and override.force_bot is not None:
+            is_bot = override.force_bot
 
         if category is None:
             if kind == "institution":

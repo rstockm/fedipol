@@ -96,6 +96,41 @@ def test_pipeline_offline_is_idempotent(data_paths, recorder, permissive_limits)
     assert recorder.active_generation == "RUN-2"
 
 
+def test_pipeline_offline_applies_force_bot_override(data_paths, recorder, permissive_limits, tmp_path):
+    seed_checkpoint(data_paths, "RUN-1")
+    checkpoint = data_paths.run_checkpoint("RUN-1")
+    records = [json.loads(line) for line in checkpoint.read_text(encoding="utf-8").splitlines()]
+    records[0]["is_bot"] = True
+    checkpoint.write_text(
+        "\n".join(json.dumps(record) for record in records) + "\n", encoding="utf-8"
+    )
+
+    config_dir = tmp_path / "config"
+    (config_dir / "account_overrides.yaml").write_text(
+        "\n".join(
+            [
+                "accounts:",
+                f"  - url: {FIXTURE_ACCOUNTS[0]}",
+                "    force_bot: false",
+                "    reason: Redaktionell betreuter Account",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    from fedipol.etl.overrides import load_overrides
+
+    original = Pipeline._overrides
+    Pipeline._overrides = lambda self: load_overrides(config_dir / "account_overrides.yaml")
+    try:
+        result = make_pipeline(data_paths, recorder, "RUN-1").run()
+    finally:
+        Pipeline._overrides = original
+
+    assert result.published, result.error
+    payload = json.loads((data_paths.export_dir("RUN-1") / "fedipol_data.json").read_text())
+    assert payload["data"][FIXTURE_ACCOUNTS[0]]["is_bot"] is False
+
+
 def test_failed_run_keeps_previous_generation(data_paths, recorder, strict_drop_limits, tmp_path):
     seed_checkpoint(data_paths, "RUN-1")
     result1 = make_pipeline(data_paths, recorder, "RUN-1").run()
