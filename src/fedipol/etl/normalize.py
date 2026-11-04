@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import unicodedata
 from urllib.parse import urlsplit, urlunsplit
 
@@ -10,11 +11,19 @@ def canonical_url(url: str) -> str:
     """Kanonische Account-URL: https, Host kleingeschrieben und IDNA, ohne Slash.
 
     Entspricht der bisherigen JS-Normalisierung (lowercase, trailing slashes
-    entfernen), ergaenzt um IDNA und fehlendes Schema.
+    entfernen), ergaenzt um IDNA, fehlendes Schema und Fediverse-Handles.
     """
     value = (url or "").strip()
     if not value:
         raise ValueError("leere URL")
+    # Wikidata P4033 contains handles, not necessarily profile URLs. Parsing a
+    # handle as a URL would treat its username as userinfo and silently drop it.
+    if "://" not in value and "/" not in value and "@" in value:
+        handle = re.fullmatch(r"@?([A-Za-z0-9_][A-Za-z0-9_.-]*)@([^@\s/?#:]+(?::[0-9]+)?)", value)
+        if handle is None:
+            raise ValueError(f"ungueltiger Fediverse-Handle: {url}")
+        username, domain = handle.groups()
+        value = f"https://{domain}/@{username}"
     parts = urlsplit(value)
     if not parts.scheme:
         value = "https://" + value

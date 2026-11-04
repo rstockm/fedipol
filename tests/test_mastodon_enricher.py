@@ -1,5 +1,6 @@
 """Tests fuer die Mastodon-Anreicherung: Lookup, Pagination, Cap, Bot-Flag."""
 import json
+from datetime import UTC, datetime
 from urllib.parse import urlencode
 
 import fedipol.etl.sources.mastodon as mastodon_module
@@ -60,7 +61,9 @@ def test_basic_enrichment(monkeypatch):
     fetch, calls = _fake_fetch([lookup, page1])
     monkeypatch.setattr(mastodon_module, "fetch", fetch)
 
-    result = _enricher().enrich("https://gruene.social/@erika/")
+    result = _enricher().enrich(
+        "https://gruene.social/@erika/", now=datetime(2026, 9, 3, tzinfo=UTC)
+    )
     assert result.ok
     assert result.posts_count == 500
     assert result.recent_posts_count == 5
@@ -81,7 +84,9 @@ def test_cap_after_max_pages(monkeypatch):
     fetch, _ = _fake_fetch([lookup, page(), page(), page()])
     monkeypatch.setattr(mastodon_module, "fetch", fetch)
 
-    result = _enricher(pages_max=3).enrich("https://gruene.social/@eilig")
+    result = _enricher(pages_max=3).enrich(
+        "https://gruene.social/@eilig", now=datetime(2026, 9, 3, tzinfo=UTC)
+    )
     assert result.recent_posts_count == 120
     assert result.capped is True
 

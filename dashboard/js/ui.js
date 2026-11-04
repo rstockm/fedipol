@@ -3,6 +3,7 @@ const loadedAccounts = new Map();
 let activePartyFilter = null;
 let activeSearchFilter = '';
 let currentSortField = 'recent_posts_count';
+let currentSortDirection = 'desc';
 
 // Color mapping for parties
 const partyColorMap = {
@@ -195,6 +196,35 @@ function isBot(name) {
            name.toLowerCase().includes('🤖');
 }
 
+function formatAccountStartDate(value) {
+    const timestamp = value ? Date.parse(value) : NaN;
+    if (!Number.isFinite(timestamp)) return '–';
+    return new Date(timestamp).toLocaleDateString('de-DE', {
+        day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'UTC'
+    });
+}
+
+function compareAccountData(a, b) {
+    if (currentSortField === 'created_at') {
+        const aTime = a.created_at ? Date.parse(a.created_at) : NaN;
+        const bTime = b.created_at ? Date.parse(b.created_at) : NaN;
+        if (!Number.isFinite(aTime)) return Number.isFinite(bTime) ? 1 : 0;
+        if (!Number.isFinite(bTime)) return -1;
+        return currentSortDirection === 'asc' ? aTime - bTime : bTime - aTime;
+    }
+    return (Number(b[currentSortField]) || 0) - (Number(a[currentSortField]) || 0);
+}
+
+function renderStartDateHeader() {
+    const active = currentSortField === 'created_at';
+    const direction = active ? (currentSortDirection === 'asc' ? 'ascending' : 'descending') : 'none';
+    const arrow = active ? (currentSortDirection === 'asc' ? ' ↑' : ' ↓') : '';
+    return `<th class="start-date-header text-nowrap" scope="col" aria-sort="${direction}">
+        <button type="button" class="btn btn-link p-0 text-body text-decoration-none${active ? ' fw-bold' : ''}"
+                onclick="toggleSort('created_at')" title="Nach Erstellungsdatum sortieren">Startdatum${arrow}</button>
+    </th>`;
+}
+
 // Function to render a single account row
 function renderAccountRow(account) {
     const partyClass = getPartyClass(account.name, account.category, account.url);
@@ -235,6 +265,7 @@ function renderAccountRow(account) {
                 <div class="text-muted small">${account.category}</div>
             </td>
             ${hasPartyAffiliation(account.name, account.category, account.url) ? `<td>${getPartyAffiliation(account.name, account.category, account.url)}</td>` : ''}
+            <td class="account-start-date text-nowrap">${formatAccountStartDate(accountData?.created_at || account.created_at)}</td>
             <td>
                 <div class="posts-bar-container" data-account-url="${account.url}">
                     <div class="d-flex flex-column flex-grow-1 gap-1">
@@ -309,6 +340,7 @@ function renderAccounts(accounts) {
         <th style="width: 40px">Art</th>
         <th>Account</th>
         <th>Partei</th>
+        ${renderStartDateHeader()}
         <th>
             <div class="d-flex flex-column">
                 <span>Posts</span>
@@ -334,6 +366,7 @@ function renderAccounts(accounts) {
     institutionsTableHeader.innerHTML = `
         <th style="width: 40px">Art</th>
         <th>Account</th>
+        ${renderStartDateHeader()}
         <th>
             <div class="d-flex flex-column">
                 <span>Posts</span>
@@ -352,7 +385,16 @@ function renderAccounts(accounts) {
 
 // Function to toggle sort
 function toggleSort(field) {
+    currentSortDirection = field === 'created_at' && currentSortField === field && currentSortDirection === 'desc'
+        ? 'asc' : 'desc';
     currentSortField = field;
+    document.querySelectorAll('.start-date-header').forEach(header => {
+        const active = field === 'created_at';
+        header.setAttribute('aria-sort', active ? (currentSortDirection === 'asc' ? 'ascending' : 'descending') : 'none');
+        const button = header.querySelector('button');
+        button.classList.toggle('fw-bold', active);
+        button.textContent = `Startdatum${active ? (currentSortDirection === 'asc' ? ' ↑' : ' ↓') : ''}`;
+    });
     
     // Update header styles
     const partyHeader = document.querySelector('#accountsTableBody').closest('table').querySelector('thead tr th:last-child');
@@ -444,6 +486,8 @@ function updateRow(account, data) {
     }
 
     // Store updated data
+    const startDateCell = row.querySelector('.account-start-date');
+    if (startDateCell) startDateCell.textContent = formatAccountStartDate(data.created_at);
     loadedAccounts.set(account.url, {
         account,
         posts_count: Number(data.posts_count) || 0,
@@ -476,7 +520,7 @@ function reorderTable(tableId) {
         
         if (!aData || !bData) return 0;
         
-        return bData[currentSortField] - aData[currentSortField];
+        return compareAccountData(aData, bData);
     });
     
     // Clear and re-append rows
@@ -598,6 +642,8 @@ function renderCumulativeHistogram() {
         let offset = 0;
         for (const { party, series } of ordered) {
             const cum = series[i];
+            const partyChange = cum - (i > 0 ? series[i - 1] : 0);
+            const totalChange = totals[i] - (i > 0 ? totals[i - 1] : 0);
             const segStart = offset;
             const segEnd = offset + cum;
             offset = segEnd;
@@ -609,7 +655,7 @@ function renderCumulativeHistogram() {
             const yBottomPx = yOf(segStart);
             parts.push(
                 `<rect x="${(M.left + i * band).toFixed(2)}" y="${yTopPx.toFixed(2)}" width="${barW.toFixed(2)}" height="${Math.max(yBottomPx - yTopPx, 0.5).toFixed(2)}" fill="${color}">` +
-                `<title>${party}: ${cum} (gesamt ${totals[i]}) · ${monthLabel(firstMonth + i)}</title></rect>`
+                `<title>${party}: ${cum} (gesamt ${totals[i]}) · ${monthLabel(firstMonth + i)}\nZum Vormonat: +${partyChange} (${party}), +${totalChange} gesamt</title></rect>`
             );
         }
     }

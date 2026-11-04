@@ -20,6 +20,33 @@ def test_canonical_url_adds_scheme():
     assert canonical_url("mastodon.social/@user") == "https://mastodon.social/@user"
 
 
+@pytest.mark.parametrize("handle", [
+    "socialist_stella@mastodon.social",
+    "@socialist_stella@mastodon.social",
+    "  @socialist_stella@MASTODON.SOCIAL  ",
+])
+def test_canonical_url_preserves_handle_username(handle):
+    assert canonical_url(handle) == "https://mastodon.social/@socialist_stella"
+
+
+def test_canonical_handles_on_same_instance_remain_distinct():
+    assert canonical_url("socialist_stella@mastodon.social") != canonical_url(
+        "another_user@mastodon.social"
+    )
+
+
+def test_canonical_handle_normalizes_host_and_preserves_username():
+    assert canonical_url("@Erika.Muster@bawü.social:8443") == (
+        "https://xn--baw-joa.social:8443/@Erika.Muster"
+    )
+
+
+@pytest.mark.parametrize("value", ["@mastodon.social", "user@@mastodon.social", "user name@mastodon.social"])
+def test_canonical_url_rejects_malformed_handles(value):
+    with pytest.raises(ValueError):
+        canonical_url(value)
+
+
 def test_canonical_url_idna_normalization():
     latin = canonical_url("https://bawü.social/@user")
     puny = canonical_url("https://xn--baw-joa.social/@user")

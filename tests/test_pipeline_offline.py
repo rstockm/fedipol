@@ -96,6 +96,48 @@ def test_pipeline_offline_is_idempotent(data_paths, recorder, permissive_limits)
     assert recorder.active_generation == "RUN-2"
 
 
+def test_wikidata_handles_survive_pipeline_to_export(
+    data_paths, recorder, permissive_limits, monkeypatch,
+):
+    seed_checkpoint(data_paths, "RUN-HANDLES")
+    stella_url = "https://mastodon.social/@socialist_stella"
+    checkpoint = data_paths.run_checkpoint("RUN-HANDLES")
+    with checkpoint.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps({
+            "url": stella_url, "posts_count": 5, "recent_posts_count": 5,
+            "created_at": "2026-11-02T00:00:00.000Z", "is_bot": False,
+        }) + "\n")
+
+    original = Pipeline._load_fixture_bindings
+
+    def bindings(self, query_name):
+        rows = original(self, query_name)
+        if query_name == "parliament":
+            rows.append({
+                "account": "socialist_stella@mastodon.social",
+                "itemLabel": "Stella Merendino", "qid": "Q131817189",
+                "positionLabel": "Mitglied des Deutschen Bundestages",
+                "partyLabel": "Die Linke",
+            })
+            for row in rows:
+                if row.get("account") == "https://mastodon.social/@maxbeispiel":
+                    row["account"] = "@maxbeispiel@mastodon.social"
+        return rows
+
+    monkeypatch.setattr(Pipeline, "_load_fixture_bindings", bindings)
+    result = make_pipeline(data_paths, recorder, "RUN-HANDLES").run()
+    assert result.published, result.error
+    data = json.loads(
+        (data_paths.export_dir("RUN-HANDLES") / "fedipol_data.json").read_text()
+    )["data"]
+    assert data[stella_url]["account"] == {
+        "url": stella_url, "name": "Stella Merendino",
+        "category": "Mitglied des Deutschen Bundestages (Linke)",
+    }
+    assert "https://mastodon.social/@maxbeispiel" in data
+    assert "https://mastodon.social" not in data
+
+
 def test_pipeline_offline_applies_force_bot_override(data_paths, recorder, permissive_limits, tmp_path):
     seed_checkpoint(data_paths, "RUN-1")
     checkpoint = data_paths.run_checkpoint("RUN-1")
