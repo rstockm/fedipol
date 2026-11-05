@@ -613,4 +613,81 @@ footer.fixed-bottom a:hover {
 .posts-col {
     width: 100px;  /* Increased from 90px */
     white-space: nowrap;
-} 
+}
+
+/* Account actions: stable trailing column; room for a future second action. */
+.account-table td { vertical-align: middle; }
+.account-table .account-identity { min-width: 13rem; overflow-wrap: anywhere; }
+.account-table .account-party { overflow-wrap: anywhere; }
+.account-actions-header { width: 1%; text-align: right; white-space: nowrap; }
+.account-actions { display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; flex-wrap: nowrap; }
+.account-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 36px;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid #cbd2da;
+    border-radius: 0.65rem;
+    background: rgba(255, 255, 255, 0.85);
+    color: #344054;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+.account-action:hover { color: #182230; background: #fff; border-color: #667085; box-shadow: 0 2px 5px #10182812; }
+.account-action:focus-visible { outline: 3px solid #0d6efd; outline-offset: 3px; }
+.action-external { font-size: 0.65rem; color: #667085; }
+.action-label-mobile, .posts-count-label { display: none; }
+@media (pointer: coarse) { .account-action { min-height: 44px; } }
+
+@media screen and (max-width: 896px) {
+    #accountsContainer .table-responsive { margin: 0 !important; overflow: visible; }
+    #accountsContainer .account-table { display: block; width: 100%; }
+    #accountsContainer .account-table thead { display: block; margin-bottom: 0.75rem; }
+    #accountsContainer .account-table thead tr { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    #accountsContainer .account-table thead th { display: none; }
+    #accountsContainer .account-table thead .start-date-header,
+    #accountsContainer .account-table thead .posts-header { display: block; padding: 0; border: 0; font-size: 0.8rem; }
+    #accountsContainer .account-table thead .posts-header > div > span { display: none; }
+    #accountsTableBody { display: block; }
+    #accountsTableBody tr {
+        display: grid;
+        grid-template-columns: 28px minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-areas: "platform identity identity" "party party date" "posts posts posts" "actions actions actions";
+        margin-bottom: 0.75rem;
+        border: 1px solid #dce1e7;
+        border-radius: 0.9rem;
+        overflow: hidden;
+    }
+    #accountsContainer #accountsTableBody tr > td {
+        display: block !important;
+        min-width: 0;
+        max-width: none !important;
+        padding: 0.65rem 0.8rem !important;
+        border: 0;
+        white-space: normal !important;
+    }
+    #accountsTableBody .account-platform { grid-area: platform; }
+    #accountsContainer #accountsTableBody .account-platform { padding-right: 0 !important; }
+    #accountsTableBody .account-identity { grid-area: identity; }
+    #accountsTableBody .account-identity > div:first-child { font-weight: 600; font-size: 1rem; }
+    #accountsTableBody .account-party { grid-area: party; }
+    #accountsTableBody .account-start-date { grid-area: date; text-align: right; }
+    #accountsTableBody .account-start-date::before { content: 'Seit '; color: #667085; font-size: 0.75rem; }
+    #accountsTableBody .account-posts { grid-area: posts; }
+    #accountsTableBody .posts-bar-container { min-width: 0 !important; gap: 0.75rem !important; padding-right: 0 !important; }
+    #accountsTableBody .account-post-count { display: flex; gap: 0.5rem; justify-content: space-between; align-items: center; }
+    #accountsTableBody .posts-count-label { display: inline; color: #475467; font-size: 0.7rem; }
+    #accountsTableBody .recent-posts-count, #accountsTableBody .total-posts-count { text-align: right; }
+    #accountsContainer #accountsTableBody .account-actions-cell { grid-area: actions; border-top: 1px solid #10182815; }
+    #accountsTableBody .account-actions { justify-content: flex-start; }
+    #accountsTableBody .account-action { min-height: 44px; flex: 1 1 auto; }
+    #accountsTableBody .action-label-desktop { display: none; }
+    #accountsTableBody .action-label-mobile { display: inline; }
+    #accountsTableBody .account-actions-cell:has(.account-actions:empty) { display: none !important; }
+}

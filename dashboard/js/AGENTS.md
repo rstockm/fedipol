@@ -2,4 +2,4 @@
 
 | Datei | Zweck |
 | --- | --- |
-| `ui.js` | Rendert Dashboard-Export einschließlich Erstellungsdatum `created_at`; Startdatum-Sortierung wechselt neueste/älteste, unbekannte Werte bleiben unten; Histogramm-Hover zeigt Vormonatszuwachs je Partei und gesamt unter Berücksichtigung des Filters; `getFediWingsUrl` erzeugt kodierte Deep Links mit festem Ziel für Personen-/Parteizeilen; synchron mit `main:js/ui.js`. |
+| `ui.js` | Synchron mit `main:js/ui.js`; Datumssortierung chronologisch, unbekannte zuletzt; Histogramm-Hover zeigt Vormonatszuwachs je Partei/gesamt; kodierte FediWings-Autostart-Links mit festem Ziel; trailing `.account-actions-cell` statt Button im Profiltext, getrennte Desktop-/Mobilbeschriftung und mobile Zählerlabels; Sortierung adressiert `.posts-header`. |
