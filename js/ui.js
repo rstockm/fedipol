@@ -225,12 +225,25 @@ function renderStartDateHeader() {
     </th>`;
 }
 
+function getFediWingsUrl(accountUrl) {
+    try {
+        const profile = new URL(accountUrl);
+        if (profile.protocol !== 'https:' || profile.username || profile.password || profile.port || profile.search || profile.hash) return null;
+        const match = profile.pathname.match(/^\/(?:@|users\/)([a-z0-9_][a-z0-9_.-]{0,63})\/?$/i);
+        if (!match) return null;
+        return `https://rstockm.github.io/fediwings/?handle=${encodeURIComponent(`${match[1]}@${profile.hostname}`)}`;
+    } catch {
+        return null;
+    }
+}
+
 // Function to render a single account row
 function renderAccountRow(account) {
     const partyClass = getPartyClass(account.name, account.category, account.url);
     const accountData = loadedAccounts.get(account.url);
     const isAccountBot = accountData?.is_bot || false;
     const isInactive = Number(account.recent_posts_count) === 0;
+    const fediWingsUrl = hasPartyAffiliation(account.name, account.category, account.url) ? getFediWingsUrl(account.url) : null;
     
     // Get post counts
     const posts_count = Number(account.posts_count) || 0;
@@ -263,6 +276,7 @@ function renderAccountRow(account) {
             <td>
                 <div><a href="${account.url}" target="_blank" title="${account.url}">${account.name}</a></div>
                 <div class="text-muted small">${account.category}</div>
+                ${fediWingsUrl ? `<a class="btn btn-sm btn-outline-secondary mt-1 fediwings-link" href="${fediWingsUrl}" target="_blank" rel="noopener noreferrer" title="Account in FediWings analysieren (neuer Tab)">FediWings <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>` : ''}
             </td>
             ${hasPartyAffiliation(account.name, account.category, account.url) ? `<td>${getPartyAffiliation(account.name, account.category, account.url)}</td>` : ''}
             <td class="account-start-date text-nowrap">${formatAccountStartDate(accountData?.created_at || account.created_at)}</td>

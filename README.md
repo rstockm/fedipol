@@ -27,6 +27,9 @@ Aktivitätsanzeigen. Eine serverseitige Datenpipeline aktualisiert die Daten tä
   getrennten Balken; aktive und inaktive Konten sind visuell unterscheidbar.
 - **Suchen und sortieren:** Accounts und Institutionen per Textsuche eingrenzen;
   nach Startdatum, jüngster Aktivität oder Gesamtzahl der Beiträge sortieren.
+- **In FediWings öffnen:** Der Button in Personen-/Parteizeilen öffnet den Account
+  als vorbefüllten Handle in [FediWings](https://rstockm.github.io/fediwings/).
+  Die dortige Reichweitenanalyse startet erst nach einem weiteren Klick.
 - **Institutionen und Instanzen:** eigene Tabellen für öffentliche Einrichtungen
   und die gefundenen Fediverse-Server.
 - **Bot-Kennzeichnung:** automatisierte Konten werden markiert und abgeschwächt
