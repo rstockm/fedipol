@@ -72,7 +72,7 @@ for (const source of sources) {
             posts_count: 5, recent_posts_count: 5,
         });
         assert.match(html, /02\.11\.2026/);
-        assert.ok(html.indexOf('<td>Linke</td>') < html.indexOf('02.11.2026'));
+        assert.ok(html.indexOf('<td class="account-party">Linke</td>') < html.indexOf('02.11.2026'));
         assert.ok(html.indexOf('02.11.2026') < html.indexOf('posts-bar-container'));
     });
 }

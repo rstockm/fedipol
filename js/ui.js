@@ -231,7 +231,7 @@ function getFediWingsUrl(accountUrl) {
         if (profile.protocol !== 'https:' || profile.username || profile.password || profile.port || profile.search || profile.hash) return null;
         const match = profile.pathname.match(/^\/(?:@|users\/)([a-z0-9_][a-z0-9_.-]{0,63})\/?$/i);
         if (!match) return null;
-        return `https://rstockm.github.io/fediwings/?handle=${encodeURIComponent(`${match[1]}@${profile.hostname}`)}`;
+        return `https://rstockm.github.io/fediwings/?handle=${encodeURIComponent(`${match[1]}@${profile.hostname}`)}&autostart=1`;
     } catch {
         return null;
     }
@@ -243,7 +243,8 @@ function renderAccountRow(account) {
     const accountData = loadedAccounts.get(account.url);
     const isAccountBot = accountData?.is_bot || false;
     const isInactive = Number(account.recent_posts_count) === 0;
-    const fediWingsUrl = hasPartyAffiliation(account.name, account.category, account.url) ? getFediWingsUrl(account.url) : null;
+    const isPartyAccount = hasPartyAffiliation(account.name, account.category, account.url);
+    const fediWingsUrl = isPartyAccount ? getFediWingsUrl(account.url) : null;
     
     // Get post counts
     const posts_count = Number(account.posts_count) || 0;
@@ -261,7 +262,7 @@ function renderAccountRow(account) {
             data-party="${partyClass}" 
             data-account-url="${account.url}"
             title="${isInactive ? 'Inaktiv (keine Posts in den letzten 200 Tagen)' : ''}">
-            <td class="text-center">
+            <td class="text-center account-platform">
                 <div class="d-flex flex-column align-items-center gap-1">
                     <div>
                         ${isInactive ? 
@@ -273,14 +274,13 @@ function renderAccountRow(account) {
                         ''}
                 </div>
             </td>
-            <td>
+            <td class="account-identity">
                 <div><a href="${account.url}" target="_blank" title="${account.url}">${account.name}</a></div>
                 <div class="text-muted small">${account.category}</div>
-                ${fediWingsUrl ? `<a class="btn btn-sm btn-outline-secondary mt-1 fediwings-link" href="${fediWingsUrl}" target="_blank" rel="noopener noreferrer" title="Account in FediWings analysieren (neuer Tab)">FediWings <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>` : ''}
             </td>
-            ${hasPartyAffiliation(account.name, account.category, account.url) ? `<td>${getPartyAffiliation(account.name, account.category, account.url)}</td>` : ''}
+            ${isPartyAccount ? `<td class="account-party">${getPartyAffiliation(account.name, account.category, account.url)}</td>` : ''}
             <td class="account-start-date text-nowrap">${formatAccountStartDate(accountData?.created_at || account.created_at)}</td>
-            <td>
+            <td class="account-posts">
                 <div class="posts-bar-container" data-account-url="${account.url}">
                     <div class="d-flex flex-column flex-grow-1 gap-1">
                         <div class="posts-bar recent-posts">
@@ -291,11 +291,20 @@ function renderAccountRow(account) {
                         </div>
                     </div>
                     <div class="d-flex flex-column">
-                        <span class="recent-posts-count small">${Number(recent_posts_count) === 120 ? '>120' : recent_posts_count}</span>
-                        <span class="total-posts-count small">${posts_count}</span>
+                        <div class="account-post-count"><span class="posts-count-label">Letzte 60 Tage</span><span class="recent-posts-count small">${Number(recent_posts_count) === 120 ? '>120' : recent_posts_count}</span></div>
+                        <div class="account-post-count"><span class="posts-count-label">Gesamt</span><span class="total-posts-count small">${posts_count}</span></div>
                     </div>
                 </div>
             </td>
+            ${isPartyAccount ? `<td class="account-actions-cell">
+                <div class="account-actions">
+                    ${fediWingsUrl ? `<a class="account-action fediwings-link" href="${fediWingsUrl.replaceAll('&', '&amp;')}" target="_blank" rel="noopener noreferrer" aria-label="Reichweite in FediWings analysieren (neuer Tab)" title="Reichweite in FediWings analysieren · neuer Tab">
+                        <i class="fa-solid fa-chart-simple" aria-hidden="true"></i>
+                        <span class="action-label-desktop">Analyse</span><span class="action-label-mobile">In FediWings analysieren</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square action-external" aria-hidden="true"></i>
+                    </a>` : ''}
+                </div>
+            </td>` : ''}
         </tr>
     `;
 }
@@ -355,7 +364,7 @@ function renderAccounts(accounts) {
         <th>Account</th>
         <th>Partei</th>
         ${renderStartDateHeader()}
-        <th>
+        <th class="posts-header">
             <div class="d-flex flex-column">
                 <span>Posts</span>
                 <small class="text-muted">
@@ -364,6 +373,7 @@ function renderAccounts(accounts) {
                 </small>
             </div>
         </th>
+        <th class="account-actions-header" scope="col">Aktionen</th>
     `;
     partyTbody.innerHTML = partyAccounts.map(account => renderAccountRow(account)).join('');
     
@@ -381,7 +391,7 @@ function renderAccounts(accounts) {
         <th style="width: 40px">Art</th>
         <th>Account</th>
         ${renderStartDateHeader()}
-        <th>
+        <th class="posts-header">
             <div class="d-flex flex-column">
                 <span>Posts</span>
                 <small class="text-muted">
@@ -411,8 +421,8 @@ function toggleSort(field) {
     });
     
     // Update header styles
-    const partyHeader = document.querySelector('#accountsTableBody').closest('table').querySelector('thead tr th:last-child');
-    const institutionsHeader = document.querySelector('#institutionsTableBody').closest('table').querySelector('thead tr th:last-child');
+    const partyHeader = document.querySelector('#accountsTableBody').closest('table').querySelector('thead .posts-header');
+    const institutionsHeader = document.querySelector('#institutionsTableBody').closest('table').querySelector('thead .posts-header');
     
     [partyHeader, institutionsHeader].forEach(header => {
         if (header) {
