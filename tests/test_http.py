@@ -35,6 +35,17 @@ def test_success_first_try():
     assert result.attempts == 1
 
 
+@pytest.mark.parametrize("header_name", ["Link", "link", "LINK"])
+def test_response_headers_are_case_insensitive(header_name):
+    next_link = '<https://example.org/statuses?max_id=100>; rel="next"'
+    session = FakeSession([FakeResponse(200, headers={header_name: next_link})])
+
+    result = fetch("https://example.org/statuses", session=session)
+
+    assert result.headers.get("Link") == next_link
+    assert result.headers.get("link") == next_link
+
+
 def test_retries_on_429_with_retry_after():
     session = FakeSession(
         [FakeResponse(429, {"Retry-After": "0.1"}), FakeResponse(429, {"Retry-After": "0.1"}), FakeResponse(200)]

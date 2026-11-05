@@ -31,7 +31,9 @@ class FetchResult:
     content: bytes
     fetched_at: str
     attempts: int
-    headers: dict = field(default_factory=dict)
+    headers: requests.structures.CaseInsensitiveDict = field(
+        default_factory=requests.structures.CaseInsensitiveDict
+    )
 
     def json(self):  # noqa: ANN201
         return json.loads(self.content.decode("utf-8"))
@@ -98,7 +100,7 @@ def fetch(
                     content=response.content,
                     fetched_at=_utcnow_iso(),
                     attempts=attempts,
-                    headers=dict(response.headers),
+                    headers=requests.structures.CaseInsensitiveDict(response.headers),
                 )
 
             if response.status_code in RETRYABLE_STATUS and attempts <= max_retries:
