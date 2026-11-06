@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fediverse Activity Tracker</title>
+    <title>Fedipol</title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -254,9 +254,16 @@
     <div class="sticky-header">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-                <h1 class="h3 mb-0">
-                    <span class="d-none d-md-inline">Fediverse Activity Tracker</span>
-                    <span class="d-inline d-md-none">Fedipol</span>
+                <h1 class="h3 mb-0 fedipol-brand">
+                    <svg class="fedipol-brand-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                        <path d="M4 12 16 5l12 7H4Zm1 16h22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <g fill="currentColor">
+                            <rect x="7" y="21" width="4" height="4" rx="0.75"/>
+                            <rect x="14" y="17" width="4" height="8" rx="0.75"/>
+                            <rect x="21" y="14" width="4" height="11" rx="0.75"/>
+                        </g>
+                    </svg>
+                    <span>Fedipol</span>
                 </h1>
                 <div class="btn-group">
                     <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('accountsContainer')" data-bs-toggle="tooltip" title="Parteien">

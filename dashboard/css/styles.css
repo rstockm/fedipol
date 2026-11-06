@@ -615,6 +615,9 @@ footer.fixed-bottom a:hover {
     white-space: nowrap;
 }
 
+.fedipol-brand { display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; flex-shrink: 0; }
+.fedipol-brand-icon { width: 1.35em; height: 1.35em; flex: none; color: #0d6efd; }
+
 /* Account actions: stable trailing column; room for a future second action. */
 .account-table td { vertical-align: middle; }
 .account-table .account-identity { min-width: 13rem; overflow-wrap: anywhere; }

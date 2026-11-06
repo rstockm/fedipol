@@ -1,6 +1,7 @@
 # Dashboard
 
 Statische Dashboard-Kopie für Cloudron; mit Frontend auf Branch `main` synchron halten.
+Titel und Kopfzeile `Fedipol` mit dekorativem Parlaments-/Statistik-SVG.
 Folgen-Aktionen auch bei Institutionen; Handle-Modal und Statuszeile,
 `js/follow.js` lädt vor `js/ui.js`.
 
