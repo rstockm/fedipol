@@ -654,7 +654,22 @@ footer.fixed-bottom a:hover {
     opacity: 0.6;
     pointer-events: none;
 }
-#followStatus { min-height: 1.2rem; }
+#followStatus:not(:empty) {
+    position: fixed;
+    right: 1rem;
+    bottom: 3rem;
+    z-index: 1050;
+    max-width: min(30rem, calc(100vw - 2rem));
+    padding: 0.8rem 1rem;
+    background: #fff;
+    border: 1px solid #cbd2da;
+    border-radius: 0.65rem;
+    box-shadow: 0 4px 18px #10182825;
+}
+.account-action.is-following { color: #146c43; border-color: #a3cfbb; background: #e9f6ef; }
+.account-action.is-requested { color: #664d03; border-color: #ffe69c; background: #fff8e1; }
+.account-action:disabled { cursor: default; }
+.follow-return-highlight { outline: 3px solid #0d6efd; outline-offset: -3px; }
 
 @media screen and (max-width: 896px) {
     #accountsContainer .table-responsive { margin: 0 !important; overflow: visible; }
