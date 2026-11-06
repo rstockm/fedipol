@@ -70,7 +70,18 @@ test('follow.js: parseOwnHandle validates own handle and derives origin', () => 
 function browser(source, saved = new Map(), search = '') {
     const calls = [];
     const status = { textContent: '', classList: { toggle() {} } };
-    const buttons = [{ disabled: false, classList: { toggle() {} } }];
+    function button(url) {
+        const classes = new Set();
+        return {
+            disabled: false, labels: [{ textContent: '' }, { textContent: '' }], title: '',
+            getAttribute: key => key === 'data-follow-url' ? url : null,
+            setAttribute() {},
+            querySelectorAll() { return this.labels; },
+            querySelector() { return { className: '' }; },
+            classList: { toggle(name, active) { active ? classes.add(name) : classes.delete(name); }, contains: name => classes.has(name) },
+        };
+    }
+    const buttons = [button('https://remote.social/@bob'), button('https://remote.social/@charlie')];
     const location = new URL('https://fedipol.example.org/' + search);
     location.assign = url => { location.assigned = url; };
     const sessionStorage = {
@@ -96,6 +107,7 @@ function browser(source, saved = new Map(), search = '') {
                 : url.endsWith('/token') ? { access_token: 'token' }
                 : url.endsWith('/verify_credentials') ? { id: 'own', acct: 'alice' }
                 : url.includes('/search?') ? [{ id: 'remote', url: new URL(url).searchParams.get('q') }]
+                : url.includes('/following?') ? []
                 : { id: 'remote', following: true, requested: false };
             return { ok: true, status: 200, json: async () => body };
         },
@@ -123,18 +135,19 @@ for (const source of ['../js/follow.js', '../service-app/dashboard/js/follow.js'
         assert.equal(returned.ctx.cleanedUrl, '/');
         assert.equal(first.saved.has('fedipol:oauth-handshake-v1'), false);
         assert.equal(first.saved.has('fedipol:pending-follow-v1'), false);
-        assert.equal(returned.calls.length, 4);
+        assert.equal(returned.calls.length, 5);
         assert.match(returned.calls[2].url, /accounts\/search\?resolve=true/);
         assert.match(returned.calls[3].url, /accounts\/remote\/follow$/);
         assert.equal(returned.calls[3].options.headers.Authorization, 'Bearer token');
         assert.equal(returned.calls[3].options.redirect, 'error');
         await returned.F.follow('https://remote.social/@charlie');
-        assert.equal(returned.calls.length, 6); // kein zweiter Login/Token-Austausch
-        assert.equal(new URL(returned.calls[4].url).searchParams.get('q'), 'https://remote.social/@charlie');
-        assert.equal(returned.buttons[0].disabled, false);
+        assert.equal(returned.calls.length, 7); // kein zweiter Login/Token-Austausch
+        assert.equal(new URL(returned.calls[5].url).searchParams.get('q'), 'https://remote.social/@charlie');
+        assert.equal(returned.buttons[0].labels[0].textContent, 'Folge ich');
         const reload = browser(source, first.saved);
         await reload.F.init();
-        assert.equal(reload.calls.length, 0); // kein Replay
+        assert.equal(reload.calls.length, 1); // nur Status lesen, kein Follow-Replay
+        assert.ok(reload.calls[0].url.includes('/following?'));
     });
 
     test(`${source}: rejected, missing, duplicated or stale OAuth states never execute a pending follow`, async () => {
@@ -207,10 +220,79 @@ for (const source of ['../js/follow.js', '../service-app/dashboard/js/follow.js'
             ? { ok: true, json: async () => ({ id: 'remote', following: false, requested: true }) } : respond(url);
         await pending.F.follow('https://remote.social/@bob');
         assert.equal(pending.status.textContent, 'Folgeanfrage gesendet.');
+        assert.equal(pending.buttons[0].labels[0].textContent, 'Angefragt');
+        assert.equal(pending.buttons[0].disabled, true);
+        const reload = browser(source, saved);
+        await reload.F.init();
+        assert.equal(reload.buttons[0].labels[0].textContent, 'Angefragt');
         pending.ctx.respond = url => url.endsWith('/follow')
             ? { ok: true, json: async () => ({}) } : respond(url);
-        await pending.F.follow('https://remote.social/@bob');
+        await pending.F.follow('https://remote.social/@charlie');
         assert.match(pending.status.textContent, /nicht bestätigt/);
+    });
+
+    test(`${source}: loads existing follows across pages and marks buttons without writing`, async () => {
+        const saved = new Map([['fedipol:follow-session-v1', JSON.stringify({
+            token: 'token', origin: 'https://mastodon.social', clientId: 'c', clientSecret: 's',
+            account: { id: 'own', acct: 'alice' },
+        })]]);
+        const b = browser(source, saved);
+        b.ctx.respond = url => ({ ok: true, status: 200,
+            headers: { get: () => url.includes('max_id') ? null
+                : '<https://mastodon.social/api/v1/accounts/own/following?limit=80&max_id=42>; rel="next"' },
+            json: async () => url.includes('max_id')
+                ? [{ url: 'https://remote.social/@charlie', acct: 'charlie@remote.social' }]
+                : [{ url: 'https://remote.social/@bob', acct: 'bob@remote.social' }],
+        });
+        await b.F.init();
+        assert.equal(b.calls.length, 2);
+        for (const button of b.buttons) {
+            assert.equal(button.labels[0].textContent, 'Folge ich');
+            assert.equal(button.disabled, true);
+        }
+        await b.F.follow('https://remote.social/@bob');
+        assert.equal(b.calls.length, 2); // bereits gefolgt, kein POST
+    });
+
+    test(`${source}: returns to saved dashboard view only after data is ready`, async () => {
+        const first = browser(source);
+        const view = { scrollY: 1900, search: 'bob', party: 'Linke', sortField: 'created_at', sortDirection: 'asc', rowOffset: 150 };
+        first.ctx.window.captureFollowView = () => view;
+        await first.F.follow('https://remote.social/@bob');
+        await first.F.startLogin('alice@mastodon.social');
+        const h = JSON.parse(first.saved.get('fedipol:oauth-handshake-v1'));
+        assert.equal(h.returnView.scrollY, 1900);
+        const next = browser(source, first.saved, `?code=x&state=${h.state}`);
+        const restored = [];
+        next.ctx.window.restoreFollowView = (snapshot, target) => restored.push({ snapshot, target });
+        await next.F.init();
+        assert.equal(restored.length, 0);
+        next.F.dashboardReady();
+        assert.equal(restored.length, 1);
+        assert.equal(restored[0].snapshot.search, 'bob');
+        assert.equal(restored[0].snapshot.sortDirection, 'asc');
+        assert.equal(restored[0].target, 'https://remote.social/@bob');
+        next.F.dashboardReady();
+        assert.equal(restored.length, 1); // einmalige Wiederherstellung
+    });
+
+    test(`${source}: following pagination never sends token to another origin`, async () => {
+        const saved = new Map([['fedipol:follow-session-v1', JSON.stringify({
+            token: 'token', origin: 'https://mastodon.social', clientId: 'c', clientSecret: 's',
+            account: { id: 'own', acct: 'alice' },
+        })]]);
+        const b = browser(source, saved);
+        b.ctx.respond = () => ({ ok: true, headers: {
+            get: () => '<https://evil.social/api/v1/accounts/own/following?max_id=42>; rel="next"',
+        }, json: async () => [] });
+        await b.F.init();
+        assert.equal(b.calls.length, 1);
+        assert.match(b.status.textContent, /nicht vollständig geprüft/);
+        assert.equal(b.buttons[0].disabled, false);
+        b.ctx.respond = () => ({ ok: false, status: 401 });
+        await b.F.init();
+        assert.equal(b.F.isAuthenticated(), false);
+        assert.match(b.status.textContent, /abgelaufen/);
     });
 }
 
@@ -245,7 +327,7 @@ for (const source of uiSources) {
             url: 'https://mastodon.social/@behoerde', recent_posts_count: 5, posts_count: 10,
         });
         assert.match(html, /class="[^"]*follow-action/);
-        assert.doesNotMatch(html, /fediwings-link/); // keine Analyse für Institutionen
+        assert.match(html, /fediwings-link/);
     });
 
     test(`${source}: does not render a follow button for an invalid profile URL`, () => {

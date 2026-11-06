@@ -20,6 +20,11 @@
     var SESSION_KEY = 'fedipol:follow-session-v1';
     var PENDING_FOLLOW_KEY = 'fedipol:pending-follow-v1';
     var TIMEOUT_MS = 12000;
+    var followStates = new Map();
+    var checkingFollowing = false;
+    var dashboardIsReady = false;
+    var returnContext = null;
+    var capturedView = null;
 
     // ------------------------------------------------------------------
     // Zustand
@@ -142,6 +147,7 @@
 
     function clearSession() {
         try { sessionStorage.removeItem(SESSION_KEY); } catch (e) {}
+        followStates.clear();
     }
 
     function saveHandshake(handshake) {
@@ -398,16 +404,127 @@
         return relationship;
     }
 
+    function profileKey(url) {
+        return (acctFromProfileUrl(url) || url || '').toLowerCase();
+    }
+
+    function rememberRelationship(url, relationship) {
+        var state = relationship.following ? 'following' : 'requested';
+        followStates.set(profileKey(url), state);
+        var session = uiState.session || loadSession();
+        if (session) {
+            var requests = new Set(session.requestedTargets || []);
+            if (state === 'requested') requests.add(url);
+            else requests.delete(url);
+            session.requestedTargets = Array.from(requests);
+            try { saveSession(session); } catch (e) {}
+        }
+        refreshButtons();
+    }
+
+    // Die eigene Following-Liste erlaubt vorhandene Follows ohne zusätzlichen
+    // OAuth-Scope und ohne einen Lookup pro Dashboard-Zeile zu erkennen.
+    async function loadFollowing(session) {
+        if (!session.account || !session.account.id) return;
+        checkingFollowing = true;
+        refreshButtons();
+        var path = '/api/v1/accounts/' + encodeURIComponent(session.account.id) + '/following?limit=80';
+        var visited = new Set();
+        try {
+            while (path) {
+                if (visited.has(path) || visited.size >= 100) throw new Error('Zu viele Statusseiten.');
+                visited.add(path);
+                var response = await authorizedFetch(session.origin, session.token, path);
+                if (uiState.session !== session) return; // inzwischen abgemeldet
+                if (response.status === 401) throw new Error('SESSION_EXPIRED');
+                if (!response.ok) throw new Error('Statusabfrage fehlgeschlagen.');
+                var accounts = await response.json();
+                if (!Array.isArray(accounts)) throw new Error('Ungültige Following-Liste.');
+                accounts.forEach(function (account) {
+                    if (account && typeof account.url === 'string') {
+                        followStates.set(profileKey(account.url), 'following');
+                    }
+                    if (account && typeof account.acct === 'string') {
+                        var acct = account.acct.includes('@') ? account.acct
+                            : account.acct + '@' + new URL(session.origin).hostname;
+                        followStates.set(acct.toLowerCase(), 'following');
+                    }
+                });
+                refreshButtons();
+                var link = response.headers && response.headers.get('Link');
+                var next = link && link.match(/<([^>]+)>;\s*rel="next"/);
+                path = null;
+                if (next) {
+                    var url = new URL(next[1], session.origin);
+                    if (url.origin !== session.origin || url.pathname !== '/api/v1/accounts/'
+                        + encodeURIComponent(session.account.id) + '/following') {
+                        throw new Error('Ungültige Status-Pagination.');
+                    }
+                    path = url.pathname + url.search;
+                }
+            }
+        } catch (error) {
+            if (error.message === 'SESSION_EXPIRED') {
+                clearSession();
+                uiState.session = null;
+                statusMessage('Die Verbindung ist abgelaufen. Bitte erneut anmelden.', true);
+            } else {
+                statusMessage('Bestehende Follows konnten nicht vollständig geprüft werden. Bestätigte Follows bleiben markiert.', true);
+            }
+        } finally {
+            checkingFollowing = false;
+            refreshButtons();
+        }
+    }
+
+    function restoreReturnContext() {
+        if (!dashboardIsReady || !returnContext) return;
+        var context = returnContext;
+        returnContext = null;
+        if (typeof window.restoreFollowView === 'function') {
+            window.restoreFollowView(context.view, context.target);
+        }
+    }
+
+    function dashboardReady() {
+        dashboardIsReady = true;
+        refreshButtons();
+        restoreReturnContext();
+    }
+
     // ------------------------------------------------------------------
     // UI-Rückmeldung (an das Dashboard angepasst)
     // ------------------------------------------------------------------
 
     function setButtonsPending(pending) {
         uiState.pending = pending;
+        refreshButtons();
+    }
+
+    function refreshButtons() {
         var buttons = document.querySelectorAll('.follow-action');
         buttons.forEach(function (button) {
-            button.classList.toggle('is-pending', pending);
-            button.disabled = pending;
+            var url = button.getAttribute('data-follow-url');
+            var state = followStates.get(profileKey(url));
+            var session = uiState.session;
+            var own = session && session.account && session.account.url
+                && profileKey(url) === profileKey(session.account.url);
+            var label = own ? 'Dein Account' : state === 'following' ? 'Folge ich'
+                : state === 'requested' ? 'Angefragt' : checkingFollowing ? 'Prüfe …' : 'Folgen';
+            button.querySelectorAll('.action-label-desktop, .action-label-mobile').forEach(function (span) {
+                span.textContent = label;
+            });
+            button.title = state === 'following' ? 'Diesem Account folgst du bereits.'
+                : state === 'requested' ? 'Deine Folgeanfrage wartet auf Bestätigung.'
+                : own ? 'Du bist mit diesem Account angemeldet.' : 'Auf deiner Mastodon-Instanz folgen';
+            button.setAttribute('aria-label', label + ': ' + (acctFromProfileUrl(url) || 'Account'));
+            button.classList.toggle('is-following', state === 'following');
+            button.classList.toggle('is-requested', state === 'requested');
+            button.classList.toggle('is-pending', uiState.pending && !state);
+            button.disabled = Boolean(uiState.pending || uiState.authPending || checkingFollowing || state || own);
+            var icon = button.querySelector('i');
+            if (icon) icon.className = 'fa-solid ' + (state === 'following' ? 'fa-user-check'
+                : state === 'requested' ? 'fa-clock' : 'fa-user-plus');
         });
     }
 
@@ -483,6 +600,7 @@
             acct: parsed.acct,
             createdAt: Date.now(),
             target: pendingFollow,
+            returnView: capturedView,
         });
         setOwnHandle(parsed.acct);
         window.location.assign(buildAuthorizeUrl(origin, client.clientId, pkce.challenge, state));
@@ -536,7 +654,12 @@
     async function init() {
         bindAuthModal();
         var session = loadSession();
-        if (session) uiState.session = session;
+        if (session) {
+            uiState.session = session;
+            (Array.isArray(session.requestedTargets) ? session.requestedTargets : []).forEach(function (url) {
+                if (typeof url === 'string') followStates.set(profileKey(url), 'requested');
+            });
+        }
 
         var params = new URLSearchParams(window.location.search);
         var code = params.get('code');
@@ -551,6 +674,10 @@
             clearHandshake();
             var valid = handshake && state === handshake.state
                 && ['code', 'state', 'error'].every(function (key) { return params.getAll(key).length <= 1; });
+            if (valid) {
+                returnContext = { view: handshake.returnView, target: handshake.target };
+                restoreReturnContext();
+            }
             // Vor jedem Netzaufruf entfernen: kein Replay, keine Weitergabe an Links.
             var clean = new URL(window.location.href);
             ['code', 'state', 'error', 'error_description'].forEach(function (key) { clean.searchParams.delete(key); });
@@ -590,6 +717,7 @@
             setButtonsPending(true);
             try {
                 var relationship = await followAccount(uiState.session, pending);
+                rememberRelationship(pending, relationship);
                 var name = acctFromProfileUrl(pending);
                 statusMessage(relationship.requested ? 'Folgeanfrage gesendet.' : 'Du folgst jetzt ' + name + '.');
                 uiState.lastFollowAccountUrl = pending;
@@ -603,15 +731,24 @@
                 }
             } finally { setButtonsPending(false); }
         }
+        refreshButtons();
+        // Bei abgelehnten/ungültigen Callbacks keine Requests mit einer alten Session.
+        if (uiState.session && (!params.has('state') && !params.has('code') && !params.has('error') || pending)) {
+            await loadFollowing(uiState.session);
+        }
     }
 
     // Der „Folgen“-Button-Handler. Ohne Session startet er die Anmeldung;
     // mit Session folgt er sofort.
     async function follow(accountUrl) {
         if (uiState.pending || uiState.authPending) return;
+        if (followStates.has(profileKey(accountUrl))) return;
         clearStatusMessage();
+        capturedView = typeof window.captureFollowView === 'function'
+            ? window.captureFollowView(accountUrl) : null;
 
         var session = loadSession() || uiState.session;
+        if (session) uiState.session = session;
         if (!session) {
             uiState.lastFollowAccountUrl = accountUrl;
             savePendingFollow(accountUrl);
@@ -626,6 +763,7 @@
         setButtonsPending(true);
         try {
             var relationship = await followAccount(session, accountUrl);
+            rememberRelationship(accountUrl, relationship);
             var n = acctFromProfileUrl(accountUrl);
             statusMessage(relationship.requested ? 'Folgeanfrage gesendet.' : 'Du folgst jetzt ' + n + '.');
             uiState.lastFollowAccountUrl = accountUrl;
@@ -664,6 +802,7 @@
         }
         clearSession();
         uiState.session = null;
+        refreshButtons();
         statusMessage('Verbindung getrennt.');
     }
 
@@ -690,5 +829,6 @@
         parseOwnHandle: parseOwnHandle,
         acctFromProfileUrl: acctFromProfileUrl,
         completeLogin: completeLogin,
+        dashboardReady: dashboardReady,
     };
 })(window);

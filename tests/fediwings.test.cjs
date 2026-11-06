@@ -28,7 +28,7 @@ for (const source of sources) {
         ]) assert.equal(ui.getFediWingsUrl(profile), null);
     });
 
-    test(`${source}: renders a safe action only in person/party rows`, () => {
+    test(`${source}: renders safe analysis actions for people and institutions`, () => {
         const ui = loadUI();
         const account = { name: 'Alice', category: 'Mitglied des Deutschen Bundestages (Linke)',
             url: 'https://mastodon.social/@alice', recent_posts_count: 5, posts_count: 10 };
@@ -44,7 +44,7 @@ for (const source of sources) {
         const identity = html.match(/<td class="account-identity">([\s\S]*?)<\/td>/);
         assert.ok(identity);
         assert.doesNotMatch(identity[1], /fediwings-link/);
-        assert.doesNotMatch(ui.renderAccountRow({ ...account, category: 'Bundesbehörde' }), /fediwings-link/);
+        assert.match(ui.renderAccountRow({ ...account, category: 'Bundesbehörde' }), /fediwings-link/);
         assert.doesNotMatch(ui.renderAccountRow({ ...account, url: 'not a URL' }), /fediwings-link/);
     });
 

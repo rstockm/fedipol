@@ -265,7 +265,7 @@ function renderAccountRow(account) {
     const isAccountBot = accountData?.is_bot || false;
     const isInactive = Number(account.recent_posts_count) === 0;
     const isPartyAccount = hasPartyAffiliation(account.name, account.category, account.url);
-    const fediWingsUrl = isPartyAccount ? getFediWingsUrl(account.url) : null;
+    const fediWingsUrl = getFediWingsUrl(account.url);
     const followAccountUrl = isFollowableAccount(account.url) ? account.url : null;
     
     // Get post counts
@@ -1040,6 +1040,49 @@ function updateFilteredCounts() {
     }
 }
 
+// OAuth-Rückkehr: Ansicht und relative Zeilenposition statt nur absolutes Scrollen.
+function captureFollowView(accountUrl) {
+    const row = Array.from(document.querySelectorAll('tr[data-account-url]'))
+        .find(row => row.getAttribute('data-account-url') === accountUrl);
+    return {
+        search: document.getElementById('accountSearch').value,
+        party: activePartyFilter,
+        sortField: currentSortField,
+        sortDirection: currentSortDirection,
+        scrollY: window.scrollY,
+        rowOffset: row ? row.getBoundingClientRect().top : null,
+    };
+}
+
+function restoreFollowView(view, accountUrl) {
+    if (!view || typeof view !== 'object') view = {};
+    const search = document.getElementById('accountSearch');
+    if (search && typeof view.search === 'string') search.value = view.search.slice(0, 500);
+    if (['created_at', 'posts_count', 'recent_posts_count'].includes(view.sortField)) {
+        currentSortField = view.sortField;
+        // toggleSort wendet Richtung und Header gemeinsam an.
+        currentSortDirection = view.sortField === 'created_at' && view.sortDirection === 'asc' ? 'desc' : 'asc';
+        toggleSort(view.sortField);
+    }
+    applyPartyFilter(typeof view.party === 'string' && Object.hasOwn(partyColorMap, view.party) ? view.party : null);
+    window.requestAnimationFrame(() => {
+        const row = Array.from(document.querySelectorAll('tr[data-account-url]'))
+            .find(row => row.getAttribute('data-account-url') === accountUrl);
+        if (row && row.style.display !== 'none') {
+            const header = document.querySelector('.sticky-header');
+            const minTop = (header ? header.getBoundingClientRect().height : 0) + 20;
+            const offset = Number.isFinite(view.rowOffset) ? Math.max(minTop, Math.min(view.rowOffset, window.innerHeight - 100)) : minTop;
+            window.scrollTo({ top: Math.max(0, window.scrollY + row.getBoundingClientRect().top - offset), behavior: 'instant' });
+            row.classList.add('follow-return-highlight');
+            // Bestätigte Buttons sind disabled: Zeile bleibt als Rückkehrziel fokussierbar.
+            row.setAttribute('tabindex', '-1');
+            row.focus({ preventScroll: true });
+        } else if (Number.isFinite(view.scrollY)) {
+            window.scrollTo({ top: Math.max(0, view.scrollY), behavior: 'instant' });
+        }
+    });
+}
+
 // Initialize when document is ready
 document.addEventListener('DOMContentLoaded', async () => {
     // OAuth muss auch bei nicht verfügbarem Datenexport funktionieren.
@@ -1151,6 +1194,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 window.FediPolFollow.follow(url);
             }
         });
+
+        if (window.FediPolFollow) window.FediPolFollow.dashboardReady();
 
     } catch (error) {
         console.error('Error loading data:', error);
