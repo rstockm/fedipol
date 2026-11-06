@@ -88,8 +88,26 @@ def test_dashboard_category_without_party_has_no_bracket():
 def test_bot_note_heuristics():
     keywords = ["bot", "automatisiert", "mirror"]
     assert is_bot_note("<p>Ich bin ein Mirror</p>", keywords)
-    assert is_bot_note("Vollautomatisiert gepostet", keywords)
+    # "automatisiert" als eigenständiges Wort (Wortgrenzen; Komposita wie
+    # "Vollautomatisiert" zählen nicht länger als Bot-Kennzeichen).
+    assert is_bot_note("Wird automatisiert gepostet", keywords)
+    assert is_bot_note("Dieser Account ist automatisiert", keywords)
     assert not is_bot_note("Persönlicher Account", keywords)
+
+
+def test_bot_note_word_boundaries_avoid_false_positives():
+    keywords = ["bot", "automatisiert", "mirror"]
+    # Teilstrings in Hashtags/Handles/Wörtern sind keine Bot-Kennzeichnung.
+    assert not is_bot_note("Humanistische Demokratin #AfDVerbot jetzt!", keywords)
+    assert not is_bot_note("Betreut durch @depressiveRobot", keywords)
+    assert not is_bot_note("Roboter, Roboterwartung, autonomes Fahren", keywords)
+    assert not is_bot_note("Automatisierungswelten & Botschafterin", keywords)
+
+
+def test_bot_note_case_insensitive_whole_words():
+    keywords = ["bot", "mirror"]
+    assert is_bot_note("Dieser Account ist ein BOT.", keywords)
+    assert is_bot_note("Mirror-Account zur Verifikation", keywords)
 
 
 def test_instance_priority():

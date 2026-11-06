@@ -114,6 +114,21 @@ def test_bot_flag_from_note_keyword(monkeypatch):
     assert result.is_bot is True
 
 
+def test_bot_flag_no_false_positive_for_afdverbot_tag(monkeypatch):
+    # Der Hashtag #AfDVerbot enthaelt zwar die Buchstabenfolge "bot", ist aber
+    # kein Bot-Kennzeichen. (Regression: https://gruene.social/@stefka)
+    lookup = FakeHttpResponse(
+        {"id": "54", "statuses_count": 324, "bot": False,
+         "note": "<p>Humanistische Demokratin #AfDVerbot jetzt!</p>"}
+    )
+    empty = FakeHttpResponse([], headers={"Link": ""})
+    fetch, _ = _fake_fetch([lookup, empty])
+    monkeypatch.setattr(mastodon_module, "fetch", fetch)
+
+    result = _enricher().enrich("https://gruene.social/@stefka")
+    assert result.is_bot is False
+
+
 def test_lookup_404_is_error_not_exception(monkeypatch):
     fetch, _ = _fake_fetch([FakeHttpResponse({}, status=404)])
     monkeypatch.setattr(mastodon_module, "fetch", fetch)

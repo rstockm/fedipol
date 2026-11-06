@@ -104,7 +104,9 @@ def test_health_data_freshness(published_generation):
 def test_dashboard_index_served():
     response = Client().get("/")
     assert response.status_code == 200
-    assert b"Fediverse Activity Tracker" in b"".join(response.streaming_content)
+    body = b"".join(response.streaming_content)
+    assert b"<title>Fedipol</title>" in body
+    assert b"Fediverse Activity Tracker" not in body
 
 
 def test_dashboard_js_served():

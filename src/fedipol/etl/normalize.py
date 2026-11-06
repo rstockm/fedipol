@@ -60,9 +60,17 @@ def strip_html(text: str) -> str:
 
 
 def is_bot_note(note: str, keywords: list[str]) -> bool:
-    """Bot-Heuristik auf Account-Beschreibung, case-insensitive."""
+    """Bot-Heuristik auf Account-Beschreibung, case-insensitive.
+
+    Keywords zählen nur als ganze Wörter (Wortgrenzen), damit Teilstrings
+    innerhalb anderer Wörter keine False Positives erzeugen – z. B. "bot" in
+    "#AfDVerbot" oder "@depressiveRobot".
+    """
     clean = strip_html(note).lower()
-    return any(keyword in clean for keyword in keywords)
+    return any(
+        re.search(r"(?<!\w)" + re.escape(keyword) + r"(?!\w)", clean) is not None
+        for keyword in keywords
+    )
 
 
 def normalize_name(name: str) -> str:

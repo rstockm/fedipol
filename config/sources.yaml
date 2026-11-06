@@ -31,7 +31,9 @@ directory:
 curated_list: config/curated_accounts.md
 
 # Bot-Heuristik: offizielles Mastodon-Bot-Flag ODER Keyword in der
-# Account-Beschreibung (case-insensitive, HTML wird entfernt).
+# Account-Beschreibung (case-insensitive, HTML entfernt). Keywords zaehlen nur
+# als ganze Woerter (Wortgrenzen), damit Teilstrings in Hashtags/Handles/Woertern
+# keine False Positives erzeugen (z. B. "bot" in #AfDVerbot oder @depressiveRobot).
 bot_keywords:
   - unofficial
   - automated
