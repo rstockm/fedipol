@@ -106,7 +106,11 @@ function browser(source, saved = new Map(), search = '') {
             const body = url.endsWith('/apps') ? { client_id: 'client', client_secret: 'secret' }
                 : url.endsWith('/token') ? { access_token: 'token' }
                 : url.endsWith('/verify_credentials') ? { id: 'own', acct: 'alice' }
-                : url.includes('/search?') ? [{ id: 'remote', url: new URL(url).searchParams.get('q') }]
+                // Mastodons accounts/search löst Handles auf, keine Profil-URLs.
+                : url.includes('/search?') ? (() => {
+                    const acct = new URL(url).searchParams.get('q');
+                    return /^[a-z0-9_.-]+@[a-z0-9.-]+$/i.test(acct) ? [{ id: 'remote', acct }] : [];
+                })()
                 : url.includes('/following?') ? []
                 : { id: 'remote', following: true, requested: false };
             return { ok: true, status: 200, json: async () => body };
@@ -142,7 +146,7 @@ for (const source of ['../js/follow.js', '../service-app/dashboard/js/follow.js'
         assert.equal(returned.calls[3].options.redirect, 'error');
         await returned.F.follow('https://remote.social/@charlie');
         assert.equal(returned.calls.length, 7); // kein zweiter Login/Token-Austausch
-        assert.equal(new URL(returned.calls[5].url).searchParams.get('q'), 'https://remote.social/@charlie');
+        assert.equal(new URL(returned.calls[5].url).searchParams.get('q'), 'charlie@remote.social');
         assert.equal(returned.buttons[0].labels[0].textContent, 'Folge ich');
         const reload = browser(source, first.saved);
         await reload.F.init();
@@ -293,6 +297,36 @@ for (const source of ['../js/follow.js', '../service-app/dashboard/js/follow.js'
         await b.F.init();
         assert.equal(b.F.isAuthenticated(), false);
         assert.match(b.status.textContent, /abgelaufen/);
+    });
+
+    test(`${source}: resolves handles on own instance and follows only exact account matches`, async () => {
+        for (const [profile, result, expected] of [
+            ['https://remote.social/users/Bob', { id: 'remote', acct: 'bob@remote.social' }, true],
+            ['https://mastodon.social/@bob', { id: 'local', acct: 'bob' }, true],
+            ['https://remote.social/@bob', { id: 'wrong', acct: 'bob@unrelated.social' }, false],
+        ]) {
+            const b = browser(source, new Map([['fedipol:follow-session-v1', JSON.stringify({
+                token: 'token', origin: 'https://mastodon.social', clientId: 'c', clientSecret: 's',
+            })]]));
+            b.ctx.respond = url => ({ ok: true, status: 200, json: async () => url.includes('/search?')
+                ? [result] : { id: result.id, following: true, requested: false } });
+            await b.F.follow(profile);
+            assert.equal(new URL(b.calls[0].url).searchParams.get('q'), profile.includes('remote.social')
+                ? (profile.includes('Bob') ? 'Bob' : 'bob') + '@remote.social' : 'bob@mastodon.social');
+            assert.equal(b.calls.length, expected ? 2 : 1);
+            if (expected) assert.equal(new URL(b.calls[1].url).pathname, `/api/v1/accounts/${result.id}/follow`);
+        }
+    });
+
+    test(`${source}: rejected account searches report HTTP errors, not missing accounts`, async () => {
+        const b = browser(source, new Map([['fedipol:follow-session-v1', JSON.stringify({
+            token: 'token', origin: 'https://mastodon.social', clientId: 'c', clientSecret: 's',
+        })]]));
+        b.ctx.respond = () => ({ ok: false, status: 403 });
+        await b.F.follow('https://remote.social/@bob');
+        assert.match(b.status.textContent, /403/);
+        assert.doesNotMatch(b.status.textContent, /nicht gefunden/);
+        assert.equal(b.calls.length, 1);
     });
 }
 
