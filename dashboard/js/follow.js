@@ -356,22 +356,29 @@
             throw new Error('Kein gültiger Profil-Link für ' + accountUrl);
         }
 
-        // accounts/lookup kennt nur bereits bekannte Accounts. Die Account-Suche
-        // mit resolve=true löst auch neue Remote-Accounts auf (read:accounts).
+        // accounts/search löst mit resolve=true WebFinger-Handles auf, keine
+        // Profil-URLs (URL-Auflösung gehört zur separaten v2/search-API).
         var lookupResponse = await authorizedFetch(
             session.origin, session.token,
-            '/api/v1/accounts/search?resolve=true&limit=1&q=' + encodeURIComponent(accountUrl)
+            '/api/v1/accounts/search?resolve=true&limit=1&q=' + encodeURIComponent(acct)
         );
         if (lookupResponse.status === 401) {
             throw new Error('SESSION_EXPIRED');
         }
         if (!lookupResponse.ok) {
-            throw new Error('Der Account ' + acct + ' konnte nicht gefunden werden.');
+            throw new Error('Deine Instanz hat die Account-Suche abgelehnt (HTTP '
+                + lookupResponse.status + '). Bitte Berechtigungen prüfen oder später erneut versuchen.');
         }
         var results = await lookupResponse.json();
         var target = Array.isArray(results) && results.find(function (item) {
-            return item && typeof item.id === 'string' && item.id
-                && (item.url === accountUrl || item.acct === acct);
+            if (!item || typeof item.id !== 'string' || !item.id) return false;
+            var resolvedAcct = typeof item.acct === 'string' ? item.acct : '';
+            if (resolvedAcct && !resolvedAcct.includes('@')) {
+                resolvedAcct += '@' + new URL(session.origin).hostname;
+            }
+            return item.url === accountUrl
+                || (acctFromProfileUrl(item.url) || '').toLowerCase() === acct.toLowerCase()
+                || resolvedAcct.toLowerCase() === acct.toLowerCase();
         });
         if (!target) {
             throw new Error('Der Account ' + acct + ' konnte nicht gefunden werden.');
