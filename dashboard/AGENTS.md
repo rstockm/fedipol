@@ -1,6 +1,8 @@
 # Dashboard
 
 Statische Dashboard-Kopie für Cloudron; mit Frontend auf Branch `main` synchron halten.
+Folgen-Aktionen auch bei Institutionen; Handle-Modal und Statuszeile,
+`js/follow.js` lädt vor `js/ui.js`.
 
 | Datei | Zweck |
 | --- | --- |

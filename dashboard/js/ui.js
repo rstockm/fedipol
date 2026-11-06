@@ -237,6 +237,27 @@ function getFediWingsUrl(accountUrl) {
     }
 }
 
+// Prüft, ob eine Profil-URL über die eigene Instanz gefolgt werden kann.
+// Nutzt die Handle-Ableitung aus js/follow.js; lädt es nicht vorhanden (z. B. in
+// Tests ohne Skript/ohne Browser-`window`), bleibt die Ableitung lokal
+// (strict https + @/users-Pfad).
+function isFollowableAccount(accountUrl) {
+    const hasFollow = typeof window !== 'undefined'
+        && window.FediPolFollow
+        && window.FediPolFollow.acctFromProfileUrl;
+    if (hasFollow) {
+        return window.FediPolFollow.acctFromProfileUrl(accountUrl) !== null;
+    }
+    // Fallback ohne abhängiges Skript: gleiche Prüfung wie acctFromProfileUrl
+    try {
+        const url = new URL(accountUrl);
+        if (url.protocol !== 'https:' || url.username || url.password || url.port || url.search || url.hash) return false;
+        return /^\/(?:@|users\/)([a-z0-9_][a-z0-9_.-]{0,63})\/?$/i.test(url.pathname);
+    } catch (e) {
+        return false;
+    }
+}
+
 // Function to render a single account row
 function renderAccountRow(account) {
     const partyClass = getPartyClass(account.name, account.category, account.url);
@@ -245,6 +266,7 @@ function renderAccountRow(account) {
     const isInactive = Number(account.recent_posts_count) === 0;
     const isPartyAccount = hasPartyAffiliation(account.name, account.category, account.url);
     const fediWingsUrl = isPartyAccount ? getFediWingsUrl(account.url) : null;
+    const followAccountUrl = isFollowableAccount(account.url) ? account.url : null;
     
     // Get post counts
     const posts_count = Number(account.posts_count) || 0;
@@ -296,15 +318,19 @@ function renderAccountRow(account) {
                     </div>
                 </div>
             </td>
-            ${isPartyAccount ? `<td class="account-actions-cell">
+            <td class="account-actions-cell">
                 <div class="account-actions">
                     ${fediWingsUrl ? `<a class="account-action fediwings-link" href="${fediWingsUrl.replaceAll('&', '&amp;')}" target="_blank" rel="noopener noreferrer" aria-label="Reichweite in FediWings analysieren (neuer Tab)" title="Reichweite in FediWings analysieren · neuer Tab">
                         <i class="fa-solid fa-chart-simple" aria-hidden="true"></i>
                         <span class="action-label-desktop">Analyse</span><span class="action-label-mobile">In FediWings analysieren</span>
                         <i class="fa-solid fa-arrow-up-right-from-square action-external" aria-hidden="true"></i>
                     </a>` : ''}
+                    ${followAccountUrl ? `<button type="button" class="account-action follow-action" data-follow-url="${followAccountUrl.replaceAll('&', '&amp;')}" aria-label="Auf deiner Mastodon-Instanz folgen" title="Auf deiner Mastodon-Instanz folgen">
+                        <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+                        <span class="action-label-desktop">Folgen</span><span class="action-label-mobile">Folgen</span>
+                    </button>` : ''}
                 </div>
-            </td>` : ''}
+            </td>
         </tr>
     `;
 }
@@ -400,6 +426,7 @@ function renderAccounts(accounts) {
                 </small>
             </div>
         </th>
+        <th class="account-actions-header" scope="col">Aktionen</th>
     `;
     institutionsTbody.innerHTML = institutionAccounts.map(account => renderAccountRow(account)).join('');
 
@@ -1015,6 +1042,13 @@ function updateFilteredCounts() {
 
 // Initialize when document is ready
 document.addEventListener('DOMContentLoaded', async () => {
+    // OAuth muss auch bei nicht verfügbarem Datenexport funktionieren.
+    if (window.FediPolFollow) {
+        window.FediPolFollow.init().catch(error => {
+            const status = document.getElementById('followStatus');
+            if (status) status.textContent = error.message;
+        });
+    }
     try {
         // Load fedipol data with cache buster
         // Auf GitHub Pages kommt der Export von der Cloudron-App (CORS,
@@ -1104,6 +1138,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                 filterTables();
         });
         }
+
+        // „Folgen“-Buttons: delegierter Klick-Handler auf dem Dokument, damit auch
+        // nach erneutem Rendern (Sortierung/Filter) alle Buttons funktionieren.
+        document.addEventListener('click', (event) => {
+            const button = event.target.closest('.follow-action');
+            if (!button) return;
+            const url = button.getAttribute('data-follow-url');
+            if (!url) return;
+            if (typeof window.FediPolFollow !== 'undefined' && window.FediPolFollow.follow) {
+                event.preventDefault();
+                window.FediPolFollow.follow(url);
+            }
+        });
 
     } catch (error) {
         console.error('Error loading data:', error);
