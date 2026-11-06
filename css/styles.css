@@ -645,6 +645,17 @@ footer.fixed-bottom a:hover {
 .action-label-mobile, .posts-count-label { display: none; }
 @media (pointer: coarse) { .account-action { min-height: 44px; } }
 
+/* „Folgen“-Button (button-Element) erbt .account-action-Styling */
+.account-action.follow-action {
+    font-family: inherit;
+    cursor: pointer;
+}
+.account-action.is-pending {
+    opacity: 0.6;
+    pointer-events: none;
+}
+#followStatus { min-height: 1.2rem; }
+
 @media screen and (max-width: 896px) {
     #accountsContainer .table-responsive { margin: 0 !important; overflow: visible; }
     #accountsContainer .account-table { display: block; width: 100%; }

@@ -229,6 +229,12 @@
     <!-- Matomo -->
 <script>
   var _paq = window._paq = window._paq || [];
+  // OAuth-Codes und State dürfen nicht an das Analytics-System gehen.
+  var trackingUrl = new URL(window.location.href);
+  ['code', 'state', 'error', 'error_description'].forEach(function (key) {
+    trackingUrl.searchParams.delete(key);
+  });
+  _paq.push(['setCustomUrl', trackingUrl.href]);
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
@@ -276,6 +282,7 @@
 
     <div class="container main-content">
         <div id="settingsStatus"></div>
+        <div id="followStatus" class="small my-2" role="status" aria-live="polite"></div>
 
         <!-- Party Distribution -->
         <div class="card mb-4">
@@ -352,6 +359,7 @@
                                     <th>Account</th>
                                     <th>Startdatum</th>
                                     <th>Posts</th>
+                                    <th class="account-actions-header" scope="col">Aktionen</th>
                                 </tr>
                             </thead>
                             <tbody id="institutionsTableBody"></tbody>
@@ -397,9 +405,42 @@
         </div>
     </div>
 
+    <!-- Folgen-Anmeldung über die eigene Mastodon-Instanz -->
+    <div class="modal fade" id="followAuthModal" tabindex="-1" aria-labelledby="followAuthModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="followAuthForm">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="followAuthModalLabel">Auf deiner Mastodon-Instanz folgen</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="small text-muted mb-3">
+                            Um diese Accounts zu folgen, verbindest du kurz deine eigene Mastodon-Instanz.
+                            Du gibst dabei nur an, von welchem Account gefolgt werden soll (einmalige
+                            Anmeldung, gültig für diese Browser-Sitzung). Der Zugriff startet über
+                            deine Instanz – kein Passwort wird hier gespeichert.
+                        </p>
+                        <div class="mb-3">
+                            <label for="followAuthHandle" class="form-label">Dein Handle</label>
+                            <input type="text" class="form-control" id="followAuthHandle" placeholder="z. B. @du@instanz.de" autocomplete="username" required>
+                            <div class="form-text">Beispiel: <code>@name@mastodon.social</code></div>
+                        </div>
+                        <div id="followAuthError" class="small text-danger" role="alert"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                        <button type="submit" class="btn btn-primary" id="followAuthSubmit">Verbinden</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+    <script src="js/follow.js"></script>
     <script src="js/ui.js"></script>
     <footer class="text-muted small py-2 border-top fixed-bottom bg-white">
         Daten von <a href="https://rstockm.github.io/fedipol/info.html" target="_blank">Wikidata</a> 
