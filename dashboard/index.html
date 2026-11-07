@@ -18,6 +18,7 @@
     <script src="js/de.js"></script>
     <script src="js/en.js"></script>
     <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
     
     <style>
         /* Kumuliertes, gestapeltes Histogramm der Accounts im Zeitverlauf */
@@ -34,7 +35,7 @@
         }
         .cumulative-chart text {
             font-size: 10px;
-            fill: #6c757d;
+            fill: var(--app-text-muted);
         }
         .cumulative-chart line {
             stroke-width: 1;
@@ -59,8 +60,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: var(--app-surface);
+            box-shadow: 0 2px 4px var(--app-shadow-soft);
             padding: 1rem 0;
         }
         /* Add padding to main content to prevent it from appearing under the sticky header */
@@ -91,7 +92,7 @@
         .party-segment.active {
             opacity: 1;
             transform: scaleY(1.2);
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            box-shadow: 0 0 10px var(--app-glow);
             z-index: 1;
             position: relative;
         }
@@ -106,10 +107,10 @@
             margin: 1px;
         }
         .party-legend-item:hover {
-            background-color: rgba(0,0,0,0.05);
+            background-color: var(--app-tint-hover);
         }
         .party-legend-item.active {
-            background-color: rgba(0,0,0,0.1);
+            background-color: var(--app-tint-active);
             font-weight: bold;
         }
         .party-color {
@@ -127,7 +128,7 @@
         #resetFilter {
             display: none;
             font-size: 0.9em;
-            color: #666;
+            color: var(--app-text-soft);
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -150,7 +151,7 @@
             position: relative;
             width: 100%;
             height: 60px;
-            background-color: #f8f9fa;
+            background-color: var(--app-surface-muted);
             border-radius: 4px;
             overflow: visible;
             margin-bottom: 20px;
@@ -174,7 +175,7 @@
             width: 10px;
             height: 10px;
             z-index: 10;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 5px var(--app-glow);
         }
 
         .timeline-marker.is-bot {
@@ -224,7 +225,7 @@
             margin-top: 0.5rem;
             padding: 0 2px;
             font-size: 0.85em;
-            color: #666;
+            color: var(--app-text-soft);
             display: flex;
             justify-content: space-between;
         }
@@ -256,7 +257,7 @@
     <!-- Sticky Header -->
     <div class="sticky-header">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-items-center header-row">
                 <h1 class="h3 mb-0 fedipol-brand">
                     <svg class="fedipol-brand-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
                         <path d="M4 12 16 5l12 7H4Zm1 16h22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -287,10 +288,12 @@
                         <span class="btn-text d-none d-md-inline">Info</span>
                     </a>
                 </div>
-                <select class="form-select language-switch" data-language-switch aria-label="Sprache">
-                    <option value="de" lang="de">DE</option>
-                    <option value="en" lang="en">EN</option>
-                </select>
+                <button type="button" class="btn btn-outline-primary" data-theme-switch
+                        title="Farbschema: automatisch (hell/dunkel)" aria-label="Farbschema: automatisch (hell/dunkel)">
+                    <i class="bi bi-circle-half" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="btn btn-outline-primary language-switch" data-language-switch
+                        aria-label="Sprache: Deutsch. Zu Englisch wechseln." title="Sprache: Deutsch. Zu Englisch wechseln.">DE</button>
                 </div>
             </div>
         </div>
@@ -459,7 +462,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
     <script src="js/follow.js"></script>
     <script src="js/ui.js"></script>
-    <footer class="text-muted small py-2 border-top fixed-bottom bg-white">
+    <footer class="text-muted small py-2 border-top fixed-bottom" style="background-color: var(--app-surface)">
         Daten von <a href="https://rstockm.github.io/fedipol/info.html" target="_blank">Wikidata</a> 
         (<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de" target="_blank">CC BY-SA 4.0</a>)
         | von <a href="https://chaos.social/@rstockm" target="_blank">Ralf Stockmann</a>

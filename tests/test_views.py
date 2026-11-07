@@ -114,11 +114,15 @@ def test_dashboard_index_served():
     body = b"".join(response.streaming_content)
     assert b"<title>Fedipol</title>" in body
     assert b"Fediverse Activity Tracker" not in body
+    assert b'js/theme.js' in body
+    assert b'btn btn-outline-primary language-switch' in body
 
 
-def test_dashboard_js_served():
-    response = Client().get("/js/ui.js")
+@pytest.mark.parametrize("asset", ["ui.js", "theme.js", "i18n.js", "en.js"])
+def test_dashboard_js_served(asset):
+    response = Client().get(f"/js/{asset}")
     assert response.status_code == 200
+    assert "javascript" in response["Content-Type"]
 
 
 def test_dashboard_rejects_unknown_and_traversal():

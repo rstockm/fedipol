@@ -6,4 +6,4 @@ mobile Datumspräfixe und Ladeanzeige folgen `html[lang]`.
 
 | Datei | Zweck |
 | --- | --- |
-| `styles.css` | Synchron mit `main:css/styles.css`; Aktionen mit Fokus-/Folgen-Wartezustand, Follow-/Anfragebestätigung, viewportfeste Statusmeldung und OAuth-Rückkehrmarkierung; unter 897 px Account-Karten mit 44-px-Aktionen; Institutionen behalten Tabellenlayout mit Analyse-/Folgen-Spalte. |
+| `styles.css` | Synchron mit `main:da44c22`; Hell-/Dunkel-Tokens für Flächen, Texte, Diagramme und Akzente; dunkle Parteifarben via RGB-Tokens aufgehellt; DE/EN-Outline-Button, mobiler Header-Umbruch und 44-px-Buttons; Aktionen mit Fokus-/Folgen-Wartezustand, Follow-/Anfragebestätigung, viewportfeste Statusmeldung und OAuth-Rückkehrmarkierung; unter 897 px Account-Karten; Institutionen behalten Tabellenlayout. |

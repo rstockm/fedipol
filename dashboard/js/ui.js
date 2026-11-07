@@ -13,18 +13,18 @@ function uiLocale() {
 // Color mapping for parties
 const partyColorMap = {
     'SPD': 'rgba(255, 0, 0, 1.0)',
-    'CDU': 'rgba(0, 0, 0, 1.0)',
-    'CSU': 'rgba(0, 0, 0, 1.0)',
+    'CDU': 'rgba(var(--party-union-rgb), 1.0)',
+    'CSU': 'rgba(var(--party-union-rgb), 1.0)',
     'Grüne': 'rgba(67, 176, 42, 1.0)',
     'FDP': 'rgba(255, 237, 0, 1.0)',
-    'Linke': 'rgba(178, 0, 178, 1.0)',
+    'Linke': 'rgba(var(--party-linke-rgb), 1.0)',
     'AfD': 'rgba(0, 158, 224, 1.0)',
     'Piraten': 'rgba(255, 165, 0, 1.0)',
-    'Volt': 'rgba(128, 0, 128, 1.0)',
+    'Volt': 'rgba(var(--party-volt-rgb), 1.0)',
     'Die PARTEI': 'rgba(0, 255, 255, 1.0)',
-    'Freie Wähler': 'rgba(0, 0, 139, 1.0)',
-    'DKP': 'rgba(180, 0, 0, 1.0)',
-    'BSW': 'rgba(140, 0, 0, 1.0)',
+    'Freie Wähler': 'rgba(var(--party-fw-rgb), 1.0)',
+    'DKP': 'rgba(var(--party-dkp-rgb), 1.0)',
+    'BSW': 'rgba(var(--party-bsw-rgb), 1.0)',
     'ÖDP': 'rgba(255, 140, 0, 1.0)',
     'Violetten': 'rgba(147, 112, 219, 1.0)',
     'Fraktionslos': 'rgba(128, 128, 128, 1.0)'
@@ -679,7 +679,7 @@ function renderCumulativeHistogram() {
     // Rasterlinien und Y-Beschriftung
     for (let t = 0; t <= yTop; t += tickStep) {
         const y = yOf(t);
-        parts.push(`<line x1="${M.left}" y1="${y.toFixed(2)}" x2="${W - M.right}" y2="${y.toFixed(2)}" stroke="#e9ecef"/>`);
+        parts.push(`<line class="chart-grid" x1="${M.left}" y1="${y.toFixed(2)}" x2="${W - M.right}" y2="${y.toFixed(2)}"/>`);
         parts.push(`<text x="${M.left - 6}" y="${(y + 3).toFixed(2)}" text-anchor="end">${t}</text>`);
     }
 
@@ -688,7 +688,7 @@ function renderCumulativeHistogram() {
         const mi = firstMonth + i;
         if (mi % 12 === 0) {
             const x = (M.left + i * band).toFixed(2);
-            parts.push(`<line x1="${x}" y1="${M.top}" x2="${x}" y2="${M.top + plotH}" stroke="#f1f3f5"/>`);
+            parts.push(`<line class="chart-grid-soft" x1="${x}" y1="${M.top}" x2="${x}" y2="${M.top + plotH}"/>`);
             parts.push(`<text x="${Number(x) + 3}" y="${H - 6}">${Math.floor(mi / 12)}</text>`);
         }
     }

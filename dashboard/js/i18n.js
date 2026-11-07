@@ -108,7 +108,12 @@
         if (!active) return;
         observer.disconnect();
         localize(document.documentElement);
-        document.querySelectorAll('[data-language-switch]').forEach(function (select) { select.value = locale; });
+        document.querySelectorAll('[data-language-switch]').forEach(function (button) {
+            button.textContent = locale.toUpperCase();
+            var label = msg(locale === 'de' ? 'Sprache: Deutsch. Zu Englisch wechseln.' : 'Sprache: Englisch. Zu Deutsch wechseln.');
+            button.setAttribute('aria-label', label);
+            button.setAttribute('title', label);
+        });
         observe();
     }
     function setLocale(next) {
@@ -134,8 +139,8 @@
             });
             observe();
         });
-        document.querySelectorAll('[data-language-switch]').forEach(function (select) {
-            select.addEventListener('change', function () { setLocale(select.value); });
+        document.querySelectorAll('[data-language-switch]').forEach(function (button) {
+            button.addEventListener('click', function () { setLocale(locale === 'de' ? 'en' : 'de'); });
         });
         apply();
     }
