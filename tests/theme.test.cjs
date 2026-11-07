@@ -6,13 +6,14 @@ const path = require('node:path');
 
 const STORAGE_KEY = 'fedipol:theme-v1';
 
-function theme({ stored = null, blocked = false, systemDark = false } = {}) {
+function theme({ stored = null, blocked = false, systemDark = false, mediaApi = 'modern' } = {}) {
     const saved = new Map(stored ? [[STORAGE_KEY, stored]] : []);
     const media = { matches: systemDark, listeners: [] };
     media.addEventListener = (type, callback) => {
         if (type === 'change') media.listeners.push(callback);
     };
     media.addListener = callback => media.listeners.push(callback);
+    if (mediaApi === 'legacy') delete media.addEventListener;
     media.dispatch = () => media.listeners.forEach(callback => callback());
     const buttons = [
         {
@@ -26,6 +27,7 @@ function theme({ stored = null, blocked = false, systemDark = false } = {}) {
     ];
     const html = { dataset: {} };
     let domReady = null;
+    const events = {};
     const context = vm.createContext({
         localStorage: {
             getItem: key => { if (blocked) throw Error('blocked'); return saved.get(key); },
@@ -37,11 +39,47 @@ function theme({ stored = null, blocked = false, systemDark = false } = {}) {
             addEventListener(type, callback) { if (type === 'DOMContentLoaded') domReady = callback; },
             querySelectorAll: () => buttons,
         },
-        window: { matchMedia: () => media },
+        window: {
+            matchMedia: mediaApi === 'missing' ? undefined : () => media,
+            addEventListener(type, callback) { events[type] = callback; },
+        },
     });
     vm.runInContext(fs.readFileSync(path.join(__dirname, '../js/theme.js'), 'utf8'), context);
-    return { api: context.window.FedipolTheme, saved, media, html, buttons, domReady };
+    return { api: context.window.FedipolTheme, saved, media, html, buttons, domReady, events };
 }
+
+test('theme stays in sync across tabs and back/forward cache restores', () => {
+    const state = theme();
+    state.domReady();
+    state.saved.set(STORAGE_KEY, 'dark');
+    state.events.storage({ key: 'unrelated' });
+    assert.equal(state.api.currentMode(), 'auto');
+    state.events.storage({ key: STORAGE_KEY });
+    assert.equal(state.html.dataset.bsTheme, 'dark');
+    state.saved.set(STORAGE_KEY, 'light');
+    state.events.pageshow({ persisted: true });
+    assert.equal(state.html.dataset.bsTheme, 'light');
+    state.saved.clear();
+    state.events.storage({ key: null });
+    assert.equal(state.api.currentMode(), 'auto');
+    const blocked = theme({ blocked: true });
+    blocked.api.setMode('dark');
+    blocked.events.pageshow({ persisted: true });
+    assert.equal(blocked.api.currentMode(), 'dark');
+});
+
+test('missing and legacy matchMedia APIs degrade gracefully', () => {
+    const missing = theme({ mediaApi: 'missing' });
+    missing.domReady();
+    assert.equal(missing.html.dataset.bsTheme, 'light');
+    missing.api.setMode('dark');
+    assert.equal(missing.html.dataset.bsTheme, 'dark');
+    const legacy = theme({ mediaApi: 'legacy' });
+    legacy.domReady();
+    legacy.media.matches = true;
+    legacy.media.dispatch();
+    assert.equal(legacy.html.dataset.bsTheme, 'dark');
+});
 
 test('theme follows saved choice over system preference, auto is the fallback', () => {
     assert.equal(theme({ systemDark: false }).api.currentMode(), 'auto');
@@ -109,10 +147,20 @@ test('service-app worktree mirrors the theme files when present', { skip: !fs.ex
         assert.equal(fs.readFileSync(path.join(__dirname, '..', file), 'utf8'),
             fs.readFileSync(path.join(__dirname, '../service-app/dashboard', file), 'utf8'));
     }
-    for (const file of ['theme.js']) {
-        assert.equal(fs.readFileSync(path.join(__dirname, '../js', file), 'utf8'),
-            fs.readFileSync(path.join(__dirname, '../service-app/dashboard/js', file), 'utf8'));
+    for (const file of ['css/styles.css', 'js/theme.js', 'js/ui.js', 'js/en.js', 'js/i18n.js']) {
+        assert.equal(fs.readFileSync(path.join(__dirname, '..', file), 'utf8'),
+            fs.readFileSync(path.join(__dirname, '../service-app/dashboard', file), 'utf8'));
     }
+});
+
+test('dark charts and header controls use contrast-aware colors', () => {
+    const css = fs.readFileSync(path.join(__dirname, '../css/styles.css'), 'utf8');
+    const ui = fs.readFileSync(path.join(__dirname, '../js/ui.js'), 'utf8');
+    assert.match(ui, /'CDU': 'rgba\(var\(--party-union-rgb\)/);
+    assert.match(ui, /'CSU': 'rgba\(var\(--party-union-rgb\)/);
+    assert.match(css, /--party-union-rgb: 173, 181, 189/);
+    assert.match(css, /--bs-btn-color: var\(--app-primary\)/);
+    assert.match(css, /\.sticky-header \.header-row \{ flex-wrap: wrap !important;/);
 });
 
 test('English catalog verifies the theme labels', () => {

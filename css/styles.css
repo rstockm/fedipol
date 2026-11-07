@@ -3,6 +3,14 @@
 :root,
 [data-bs-theme="light"] {
     --party-opacity: 0.15;  /* Basis-Transparenz, leicht zu ändern */
+    --party-union-rgb: 0, 0, 0;
+    --party-linke-rgb: 178, 0, 178;
+    --party-volt-rgb: 128, 0, 128;
+    --party-fw-rgb: 0, 0, 139;
+    --party-dkp-rgb: 180, 0, 0;
+    --party-bsw-rgb: 140, 0, 0;
+    --app-primary: #0d6efd;
+    --app-primary-contrast: #ffffff;
 
     /* App-Flächen und Schriften */
     --app-surface: #ffffff;            /* Sticky-Header, Statuskarten */
@@ -54,6 +62,14 @@
 
 [data-bs-theme="dark"] {
     --party-opacity: 0.22;  /* etwas mehr Opazität gegen dunklen Grund */
+    --party-union-rgb: 173, 181, 189;
+    --party-linke-rgb: 224, 102, 224;
+    --party-volt-rgb: 192, 112, 208;
+    --party-fw-rgb: 128, 144, 240;
+    --party-dkp-rgb: 240, 96, 96;
+    --party-bsw-rgb: 208, 112, 128;
+    --app-primary: #6ea8fe;
+    --app-primary-contrast: #052c65;
 
     --app-surface: #212529;
     --app-surface-muted: #2b3035;
@@ -319,7 +335,7 @@ tr.is-bot:hover {
 }
 
 #resetFilter:hover {
-    color: #0d6efd;
+    color: var(--app-primary);
 }
 
 #resetFilter.visible {
@@ -664,7 +680,7 @@ footer {
 }
 
 footer a {
-    color: #0d6efd;
+    color: var(--app-primary);
     text-decoration: none;
 }
 
@@ -681,7 +697,7 @@ footer.fixed-bottom {
 }
 
 footer.fixed-bottom a {
-    color: #0d6efd !important;
+    color: var(--app-primary) !important;
     text-decoration: none;
 }
 
@@ -711,7 +727,17 @@ footer.fixed-bottom a:hover {
 
 .fedipol-brand { display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; flex-shrink: 0; }
 .header-controls { display: flex; align-items: center; gap: 0.5rem; }
-.language-switch { width: auto; min-width: 4.4rem; font-size: 0.875rem; padding-left: 0.5rem; }
+.language-switch { min-width: 2.75rem; }
+.header-controls .btn-outline-primary {
+    --bs-btn-color: var(--app-primary);
+    --bs-btn-border-color: var(--app-primary);
+    --bs-btn-hover-color: var(--app-primary-contrast);
+    --bs-btn-hover-bg: var(--app-primary);
+    --bs-btn-hover-border-color: var(--app-primary);
+    --bs-btn-active-color: var(--app-primary-contrast);
+    --bs-btn-active-bg: var(--app-primary);
+    --bs-btn-active-border-color: var(--app-primary);
+}
 html[lang="en"] .brand-country::after { content: " Germany"; }
 html[lang="en"] .loading::after { content: "Loading..."; }
 @media (max-width: 1199px) {
@@ -721,13 +747,13 @@ html[lang="en"] .loading::after { content: "Loading..."; }
     .sticky-header .container { padding-left: 0.5rem; padding-right: 0.5rem; }
     .fedipol-brand { font-size: 1.15rem; gap: 0.25rem; }
     .header-controls { gap: 0.25rem; }
-    .header-controls .btn { padding-left: 0.35rem; padding-right: 0.35rem; }
-    .header-controls .language-switch { min-width: 3.6rem; width: 3.8rem; padding-right: 1.4rem; }
-    .info-header { flex-wrap: wrap; gap: 0.75rem; }
+    .header-controls .btn { padding-left: 0.35rem; padding-right: 0.35rem; min-height: 44px; }
+    .sticky-header .header-row { flex-wrap: wrap !important; gap: 0.5rem; }
+    .header-controls { margin-left: auto; }
     #accountsContainer .card-header { flex-wrap: wrap; gap: 0.5rem; }
     .main-content > .card > .card-header { flex-wrap: wrap; gap: 0.5rem; }
 }
-.fedipol-brand-icon { width: 1.35em; height: 1.35em; flex: none; color: #0d6efd; }
+.fedipol-brand-icon { width: 1.35em; height: 1.35em; flex: none; color: var(--app-primary); }
 
 /* Account actions: stable trailing column; room for a future second action. */
 .account-table td { vertical-align: middle; }
@@ -832,9 +858,6 @@ html[lang="en"] .loading::after { content: "Loading..."; }
     #accountsTableBody .action-label-mobile { display: inline; }
     #accountsTableBody .account-actions-cell:has(.account-actions:empty) { display: none !important; }
 }
-
-/* Theme switch: Auto → Hell → Dunkel; Bezeichnung setzt js/theme.js (i18n übersetzt). */
-.theme-switch { width: auto; }
 
 /* Kumulatives Histogramm: Gitterlinien über Variablen hell/dunkel gefärbt. */
 .cumulative-chart .chart-grid { stroke: var(--app-grid-line); }

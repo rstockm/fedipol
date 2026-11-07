@@ -6,20 +6,49 @@ const path = require('node:path');
 
 function language({ stored, browser = 'de-DE', blocked = false } = {}) {
     const saved = new Map(stored ? [['fedipol:locale-v1', stored]] : []);
+    let ready;
+    const button = {
+        textContent: 'DE', nodeType: 1, childNodes: [],
+        attributes: {},
+        setAttribute(key, value) { this.attributes[key] = value; },
+        matches: () => false, hasAttribute: () => false,
+        addEventListener(type, callback) { this[type] = callback; },
+    };
     const context = vm.createContext({
         navigator: { language: browser },
         localStorage: {
             getItem: key => { if (blocked) throw Error('blocked'); return saved.get(key); },
             setItem: (key, value) => { if (blocked) throw Error('blocked'); saved.set(key, value); },
         },
-        document: { documentElement: { lang: 'de' }, addEventListener() {}, readyState: 'loading' },
+        document: {
+            documentElement: { lang: 'de', nodeType: 1, childNodes: [button], matches: () => false, hasAttribute: () => false },
+            addEventListener(type, callback) { if (type === 'DOMContentLoaded') ready = callback; },
+            querySelectorAll: () => [button], readyState: 'loading',
+        },
+        MutationObserver: class { observe() {} disconnect() {} },
         window: {},
     });
     for (const file of ['de.js', 'en.js', 'i18n.js']) {
         vm.runInContext(fs.readFileSync(path.join(__dirname, '../js/', file), 'utf8'), context);
     }
-    return { api: context.window.FedipolI18n, saved, context };
+    return { api: context.window.FedipolI18n, saved, context, button, ready };
 }
+
+test('language button shows current locale and toggles DE/EN with persistence', () => {
+    const { api, saved, button, ready } = language({ browser: 'en-GB' });
+    ready();
+    assert.equal(button.textContent, 'EN');
+    assert.equal(button.attributes['aria-label'], 'Language: English. Switch to German.');
+    button.click();
+    assert.equal(api.currentLocale(), 'de');
+    assert.equal(button.textContent, 'DE');
+    assert.equal(button.attributes['aria-label'], 'Sprache: Deutsch. Zu Englisch wechseln.');
+    assert.equal(saved.get('fedipol:locale-v1'), 'de');
+    button.click();
+    assert.equal(button.textContent, 'EN');
+    api.setLocale('de');
+    assert.equal(button.textContent, 'DE');
+});
 
 test('locale selection matches FediWings: saved choice, browser hint, German fallback', () => {
     assert.equal(language({ stored: 'de', browser: 'en-GB' }).api.currentLocale(), 'de');
@@ -54,18 +83,22 @@ test('translation catalogs cover identical keys and placeholders', () => {
     }
 });
 
-test('both pages load shared catalogs and offer a language switch; dashboard copies match', () => {
+test('both pages load shared catalogs and offer an outline language button', () => {
     for (const file of ['index.html', 'info.html']) {
         const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
         assert.match(html, /data-language-switch/);
+        assert.match(html, /<button[^>]*class="btn btn-outline-primary language-switch"[^>]*data-language-switch/);
+        assert.doesNotMatch(html, /<select[^>]*data-language-switch/);
         for (const script of ['de.js', 'en.js', 'i18n.js']) assert.ok(html.includes(`js/${script}`));
-        assert.equal(html, fs.readFileSync(path.join(__dirname, '../service-app/dashboard', file), 'utf8'));
     }
     assert.match(fs.readFileSync(path.join(__dirname, '../info.html'), 'utf8'), /ausschließlich.*deutsche/);
     assert.match(language().context.window.FedipolMessages.en['scope.text'], /exclusively.*German/);
-    for (const file of ['de.js', 'en.js', 'i18n.js', 'ui.js']) {
-        assert.equal(fs.readFileSync(path.join(__dirname, '../js', file), 'utf8'),
-            fs.readFileSync(path.join(__dirname, '../service-app/dashboard/js', file), 'utf8'));
+});
+
+test('service dashboard mirrors language files when worktree exists', { skip: !fs.existsSync(path.join(__dirname, '../service-app/dashboard')) }, () => {
+    for (const file of ['index.html', 'info.html', 'js/de.js', 'js/en.js', 'js/i18n.js', 'js/ui.js']) {
+        assert.equal(fs.readFileSync(path.join(__dirname, '..', file), 'utf8'),
+            fs.readFileSync(path.join(__dirname, '../service-app/dashboard', file), 'utf8'));
     }
 });
 
@@ -88,7 +121,7 @@ test('generated messages translate without altering values, source data or marku
 });
 
 test('join dates use English locale when selected and keep UTC dates stable', () => {
-    for (const file of ['../js/ui.js', '../service-app/dashboard/js/ui.js']) {
+    for (const file of ['../js/ui.js', '../service-app/dashboard/js/ui.js'].filter(file => fs.existsSync(path.join(__dirname, file)))) {
         const context = vm.createContext({
             window: { FedipolI18n: { currentLocale: () => 'en' } },
             document: { addEventListener() {} }, URL,

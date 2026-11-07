@@ -8,6 +8,9 @@ Farbschema: eigene `--app-*`-Variablen in `:root`/`[data-bs-theme="light"]`, Dun
 unter `[data-bs-theme="dark"]`; Bootstrap 5.3 setzt das Attribut über `js/theme.js`.
 Parteifarben bleiben Alpha-Overlays (`--party-opacity` dunkel leicht erhöht);
 Histogramm-Gitter und Bot-Aufhellung folgen ebenfalls Variablen.
+Diagramme nutzen RGB-Tokens für dunkle Parteifarben; Dunkelmodus hellt sie auf,
+ohne Neurendering oder Verlust der Alpha-Abstufung. Header-/Footer-Akzente folgen
+`--app-primary`; Sprachbutton nutzt Outline-Design; Header erlaubt mobilen Umbruch.
 
 | Datei | Zweck |
 | --- | --- |

@@ -13,15 +13,15 @@
     var icons = { auto: 'bi bi-circle-half', light: 'bi bi-sun-fill', dark: 'bi bi-moon-stars-fill' };
     var systemQuery = global.matchMedia ? global.matchMedia('(prefers-color-scheme: dark)') : null;
 
-    function initialMode() {
+    function readMode(fallback) {
         try {
             var saved = localStorage.getItem(storageKey);
             if (modes.indexOf(saved) !== -1) return saved;
-        } catch (error) { /* Storage kann gesperrt sein. */ }
+        } catch (error) { return fallback; /* Session-Wahl bei gesperrtem Storage behalten. */ }
         return 'auto';
     }
 
-    var mode = initialMode();
+    var mode = readMode('auto');
     var subscribers = [];
 
     function systemPrefersDark() {
@@ -67,6 +67,19 @@
 
     // Sofort anwenden: das Skript läuft synchron im <head>, bevor der body gerendert wird.
     apply();
+    function restoreMode() {
+        mode = readMode(mode);
+        apply();
+        subscribers.forEach(function (callback) { callback(mode); });
+    }
+    // Bereits offene Seiten und aus dem Back/Forward-Cache restaurierte Seiten
+    // müssen dieselbe gespeicherte Wahl wie neu geladene Seiten verwenden.
+    global.addEventListener('storage', function (event) {
+        if (event.key === storageKey || event.key === null) restoreMode();
+    });
+    global.addEventListener('pageshow', function (event) {
+        if (event.persisted) restoreMode();
+    });
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
     else start();
 

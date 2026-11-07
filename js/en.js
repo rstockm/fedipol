@@ -5,6 +5,8 @@ window.FedipolMessages.en = {
     'Fedipol - Informationen zur Datenabfrage': 'Fedipol — About the data',
     'Zurück zur Übersicht': 'Back to dashboard',
     'Sprache': 'Language',
+    'Sprache: Deutsch. Zu Englisch wechseln.': 'Language: German. Switch to English.',
+    'Sprache: Englisch. Zu Deutsch wechseln.': 'Language: English. Switch to German.',
     'Farbschema: automatisch (hell/dunkel)': 'Color scheme: automatic (light/dark)',
     'Farbschema: hell': 'Color scheme: light',
     'Farbschema: dunkel': 'Color scheme: dark',

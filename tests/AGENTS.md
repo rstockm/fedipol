@@ -1,5 +1,10 @@
 # Frontend-Tests
 
+Sprachbutton-Regression prüft DE/EN, Persistenz und lokalisierte Zustands-/Wechsellabels.
+Theme-Regression prüft zusätzlich Tab-/BFCache-Synchronisation, fehlendes/Legacy-
+`matchMedia`, Kontrast-Tokens und CSS-Umbruch; Mirror-Prüfung umfasst CSS und Theme-Abhängigkeiten.
+Sprach- und Follow-Tests funktionieren auch ohne optionalen Service-Worktree.
+
 | Datei | Zweck |
 | --- | --- |
 | `branding.test.cjs` | Prüft beide Dashboard-Kopien: Titel und H1 `Fedipol`, dekoratives Icon vor Name, kein alter Produktname. |

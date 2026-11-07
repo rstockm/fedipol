@@ -121,7 +121,7 @@ function browser(source, saved = new Map(), search = '') {
     return { F: ctx.window.FediPolFollow, ctx, calls, status, saved, location, buttons };
 }
 
-for (const source of ['../js/follow.js', '../service-app/dashboard/js/follow.js']) {
+for (const source of ['../js/follow.js', '../service-app/dashboard/js/follow.js'].filter(file => fs.existsSync(path.join(__dirname, file)))) {
     test(`${source}: PKCE round trip follows pending target, then reuses session for another click`, async () => {
         const first = browser(source);
         await first.F.follow('https://remote.social/@bob');

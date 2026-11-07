@@ -4,6 +4,8 @@ Dashboard-Einstieg mit Account-, Institutionen- und Instanztabellen.
 Titel und Kopfzeile heißen `Fedipol`; dekoratives Inline-SVG kombiniert
 Parlamentsdach und ansteigende Statistik-Säulen, auch mobil sichtbar.
 DE/EN-Sprachauswahl; `de.js`, `en.js`, `i18n.js` laden vor UI/OAuth.
+Sprachwahl als Outline-Button mit aktuellem DE/EN-Kürzel und lokalisiertem Wechselziel;
+Header bricht auf kleinen Viewports um, mobile Buttons mindestens 44 px hoch.
 Englischer Titelzusatz `Germany` erscheint ab 1200 px; deutsch bleibt `Fedipol`.
 Fehlercontainer `#error` zeigt Export-Ladefehler unabhängig von OAuth an.
 Accountliste enthält Spalte Startdatum zwischen Partei und Posts; Institutionen
