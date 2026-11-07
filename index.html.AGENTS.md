@@ -3,6 +3,10 @@
 Dashboard-Einstieg mit Account-, Institutionen- und Instanztabellen.
 Titel und Kopfzeile heißen `Fedipol`; dekoratives Inline-SVG kombiniert
 Parlamentsdach und ansteigende Statistik-Säulen, auch mobil sichtbar.
+Fette Wortmarke und Icon an Buchstabenkörper-Mitte ausgerichtet; `header-row`
+hält 44-px-Controls auf gemeinsamer Achse. Einziges H1 im kompakten DE/EN-Hero,
+Verlauf nur auf `Fediverse.`; lokale Inter Tight über `css/hero.css`.
+SVG-/PNG-Favicons, Apple-Touch-Icon und `site.webmanifest` laden gemeinsame App-Icons.
 DE/EN-Sprachauswahl; `de.js`, `en.js`, `i18n.js` laden vor UI/OAuth.
 Sprachwahl als Outline-Button mit aktuellem DE/EN-Kürzel und lokalisiertem Wechselziel;
 Header bricht auf kleinen Viewports um, mobile Buttons mindestens 44 px hoch.

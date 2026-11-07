@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fedipol</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="icons/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="Fedipol">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,6 +22,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hero.css">
     <script src="js/de.js"></script>
     <script src="js/en.js"></script>
     <script src="js/i18n.js"></script>
@@ -258,7 +266,7 @@
     <div class="sticky-header">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center header-row">
-                <h1 class="h3 mb-0 fedipol-brand">
+                <div class="h3 mb-0 fedipol-brand">
                     <svg class="fedipol-brand-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
                         <path d="M4 12 16 5l12 7H4Zm1 16h22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <g fill="currentColor">
@@ -268,7 +276,7 @@
                         </g>
                     </svg>
                     <span>Fedipol<span class="brand-country" aria-hidden="true"></span></span>
-                </h1>
+                </div>
                 <div class="header-controls">
                 <div class="btn-group">
                     <button class="btn btn-outline-primary nav-btn" onclick="scrollToSection('accountsContainer')" data-bs-toggle="tooltip" title="Parteien">
@@ -300,6 +308,13 @@
     </div>
 
     <div class="container main-content">
+        <section class="dashboard-hero" aria-labelledby="hero-heading">
+            <p class="hero-eyebrow" data-i18n="hero.eyebrow">Deutschland · Politik · Fediverse</p>
+            <h1 id="hero-heading" class="hero-heading">
+                <span data-i18n="hero.title">Politik im</span> <span class="hero-accent">Fediverse.</span>
+            </h1>
+            <p class="hero-description" data-i18n="hero.description">Wer ist dabei, wer ist aktiv? Entdecke Deutschlands Politik im Fediverse – mit Accounts, Parteien und Institutionen im direkten Vergleich.</p>
+        </section>
         <div id="settingsStatus"></div>
         <div id="error" class="alert alert-danger d-none" role="alert"></div>
         <div id="followStatus" class="small my-2" role="status" aria-live="polite"></div>

@@ -1,6 +1,7 @@
 # info.html
 
 Informationsseite mit DE/EN-Sprachwahl und zentralen Katalogen aus `js/`.
+SVG-/PNG-Favicon, Apple-Touch-Icon und `site.webmanifest` wie Dashboard eingebunden.
 Sprachwahl als Outline-Button mit aktuellem DE/EN-Kürzel und lokalisiertem Wechselziel;
 Header bricht mobil um, Buttons mindestens 44 px hoch.
 Prominenter Scope-Hinweis: bisher ausschließlich deutsche Politik/Institutionen,

@@ -1,6 +1,8 @@
 # Dashboard-Styles
 
 `fedipol-brand` hält Namen und blaues Parlaments-/Statistik-Icon auch mobil zusammen.
+Wortmarke Inter Tight 750; `1em`-Icon an Buchstabenkörper-Mitte ohne `p`-Unterlänge;
+separate Icon-/Glyphen-Lift-Tokens, 44-px-Controls und kontrollierter mobiler Umbruch.
 DE/EN: Header mit Sprachauswahl; `Germany` nur Englisch ab 1200 px;
 mobile Datumspräfixe und Ladeanzeige folgen `html[lang]`; Header passt ab 320 px.
 
@@ -14,4 +16,5 @@ ohne Neurendering oder Verlust der Alpha-Abstufung. Header-/Footer-Akzente folge
 
 | Datei | Zweck |
 | --- | --- |
+| `hero.css` | Kompakter DE/EN-Hero, lokale Inter Tight, responsive Hell-/Dunkel-Tokens, Verlauf auf Fediverse, Raster/Ringe; Reduced Motion und Forced Colors. |
 | `styles.css` | Parteifarben, Diagramme und responsive Tabellen mit Farbschema-Variablen für Hell/Dunkel; Aktionen mit Fokus-/Folgen-Wartezustand, grüne Follow- und gelbe Anfragebestätigung; viewportfeste Statusmeldung und markierte OAuth-Rückkehrzeile; unter 897 px Account-Karten mit Metadaten und 44-px-Aktionen; Institutionen behalten Tabellenlayout mit Analyse-/Folgen-Spalte. |
