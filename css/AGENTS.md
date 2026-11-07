@@ -1,6 +1,8 @@
 # Dashboard-Styles
 
 `fedipol-brand` hält Namen und blaues Parlaments-/Statistik-Icon auch mobil zusammen.
+DE/EN: Header mit Sprachauswahl; `Germany` nur Englisch ab 1200 px;
+mobile Datumspräfixe und Ladeanzeige folgen `html[lang]`; Header passt ab 320 px.
 
 | Datei | Zweck |
 | --- | --- |
