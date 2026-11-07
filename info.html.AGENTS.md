@@ -6,3 +6,5 @@ einschließlich deutscher Vertreter:innen auf EU-Ebene; Englisch erweitert keine
 Datenabdeckung. Eigennamen und Quellenkategorien bleiben originalsprachlich.
 SPARQL-/API-Code wird nicht übersetzt; Copy-Buttons und Rückmeldungen schon.
 Bot-Keywords matchen ganze Wörter; Dashboard-Kopie synchron halten.
+Farbschema-Button vor der Sprachwahl zyklisiert Auto/Hell/Dunkel; `js/theme.js`
+lädt im `<head>`, setzt `data-bs-theme` sofort und folgt `prefers-color-scheme`.

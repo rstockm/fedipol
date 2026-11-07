@@ -1,6 +1,100 @@
 /* Global variables */
-:root {
+/* Farbschema-Variablen: Hell als Basis; dunkel via data-bs-theme="dark" (js/theme.js). */
+:root,
+[data-bs-theme="light"] {
     --party-opacity: 0.15;  /* Basis-Transparenz, leicht zu ändern */
+
+    /* App-Flächen und Schriften */
+    --app-surface: #ffffff;            /* Sticky-Header, Statuskarten */
+    --app-surface-muted: #f8f9fa;      /* Balken, Timeline, Codefläche */
+    --app-surface-active: #e9ecef;     /* Hover-Flächen (Copy-Button) */
+    --app-text: #212529;
+    --app-text-muted: #6c757d;
+    --app-text-soft: #666;
+    --app-icon-muted: #adb5bd;
+    --app-icon-muted-hover: #6c757d;
+
+    /* Account-Aktionen (Tinte in Blaugrautönen) */
+    --app-ink-strong: #182230;
+    --app-ink: #344054;
+    --app-ink-soft: #475467;
+    --app-ink-muted: #667085;
+
+    /* Linien, Gitter, Tints */
+    --app-border: #dee2e6;
+    --app-border-strong: #cbd2da;
+    --app-divider: #10182815;
+    --app-grid-line: #e9ecef;
+    --app-grid-line-soft: #f1f3f5;
+    --app-tint-row: rgba(0, 0, 0, 0.03);
+    --app-tint-hover: rgba(0, 0, 0, 0.05);
+    --app-tint-active: rgba(0, 0, 0, 0.1);
+    --app-tick: rgba(0, 0, 0, 0.3);
+    --app-tick-soft: rgba(0, 0, 0, 0.15);
+    --app-bot-overlay: rgba(255, 255, 255, 0.5);
+
+    /* Schatten */
+    --app-shadow-soft: rgba(0, 0, 0, 0.1);
+    --app-shadow-strong: #10182825;
+    --app-shadow-hover: #10182812;
+    --app-glow: rgba(0, 0, 0, 0.3);
+
+    /* Follow-/Anfrage-Bestätigung */
+    --app-follow-color: #146c43;
+    --app-follow-border: #a3cfbb;
+    --app-follow-bg: #e9f6ef;
+    --app-request-color: #664d03;
+    --app-request-border: #ffe69c;
+    --app-request-bg: #fff8e1;
+
+    /* Links */
+    --app-link-hover: #0a58ca;
+    --app-action-bg: rgba(255, 255, 255, 0.85);
+}
+
+[data-bs-theme="dark"] {
+    --party-opacity: 0.22;  /* etwas mehr Opazität gegen dunklen Grund */
+
+    --app-surface: #212529;
+    --app-surface-muted: #2b3035;
+    --app-surface-active: #343a40;
+    --app-text: #dee2e6;
+    --app-text-muted: #adb5bd;
+    --app-text-soft: #a0a6ad;
+    --app-icon-muted: #8b949e;
+    --app-icon-muted-hover: #adb5bd;
+
+    --app-ink-strong: #f0f2f5;
+    --app-ink: #d6dae1;
+    --app-ink-soft: #b4bac4;
+    --app-ink-muted: #98a2b3;
+
+    --app-border: #495057;
+    --app-border-strong: #565e64;
+    --app-divider: rgba(255, 255, 255, 0.12);
+    --app-grid-line: #495057;
+    --app-grid-line-soft: #3b4046;
+    --app-tint-row: rgba(255, 255, 255, 0.06);
+    --app-tint-hover: rgba(255, 255, 255, 0.08);
+    --app-tint-active: rgba(255, 255, 255, 0.14);
+    --app-tick: rgba(255, 255, 255, 0.35);
+    --app-tick-soft: rgba(255, 255, 255, 0.2);
+    --app-bot-overlay: rgba(0, 0, 0, 0.45);
+
+    --app-shadow-soft: rgba(0, 0, 0, 0.45);
+    --app-shadow-strong: rgba(0, 0, 0, 0.55);
+    --app-shadow-hover: rgba(0, 0, 0, 0.4);
+    --app-glow: rgba(0, 0, 0, 0.7);
+
+    --app-follow-color: #75b798;
+    --app-follow-border: #146c43;
+    --app-follow-bg: rgba(25, 135, 84, 0.2);
+    --app-request-color: #ffda6a;
+    --app-request-border: #997404;
+    --app-request-bg: rgba(255, 193, 7, 0.18);
+
+    --app-link-hover: #6ea8fe;
+    --app-action-bg: rgba(43, 48, 53, 0.85);
 }
 
 .stats-bar {
@@ -26,8 +120,8 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: var(--app-surface);
+    box-shadow: 0 2px 4px var(--app-shadow-soft);
     padding: 1rem 0;
 }
 
@@ -52,7 +146,7 @@
 
 .posts-bar {
     flex-grow: 1;
-    background-color: #f8f9fa;
+    background-color: var(--app-surface-muted);
     height: 8px;
     border-radius: 4px;
     overflow: hidden;
@@ -73,7 +167,7 @@
 
 .recent-posts-count, .total-posts-count {
     font-size: 0.9em;
-    color: #6c757d;
+    color: var(--app-text-muted);
     white-space: nowrap;
     min-width: 80px;
 }
@@ -86,7 +180,7 @@
 .loading::after {
     content: "Lade...";
     font-size: 0.8em;
-    color: #6c757d;
+    color: var(--app-text-muted);
     position: absolute;
     right: 0;
     top: 50%;
@@ -126,7 +220,7 @@ tr.is-bot:hover {
 .party-distribution-bar {
     height: 30px;
     width: 100%;
-    background: #f8f9fa;
+    background: var(--app-surface-muted);
     border-radius: 4px;
     overflow: hidden;
     display: flex;
@@ -172,12 +266,12 @@ tr.is-bot:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--app-bot-overlay);
 }
 
 .party-distribution-legend {
     font-size: 0.85em;
-    color: #666;
+    color: var(--app-text-soft);
 }
 
 .party-distribution-legend .legend-item {
@@ -211,13 +305,13 @@ tr.is-bot:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: var(--app-bot-overlay);
 }
 
 /* Reset Filter Button */
 #resetFilter {
     font-size: 0.85em;
-    color: #666;
+    color: var(--app-text-soft);
     text-decoration: none;
     display: none;
     align-items: center;
@@ -241,7 +335,7 @@ tr.is-bot:hover {
 .timeline-bar {
     position: relative;
     width: 100%;
-    background-color: #f8f9fa;
+    background-color: var(--app-surface-muted);
     border-radius: 4px;
     overflow: visible;
     display: flex;
@@ -252,7 +346,7 @@ tr.is-bot:hover {
 .timeline-party-row {
     position: relative;
     height: 20px;  /* Height for multi-party view */
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: var(--app-tint-row);
     border-radius: 2px;
     margin: 1px 0;
 }
@@ -290,7 +384,7 @@ tr.is-bot:hover {
     width: 10px;
     height: 10px;
     z-index: 10;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px var(--app-glow);
 }
 
 /* Adjust hover state when filtered */
@@ -356,7 +450,7 @@ tr.is-bot:hover {
     position: absolute;
     transform: translateX(-50%);
     font-size: 0.8em;
-    color: #666;
+    color: var(--app-text-soft);
 }
 
 .timeline-year::before {
@@ -366,7 +460,7 @@ tr.is-bot:hover {
     left: 50%;
     height: 5px;
     width: 2px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: var(--app-tick);
 }
 
 /* Month markers */
@@ -382,7 +476,7 @@ tr.is-bot:hover {
     position: absolute;
     width: 1px;
     height: 3px;
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: var(--app-tick-soft);
     transform: translateX(-50%);
 }
 
@@ -392,11 +486,11 @@ tr.is-bot:hover {
 }
 
 .input-group .btn-link {
-    color: #adb5bd;
+    color: var(--app-icon-muted);
 }
 
 .input-group .btn-link:hover {
-    color: #6c757d;
+    color: var(--app-icon-muted-hover);
 }
 
 /* Mobile navigation styles */
@@ -566,7 +660,7 @@ footer {
     text-align: center;
     padding: 1rem;
     font-size: 0.8rem;
-    color: #6c757d;
+    color: var(--app-text-muted);
 }
 
 footer a {
@@ -575,12 +669,12 @@ footer a {
 }
 
 footer a:hover {
-    color: #0a58ca;
+    color: var(--app-link-hover);
     text-decoration: underline;
 }
 
 footer.fixed-bottom {
-    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 -2px 4px var(--app-shadow-soft);
     z-index: 1030;
     text-align: center;
     padding: 0.75rem;
@@ -592,7 +686,7 @@ footer.fixed-bottom a {
 }
 
 footer.fixed-bottom a:hover {
-    color: #0a58ca !important;
+    color: var(--app-link-hover) !important;
     text-decoration: underline;
 }
 
@@ -648,10 +742,10 @@ html[lang="en"] .loading::after { content: "Loading..."; }
     gap: 0.5rem;
     min-height: 36px;
     padding: 0.45rem 0.7rem;
-    border: 1px solid #cbd2da;
+    border: 1px solid var(--app-border-strong);
     border-radius: 0.65rem;
-    background: rgba(255, 255, 255, 0.85);
-    color: #344054;
+    background: var(--app-action-bg);
+    color: var(--app-ink);
     font-size: 0.8rem;
     font-weight: 600;
     line-height: 1.2;
@@ -659,9 +753,9 @@ html[lang="en"] .loading::after { content: "Loading..."; }
     white-space: nowrap;
     transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
 }
-.account-action:hover { color: #182230; background: #fff; border-color: #667085; box-shadow: 0 2px 5px #10182812; }
+.account-action:hover { color: var(--app-ink-strong); background: var(--app-surface); border-color: var(--app-ink-muted); box-shadow: 0 2px 5px var(--app-shadow-hover); }
 .account-action:focus-visible { outline: 3px solid #0d6efd; outline-offset: 3px; }
-.action-external { font-size: 0.65rem; color: #667085; }
+.action-external { font-size: 0.65rem; color: var(--app-ink-muted); }
 .action-label-mobile, .posts-count-label { display: none; }
 @media (pointer: coarse) { .account-action { min-height: 44px; } }
 
@@ -681,13 +775,13 @@ html[lang="en"] .loading::after { content: "Loading..."; }
     z-index: 1050;
     max-width: min(30rem, calc(100vw - 2rem));
     padding: 0.8rem 1rem;
-    background: #fff;
-    border: 1px solid #cbd2da;
+    background: var(--app-surface);
+    border: 1px solid var(--app-border-strong);
     border-radius: 0.65rem;
-    box-shadow: 0 4px 18px #10182825;
+    box-shadow: 0 4px 18px var(--app-shadow-strong);
 }
-.account-action.is-following { color: #146c43; border-color: #a3cfbb; background: #e9f6ef; }
-.account-action.is-requested { color: #664d03; border-color: #ffe69c; background: #fff8e1; }
+.account-action.is-following { color: var(--app-follow-color); border-color: var(--app-follow-border); background: var(--app-follow-bg); }
+.account-action.is-requested { color: var(--app-request-color); border-color: var(--app-request-border); background: var(--app-request-bg); }
 .account-action:disabled { cursor: default; }
 .follow-return-highlight { outline: 3px solid #0d6efd; outline-offset: -3px; }
 
@@ -706,7 +800,7 @@ html[lang="en"] .loading::after { content: "Loading..."; }
         grid-template-columns: 28px minmax(0, 1fr) minmax(0, 1fr);
         grid-template-areas: "platform identity identity" "party party date" "posts posts posts" "actions actions actions";
         margin-bottom: 0.75rem;
-        border: 1px solid #dce1e7;
+        border: 1px solid var(--app-border-strong);
         border-radius: 0.9rem;
         overflow: hidden;
     }
@@ -724,17 +818,24 @@ html[lang="en"] .loading::after { content: "Loading..."; }
     #accountsTableBody .account-identity > div:first-child { font-weight: 600; font-size: 1rem; }
     #accountsTableBody .account-party { grid-area: party; }
     #accountsTableBody .account-start-date { grid-area: date; text-align: right; }
-    #accountsTableBody .account-start-date::before { content: 'Seit '; color: #667085; font-size: 0.75rem; }
+    #accountsTableBody .account-start-date::before { content: 'Seit '; color: var(--app-ink-muted); font-size: 0.75rem; }
     html[lang="en"] #accountsTableBody .account-start-date::before { content: 'Joined '; }
     #accountsTableBody .account-posts { grid-area: posts; }
     #accountsTableBody .posts-bar-container { min-width: 0 !important; gap: 0.75rem !important; padding-right: 0 !important; }
     #accountsTableBody .account-post-count { display: flex; gap: 0.5rem; justify-content: space-between; align-items: center; }
-    #accountsTableBody .posts-count-label { display: inline; color: #475467; font-size: 0.7rem; }
+    #accountsTableBody .posts-count-label { display: inline; color: var(--app-ink-soft); font-size: 0.7rem; }
     #accountsTableBody .recent-posts-count, #accountsTableBody .total-posts-count { text-align: right; }
-    #accountsContainer #accountsTableBody .account-actions-cell { grid-area: actions; border-top: 1px solid #10182815; }
+    #accountsContainer #accountsTableBody .account-actions-cell { grid-area: actions; border-top: 1px solid var(--app-divider); }
     #accountsTableBody .account-actions { justify-content: flex-start; }
     #accountsTableBody .account-action { min-height: 44px; flex: 1 1 auto; }
     #accountsTableBody .action-label-desktop { display: none; }
     #accountsTableBody .action-label-mobile { display: inline; }
     #accountsTableBody .account-actions-cell:has(.account-actions:empty) { display: none !important; }
 }
+
+/* Theme switch: Auto → Hell → Dunkel; Bezeichnung setzt js/theme.js (i18n übersetzt). */
+.theme-switch { width: auto; }
+
+/* Kumulatives Histogramm: Gitterlinien über Variablen hell/dunkel gefärbt. */
+.cumulative-chart .chart-grid { stroke: var(--app-grid-line); }
+.cumulative-chart .chart-grid-soft { stroke: var(--app-grid-line-soft); }

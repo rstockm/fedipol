@@ -12,3 +12,5 @@ wechselt mobil in Karten mit Aktionsleiste. `js/ui.js` rendert Tabellenköpfe un
 dynamisch; `.posts-header` bleibt unabhängig von der Aktionsspalte sortierbar.
 Institutionen haben ebenfalls Folgen-Aktionen; `followAuthModal` fragt eigenen
 Handle ab, `followStatus` meldet Ergebnisse; `js/follow.js` lädt vor `js/ui.js`.
+Farbschema-Button vor der Sprachwahl zyklisiert Auto/Hell/Dunkel; `js/theme.js`
+lädt im `<head>`, setzt `data-bs-theme` sofort und folgt `prefers-color-scheme`.
