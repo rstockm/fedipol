@@ -153,6 +153,7 @@ ETL = {
     "per_instance_concurrency": int(os.environ.get("FEDIPOL_PER_INSTANCE_CONCURRENCY", "2")),
     "per_instance_min_interval": float(os.environ.get("FEDIPOL_PER_INSTANCE_MIN_INTERVAL", "1.0")),
     "status_pages_max": int(os.environ.get("FEDIPOL_STATUS_PAGES_MAX", "3")),
+    "collection_run_budget_seconds": int(os.environ.get("FEDIPOL_COLLECTION_RUN_BUDGET_SECONDS", "7200")),
     # Qualitaetsgrenzen vor Veroeffentlichung
     "max_stale_share": float(os.environ.get("FEDIPOL_MAX_STALE_SHARE", "0.15")),
     "max_account_drop_share": float(os.environ.get("FEDIPOL_MAX_ACCOUNT_DROP_SHARE", "0.10")),

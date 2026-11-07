@@ -88,3 +88,27 @@ def test_timeout_kwargs_are_passed():
     )
     kwargs = session.calls[0]["kwargs"]
     assert kwargs["timeout"] == (1.5, 2.5)
+
+
+def test_managed_429_defers_whole_instance_without_local_retry():
+    from fedipol.etl.rate_limit import DeferredRequest, InstanceLimiter
+
+    limiter = InstanceLimiter()
+    session = FakeSession([FakeResponse(429, {"Retry-After": "120"}), FakeResponse(200)])
+    with pytest.raises(DeferredRequest) as exc:
+        fetch("https://gruene.social/api/v1/accounts/lookup", session=session, limiter=limiter)
+    assert exc.value.status == 429
+    assert len(session.calls) == 1
+    assert limiter.counts["gruene.social"] == 1
+    with pytest.raises(DeferredRequest):
+        fetch("https://gruene.social/api/v1/accounts/1/statuses", session=session, limiter=limiter)
+    assert len(session.calls) == 1
+
+
+def test_managed_redirects_are_not_followed():
+    from fedipol.etl.rate_limit import InstanceLimiter
+
+    session = FakeSession([FakeResponse(302, {"Location": "https://other.example"})])
+    with pytest.raises(PermanentFetchError):
+        fetch("https://social.bund.de/api/v1/accounts/lookup", session=session, limiter=InstanceLimiter())
+    assert session.calls[0]["kwargs"]["allow_redirects"] is False

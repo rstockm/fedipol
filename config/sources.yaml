@@ -30,10 +30,22 @@ directory:
 # manuellen Ergaenzungen, die nicht in Wikidata/Instanzverzeichnissen sind).
 curated_list: config/curated_accounts.md
 
+collection:
+  # Per HTTP request, including lookup, status pages, retries and directories.
+  # One request/account worker at a time per instance; never burst after cooldown.
+  instances:
+    gruene.social:
+      interval: 5
+      budget_seconds: 3600
+      max_requests: 720
+    social.bund.de:
+      interval: 3
+      budget_seconds: 2700
+      max_requests: 900
+
 # Bot-Heuristik: offizielles Mastodon-Bot-Flag ODER Keyword in der
 # Account-Beschreibung (case-insensitive, HTML entfernt). Keywords zaehlen nur
-# als ganze Woerter (Wortgrenzen), damit Teilstrings in Hashtags/Handles/Woertern
-# keine False Positives erzeugen (z. B. "bot" in #AfDVerbot oder @depressiveRobot).
+# als ganze Woerter, nicht als Teilstrings in #AfDVerbot oder @depressiveRobot.
 bot_keywords:
   - unofficial
   - automated

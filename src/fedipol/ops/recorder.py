@@ -88,6 +88,20 @@ def mark_stale_runs_failed(max_age_minutes: int = 240) -> int:
 class DjangoRunRecorder:
     """Objektorientierte Fassade fuer die ETL-Orchestrierung."""
 
+    def fetch_state(self, journal):
+        from fedipol.etl.fetch_state import FetchState
+        from fedipol.ops.fetch_index import index_event
+        from fedipol.ops.models import AppliedFetchEvent
+
+        indexed = set(AppliedFetchEvent.objects.values_list("event_id", flat=True))
+
+        def persist(store, event):
+            if event["id"] not in indexed:
+                index_event(store, event)
+                indexed.add(event["id"])
+
+        return FetchState(journal, persist=persist)
+
     def create_run(self, run_id: str, trigger: str, pipeline_version: str) -> None:
         create_run(run_id, trigger, pipeline_version)
 

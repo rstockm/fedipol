@@ -6,6 +6,7 @@ import logging
 from dataclasses import dataclass
 
 from fedipol.etl.http import PermanentFetchError, fetch
+from fedipol.etl.rate_limit import DeferredRequest
 
 logger = logging.getLogger(__name__)
 
@@ -31,6 +32,7 @@ def fetch_instance_directory(
     max_retries: int = 3,
     session=None,  # noqa: ANN001
     sleep=None,  # noqa: ANN001
+    limiter=None,
 ) -> list[DirectoryAccount]:
     """Liest /api/v1/directory einer Instanz paginiert; Fehler werden soft ignoriert."""
     results: list[DirectoryAccount] = []
@@ -48,8 +50,9 @@ def fetch_instance_directory(
                 read_timeout=read_timeout,
                 max_retries=max_retries,
                 sleep=sleep,
+                **({"limiter": limiter} if limiter else {}),
             )
-        except PermanentFetchError as exc:
+        except (PermanentFetchError, DeferredRequest) as exc:
             logger.warning("Verzeichnisabruf fehlgeschlagen fuer %s: %s", instance, exc)
             break
         if not response.ok:

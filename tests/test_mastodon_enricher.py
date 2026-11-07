@@ -136,3 +136,28 @@ def test_lookup_404_is_error_not_exception(monkeypatch):
     result = _enricher().enrich("https://gruene.social/@geloescht")
     assert not result.ok
     assert "404" in result.error
+
+
+def test_invalid_status_json_is_failure_not_zero_activity(monkeypatch):
+    fetch, _ = _fake_fetch([
+        FakeHttpResponse({"id": "54", "statuses_count": 324, "bot": False}),
+        FakeHttpResponse({"unexpected": "object"}),
+    ])
+    monkeypatch.setattr(mastodon_module, "fetch", fetch)
+    result = _enricher().enrich("https://gruene.social/@stefka")
+    assert not result.ok
+    assert result.phase == "statuses"
+    assert result.error_category == "invalid_response"
+
+
+def test_cross_host_pagination_is_rejected_before_fetch(monkeypatch):
+    fetch, calls = _fake_fetch([
+        FakeHttpResponse({"id": "54", "statuses_count": 324, "bot": False}),
+        FakeHttpResponse([{"created_at": "2026-11-07T00:00:00Z"}], headers={
+            "Link": '<https://evil.example/api/v1/accounts/54/statuses>; rel="next"',
+        }),
+    ])
+    monkeypatch.setattr(mastodon_module, "fetch", fetch)
+    result = _enricher().enrich("https://gruene.social/@stefka", now=datetime(2026, 11, 7, tzinfo=UTC))
+    assert result.error_category == "unsafe_pagination"
+    assert len(calls) == 2

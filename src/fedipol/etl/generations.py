@@ -107,6 +107,24 @@ def read_previous_observations(paths: DataPaths, generation_id: str | None) -> l
     ]
 
 
+def read_previous_candidates(paths: DataPaths, generation_id: str | None) -> list[dict]:
+    """Discovery fallback, never overwrites current source metadata."""
+    if not generation_id or not paths.generation(generation_id).is_file():
+        return []
+    import duckdb
+
+    conn = duckdb.connect(str(paths.generation(generation_id)), read_only=True)
+    try:
+        rows = conn.execute("""
+            SELECT canonical_url, name, kind, position_label, party_label, qid, instance, source
+            FROM mart.canonical_accounts
+        """).fetchall()
+    finally:
+        conn.close()
+    keys = ("url", "name", "kind", "position", "party", "qid", "instance", "source")
+    return [dict(zip(keys, row, strict=True)) for row in rows]
+
+
 def cleanup_generations(paths: DataPaths, keep: int = 3) -> list[str]:
     """Entfernt aeltere Generationen (DuckDB + Export) ausser den neuesten `keep`."""
     if not paths.generations_dir.is_dir():

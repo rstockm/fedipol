@@ -84,3 +84,48 @@ class ActiveGeneration(models.Model):
     @classmethod
     def get_solo(cls) -> "ActiveGeneration | None":
         return cls.objects.select_related(None).first()
+
+
+class AccountFetchState(models.Model):
+    """Operational index only; observation payloads live in the fetch journal."""
+
+    url = models.CharField(max_length=500, primary_key=True)
+    instance = models.CharField(max_length=253, db_index=True)
+    active = models.BooleanField(default=True)
+    first_seen_at = models.DateTimeField()
+    last_attempt_at = models.DateTimeField(null=True)
+    last_success_at = models.DateTimeField(null=True, db_index=True)
+    next_attempt_at = models.DateTimeField(null=True)
+    consecutive_failures = models.PositiveIntegerField(default=0)
+    not_found_count = models.PositiveIntegerField(default=0)
+    first_not_found_at = models.DateTimeField(null=True)
+    review_required = models.BooleanField(default=False)
+    last_error_category = models.CharField(max_length=64, blank=True)
+    observation_ref = models.CharField(max_length=32, blank=True)
+
+
+class InstanceFetchState(models.Model):
+    host = models.CharField(max_length=253, primary_key=True)
+    state = models.JSONField(default=dict)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class AccountFetchAttempt(models.Model):
+    event_id = models.CharField(max_length=32, primary_key=True)
+    run_id = models.CharField(max_length=64, db_index=True)
+    url = models.CharField(max_length=500, db_index=True)
+    started_at = models.DateTimeField()
+    finished_at = models.DateTimeField()
+    outcome = models.CharField(max_length=16)
+    phase = models.CharField(max_length=16, blank=True)
+    http_status = models.IntegerField(null=True)
+    error_category = models.CharField(max_length=64, blank=True)
+    request_count = models.PositiveIntegerField(default=0)
+    retry_count = models.PositiveIntegerField(default=0)
+    observation_ref = models.CharField(max_length=32, blank=True)
+
+
+class AppliedFetchEvent(models.Model):
+    """Idempotent reconstruction of the SQLite index after process interruption."""
+
+    event_id = models.CharField(max_length=32, primary_key=True)

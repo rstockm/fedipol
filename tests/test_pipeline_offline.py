@@ -220,3 +220,37 @@ def test_lock_rejects_parallel_run(data_paths, recorder, permissive_limits):
         assert result.error == "lock_busy"
     finally:
         lock.release()
+
+
+def test_online_success_survives_failed_publication_and_next_run_prioritizes_others(
+    data_paths, recorder, permissive_limits, monkeypatch,
+):
+    from datetime import UTC, datetime
+
+    import fedipol.etl.pipeline as pipeline_module
+    from fedipol.etl.fetch_state import FetchJournal, FetchState
+    from fedipol.etl.sources.mastodon import EnrichmentResult
+
+    seed_checkpoint(data_paths, "BASE")
+    assert make_pipeline(data_paths, recorder, "BASE").run().published
+    calls = []
+
+    def enrich(self, url):
+        calls.append(url)
+        return EnrichmentResult(url=url, posts_count=999, recent_posts_count=3,
+            created_at="2020-01-01T00:00:00Z", is_bot=False,
+            fetched_at=datetime.now(UTC).isoformat(), request_count=2)
+
+    monkeypatch.setattr(pipeline_module, "fetch_instance_directory", lambda *a, **kw: [])
+    monkeypatch.setattr(pipeline_module.MastodonEnricher, "enrich", enrich)
+    monkeypatch.setattr(Pipeline, "_etl_limits", lambda self: {**permissive_limits, "max_stale_share": 0})
+    for name in ["NOT-PUBLISHED-1", "NOT-PUBLISHED-2"]:
+        result = Pipeline(paths=data_paths, recorder=recorder, config=PipelineConfig(
+            wikidata_offline=True, run_id=name, limit=1,
+        )).run()
+        assert not result.published
+        assert "veralteter" in result.error
+    assert len(calls) == 2 and calls[0] != calls[1]
+    state = FetchState(FetchJournal(data_paths.root / "fetch-journal"))
+    assert next(r for r in state.observations() if r["url"] == calls[0])["posts_count"] == 999
+    assert recorder.active_generation == "BASE"

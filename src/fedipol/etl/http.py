@@ -10,10 +10,14 @@ import json
 import logging
 import random
 import time
+from contextlib import nullcontext
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
+from urllib.parse import urlsplit
 
 import requests
+
+from fedipol.etl.rate_limit import DeferredRequest, server_deadline
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +26,10 @@ RETRYABLE_STATUS = {429, 500, 502, 503, 504}
 
 class PermanentFetchError(RuntimeError):
     """Dauerhaft fehlgeschlagener Abruf (nicht wiederholbar)."""
+
+    def __init__(self, message, *, status=None, category="network", attempts=1):
+        super().__init__(message)
+        self.status, self.category, self.attempts = status, category, attempts
 
 
 @dataclass
@@ -59,6 +67,7 @@ def fetch(
     sleep: callable = time.sleep,  # noqa: ANN003
     method: str = "GET",
     data: dict | None = None,
+    limiter=None,
 ) -> FetchResult:
     """GET/POST mit Timeout- und Retry-Vertrag; wirft PermanentFetchError nach Erschoepfung."""
     sleep = sleep or time.sleep
@@ -74,7 +83,8 @@ def fetch(
                 "User-Agent": "FediPol/2.0 (ETL; +https://github.com/rstockm/fedipol)",
             },
             "timeout": (connect_timeout, read_timeout),
-            "allow_redirects": True,
+            # Managed API requests must not bypass the target host limiter.
+            "allow_redirects": limiter is None,
         }
         if method == "POST":
             return session.post(target_url, data=data, **request_kwargs)
@@ -84,10 +94,32 @@ def fetch(
         while True:
             attempts += 1
             try:
-                response = _request(url)
+                with limiter.request(url) if limiter else nullcontext():
+                    try:
+                        response = _request(url)
+                    except requests.RequestException:
+                        if limiter:
+                            host = urlsplit(url).hostname
+                            limiter.feedback(host, None, {})
+                            error = DeferredRequest("network", limiter.ready_at(host), host)
+                            error.status, error.attempts = None, attempts
+                            raise error from None
+                        raise
+                    if limiter:
+                        host = urlsplit(url).hostname
+                        limiter.feedback(host, response.status_code, response.headers)
+                        if response.status_code in RETRYABLE_STATUS:
+                            error = DeferredRequest(
+                                "rate_limit" if response.status_code == 429 else "server_error",
+                                limiter.ready_at(host), host,
+                            )
+                            error.status, error.attempts = response.status_code, attempts
+                            raise error
             except requests.RequestException as exc:
                 if attempts > max_retries:
-                    raise PermanentFetchError(f"Netzwerkfehler nach {attempts} Versuchen: {exc}") from exc
+                    raise PermanentFetchError(
+                        f"Netzwerkfehler nach {attempts} Versuchen: {exc}", attempts=attempts,
+                    ) from exc
                 delay = backoff_base**attempts + random.uniform(0, 0.5)
                 logger.warning("Netzwerkfehler %s (Versuch %d): %s - warte %.1fs", url, attempts, exc, delay)
                 sleep(delay)
@@ -109,7 +141,7 @@ def fetch(
                     try:
                         delay = max(float(retry_after), 1.0)
                     except ValueError:
-                        delay = backoff_base**attempts
+                        delay = max(1, server_deadline(response.headers, time.time())-time.time())
                 else:
                     delay = backoff_base**attempts + random.uniform(0, 0.5)
                 logger.warning(
@@ -122,7 +154,11 @@ def fetch(
                 sleep(delay)
                 continue
 
-            raise PermanentFetchError(f"HTTP {response.status_code} fuer {url}")
+            raise PermanentFetchError(
+                f"HTTP {response.status_code} fuer {url}", status=response.status_code,
+                category="not_found" if response.status_code in (404, 410) else "http_error",
+                attempts=attempts,
+            )
 
     finally:
         if own_session:

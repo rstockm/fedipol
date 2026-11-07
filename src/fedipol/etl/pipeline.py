@@ -23,12 +23,14 @@ import yaml
 from fedipol.etl import PIPELINE_VERSION
 from fedipol.etl.checkpoint import CheckpointStore
 from fedipol.etl.export import build_dashboard_rows, build_export, write_export
+from fedipol.etl.fetch_state import FetchJournal, FetchState
 from fedipol.etl.generations import (
     activate_generation,
     cleanup_generations,
     cleanup_raw_runs,
     find_fallback_generation,
     publish_generation,
+    read_previous_candidates,
     read_previous_observations,
 )
 from fedipol.etl.locking import FileLock, LockBusy
@@ -36,6 +38,8 @@ from fedipol.etl.normalize import canonical_url, instance_priority, position_pri
 from fedipol.etl.overrides import OverrideSet, load_overrides, validate_against
 from fedipol.etl.paths import DataPaths, load_paths
 from fedipol.etl.quality import check_export, check_freshness_landscape
+from fedipol.etl.rate_limit import InstanceLimiter
+from fedipol.etl.scheduling import enrich_fairly
 from fedipol.etl.sources.curated_list import CuratedAccount, load_curated_list
 from fedipol.etl.sources.mastodon import EnrichmentResult, MastodonEnricher
 from fedipol.etl.sources.mastodon_directory import DirectoryAccount, fetch_instance_directory
@@ -131,6 +135,8 @@ class Pipeline:
         self.recorder = recorder
         self.config = config or PipelineConfig()
         self._load_source_config()
+        self.fetch_state = None
+        self.limiter = None
 
     # ------------------------------------------------------------- Konfiguration
 
@@ -194,6 +200,24 @@ class Pipeline:
     def _execute(self, run_id: str, sigterm: _SigTermGuard) -> PipelineResult:
         warnings: list[str] = []
         raw_dir = self.paths.run_raw_dir(run_id)
+        previous_gen = (
+            self.recorder.get_active_generation() if self.recorder else find_fallback_generation(self.paths)
+        )
+        lkg_rows = read_previous_observations(self.paths, previous_gen)
+        previous_count = len(lkg_rows) if lkg_rows else None
+        limits = self._etl_limits()
+        if not self.config.offline:
+            journal = FetchJournal(self.paths.root / "fetch-journal")
+            self.fetch_state = (self.recorder.fetch_state(journal)
+                                if hasattr(self.recorder, "fetch_state") else FetchState(journal))
+            self.fetch_state.seed(lkg_rows)
+            self.limiter = InstanceLimiter(
+                states=self.fetch_state.instances, persist=self.fetch_state.instance_event,
+                policies=self.sources.get("collection", {}).get("instances", {}),
+                stopped=lambda: sigterm.triggered,
+                run_budget_seconds=limits.get("collection_run_budget_seconds", 7200),
+                run_id=run_id,
+            )
 
         def step(name, fn):  # noqa: ANN001
             db_step = self.recorder.record_step(run_id, name) if self.recorder else None
@@ -237,12 +261,14 @@ class Pipeline:
                         fetch_instance_directory, instance,
                         kind="party", party=party,
                         page_size=page_size, max_accounts=max_accounts,
+                        limiter=self.limiter,
                     )] = instance
                 for instance in self.institution_instances:
                     futures[pool.submit(
                         fetch_instance_directory, instance,
                         kind="institution", party=None,
                         page_size=page_size, max_accounts=max_accounts,
+                        limiter=self.limiter,
                     )] = instance
                 for future in as_completed(futures):
                     instance = futures[future]
@@ -327,6 +353,10 @@ class Pipeline:
                 "source": "curated",
             }
 
+        # Partial directory pages must not silently erase previously known accounts.
+        if not self.config.offline:
+            for candidate in read_previous_candidates(self.paths, previous_gen):
+                candidates.setdefault(candidate["url"], candidate)
         candidate_list = list(candidates.values())
         logger.info("Kandidaten: %d", len(candidate_list))
 
@@ -335,24 +365,43 @@ class Pipeline:
         excluded_urls = self._load_excluded_accounts()
 
         limit = self.config.limit
+        excluded_by_override = {o.url for o in overrides.entries
+                                if o.is_active() and (o.exclude or o.replaced_by)}
         to_enrich = [
             c for c in candidate_list
             if c["url"] not in excluded_urls
-            and c["url"] not in {o.url for o in overrides.entries if o.replaced_by}
+            and c["url"] not in excluded_by_override
         ]
+        if self.fetch_state:
+            self.fetch_state.flush()
+            self.fetch_state.plan([c["url"] for c in to_enrich])
+            priority = self.fetch_state.ordered([c["url"] for c in to_enrich])
+            order = {url: i for i, url in enumerate(priority)}
+            to_enrich.sort(key=lambda c: order.get(c["url"], len(order)))
         if limit:
             to_enrich = to_enrich[:limit]
 
         checkpoint = CheckpointStore(self.paths.run_checkpoint(run_id))
-        previous_gen = (
-            self.recorder.get_active_generation() if self.recorder else find_fallback_generation(self.paths)
+        enricher = MastodonEnricher(
+            bot_keywords=self.bot_keywords, limiter=self.limiter,
+            connect_timeout=limits.get("connect_timeout", 10),
+            read_timeout=limits.get("read_timeout", 60),
+            max_retries=limits.get("max_retries", 3),
+            status_pages_max=limits.get("status_pages_max", 3),
         )
-        lkg_rows = read_previous_observations(self.paths, previous_gen)
-
-        enricher = MastodonEnricher(bot_keywords=self.bot_keywords)
         results = self._enrich_accounts(enricher, to_enrich, checkpoint, sigterm, offline=self.config.offline)
         ok_results = [r for r in results if r.ok]
-        fresh_failures = check_freshness_landscape(len(ok_results), len(to_enrich), self._etl_limits())
+        attempted = [r for r in results if not r.deferred]
+        fresh_failures = (check_freshness_landscape(len(ok_results), len(attempted), limits)
+                          if attempted else [])
+        if self.fetch_state:
+            # Successful but unpublished runs are valid LKG, never relabeled fresh.
+            merged = {row["url"]: row for row in lkg_rows}
+            merged.update({row["url"]: row for row in self.fetch_state.observations()})
+            lkg_rows = list(merged.values())
+            deferred = sum(r.deferred for r in results)
+            if deferred:
+                warnings.append(f"{deferred} Accounts wegen Budget/Cooldown/Faelligkeit zurueckgestellt")
         if fresh_failures:
             raise PipelineError("; ".join(fresh_failures))
 
@@ -392,9 +441,6 @@ class Pipeline:
             conn.close()
 
         # --- 7. Qualitaet ------------------------------------------------
-        previous_count = None
-        if lkg_rows:
-            previous_count = len(lkg_rows)
         failures = check_export(export, previous_account_count=previous_count, limits=self._etl_limits())
         if failures:
             raise PipelineError("Qualitaetspruefungen fehlgeschlagen: " + "; ".join(failures))
@@ -448,44 +494,12 @@ class Pipeline:
                     )
             return results
 
-        per_instance = int(self._etl_limits().get("per_instance_concurrency", 2))
-        global_limit = int(self._etl_limits().get("global_concurrency", 6))
-        min_interval = float(self._etl_limits().get("per_instance_min_interval", 1.0))
-        instance_slots: dict[str, threading.Semaphore] = {}
-        global_slot = threading.Semaphore(global_limit)
-        pacer = InstancePacer(min_interval)
-
-        def work(account):  # noqa: ANN001
-            if checkpoint.completed(account["url"]):
-                entry = checkpoint.get(account["url"])
-                return EnrichmentResult(**entry)
-            url = account["url"]
-            host = url.split("//", 1)[-1].split("/", 1)[0]
-            sem = instance_slots.setdefault(host, threading.Semaphore(per_instance))
-            with global_slot, sem:
-                if sigterm.triggered:
-                    return None
-                delay = pacer.reserve(host)
-                if delay > 0:
-                    import time as _time
-
-                    _time.sleep(delay)
-                if sigterm.triggered:
-                    return None
-                result = enricher.enrich(url)
-                checkpoint.record(result)
-                return result
-
-        results = []
-        with ThreadPoolExecutor(max_workers=global_limit) as pool:
-            futures = [pool.submit(work, account) for account in accounts]
-            for future in as_completed(futures):
-                result = future.result()
-                if result is not None:
-                    results.append(result)
-                if sigterm.triggered:
-                    pool.shutdown(wait=False, cancel_futures=True)
-                    break
+        results = enrich_fairly(
+            enricher, [account["url"] for account in accounts], self.fetch_state, self.limiter,
+            run_id=checkpoint.path.stem, checkpoint=checkpoint,
+            stopped=lambda: sigterm.triggered,
+            max_workers=int(self._etl_limits().get("global_concurrency", 6)),
+        )
         if sigterm.triggered:
             raise PipelineError("SIGTERM waehrend Anreicherung; Checkpoints ermoeglichen Wiederaufnahme")
         return results

@@ -26,6 +26,7 @@ class DashboardRow:
     created_at: str | None
     is_bot: bool
     freshness: str  # fresh | stale (intern, nicht exportiert)
+    observed_at: str | None = None  # metadata only; public account contract stays unchanged
 
     def to_export_entry(self) -> dict:
         return {
@@ -85,7 +86,7 @@ def build_dashboard_rows(
         row[0]: row
         for row in conn.execute(
             """
-            SELECT url, posts_count, recent_posts_count, created_at, is_bot, freshness
+            SELECT url, posts_count, recent_posts_count, created_at, is_bot, freshness, fetched_at
             FROM mart.account_facts
             """
         ).fetchall()
@@ -112,7 +113,7 @@ def build_dashboard_rows(
         if fact is None:
             # Ohne Beobachtung kein Export (wie bisher nur gescannte Accounts).
             continue
-        _url, posts_count, recent_count, created_at, is_bot, freshness = fact
+        _url, posts_count, recent_count, created_at, is_bot, freshness, fetched_at = fact
         if override is not None and override.force_bot is not None:
             is_bot = override.force_bot
 
@@ -133,6 +134,7 @@ def build_dashboard_rows(
                 created_at=created_at,
                 is_bot=bool(is_bot),
                 freshness=freshness,
+                observed_at=fetched_at,
             )
         )
 
@@ -172,6 +174,20 @@ def build_export(
         "warning_count": warning_count,
         "status": "complete" if missing_count == 0 else "partial",
     }
+    from datetime import datetime
+
+    from fedipol.etl.fetch_state import timestamp
+
+    now = datetime.now(UTC).timestamp()
+    ages = {"up_to_48h": 0, "up_to_7d": 0, "over_7d": 0, "unknown": 0}
+    for row in rows:
+        observed = timestamp(row.observed_at)
+        age = now-observed if observed is not None else None
+        band = ("unknown" if age is None else "up_to_48h" if age <= 2*86400
+                else "up_to_7d" if age <= 7*86400 else "over_7d")
+        ages[band] += 1
+    manifest["observation_age"] = ages  # diagnostic only, does not change quality thresholds
+    manifest["observed_at"] = {row.url: row.observed_at for row in rows}
     return ExportResult(data=data, manifest=manifest, _rows=rows)
 
 

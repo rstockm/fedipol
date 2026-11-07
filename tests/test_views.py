@@ -31,6 +31,13 @@ def test_healthz_without_generation_is_degraded_but_alive():
     assert body["checks"]["active_generation"] is False
 
 
+def test_health_data_exposes_failed_collection_even_without_publication():
+    EtlRun.objects.create(run_id="FAILED", status="failed", trigger="test", pipeline_version="1.1.0")
+    response = Client().get("/health/data")
+    assert response.status_code == 503
+    assert response.json()["collection"]["run_status"] == "failed"
+
+
 def test_export_without_generation_is_503():
     response = Client().get("/fedipol_data.json")
     assert response.status_code == 503

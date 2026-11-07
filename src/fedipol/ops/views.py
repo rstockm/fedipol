@@ -111,9 +111,12 @@ def healthz(request) -> JsonResponse:
 @require_GET
 def health_data(request) -> JsonResponse:
     """Datenaktualitaet getrennt von Liveness melden (Framework-Pflicht)."""
+    from fedipol.ops.fetch_diagnostics import collection_status
+
     export_dir = _active_export_dir()
     if export_dir is None:
-        return JsonResponse({"status": "unhealthy_missing_generation"}, status=503)
+        return JsonResponse({"status": "unhealthy_missing_generation",
+                             "collection": collection_status()}, status=503)
     import json
 
     manifest = json.loads((export_dir / "manifest.json").read_text(encoding="utf-8"))
@@ -133,6 +136,8 @@ def health_data(request) -> JsonResponse:
             "generated_at": manifest.get("generated_at"),
             "account_count": total,
             "stale_accounts": stale,
+            "observation_age": manifest.get("observation_age", {}),
+            "collection": collection_status(),
         }
     )
 
