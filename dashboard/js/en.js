@@ -1,5 +1,8 @@
 // Source strings are message IDs; {placeholders} preserve runtime data verbatim.
 window.FedipolMessages.en = {
+    'hero.eyebrow': 'Germany · Politics · Fediverse',
+    'hero.title': 'Politics in the',
+    'hero.description': 'Who’s here, who’s active? Explore German politics in the Fediverse – compare accounts, parties and institutions at a glance.',
     'scope.title': 'Currently limited to Germany',
     'scope.text': 'Fedipol currently covers exclusively German politics, political parties and institutions, including their representatives at EU level. The English interface does not extend the geographic scope of the data. Account names, party names and categories remain in the original language of the sources.',
     'Fedipol - Informationen zur Datenabfrage': 'Fedipol — About the data',

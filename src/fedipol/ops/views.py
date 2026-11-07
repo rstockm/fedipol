@@ -10,7 +10,7 @@ from django.views.decorators.http import require_GET
 from fedipol.etl.paths import resolve_data_dir
 from fedipol.ops.models import ActiveGeneration
 
-DASHBOARD_ALLOWED_SUFFIXES = {".html", ".css", ".js", ".png", ".svg", ".ico"}
+DASHBOARD_ALLOWED_SUFFIXES = {".html", ".css", ".js", ".png", ".svg", ".ico", ".woff2", ".webmanifest"}
 
 
 def _active_export_dir() -> pathlib.Path | None:

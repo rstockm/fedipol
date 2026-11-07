@@ -125,6 +125,21 @@ def test_dashboard_js_served(asset):
     assert "javascript" in response["Content-Type"]
 
 
+@pytest.mark.parametrize("asset, content_type", [
+    ("site.webmanifest", "application/manifest+json"),
+    ("css/fonts/inter-tight-latin.woff2", "font/woff2"),
+    ("icons/favicon.svg", "image/svg+xml"),
+    ("icons/apple-touch-icon.png", "image/png"),
+    ("icons/app-icon-192.png", "image/png"),
+    ("icons/app-icon-512.png", "image/png"),
+])
+def test_dashboard_brand_assets_served(asset, content_type):
+    response = Client().get(f"/{asset}")
+    assert response.status_code == 200
+    assert response["Content-Type"] == content_type
+    assert b"".join(response.streaming_content)
+
+
 def test_dashboard_rejects_unknown_and_traversal():
     client = Client()
     assert client.get("/nicht-da.html").status_code == 404
