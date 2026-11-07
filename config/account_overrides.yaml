@@ -11,6 +11,13 @@
 # Nicht mehr existierende Ziel-URLs fuehren zu Warnungen, nicht zu Fehlern.
 
 accounts:
+  - url: https://die-partei.social/@rockpapershotgun
+    reason: >
+      Themenfremder RSS-Bot für das Computerspiele-Magazin Rock Paper Shotgun
+      (Profilbeschreibung: "Inoffical Rock Paper Shotgun RSS-Feed", Mastodon-API
+      bot=true). Kein politischer oder institutioneller Account; die Nutzung
+      einer Partei-Instanz allein begründet keine Aufnahme in Fedipol.
+    exclude: true
   - url: https://gruene.social/@gruene_leipzig
     reason: >
       False Positive der Bot-Heuristik: das Keyword "bot" matched den
