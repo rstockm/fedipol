@@ -5,6 +5,11 @@ let activeSearchFilter = '';
 let currentSortField = 'recent_posts_count';
 let currentSortDirection = 'desc';
 
+function uiLocale() {
+    return typeof window !== 'undefined' && window.FedipolI18n
+        ? (window.FedipolI18n.currentLocale() === 'en' ? 'en-GB' : 'de-DE') : 'de-DE';
+}
+
 // Color mapping for parties
 const partyColorMap = {
     'SPD': 'rgba(255, 0, 0, 1.0)',
@@ -199,7 +204,7 @@ function isBot(name) {
 function formatAccountStartDate(value) {
     const timestamp = value ? Date.parse(value) : NaN;
     if (!Number.isFinite(timestamp)) return '–';
-    return new Date(timestamp).toLocaleDateString('de-DE', {
+    return new Date(timestamp).toLocaleDateString(uiLocale(), {
         day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'UTC'
     });
 }
@@ -615,7 +620,7 @@ function renderCumulativeHistogram() {
 
     const monthIndexOf = (date) => date.getFullYear() * 12 + date.getMonth();
     const monthLabel = (mi) => new Date(Math.floor(mi / 12), mi % 12, 1)
-        .toLocaleDateString('de-DE', { month: 'short', year: 'numeric' });
+        .toLocaleDateString(uiLocale(), { month: 'short', year: 'numeric' });
 
     const firstMonth = Math.min(...accounts.map(({created_at}) => monthIndexOf(new Date(created_at))));
     const lastMonth = monthIndexOf(new Date());
@@ -773,7 +778,7 @@ function renderTimeline() {
             return `
                 <div class="timeline-marker${is_bot ? ' is-bot' : ''}" 
                      style="left: ${position}%; background-color: ${color};"
-                     title="${account.name} (${activePartyFilter})${is_bot ? ' [Bot]' : ''}\nBeigetreten: ${date.toLocaleDateString()}">
+                     title="${account.name} (${activePartyFilter})${is_bot ? ' [Bot]' : ''}\nBeigetreten: ${date.toLocaleDateString(uiLocale())}">
                 </div>
             `;
         }).filter(html => html).join('');
@@ -808,7 +813,7 @@ function renderTimeline() {
             return `
                 <div class="timeline-marker${is_bot ? ' is-bot' : ''}" 
                      style="left: ${position}%; background-color: ${color};"
-                     title="${account.name} (${party})${is_bot ? ' [Bot]' : ''}\nBeigetreten: ${date.toLocaleDateString()}">
+                     title="${account.name} (${party})${is_bot ? ' [Bot]' : ''}\nBeigetreten: ${date.toLocaleDateString(uiLocale())}">
                 </div>
             `;
         }).filter(html => html).join('');
@@ -1085,6 +1090,19 @@ function restoreFollowView(view, accountUrl) {
 
 // Initialize when document is ready
 document.addEventListener('DOMContentLoaded', async () => {
+    if (window.FedipolI18n) {
+        window.FedipolI18n.subscribe(() => {
+            // Keep table nodes, search, sorting, focus and OAuth state intact.
+            document.querySelectorAll('tr[data-account-url]').forEach(row => {
+                const data = loadedAccounts.get(row.getAttribute('data-account-url'));
+                const cell = row.querySelector('.account-start-date');
+                if (data && cell) cell.textContent = formatAccountStartDate(data.created_at);
+            });
+            renderTimeline();
+            renderCumulativeHistogram();
+            window.FedipolI18n.apply();
+        });
+    }
     // OAuth muss auch bei nicht verfügbarem Datenexport funktionieren.
     if (window.FediPolFollow) {
         window.FediPolFollow.init().catch(error => {

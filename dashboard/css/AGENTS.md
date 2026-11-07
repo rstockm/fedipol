@@ -1,6 +1,8 @@
 # Dashboard-Styles
 
 `fedipol-brand` hält Namen und blaues Parlaments-/Statistik-Icon auch mobil zusammen.
+DE/EN: responsive Sprachauswahl ab 320 px; `Germany` nur Englisch ab 1200 px;
+mobile Datumspräfixe und Ladeanzeige folgen `html[lang]`.
 
 | Datei | Zweck |
 | --- | --- |
