@@ -76,6 +76,30 @@ def test_every_request_shares_host_spacing_and_budget():
             pass
 
 
+def test_production_gruene_policy_allows_more_than_an_hour_without_speeding_up(isolated_config):
+    import yaml
+
+    from fedipol.settings import ETL
+
+    policies = yaml.safe_load((isolated_config / "sources.yaml").read_text())["collection"]["instances"]
+    clock = Clock()
+    start = clock.now()
+    limiter = InstanceLimiter(
+        now=clock.now, sleep=clock.sleep, policies=policies,
+        run_budget_seconds=ETL["collection_run_budget_seconds"],
+    )
+    host = "gruene.social"
+    url = f"https://{host}/api/v1/accounts/lookup"
+    for request_number in range(2500):
+        with limiter.request(url):
+            assert clock.now() == start + request_number * 5
+    assert clock.now() - start > 3 * 3600
+    assert limiter.expires_at(host) == start + 4 * 3600
+    with pytest.raises(DeferredRequest, match="request_budget"):
+        with limiter.request(url):
+            pass
+
+
 @pytest.mark.parametrize("header", ["120", "Sat, 07 Nov 2026 00:02:00 GMT"])
 def test_429_pauses_entire_host_and_survives_restart(tmp_path, header):
     clock = Clock()

@@ -96,6 +96,59 @@ def test_pipeline_offline_is_idempotent(data_paths, recorder, permissive_limits)
     assert recorder.active_generation == "RUN-2"
 
 
+def test_retired_instance_is_not_fetched_exported_or_counted_as_missing(
+    data_paths, recorder, permissive_limits, monkeypatch,
+):
+    import fedipol.etl.pipeline as pipeline_module
+    from fedipol.etl.sources.mastodon import EnrichmentResult
+
+    url = "https://respublicae.eu/@former"
+    original = Pipeline._load_fixture_bindings
+
+    def with_retired_account(self, query_name):
+        rows = original(self, query_name)
+        if query_name == "parliament":
+            rows.append({"account": url, "itemLabel": "Former account"})
+        return rows
+
+    monkeypatch.setattr(Pipeline, "_load_fixture_bindings", with_retired_account)
+    seed_checkpoint(data_paths, "BASE")
+    with data_paths.run_checkpoint("BASE").open("a") as fh:
+        fh.write(json.dumps({
+            "url": url, "posts_count": 1, "recent_posts_count": 0, "is_bot": False,
+            "created_at": "2020-01-01T00:00:00Z", "fetched_at": "2026-09-03T02:00:00Z",
+        }) + "\n")
+    base = make_pipeline(data_paths, recorder, "BASE")
+    base.excluded_instances.clear()
+    assert base.run().published
+    original_export = data_paths.export_dir("BASE") / "fedipol_data.json"
+    assert url in json.loads(original_export.read_text())["data"]
+
+    # This time the account is known only from the preceding generation.
+    monkeypatch.setattr(Pipeline, "_load_fixture_bindings", original)
+
+    def directory(host, **kwargs):
+        assert host != "respublicae.eu"
+        return []
+
+    def enrich(self, account):
+        assert account != url
+        return EnrichmentResult(url=account, posts_count=1, recent_posts_count=0, is_bot=False,
+            created_at="2020-01-01T00:00:00Z", fetched_at="2026-09-03T02:00:00Z")
+
+    monkeypatch.setattr(pipeline_module, "fetch_instance_directory", directory)
+    monkeypatch.setattr(pipeline_module.MastodonEnricher, "enrich", enrich)
+    pipeline = Pipeline(data_paths, recorder, PipelineConfig(wikidata_offline=True, run_id="NEXT"))
+    pipeline.institution_instances.append("respublicae.eu")
+    result = pipeline.run()
+    assert result.published, result.error
+    data = json.loads((data_paths.export_dir("NEXT") / "fedipol_data.json").read_text())["data"]
+    assert url not in data
+    assert result.account_count == len(FIXTURE_ACCOUNTS)
+    assert result.missing_count == result.stale_count == 0
+    assert url in json.loads(original_export.read_text())["data"]
+
+
 def test_wikidata_handles_survive_pipeline_to_export(
     data_paths, recorder, permissive_limits, monkeypatch,
 ):

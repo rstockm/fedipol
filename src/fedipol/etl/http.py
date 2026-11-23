@@ -1,7 +1,7 @@
 """HTTP-Client mit festen Timeouts, begrenzten Retries und Backoff.
 
-Retries nur fuer transiente Fehler: Netzwerkfehler, 429 (inkl.
-Retry-After), 500, 502, 503, 504. Andere 4xx werden nicht wiederholt.
+Retries fuer Netzwerkfehler, 429 (inkl. Retry-After), 500, 502, 503, 504
+und optional ungueltige Antwortinhalte. Andere 4xx werden nicht wiederholt.
 """
 
 from __future__ import annotations
@@ -68,6 +68,7 @@ def fetch(
     method: str = "GET",
     data: dict | None = None,
     limiter=None,
+    validate=None,
 ) -> FetchResult:
     """GET/POST mit Timeout- und Retry-Vertrag; wirft PermanentFetchError nach Erschoepfung."""
     sleep = sleep or time.sleep
@@ -126,7 +127,7 @@ def fetch(
                 continue
 
             if response.status_code == 200:
-                return FetchResult(
+                result = FetchResult(
                     url=getattr(response, "url", None) or url,
                     status=response.status_code,
                     content=response.content,
@@ -134,6 +135,23 @@ def fetch(
                     attempts=attempts,
                     headers=requests.structures.CaseInsensitiveDict(response.headers),
                 )
+                if validate is not None:
+                    try:
+                        validate(result)
+                    except ValueError as exc:
+                        if attempts > max_retries:
+                            raise PermanentFetchError(
+                                f"Ungueltige Antwort nach {attempts} Versuchen fuer {url}",
+                                status=result.status, category="invalid_response", attempts=attempts,
+                            ) from exc
+                        delay = backoff_base**attempts + random.uniform(0, 0.5)
+                        logger.warning(
+                            "Ungueltige Antwort fuer %s (Versuch %d) - Retry in %.1fs",
+                            url, attempts, delay,
+                        )
+                        sleep(delay)
+                        continue
+                return result
 
             if response.status_code in RETRYABLE_STATUS and attempts <= max_retries:
                 retry_after = response.headers.get("Retry-After")

@@ -10,9 +10,10 @@ from email.utils import parsedate_to_datetime
 from urllib.parse import urlsplit
 
 DEFAULT_POLICIES = {
-    "gruene.social": {"interval": 5.0, "budget_seconds": 3600, "max_requests": 720},
+    "gruene.social": {"interval": 5.0, "budget_seconds": 14400, "max_requests": 2500},
     "social.bund.de": {"interval": 3.0, "budget_seconds": 2700, "max_requests": 900},
 }
+DEFAULT_RUN_BUDGET_SECONDS = 16200
 
 
 class DeferredRequest(Exception):
@@ -51,7 +52,7 @@ def server_deadline(headers, now):
 class InstanceLimiter:
     def __init__(self, *, policies=None, states=None, persist=None, now=time.time,
                  monotonic=None, sleep=time.sleep, stopped=lambda: False,
-                 run_budget_seconds=7200, run_id=None):
+                 run_budget_seconds=DEFAULT_RUN_BUDGET_SECONDS, run_id=None):
         self.now, self.sleep, self.stopped = now, sleep, stopped
         self.monotonic = monotonic or (time.monotonic if now is time.time else now)
         self.deadline = self.monotonic()+run_budget_seconds

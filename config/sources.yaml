@@ -36,8 +36,8 @@ collection:
   instances:
     gruene.social:
       interval: 5
-      budget_seconds: 3600
-      max_requests: 720
+      budget_seconds: 14400
+      max_requests: 2500
     social.bund.de:
       interval: 3
       budget_seconds: 2700
@@ -56,3 +56,8 @@ bot_keywords:
 
 # Account-URLs, die grundsätzlich ausgeschlossen werden (Port von exclude.json).
 excluded_accounts_file: config/excluded_accounts.json
+
+# Bewusst stillgelegte Quellen; historische Beobachtungen bleiben erhalten.
+# respublicae.eu liefert eine statische Webseite, keine Mastodon-API.
+excluded_instances:
+  - respublicae.eu

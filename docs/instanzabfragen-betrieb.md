@@ -18,7 +18,7 @@
 
 | Host | Request-Abstand | Laufzeitbudget | Request-Budget |
 | --- | ---: | ---: | ---: |
-| gruene.social | 5 s | 60 min | 720 |
+| gruene.social | 5 s | 240 min | 2.500 |
 | social.bund.de | 3 s | 45 min | 900 |
 | sonstige Hosts (Default) | 2 s | 30 min | 900 |
 
@@ -26,7 +26,7 @@ Ein Request gleichzeitig je Host; globale Anzahl über
 `FEDIPOL_GLOBAL_CONCURRENCY` (Default 6). Die früheren Account-Parameter
 `FEDIPOL_PER_INSTANCE_CONCURRENCY` und `FEDIPOL_PER_INSTANCE_MIN_INTERVAL`
 steuern den neuen Dispatcher nicht mehr. Das übergreifende Sammelbudget beträgt
-mit `FEDIPOL_COLLECTION_RUN_BUDGET_SECONDS` standardmäßig zwei Stunden.
+mit `FEDIPOL_COLLECTION_RUN_BUDGET_SECONDS` standardmäßig 4,5 Stunden.
 Ein bereits laufender HTTP-Aufruf kann sein Budget noch um seine begrenzte
 Connect-/Read-Timeout-Zeit überschreiten. Keine neuen Requests nach Deadline.
 
@@ -52,6 +52,13 @@ Aktive Overrides und Ausschlüsse greifen vor Planung. Ein früher bekannter
 Account bleibt bei unvollständiger Verzeichnisabfrage als Kandidat erhalten.
 Die operative Aktiv-Markierung berücksichtigt Ausschlüsse auch für die
 Altersdiagnose; historische Beobachtungen werden dabei nicht gelöscht.
+`excluded_instances` schließt bewusst stillgelegte Hosts aus Planung, Export
+und Fehlend-Zahl aus. Für `respublicae.eu` wurde die fehlende Mastodon-API
+bestätigt; einzelne 404 führen weiterhin nicht automatisch zum Ausschluss.
+
+Wikidata-HTTP-200-Antworten werden vor der Raw-Ablage als SPARQL-JSON validiert.
+Beschädigte Antworten teilen sich das normale Retry-Budget mit HTTP- und
+Netzwerkfehlern; ohne gültige Antwort bleibt die vorherige Generation aktiv.
 
 ## Persistenz und Neustart
 

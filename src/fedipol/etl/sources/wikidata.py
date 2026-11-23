@@ -40,14 +40,19 @@ def run_sparql_query(
         sleep=sleep,
         method="POST",
         data={"query": query, "format": "json"},
+        validate=parse_bindings,
     )
 
 
 def parse_bindings(result: FetchResult) -> list[dict]:
     """Normalisiert SPARQL-Bindings zu flachen Dictionaries."""
     data = result.json()
+    results = data.get("results") if isinstance(data, dict) else None
+    bindings = results.get("bindings") if isinstance(results, dict) else None
+    if not isinstance(bindings, list) or any(not isinstance(row, dict) for row in bindings):
+        raise ValueError("SPARQL-Resultat ohne gueltige Bindings")
     rows: list[dict] = []
-    for binding in data.get("results", {}).get("bindings", []):
+    for binding in bindings:
         row = {}
         for key, value in binding.items():
             row[key] = value.get("value") if isinstance(value, dict) else value

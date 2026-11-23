@@ -38,7 +38,7 @@ from fedipol.etl.normalize import canonical_url, instance_priority, position_pri
 from fedipol.etl.overrides import OverrideSet, load_overrides, validate_against
 from fedipol.etl.paths import DataPaths, load_paths
 from fedipol.etl.quality import check_export, check_freshness_landscape
-from fedipol.etl.rate_limit import InstanceLimiter
+from fedipol.etl.rate_limit import DEFAULT_RUN_BUDGET_SECONDS, InstanceLimiter
 from fedipol.etl.scheduling import enrich_fairly
 from fedipol.etl.sources.curated_list import CuratedAccount, load_curated_list
 from fedipol.etl.sources.mastodon import EnrichmentResult, MastodonEnricher
@@ -153,6 +153,7 @@ class Pipeline:
         self.bot_keywords: list[str] = list(raw.get("bot_keywords", []))
         self.curated_list_path = raw.get("curated_list")
         self.excluded_accounts_file = raw.get("excluded_accounts_file")
+        self.excluded_instances = set(raw.get("excluded_instances", []))
 
     def _overrides(self) -> OverrideSet:
         return load_overrides(self.paths.config_dir() / "account_overrides.yaml")
@@ -215,7 +216,7 @@ class Pipeline:
                 states=self.fetch_state.instances, persist=self.fetch_state.instance_event,
                 policies=self.sources.get("collection", {}).get("instances", {}),
                 stopped=lambda: sigterm.triggered,
-                run_budget_seconds=limits.get("collection_run_budget_seconds", 7200),
+                run_budget_seconds=limits.get("collection_run_budget_seconds", DEFAULT_RUN_BUDGET_SECONDS),
                 run_id=run_id,
             )
 
@@ -241,8 +242,8 @@ class Pipeline:
                 )
                 if not response.ok:
                     raise PipelineError(f"Wikidata-Abfrage {query_name}: HTTP {response.status}")
-                self._store_raw(raw_dir, f"wikidata_{query_name}.json", response.content)
                 binding_rows = parse_bindings(response)
+                self._store_raw(raw_dir, f"wikidata_{query_name}.json", response.content)
             wikidata_rows.extend(
                 {**row, "_source_query": query_name} for row in binding_rows
             )
@@ -257,6 +258,8 @@ class Pipeline:
             with ThreadPoolExecutor(max_workers=3) as pool:
                 futures = {}
                 for instance, party in self.party_instances.items():
+                    if instance in self.excluded_instances:
+                        continue
                     futures[pool.submit(
                         fetch_instance_directory, instance,
                         kind="party", party=party,
@@ -264,6 +267,8 @@ class Pipeline:
                         limiter=self.limiter,
                     )] = instance
                 for instance in self.institution_instances:
+                    if instance in self.excluded_instances:
+                        continue
                     futures[pool.submit(
                         fetch_instance_directory, instance,
                         kind="institution", party=None,
@@ -363,6 +368,10 @@ class Pipeline:
         # --- 4. Overrides laden und Anreicherung planen ------------------
         overrides = self._overrides()
         excluded_urls = self._load_excluded_accounts()
+        excluded_instance_urls = {
+            c["url"] for c in candidate_list if c["instance"] in self.excluded_instances
+        }
+        excluded_urls |= excluded_instance_urls
 
         limit = self.config.limit
         excluded_by_override = {o.url for o in overrides.entries
@@ -429,7 +438,10 @@ class Pipeline:
             exported_urls = {r.url for r in rows}
             known = {c["url"] for c in candidate_list}
             warnings.extend(validate_against(overrides, known))
-            missing_count = len(known - exported_urls - {o.url for o in overrides.entries if o.exclude})
+            missing_count = len(
+                known - exported_urls - excluded_instance_urls
+                - {o.url for o in overrides.entries if o.exclude}
+            )
             export = build_export(
                 rows,
                 run_id=run_id,

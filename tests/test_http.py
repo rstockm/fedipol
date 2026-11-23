@@ -3,6 +3,7 @@ import pytest
 import requests
 
 from fedipol.etl.http import PermanentFetchError, fetch
+from fedipol.etl.sources.wikidata import run_sparql_query
 
 
 class FakeResponse:
@@ -25,6 +26,36 @@ class FakeSession:
         if isinstance(item, Exception):
             raise item
         return item
+
+    post = get
+
+
+def test_sparql_retries_truncated_json_and_invalid_result_shape():
+    valid = b'{"results":{"bindings":[]}}'
+    session = FakeSession([
+        FakeResponse(200, content=b'{"results":'),
+        FakeResponse(200, content=b'{"results":{"bindings":null}}'),
+        FakeResponse(200, content=valid),
+    ])
+    sleeps = []
+    result = run_sparql_query(
+        "https://query.example.org/sparql", "SELECT * WHERE {}", session=session,
+        max_retries=2, sleep=sleeps.append,
+    )
+    assert result.content == valid
+    assert result.attempts == 3
+    assert len(sleeps) == 2
+
+
+def test_sparql_invalid_payload_shares_retry_budget_with_http_errors():
+    session = FakeSession([FakeResponse(503), FakeResponse(200, content=b'{"results":')])
+    with pytest.raises(PermanentFetchError) as exc:
+        run_sparql_query(
+            "https://query.example.org/sparql", "SELECT * WHERE {}", session=session,
+            max_retries=1, sleep=lambda _: None,
+        )
+    assert exc.value.category == "invalid_response"
+    assert exc.value.attempts == len(session.calls) == 2
 
 
 def test_success_first_try():
